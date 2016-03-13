@@ -46,6 +46,9 @@
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>..\SDL2-2.0.4\include</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <DisableLanguageExtensions>false</DisableLanguageExtensions>
+      <SuppressStartupBanner>false</SuppressStartupBanner>
+      <CompileAs>CompileAsCpp</CompileAs>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -67,6 +70,41 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\libs\lua-5.3.2\src\lapi.c" />
+    <ClCompile Include="..\libs\lua-5.3.2\src\lauxlib.c" />
+    <ClCompile Include="..\libs\lua-5.3.2\src\lbaselib.c" />
+    <ClCompile Include="..\libs\lua-5.3.2\src\lbitlib.c" />
+    <ClCompile Include="..\libs\lua-5.3.2\src\lcode.c" />
+    <ClCompile Include="..\libs\lua-5.3.2\src\lcorolib.c" />
+    <ClCompile Include="..\libs\lua-5.3.2\src\lctype.c" />
+    <ClCompile Include="..\libs\lua-5.3.2\src\ldblib.c" />
+    <ClCompile Include="..\libs\lua-5.3.2\src\ldebug.c" />
+    <ClCompile Include="..\libs\lua-5.3.2\src\ldo.c" />
+    <ClCompile Include="..\libs\lua-5.3.2\src\ldump.c" />
+    <ClCompile Include="..\libs\lua-5.3.2\src\lfunc.c" />
+    <ClCompile Include="..\libs\lua-5.3.2\src\lgc.c" />
+    <ClCompile Include="..\libs\lua-5.3.2\src\linit.c" />
+    <ClCompile Include="..\libs\lua-5.3.2\src\liolib.c" />
+    <ClCompile Include="..\libs\lua-5.3.2\src\llex.c" />
+    <ClCompile Include="..\libs\lua-5.3.2\src\lmathlib.c" />
+    <ClCompile Include="..\libs\lua-5.3.2\src\lmem.c" />
+    <ClCompile Include="..\libs\lua-5.3.2\src\loadlib.c" />
+    <ClCompile Include="..\libs\lua-5.3.2\src\lobject.c" />
+    <ClCompile Include="..\libs\lua-5.3.2\src\lopcodes.c" />
+    <ClCompile Include="..\libs\lua-5.3.2\src\loslib.c" />
+    <ClCompile Include="..\libs\lua-5.3.2\src\lparser.c" />
+    <ClCompile Include="..\libs\lua-5.3.2\src\lstate.c" />
+    <ClCompile Include="..\libs\lua-5.3.2\src\lstring.c" />
+    <ClCompile Include="..\libs\lua-5.3.2\src\lstrlib.c" />
+    <ClCompile Include="..\libs\lua-5.3.2\src\ltable.c" />
+    <ClCompile Include="..\libs\lua-5.3.2\src\ltablib.c" />
+    <ClCompile Include="..\libs\lua-5.3.2\src\ltm.c" />
+    <ClCompile Include="..\libs\lua-5.3.2\src\lundump.c" />
+    <ClCompile Include="..\libs\lua-5.3.2\src\lutf8lib.c" />
+    <ClCompile Include="..\libs\lua-5.3.2\src\lvm.c" />
+    <ClCompile Include="..\libs\lua-5.3.2\src\lzio.c" />
+    <ClCompile Include="Engine.cpp" />
+    <ClCompile Include="LuaBindings.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -76,6 +114,36 @@
     <ProjectReference Include="..\SDL2-2.0.4\VisualC\SDL\SDL.vcxproj">
       <Project>{81ce8daf-ebb2-4761-8e45-b71abcca8c68}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\libs\lua-5.3.2\src\lapi.h" />
+    <ClInclude Include="..\libs\lua-5.3.2\src\lauxlib.h" />
+    <ClInclude Include="..\libs\lua-5.3.2\src\lcode.h" />
+    <ClInclude Include="..\libs\lua-5.3.2\src\lctype.h" />
+    <ClInclude Include="..\libs\lua-5.3.2\src\ldebug.h" />
+    <ClInclude Include="..\libs\lua-5.3.2\src\ldo.h" />
+    <ClInclude Include="..\libs\lua-5.3.2\src\lfunc.h" />
+    <ClInclude Include="..\libs\lua-5.3.2\src\lgc.h" />
+    <ClInclude Include="..\libs\lua-5.3.2\src\llex.h" />
+    <ClInclude Include="..\libs\lua-5.3.2\src\llimits.h" />
+    <ClInclude Include="..\libs\lua-5.3.2\src\lmem.h" />
+    <ClInclude Include="..\libs\lua-5.3.2\src\lobject.h" />
+    <ClInclude Include="..\libs\lua-5.3.2\src\lopcodes.h" />
+    <ClInclude Include="..\libs\lua-5.3.2\src\lparser.h" />
+    <ClInclude Include="..\libs\lua-5.3.2\src\lprefix.h" />
+    <ClInclude Include="..\libs\lua-5.3.2\src\lstate.h" />
+    <ClInclude Include="..\libs\lua-5.3.2\src\lstring.h" />
+    <ClInclude Include="..\libs\lua-5.3.2\src\ltable.h" />
+    <ClInclude Include="..\libs\lua-5.3.2\src\ltm.h" />
+    <ClInclude Include="..\libs\lua-5.3.2\src\lua.h" />
+    <ClInclude Include="..\libs\lua-5.3.2\src\lua.hpp" />
+    <ClInclude Include="..\libs\lua-5.3.2\src\luaconf.h" />
+    <ClInclude Include="..\libs\lua-5.3.2\src\lualib.h" />
+    <ClInclude Include="..\libs\lua-5.3.2\src\lundump.h" />
+    <ClInclude Include="..\libs\lua-5.3.2\src\lvm.h" />
+    <ClInclude Include="..\libs\lua-5.3.2\src\lzio.h" />
+    <ClInclude Include="Engine.h" />
+    <ClInclude Include="LuaBindings.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
