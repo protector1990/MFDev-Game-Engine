@@ -1,5 +1,5 @@
 class Renderer {
 public:
 	void init();
-	void render();
+	void render(float deltaTime);
 };
