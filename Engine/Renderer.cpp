@@ -1,4 +1,4 @@
-#include "Renderer.h"
+#include "Engine.h"
 #include <SDL.h>
 #include <SDL_opengl.h>
 
@@ -10,7 +10,7 @@ SDL_Surface *image = 0;
 
 //helper function
 void LoadMedia(){
-	image = SDL_LoadBMP("ZnamSDL.bmp");
+	image = Engine::getInstance().getAssetManager()->loadAsset<SDL_Surface>("/textures/ZnamSDL.bmp");
 }
 
 void Renderer::init() {

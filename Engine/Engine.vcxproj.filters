@@ -16,6 +16,9 @@
     <Filter Include="lua">
       <UniqueIdentifier>{c1feb96e-784b-42e8-ad0b-b5fe111d0d24}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\AssetManagers">
+      <UniqueIdentifier>{85368266-6879-43ea-9853-5de432dd25cc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -129,6 +132,12 @@
     <ClCompile Include="Renderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="WinAssetManager.cpp">
+      <Filter>Source Files\AssetManagers</Filter>
+    </ClCompile>
+    <ClCompile Include="IOSAssetManager.cpp">
+      <Filter>Source Files\AssetManagers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\libs\lua-5.3.2\src\lapi.h">
@@ -216,6 +225,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Renderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AssetManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

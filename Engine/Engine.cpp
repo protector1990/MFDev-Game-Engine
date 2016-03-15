@@ -1,14 +1,31 @@
 #include "Engine.h"
 #include <iostream>
 #include <SDL.h>
+#include <SDL_platform.h>
+//#include "..\libs\physfs-2.0.3\physfs.h"
 
 int Engine::run() {
+
 	_luaInterpreter = luaL_newstate();
 	luaBind(_luaInterpreter);
 	luaL_dofile(_luaInterpreter, "llua.lua");
+
 	SDL_Init(0);
+
+#ifdef __WINDOWS__
+	_assetManager = new WinAssetManager();
+#endif
+#ifdef __IOS__
+	_assetManager = new IOSAssetManager();
+#endif;
+	_assetManager->init();
+
 	_renderer = new Renderer();
 	_renderer->init();
+
+	//test code
+	
+
 	//this should be called from a loop when we make one
 	SDL_Event quitEvent;
 	while (_running) {
@@ -25,6 +42,14 @@ int Engine::run() {
 	}
 	SDL_Quit();
 	return 0;
+}
+
+Engine::Engine() {
+
+}
+
+Engine::~Engine() {
+
 }
 
 void Engine::quit() {

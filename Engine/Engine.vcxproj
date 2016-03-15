@@ -44,11 +44,12 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\SDL2-2.0.4\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\SDL2-2.0.4\include;..\libs\physfs-2.0.3</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <DisableLanguageExtensions>false</DisableLanguageExtensions>
       <SuppressStartupBanner>false</SuppressStartupBanner>
       <CompileAs>CompileAsCpp</CompileAs>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS; _CRT_NONSTDC_NO_DEPRECATE;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -104,12 +105,17 @@
     <ClCompile Include="..\libs\lua-5.3.2\src\lutf8lib.c" />
     <ClCompile Include="..\libs\lua-5.3.2\src\lvm.c" />
     <ClCompile Include="..\libs\lua-5.3.2\src\lzio.c" />
+    <ClCompile Include="IOSAssetManager.cpp" />
+    <ClCompile Include="WinAssetManager.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="LuaBindings.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Renderer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\physfs\physfs.vcxproj">
+      <Project>{fc200021-381a-4649-8ba6-f30bc0f00d97}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\SDL2-2.0.4\VisualC\SDLmain\SDLmain.vcxproj">
       <Project>{da956fd3-e142-46f2-9dd5-c78bebb56b7a}</Project>
     </ProjectReference>
@@ -144,6 +150,7 @@
     <ClInclude Include="..\libs\lua-5.3.2\src\lundump.h" />
     <ClInclude Include="..\libs\lua-5.3.2\src\lvm.h" />
     <ClInclude Include="..\libs\lua-5.3.2\src\lzio.h" />
+    <ClInclude Include="AssetManager.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="LuaBindings.h" />
     <ClInclude Include="Renderer.h" />
