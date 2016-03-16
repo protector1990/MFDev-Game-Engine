@@ -1,5 +1,4 @@
 // main engine class
-#include "LuaBindings.h"
 #include "Renderer.h"
 #include <SDL.h>
 #include "AssetManager.h"
