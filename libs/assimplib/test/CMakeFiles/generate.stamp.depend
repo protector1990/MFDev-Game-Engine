@@ -1,0 +1,16 @@
+# CMake generation dependency list for this directory.
+D:/Marfil Studios/Engine/trunk/libs/assimp-3.2/test/CMakeLists.txt
+D:/Marfil Studios/Engine/trunk/libs/assimp-3.2/cmake-modules/AddGTest.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.4/Modules/FindThreads.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.4/Modules/CheckLibraryExists.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.4/Modules/CheckSymbolExists.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.4/Modules/CheckIncludeFile.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.4/Modules/CheckIncludeFile.c.in
+C:/Program Files (x86)/CMake/share/cmake-3.4/Modules/FindPackageHandleStandardArgs.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.4/Modules/FindPackageMessage.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.4/Modules/CMakeParseArguments.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.4/Modules/ExternalProject.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.4/Modules/FindGit.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.4/Modules/FindPackageHandleStandardArgs.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.4/Modules/FindPackageMessage.cmake
+C:/Program Files (x86)/CMake/share/cmake-3.4/Modules/CMakeParseArguments.cmake

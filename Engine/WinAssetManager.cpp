@@ -2,9 +2,14 @@
 #include <physfs.h>
 #include <string>
 #include <stdio.h>
+#include <..\include\assimp\Importer.hpp>
+#include <..\include\assimp\scene.h>
+#include "Physfs2AssimpInterface.h"
 
 #ifdef __WINDOWS__
-	
+
+Assimp::Importer asset3DImporter;
+
 void WinAssetManager::init() {
 	PHYSFS_init(0);
 	const char *baseDir = PHYSFS_getBaseDir();
@@ -12,6 +17,7 @@ void WinAssetManager::init() {
 	strcpy(dataPath, baseDir);
 	strcat(dataPath, "data.zip");
 	PHYSFS_mount(dataPath, "/", 1);
+	asset3DImporter.SetIOHandler(new P2AIOSystem());
 }
 
 int* WinAssetManager::loadInt(const char *path) {
@@ -47,7 +53,13 @@ LuaScript* WinAssetManager::loadLuaScript(const char *path) {
 	}
 }
 
-
+Asset3D* WinAssetManager::load3DModel(const char *path) {
+	const aiScene* temp = asset3DImporter.ReadFile(path, 0);
+	Asset3D* ret = new Asset3D();
+	//We do not want const aiScene
+	ret->scene = new aiScene(*temp);
+	return ret;
+}
 
 
 #endif

@@ -9,7 +9,7 @@ int Engine::run() {
 	_luaInterpreter = luaL_newstate();
 	luaBind(_luaInterpreter);
 
-	SDL_Init(0);
+	SDL_Init(SDL_INIT_VIDEO);
 
 #ifdef __WINDOWS__
 	_assetManager = new WinAssetManager();
@@ -23,8 +23,8 @@ int Engine::run() {
 	_renderer->init();
 
 	//test code
-	LuaScript* script = _assetManager->loadAsset<LuaScript>("/llua.lua");
-	luaExecute(_luaInterpreter, script);
+	//LuaScript* script = _assetManager->loadAsset<LuaScript>("/llua.lua");
+	//luaExecute(_luaInterpreter, script);
 
 	//this should be called from a loop when we make one
 	SDL_Event quitEvent;

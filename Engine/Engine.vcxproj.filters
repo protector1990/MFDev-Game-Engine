@@ -19,6 +19,9 @@
     <Filter Include="Source Files\AssetManagers">
       <UniqueIdentifier>{85368266-6879-43ea-9853-5de432dd25cc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="glew">
+      <UniqueIdentifier>{fce2b90a-7c74-48b8-b4e6-884af46c2217}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -123,9 +126,6 @@
     <ClCompile Include="..\libs\lua-5.3.2\src\lzio.c">
       <Filter>lua</Filter>
     </ClCompile>
-    <ClCompile Include="LuaBindings.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Engine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -137,6 +137,15 @@
     </ClCompile>
     <ClCompile Include="IOSAssetManager.cpp">
       <Filter>Source Files\AssetManagers</Filter>
+    </ClCompile>
+    <ClCompile Include="Lua.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Physfs2AssimpInterface.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\libs\glew\src\glew.c">
+      <Filter>glew</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -218,9 +227,6 @@
     <ClInclude Include="..\libs\lua-5.3.2\src\lzio.h">
       <Filter>lua</Filter>
     </ClInclude>
-    <ClInclude Include="LuaBindings.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Engine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -228,6 +234,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="AssetManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Lua.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="3DAsset.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Physfs2AssimpInterface.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

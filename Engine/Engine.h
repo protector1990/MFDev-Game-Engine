@@ -30,6 +30,7 @@ private:
 	Uint32 _frameTime = 0;
 	Uint32 _lastFrameTime = 0;
 public:
+	//SDL_videoInfo* sdlInfo;
 	Engine(Engine const&) = delete;
 	void operator=(Engine const&) = delete;
 };

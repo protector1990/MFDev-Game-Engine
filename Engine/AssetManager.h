@@ -1,6 +1,7 @@
 #include <SDL_platform.h>
 #include <SDL.h>
-#include "LuaBindings.h"
+#include "Lua.h"
+#include "3DAsset.h"
 
 class AssetManager {
 public:
@@ -17,10 +18,14 @@ public:
 	template <> int* loadAsset<int>(const char *path) { return loadInt(path); };
 	template <> SDL_Surface* loadAsset<SDL_Surface>(const char *path){return loadSDL_Surface(path);};
 	template <> LuaScript* loadAsset<LuaScript>(const char *path){ return loadLuaScript(path); };
+	template <> Asset3D* loadAsset<Asset3D>(const char *path){ return load3DModel(path); };
 protected:
 	virtual int* loadInt(const char *path) = 0;
 	virtual SDL_Surface* loadSDL_Surface(const char *path) = 0;
 	virtual LuaScript* loadLuaScript(const char *path) = 0;
+	virtual Asset3D* load3DModel(const char *path) = 0;
+
+
 };
 
 #ifdef __WINDOWS__
@@ -31,6 +36,8 @@ protected:
 	int* loadInt(const char *path) override;
 	SDL_Surface* loadSDL_Surface(const char *path) override;
 	LuaScript* loadLuaScript(const char *path) override;
+	Asset3D* load3DModel(const char *path) override;
+
 };
 #endif
 
@@ -42,5 +49,6 @@ protected:
 	int* loadInt(const char *path) override;
 	SDL_Surface* loadSDL_Surface(const char *path) override;
 	LuaScript* loadLuaScript(const char *path) override;
+	Asset3D* load3DModel(const char *path) override;
 };
 #endif

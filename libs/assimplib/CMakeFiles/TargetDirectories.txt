@@ -1,0 +1,6 @@
+D:/Marfil Studios/Engine/trunk/libs/assimplib/CMakeFiles/uninstall.dir
+D:/Marfil Studios/Engine/trunk/libs/assimplib/tools/assimp_cmd/CMakeFiles/assimp_cmd.dir
+D:/Marfil Studios/Engine/trunk/libs/assimplib/code/CMakeFiles/assimp.dir
+D:/Marfil Studios/Engine/trunk/libs/assimplib/contrib/zlib/CMakeFiles/ALL_BUILD.dir
+D:/Marfil Studios/Engine/trunk/libs/assimplib/CMakeFiles/ZERO_CHECK.dir
+D:/Marfil Studios/Engine/trunk/libs/assimplib/contrib/zlib/CMakeFiles/zlibstatic.dir

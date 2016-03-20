@@ -44,7 +44,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\SDL2-2.0.4\include;..\libs\physfs-2.0.3</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\SDL2-2.0.4\include;..\libs\physfs-2.0.3;..\libs;..\libs\assimp-3.2\code;..\libs\glew\include</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <DisableLanguageExtensions>false</DisableLanguageExtensions>
       <SuppressStartupBanner>false</SuppressStartupBanner>
@@ -54,6 +54,7 @@
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
+      <AdditionalDependencies>opengl32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -72,6 +73,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\libs\glew\src\glew.c" />
     <ClCompile Include="..\libs\lua-5.3.2\src\lapi.c" />
     <ClCompile Include="..\libs\lua-5.3.2\src\lauxlib.c" />
     <ClCompile Include="..\libs\lua-5.3.2\src\lbaselib.c" />
@@ -106,13 +108,17 @@
     <ClCompile Include="..\libs\lua-5.3.2\src\lvm.c" />
     <ClCompile Include="..\libs\lua-5.3.2\src\lzio.c" />
     <ClCompile Include="IOSAssetManager.cpp" />
+    <ClCompile Include="Physfs2AssimpInterface.cpp" />
     <ClCompile Include="WinAssetManager.cpp" />
     <ClCompile Include="Engine.cpp" />
-    <ClCompile Include="LuaBindings.cpp" />
+    <ClCompile Include="Lua.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Renderer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\libs\assimplib\code\assimp.vcxproj">
+      <Project>{e506c81b-7a0d-3153-8df6-804f599c1e65}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\physfs\physfs.vcxproj">
       <Project>{fc200021-381a-4649-8ba6-f30bc0f00d97}</Project>
     </ProjectReference>
@@ -150,9 +156,11 @@
     <ClInclude Include="..\libs\lua-5.3.2\src\lundump.h" />
     <ClInclude Include="..\libs\lua-5.3.2\src\lvm.h" />
     <ClInclude Include="..\libs\lua-5.3.2\src\lzio.h" />
+    <ClInclude Include="3DAsset.h" />
     <ClInclude Include="AssetManager.h" />
     <ClInclude Include="Engine.h" />
-    <ClInclude Include="LuaBindings.h" />
+    <ClInclude Include="Lua.h" />
+    <ClInclude Include="Physfs2AssimpInterface.h" />
     <ClInclude Include="Renderer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
