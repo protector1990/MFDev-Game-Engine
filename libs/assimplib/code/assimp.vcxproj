@@ -64,7 +64,7 @@
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.dll</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</GenerateManifest>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\Marfil Studios\Engine\trunk\Build\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\Marfil Studios\Engine\trunk\libs\assimplib\code\Release\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">assimp.dir\Release\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">assimp-vc120-mt</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.dll</TargetExt>
@@ -166,10 +166,8 @@
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <ImportLibrary>D:/Marfil Studios/Engine/trunk/libs/assimplib/code/Release/assimp-vc120-mt.lib</ImportLibrary>
-      <ProgramDataBaseFile>
-      </ProgramDataBaseFile>
-      <SubSystem>
-      </SubSystem>
+      <ProgramDataBaseFile>D:/Marfil Studios/Engine/trunk/libs/assimplib/code/Release/assimp-vc120-mt.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
       <Version>
       </Version>
     </Link>

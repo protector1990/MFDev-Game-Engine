@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -56,25 +56,25 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup>
-    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">D:\Marfil Studios\Engine\trunk\libs\assimplib\contrib\zlib\Debug\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">zlibstatic.dir\Debug\</IntDir>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">zlibstaticd</TargetName>
-    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.lib</TargetExt>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\Marfil Studios\Engine\trunk\libs\assimplib\contrib\zlib\Release\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">zlibstatic.dir\Release\</IntDir>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">zlibstatic</TargetName>
-    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.lib</TargetExt>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">D:\Marfil Studios\Engine\trunk\libs\assimplib\contrib\zlib\MinSizeRel\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">zlibstatic.dir\MinSizeRel\</IntDir>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">zlibstatic</TargetName>
-    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">.lib</TargetExt>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">D:\Marfil Studios\Engine\trunk\libs\assimplib\contrib\zlib\RelWithDebInfo\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">zlibstatic.dir\RelWithDebInfo\</IntDir>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">zlibstatic</TargetName>
-    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">.lib</TargetExt>
-  </PropertyGroup>
+    <PropertyGroup>
+      <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+      <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">D:\Marfil Studios\Engine\trunk\libs\assimplib\contrib\zlib\Debug\</OutDir>
+      <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">zlibstatic.dir\Debug\</IntDir>
+      <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">zlibstaticd</TargetName>
+      <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.lib</TargetExt>
+      <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\Marfil Studios\Engine\trunk\libs\assimplib\contrib\zlib\Release\</OutDir>
+      <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">zlibstatic.dir\Release\</IntDir>
+      <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">zlibstatic</TargetName>
+      <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.lib</TargetExt>
+      <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">D:\Marfil Studios\Engine\trunk\libs\assimplib\contrib\zlib\MinSizeRel\</OutDir>
+      <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">zlibstatic.dir\MinSizeRel\</IntDir>
+      <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">zlibstatic</TargetName>
+      <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">.lib</TargetExt>
+      <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">D:\Marfil Studios\Engine\trunk\libs\assimplib\contrib\zlib\RelWithDebInfo\</OutDir>
+      <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">zlibstatic.dir\RelWithDebInfo\</IntDir>
+      <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">zlibstatic</TargetName>
+      <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">.lib</TargetExt>
+    </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <AdditionalIncludeDirectories>D:\Marfil Studios\Engine\trunk\libs\assimplib;D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\include;D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\BoostWorkaround;D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\zlib;D:\Marfil Studios\Engine\trunk\libs\assimplib\contrib\zlib;D:\Marfil Studios\Engine\trunk\libs\assimp-3.2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -124,8 +124,7 @@
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;OPENDDL_NO_USE_CPP11;ASSIMP_BUILD_BOOST_WORKAROUND;NO_FSEEKO;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
-      <DebugInformationFormat>
-      </DebugInformationFormat>
+      <DebugInformationFormat></DebugInformationFormat>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;OPENDDL_NO_USE_CPP11;ASSIMP_BUILD_BOOST_WORKAROUND;NO_FSEEKO;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;CMAKE_INTDIR=\"Release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -158,8 +157,7 @@
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;OPENDDL_NO_USE_CPP11;ASSIMP_BUILD_BOOST_WORKAROUND;NO_FSEEKO;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;CMAKE_INTDIR="MinSizeRel";%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
-      <DebugInformationFormat>
-      </DebugInformationFormat>
+      <DebugInformationFormat></DebugInformationFormat>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;OPENDDL_NO_USE_CPP11;ASSIMP_BUILD_BOOST_WORKAROUND;NO_FSEEKO;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;CMAKE_INTDIR=\"MinSizeRel\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -278,21 +276,26 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\zlib\inftrees.h" />
     <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\zlib\trees.h" />
     <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\zlib\zutil.h" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\zlib\adler32.c" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\zlib\compress.c" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\zlib\crc32.c" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\zlib\deflate.c" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\zlib\gzclose.c" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\zlib\gzlib.c" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\zlib\gzread.c" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\zlib\gzwrite.c" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\zlib\inflate.c" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\zlib\infback.c" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\zlib\inftrees.c" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\zlib\inffast.c" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\zlib\trees.c" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\zlib\uncompr.c" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\zlib\zutil.c" />
+    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\zlib\adler32.c"  />
+    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\zlib\compress.c"  />
+    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\zlib\crc32.c"  />
+    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\zlib\deflate.c"  />
+    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\zlib\gzclose.c"  />
+    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\zlib\gzlib.c"  />
+    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\zlib\gzread.c"  />
+    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\zlib\gzwrite.c"  />
+    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\zlib\inflate.c"  />
+    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\zlib\infback.c"  />
+    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\zlib\inftrees.c"  />
+    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\zlib\inffast.c"  />
+    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\zlib\trees.c"  />
+    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\zlib\uncompr.c"  />
+    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\zlib\zutil.c"  />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="D:/Marfil Studios/Engine/trunk/libs/assimplib/ZERO_CHECK.vcxproj">
+      <Project>9C5A01AC-99A8-3775-B979-D6234BC7A28A</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
