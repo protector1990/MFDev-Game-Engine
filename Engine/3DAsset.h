@@ -1,5 +1,9 @@
+/**  Copyright 2016 MarFil Studios  **/
+
 #ifndef ASSET3D
 #define ASSET3D
+//#include "Mesh.h"
+#include <GL\glew.h>
 #include <..\include\assimp\scene.h>
 #include <SDL_opengl.h>
 
@@ -7,13 +11,10 @@
 class Asset3D {
 public:
 	aiScene* scene;
-};
-
-//struct 
-
-
-class Mesh {
-	//struct 
+	void convertMesh(int meshNo);
+	void drawMesh(int meshNo);
+private:
+	//mMesh* mesh;
 };
 
 #endif

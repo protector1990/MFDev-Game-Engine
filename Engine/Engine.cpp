@@ -40,6 +40,7 @@ int Engine::run() {
 		_lastFrameTime = _frameTime;
 		_renderer->render(_deltaTime);
 	}
+	_assetManager->deInit();
 	SDL_Quit();
 	return 0;
 }

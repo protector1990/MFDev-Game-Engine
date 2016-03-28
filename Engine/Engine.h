@@ -1,3 +1,5 @@
+/**  Copyright 2016 MarFil Studios  **/
+
 // main engine class
 #include "Renderer.h"
 #include <SDL.h>

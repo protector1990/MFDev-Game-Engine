@@ -1,3 +1,5 @@
+/**  Copyright 2016 MarFil Studios  **/
+
 #include <assimp-3.2\include\assimp\IOStream.hpp>
 #include <assimp-3.2\include\assimp\IOSystem.hpp>
 #include <physfs.h>

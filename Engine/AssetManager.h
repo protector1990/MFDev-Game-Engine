@@ -1,7 +1,10 @@
+/**  Copyright 2016 MarFil Studios  **/
+
 #include <SDL_platform.h>
 #include <SDL.h>
 #include "Lua.h"
 #include "3DAsset.h"
+#include "Model3D.h"
 
 class AssetManager {
 public:
@@ -9,6 +12,7 @@ public:
 	~AssetManager(){}
 	
 	virtual void init() = 0;
+	virtual void deInit() = 0;
 
 	template <typename T>
 	T* loadAsset(const char *path);
@@ -18,12 +22,14 @@ public:
 	template <> int* loadAsset<int>(const char *path) { return loadInt(path); };
 	template <> SDL_Surface* loadAsset<SDL_Surface>(const char *path){return loadSDL_Surface(path);};
 	template <> LuaScript* loadAsset<LuaScript>(const char *path){ return loadLuaScript(path); };
-	template <> Asset3D* loadAsset<Asset3D>(const char *path){ return load3DModel(path); };
+	template <> Asset3D* loadAsset<Asset3D>(const char *path){ return loadAsset3D(path); };
+	template <> Model3D* loadAsset<Model3D>(const char *path){ return loadModel3D(path); };
 protected:
 	virtual int* loadInt(const char *path) = 0;
 	virtual SDL_Surface* loadSDL_Surface(const char *path) = 0;
 	virtual LuaScript* loadLuaScript(const char *path) = 0;
-	virtual Asset3D* load3DModel(const char *path) = 0;
+	virtual Asset3D* loadAsset3D(const char *path) = 0;
+	virtual Model3D* loadModel3D(const char *path) = 0;
 
 
 };
@@ -32,11 +38,13 @@ protected:
 class WinAssetManager : public AssetManager {
 public:
 	void init() override;
+	void deInit() override;
 protected:
 	int* loadInt(const char *path) override;
 	SDL_Surface* loadSDL_Surface(const char *path) override;
 	LuaScript* loadLuaScript(const char *path) override;
-	Asset3D* load3DModel(const char *path) override;
+	Asset3D* loadAsset3D(const char *path) override;
+	Model3D* loadModel3D(const char *path) override;
 
 };
 #endif
@@ -45,10 +53,11 @@ protected:
 class IOSAssetManager : public AssetManager {
 public:
 	void init() override;
+	void deInit() override;
 protected:
 	int* loadInt(const char *path) override;
 	SDL_Surface* loadSDL_Surface(const char *path) override;
 	LuaScript* loadLuaScript(const char *path) override;
-	Asset3D* load3DModel(const char *path) override;
+	Asset3D* loadAsset3D(const char *path) override;
 };
 #endif
