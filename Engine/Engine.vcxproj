@@ -110,9 +110,11 @@
     <ClCompile Include="3DAsset.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="IOSAssetManager.cpp" />
+    <ClCompile Include="Level.cpp" />
     <ClCompile Include="Model3D.cpp" />
     <ClCompile Include="Physfs2AssimpInterface.cpp" />
     <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="WinAssetManager.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="Lua.cpp" />
@@ -160,15 +162,21 @@
     <ClInclude Include="..\libs\lua-5.3.2\src\lundump.h" />
     <ClInclude Include="..\libs\lua-5.3.2\src\lvm.h" />
     <ClInclude Include="..\libs\lua-5.3.2\src\lzio.h" />
+    <ClInclude Include="..\libs\rapidxml-1.13\rapidxml.hpp" />
+    <ClInclude Include="..\libs\rapidxml-1.13\rapidxml_iterators.hpp" />
+    <ClInclude Include="..\libs\rapidxml-1.13\rapidxml_print.hpp" />
+    <ClInclude Include="..\libs\rapidxml-1.13\rapidxml_utils.hpp" />
     <ClInclude Include="3DAsset.h" />
     <ClInclude Include="AssetManager.h" />
     <ClInclude Include="Engine.h" />
-    <ClInclude Include="GameObejct.h" />
+    <ClInclude Include="GameObject.h" />
+    <ClInclude Include="Level.h" />
     <ClInclude Include="Lua.h" />
     <ClInclude Include="Model3D.h" />
     <ClInclude Include="Physfs2AssimpInterface.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="Scene.h" />
+    <ClInclude Include="Sprite.h" />
     <ClInclude Include="Texture.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

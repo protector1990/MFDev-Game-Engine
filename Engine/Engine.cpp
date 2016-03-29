@@ -22,23 +22,25 @@ int Engine::run() {
 	_renderer = new Renderer();
 	_renderer->init();
 
-	//test code
-	//LuaScript* script = _assetManager->loadAsset<LuaScript>("/llua.lua");
-	//luaExecute(_luaInterpreter, script);
-
-	//this should be called from a loop when we make one
 	SDL_Event quitEvent;
 	while (_running) {
 		while (SDL_PollEvent(&quitEvent)) {
-			if (quitEvent.type == SDL_QUIT){
+			if (quitEvent.type == SDL_QUIT) {
 				_running = false;
 				break;
 			}
 		}
 		_frameTime = SDL_GetTicks();
 		_deltaTime = (_frameTime - _lastFrameTime) / 1000.f;
-		_lastFrameTime = _frameTime;
+		for (int i = 0; i < _scenes.size(); i++) {
+			if (_scenes[i]->getActive()) {
+				_scenes[i]->update(_deltaTime);
+			}
+		}
 		_renderer->render(_deltaTime);
+
+		//this should be either the last command in the loop, or the first
+		_lastFrameTime = _frameTime;
 	}
 	_assetManager->deInit();
 	SDL_Quit();

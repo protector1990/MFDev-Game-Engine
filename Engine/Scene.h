@@ -1,7 +1,8 @@
 /** Copyright 2016 MarFil Studios **/
 
+#include "GameObject.h"
+
 #include <vector>
-#include "GameObejct.h"
 
 // Make this an abstract class too. Possible child classes:
 // -Open World Scene
@@ -9,12 +10,13 @@
 // -Grand Strategy Scene
 // -Level Scene
 class Scene {
+	//friend class Engine;
 public:
 	GameObject* makeNewObject();
 	std::vector<GameObject*> getObjectsWithTags(int tags);
 	// Load assets and instantiate game objects
-	static Scene* load(const char *cfgPath, bool parallel);
-	static bool unload(Scene *scene);
+	virtual Scene* load(const char *cfgPath, bool parallel);
+	virtual bool unload(Scene *scene);
 	// Serialization and deserialization
 	bool serialize();
 	bool deserialize();
@@ -22,10 +24,11 @@ public:
 	void activate();
 	void deactivate();
 	// Update scene
-	void update(float deltaTime);
+	virtual void update(float deltaTime);
 	// Render scene
 	void render(); 
-private:
+	bool getActive();
+protected:
 	bool _isActive;
 	std::vector<GameObject> _gameObjects;
 };

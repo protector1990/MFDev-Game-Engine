@@ -22,6 +22,21 @@
     <Filter Include="glew">
       <UniqueIdentifier>{fce2b90a-7c74-48b8-b4e6-884af46c2217}</UniqueIdentifier>
     </Filter>
+    <Filter Include="rapidXML">
+      <UniqueIdentifier>{c176ae15-a4f1-4949-b13d-b690a5cf8e86}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Scenes">
+      <UniqueIdentifier>{eebe3db9-37a5-4a57-92fc-32ba2f0e77a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Scenes">
+      <UniqueIdentifier>{1a1932a4-f9ab-442f-aa21-f1d94bc2de2e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObjects">
+      <UniqueIdentifier>{ad939f7b-e960-4681-b9ef-771079c57dfa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GameObjects">
+      <UniqueIdentifier>{54765119-90f8-4214-9c8f-93f296760ef1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -153,11 +168,17 @@
     <ClCompile Include="Model3D.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Level.cpp">
+      <Filter>Source Files\Scenes</Filter>
+    </ClCompile>
     <ClCompile Include="GameObject.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprite.cpp">
+      <Filter>Source Files\GameObjects</Filter>
     </ClCompile>
     <ClCompile Include="Scene.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Scenes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -263,11 +284,29 @@
     <ClInclude Include="Texture.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GameObejct.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="..\libs\rapidxml-1.13\rapidxml_print.hpp">
+      <Filter>rapidXML</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\rapidxml-1.13\rapidxml_utils.hpp">
+      <Filter>rapidXML</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\rapidxml-1.13\rapidxml.hpp">
+      <Filter>rapidXML</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libs\rapidxml-1.13\rapidxml_iterators.hpp">
+      <Filter>rapidXML</Filter>
+    </ClInclude>
+    <ClInclude Include="Level.h">
+      <Filter>Header Files\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprite.h">
+      <Filter>Header Files\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>Header Files\GameObjects</Filter>
     </ClInclude>
     <ClInclude Include="Scene.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Scenes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

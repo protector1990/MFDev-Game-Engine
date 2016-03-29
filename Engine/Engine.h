@@ -4,6 +4,8 @@
 #include "Renderer.h"
 #include <SDL.h>
 #include "AssetManager.h"
+//#include "Scene.h"
+#include <vector>
 
 class Engine {
 public:
@@ -13,6 +15,7 @@ public:
 	lua_State* getLuaInterpreter() { return _luaInterpreter; }
 	Renderer* getRenderer() { return _renderer; }
 	AssetManager* getAssetManager() { return _assetManager; }
+
 
 	static Engine& getInstance() {
 		static Engine instance;
@@ -25,6 +28,7 @@ private:
 	lua_State * _luaInterpreter;
 	Renderer * _renderer;
 	AssetManager * _assetManager;
+	std::vector<Scene*> _scenes;
 
 	bool _running = true;
 	float _deltaTime;

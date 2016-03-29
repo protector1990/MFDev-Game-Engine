@@ -6,6 +6,7 @@
 #include <..\include\assimp\scene.h>
 #include <..\include\assimp\postprocess.h>
 #include "Physfs2AssimpInterface.h"
+#include <..\rapidxml-1.13\rapidxml.hpp>
 
 #ifdef __WINDOWS__
 
@@ -106,6 +107,15 @@ Model3D* WinAssetManager::loadModel3D(const char *path) {
 		}
 	}
 	return ret;
+}
+
+Scene* WinAssetManager::loadScene(const char *path) {
+	const char *extension = strchr(path, '.');
+	if (strcmp(extension, ".level") == 0) {
+		//Load a level
+		
+	}
+	return NULL;
 }
 
 
