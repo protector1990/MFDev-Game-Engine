@@ -120,7 +120,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <ImportLibrary>D:/Marfil Studios/Engine/trunk/libs/assimplib/code/Debug/assimp-vc120-mtd.lib</ImportLibrary>
-      <ProgramDataBaseFile>../assimplib/code/Debug/assimp-vc120-mtd.pdb</ProgramDataBaseFile>
+      <ProgramDataBaseFile>../../assimplib/code/Debug/assimp-vc120-mtd.pdb</ProgramDataBaseFile>
       <SubSystem>Console</SubSystem>
       <Version>
       </Version>
