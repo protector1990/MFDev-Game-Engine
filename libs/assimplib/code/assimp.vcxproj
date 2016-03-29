@@ -85,7 +85,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\Marfil Studios\Engine\trunk\libs\assimplib;D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\include;D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\BoostWorkaround;D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\zlib;D:\Marfil Studios\Engine\trunk\libs\assimplib\contrib\zlib;D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\..\contrib\openddlparser\include;D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\..\contrib\unzip;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\assimplib;..\..\assimp-3.2\include;..\..\assimp-3.2\code\BoostWorkaround;..\..\assimp-3.2\contrib\zlib;..\..\assimplib\contrib\zlib;..\..\assimp-3.2\contrib\openddlparser\include;..\..\assimp-3.2\contrib\unzip;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>Debug/</AssemblerListingLocation>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <CompileAs>CompileAsCpp</CompileAs>
@@ -120,7 +120,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <ImportLibrary>D:/Marfil Studios/Engine/trunk/libs/assimplib/code/Debug/assimp-vc120-mtd.lib</ImportLibrary>
-      <ProgramDataBaseFile>D:/Marfil Studios/Engine/trunk/libs/assimplib/code/Debug/assimp-vc120-mtd.pdb</ProgramDataBaseFile>
+      <ProgramDataBaseFile>../assimplib/code/Debug/assimp-vc120-mtd.pdb</ProgramDataBaseFile>
       <SubSystem>Console</SubSystem>
       <Version>
       </Version>
