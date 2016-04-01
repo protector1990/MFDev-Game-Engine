@@ -1,11 +1,16 @@
 /** Copyright 2016 MarFil Studios **/
 
+#ifndef _GameObject_H
+#define _GameObject_H
+
 #include <vector>
 
 // Abstract game object class. Should be implemented as needed for specific game 
 // requirements. You can go as far as programming every single game object
 // as separate child class, or have a more generic game object implementation
-// For now Godot-style single component objects are preferred
+// For now Unity componented style objects are performed, although every new object type must be
+// defined as a c++ class. That enables game objects to have some predefined behaviours (differs from
+// Unity, where complete GameObject behaviour is defined through its components
 class GameObject {
 public:
 	GameObject();
@@ -27,3 +32,4 @@ protected:
 	GameObject *_parent;
 	std::vector<GameObject*> _children;
 };
+#endif

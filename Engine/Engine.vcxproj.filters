@@ -37,6 +37,15 @@
     <Filter Include="Header Files\GameObjects">
       <UniqueIdentifier>{54765119-90f8-4214-9c8f-93f296760ef1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\GameObjectLoaders">
+      <UniqueIdentifier>{4aee1a6b-d419-476c-83e8-c44c8017bc4a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObjectLoaders">
+      <UniqueIdentifier>{9ffdebbb-fc83-4736-97bb-070748eae1ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Components">
+      <UniqueIdentifier>{4ce3f2f4-dfe8-475d-99df-9711d47dfdb7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -180,6 +189,12 @@
     <ClCompile Include="Scene.cpp">
       <Filter>Source Files\Scenes</Filter>
     </ClCompile>
+    <ClCompile Include="GameObjectLoaderFactory.cpp">
+      <Filter>Source Files\GameObjectLoaders</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteLoader.cpp">
+      <Filter>Source Files\GameObjectLoaders</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\libs\lua-5.3.2\src\lapi.h">
@@ -307,6 +322,18 @@
     </ClInclude>
     <ClInclude Include="Scene.h">
       <Filter>Header Files\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="AbstractGameObjectLoader.h">
+      <Filter>Header Files\GameObjectLoaders</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObjectLoaderFactory.h">
+      <Filter>Header Files\GameObjectLoaders</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteLoader.h">
+      <Filter>Header Files\GameObjectLoaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Transform.h">
+      <Filter>Header Files\Components</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

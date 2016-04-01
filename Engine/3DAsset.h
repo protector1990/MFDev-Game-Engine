@@ -1,7 +1,7 @@
 /**  Copyright 2016 MarFil Studios  **/
 
-#ifndef ASSET3D
-#define ASSET3D
+#ifndef _Asset3D_H
+#define _Asset3D_H
 //#include "Mesh.h"
 #include <GL\glew.h>
 #include <..\include\assimp\scene.h>
