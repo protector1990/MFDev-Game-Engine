@@ -176,6 +176,7 @@
     <ClInclude Include="GameObjectLoaderFactory.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="Lua.h" />
+    <ClInclude Include="mhfile.h" />
     <ClInclude Include="Model3D.h" />
     <ClInclude Include="Physfs2AssimpInterface.h" />
     <ClInclude Include="Renderer.h" />

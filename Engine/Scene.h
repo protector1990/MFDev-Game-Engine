@@ -1,8 +1,12 @@
 /** Copyright 2016 MarFil Studios **/
 
+#ifndef _Scene_H
+#define _Scene_H
+
 #include "GameObject.h"
 
 #include <vector>
+#include "Renderer.h"
 
 // Make this an abstract class too. Possible child classes:
 // -Open World Scene
@@ -26,9 +30,11 @@ public:
 	// Update scene
 	virtual void update(float deltaTime);
 	// Render scene
-	void render(); 
+	void render(Renderer *renderer); 
 	bool getActive();
 protected:
 	bool _isActive;
 	std::vector<GameObject> _gameObjects;
 };
+
+#endif

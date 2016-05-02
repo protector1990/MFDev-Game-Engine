@@ -37,6 +37,13 @@ int Engine::run() {
 				_scenes[i]->update(_deltaTime);
 			}
 		}
+
+		for (int i = 0; i < _scenes.size(); i++) {
+			if (_scenes[i]->getActive()) {
+				_scenes[i]->render(_renderer);
+			}
+		}
+
 		_renderer->render(_deltaTime);
 
 		//this should be either the last command in the loop, or the first

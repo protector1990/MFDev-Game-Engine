@@ -33,8 +33,10 @@ void Scene::update(float deltaTime) {
 
 }
 // Render scene
-void Scene::render() {
-
+void Scene::render(Renderer *renderer) {
+	for (int i = 0; i < _gameObjects.size(); i++) {
+		_gameObjects[i].render(renderer);
+	}
 }
 
 bool Scene::getActive() {
