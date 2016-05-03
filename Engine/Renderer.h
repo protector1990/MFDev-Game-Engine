@@ -5,6 +5,8 @@
 
 #include <glm\glm.hpp>
 #include <vector>
+#include <GL\glew.h>
+#include <SDL_opengl.h>
 
 class Renderer {
 public:

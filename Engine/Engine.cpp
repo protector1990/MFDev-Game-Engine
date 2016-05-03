@@ -32,13 +32,13 @@ int Engine::run() {
 		}
 		_frameTime = SDL_GetTicks();
 		_deltaTime = (_frameTime - _lastFrameTime) / 1000.f;
-		for (int i = 0; i < _scenes.size(); i++) {
+		for (unsigned int i = 0; i < _scenes.size(); i++) {
 			if (_scenes[i]->getActive()) {
 				_scenes[i]->update(_deltaTime);
 			}
 		}
 
-		for (int i = 0; i < _scenes.size(); i++) {
+		for (unsigned int i = 0; i < _scenes.size(); i++) {
 			if (_scenes[i]->getActive()) {
 				_scenes[i]->render(_renderer);
 			}

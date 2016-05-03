@@ -5,6 +5,7 @@
 
 #include <vector>
 #include "Renderer.h"
+//typedef Renderer Renderer;
 
 // Abstract game object class. Should be implemented as needed for specific game 
 // requirements. You can go as far as programming every single game object

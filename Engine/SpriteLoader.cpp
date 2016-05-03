@@ -4,6 +4,7 @@
 
 using namespace rapidxml;
 
+//TODO: Move to globals
 #define ASSET_MANAGER Engine::getInstance().getAssetManager()
 
 char* textureID = "texture";
@@ -34,8 +35,8 @@ GameObject* SpriteLoader::load(xml_node<char>* configuration) {
 	xml_node<char>* sheetWidth = sheet->first_node(widthID);
 	xml_node<char>* sheetHeight = sheet->first_node(widthID);
 	xml_node<char>* animSpeed = sheet->first_node(animSpeedID);
-	ret->animSpeed = atof(animSpeed->value());
-	ret->sheetHeight = atoi(sheetWidth->value());
-	ret->sheetWidth = atoi(sheetHeight->value());
+	ret->_animSpeed = atof(animSpeed->value());
+	ret->_sheetHeight = atoi(sheetWidth->value());
+	ret->_sheetWidth = atoi(sheetHeight->value());
 	return (GameObject*)ret;
 }

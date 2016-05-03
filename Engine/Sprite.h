@@ -5,6 +5,7 @@
 #include <SDL.h>
 #include "Renderer.h"
 #include <glm\glm.hpp>
+#include <SDL_opengl.h>
 
 class Sprite : public GameObject {
 	friend class SpriteLoader;
@@ -25,7 +26,9 @@ protected:
 	// This should be done for all of the vertices in all the classes
 	glm::vec3 _points[4];
 
-	GLuint _vertexArray;
-	GLuint _vertexBufferObjects;
+	//Opengl specifics. Move this somewhere else at some point
+	GLuint _glVertexArray;
+	GLuint _glVertexBufferObjects;
+	GLuint _glTexture;
 };
 #endif
