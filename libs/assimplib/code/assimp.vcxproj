@@ -119,7 +119,7 @@
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImportLibrary>D:/Marfil Studios/Engine/trunk/libs/assimplib/code/Debug/assimp-vc120-mtd.lib</ImportLibrary>
+      <ImportLibrary>$(SolutionDdir)libs/assimplib/code/Debug/assimp-vc120-mtd.lib</ImportLibrary>
       <ProgramDataBaseFile>../../assimplib/code/Debug/assimp-vc120-mtd.pdb</ProgramDataBaseFile>
       <SubSystem>Console</SubSystem>
       <Version>
@@ -267,60 +267,7 @@
     </ProjectReference>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <CustomBuild Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\CMakeLists.txt">
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Building Custom Rule D:/Marfil Studios/Engine/trunk/libs/assimp-3.2/code/CMakeLists.txt</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
-"C:\Program Files (x86)\CMake\bin\cmake.exe" "-HD:/Marfil Studios/Engine/trunk/libs/assimp-3.2" "-BD:/Marfil Studios/Engine/trunk/libs/assimplib" --check-stamp-file "D:\Marfil Studios\Engine\trunk\libs\assimplib\code\CMakeFiles\generate.stamp"
-if %errorlevel% neq 0 goto :cmEnd
-:cmEnd
-endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
-:cmErrorLevel
-exit /b %1
-:cmDone
-if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">D:/Marfil Studios/Engine/trunk/libs/assimp-3.2/code/CMakeLists.txt;D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\CMakeLists.txt;D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">D:\Marfil Studios\Engine\trunk\libs\assimplib\code\CMakeFiles\generate.stamp</Outputs>
-      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Building Custom Rule D:/Marfil Studios/Engine/trunk/libs/assimp-3.2/code/CMakeLists.txt</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
-"C:\Program Files (x86)\CMake\bin\cmake.exe" "-HD:/Marfil Studios/Engine/trunk/libs/assimp-3.2" "-BD:/Marfil Studios/Engine/trunk/libs/assimplib" --check-stamp-file "D:\Marfil Studios\Engine\trunk\libs\assimplib\code\CMakeFiles\generate.stamp"
-if %errorlevel% neq 0 goto :cmEnd
-:cmEnd
-endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
-:cmErrorLevel
-exit /b %1
-:cmDone
-if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:/Marfil Studios/Engine/trunk/libs/assimp-3.2/code/CMakeLists.txt;D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\CMakeLists.txt;D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\Marfil Studios\Engine\trunk\libs\assimplib\code\CMakeFiles\generate.stamp</Outputs>
-      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">Building Custom Rule D:/Marfil Studios/Engine/trunk/libs/assimp-3.2/code/CMakeLists.txt</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">setlocal
-"C:\Program Files (x86)\CMake\bin\cmake.exe" "-HD:/Marfil Studios/Engine/trunk/libs/assimp-3.2" "-BD:/Marfil Studios/Engine/trunk/libs/assimplib" --check-stamp-file "D:\Marfil Studios\Engine\trunk\libs\assimplib\code\CMakeFiles\generate.stamp"
-if %errorlevel% neq 0 goto :cmEnd
-:cmEnd
-endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
-:cmErrorLevel
-exit /b %1
-:cmDone
-if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">D:/Marfil Studios/Engine/trunk/libs/assimp-3.2/code/CMakeLists.txt;D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\CMakeLists.txt;D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">D:\Marfil Studios\Engine\trunk\libs\assimplib\code\CMakeFiles\generate.stamp</Outputs>
-      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">Building Custom Rule D:/Marfil Studios/Engine/trunk/libs/assimp-3.2/code/CMakeLists.txt</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">setlocal
-"C:\Program Files (x86)\CMake\bin\cmake.exe" "-HD:/Marfil Studios/Engine/trunk/libs/assimp-3.2" "-BD:/Marfil Studios/Engine/trunk/libs/assimplib" --check-stamp-file "D:\Marfil Studios\Engine\trunk\libs\assimplib\code\CMakeFiles\generate.stamp"
-if %errorlevel% neq 0 goto :cmEnd
-:cmEnd
-endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
-:cmErrorLevel
-exit /b %1
-:cmDone
-if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">D:/Marfil Studios/Engine/trunk/libs/assimp-3.2/code/CMakeLists.txt;D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\CMakeLists.txt;D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">D:\Marfil Studios\Engine\trunk\libs\assimplib\code\CMakeFiles\generate.stamp</Outputs>
-      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">false</LinkObjects>
-    </CustomBuild>
+    
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\fast_atof.h" />
