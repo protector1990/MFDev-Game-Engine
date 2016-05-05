@@ -2,6 +2,8 @@
 #include <iostream>
 #include <SDL.h>
 #include <SDL_platform.h>
+#include <windows.h>
+
 //#include "..\libs\physfs-2.0.3\physfs.h"
 
 //TODO: Move to globals
@@ -11,9 +13,10 @@ int Engine::run() {
 
 	_luaInterpreter = luaL_newstate();
 	luaBind(_luaInterpreter);
+	Sleep(1000);
 
 	SDL_Init(SDL_INIT_EVERYTHING);
-
+	Sleep(1500);
 #ifdef __WINDOWS__
 	_assetManager = new WinAssetManager();
 #endif
@@ -22,12 +25,15 @@ int Engine::run() {
 #endif;
 	_assetManager->init();
 
+	Sleep(1000);
+
 	_renderer = new Renderer();
 	_renderer->init();
-
+	Sleep(1000);
 	Scene* testScene = ASSET_MANAGER->loadAsset<Scene>("/scenes/TestScene/TestScene.level");
 	_scenes.insert(_scenes.end(), testScene);
 	testScene->init();
+	Sleep(1000);
 	testScene->activate();
 
 	//loadConfiguration();

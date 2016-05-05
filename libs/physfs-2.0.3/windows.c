@@ -185,6 +185,8 @@ static DWORD WINAPI fallbackGetFileAttributesW(LPCWSTR fname)
     const int buflen = (int) (wStrLen(fname) + 1);
     char *cpstr = (char *) __PHYSFS_smallAlloc(buflen);
     WideCharToMultiByte(CP_ACP, 0, fname, buflen, cpstr, buflen, NULL, NULL);
+	//std::wstring a = (std::wstring)fname;
+	
     retval = GetFileAttributesA(cpstr);
     __PHYSFS_smallFree(cpstr);
     return(retval);
@@ -571,6 +573,7 @@ void *__PHYSFS_platformGetThreadID(void)
 
 static int doPlatformExists(LPWSTR wpath)
 {
+	DWORD ret = pGetFileAttributesW(wpath);
     BAIL_IF_MACRO
     (
         pGetFileAttributesW(wpath) == PHYSFS_INVALID_FILE_ATTRIBUTES,
