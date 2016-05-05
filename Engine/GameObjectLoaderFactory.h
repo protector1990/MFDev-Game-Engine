@@ -8,6 +8,7 @@
 #include "AbstractGameObjectLoader.h"
 
 class GameObjectLoaderFactory {
+public:
 	AbstractGameObjectLoader* getGameObjectLoader(const char *type);
 };
 #endif

@@ -69,7 +69,7 @@ static char *unicodeToUtf8Heap(const WCHAR *w_str)
     {
         void *ptr = NULL;
         const PHYSFS_uint64 len = (wStrLen(w_str) * 4) + 1;
-        retval = allocator.Malloc(len);
+        retval = (char*)allocator.Malloc(len);
         BAIL_IF_MACRO(retval == NULL, ERR_OUT_OF_MEMORY, NULL);
         PHYSFS_utf8FromUcs2((const PHYSFS_uint16 *) w_str, retval, len);
         ptr = allocator.Realloc(retval, strlen(retval) + 1); /* shrink. */
@@ -93,7 +93,7 @@ static char *codepageToUtf8Heap(const char *cpstr)
         if (retval == NULL)
             __PHYSFS_setError(ERR_OUT_OF_MEMORY);
         else
-            PHYSFS_utf8FromUcs2(wbuf, retval, len * 4);
+            PHYSFS_utf8FromUcs2((PHYSFS_uint16*)wbuf, retval, len * 4);
         __PHYSFS_smallFree(wbuf);
     } /* if */
     return(retval);
@@ -146,7 +146,7 @@ static HANDLE (WINAPI *pCreateFileW)
 static BOOL WINAPI fallbackGetUserNameW(LPWSTR buf, LPDWORD len)
 {
     const DWORD cplen = *len;
-    char *cpstr = __PHYSFS_smallAlloc(cplen);
+    char *cpstr = (CHAR*)__PHYSFS_smallAlloc(cplen);
     BOOL retval = GetUserNameA(cpstr, len);
     if (buf != NULL)
         MultiByteToWideChar(CP_ACP, MB_PRECOMPOSED, cpstr, cplen, buf, *len);
@@ -288,17 +288,20 @@ static int findApiSymbols(void)
     /* Apparently Win9x HAS the Unicode entry points, they just don't WORK. */
     /*  ...so don't look them up unless we're on NT+. (see osHasUnicode.) */
 
-    dll = libUserEnv = LoadLibraryA("userenv.dll");
+    libUserEnv = LoadLibraryA("userenv.dll");
+	dll = (HMODULE)libUserEnv;
     if (dll != NULL)
         LOOKUP_NOFALLBACK(GetUserProfileDirectoryW, osHasUnicode);
 
     /* !!! FIXME: what do they call advapi32.dll on Win64? */
-    dll = libAdvApi32 = LoadLibraryA("advapi32.dll");
+    libAdvApi32 = LoadLibraryA("advapi32.dll");
+	dll = (HMODULE)libAdvApi32;
     if (dll != NULL)
         LOOKUP(GetUserNameW, osHasUnicode);
 
     /* !!! FIXME: what do they call kernel32.dll on Win64? */
-    dll = libKernel32 = LoadLibraryA("kernel32.dll");
+	libKernel32 = LoadLibraryA("kernel32.dll");
+	dll = (HMODULE)libKernel32;
     if (dll != NULL)
     {
         LOOKUP_NOFALLBACK(GetFileAttributesExA, 1);
@@ -974,7 +977,7 @@ int __PHYSFS_platformDeinit(void)
     {
         const HANDLE lib = *(libs[i]);
         if (lib)
-            FreeLibrary(lib);
+            FreeLibrary((HMODULE)lib);
         *(libs[i]) = NULL;
     } /* for */
 

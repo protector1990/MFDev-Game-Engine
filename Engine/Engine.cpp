@@ -4,12 +4,15 @@
 #include <SDL_platform.h>
 //#include "..\libs\physfs-2.0.3\physfs.h"
 
+//TODO: Move to globals
+#define ASSET_MANAGER Engine::getInstance().getAssetManager()
+
 int Engine::run() {
 
 	_luaInterpreter = luaL_newstate();
 	luaBind(_luaInterpreter);
 
-	SDL_Init(SDL_INIT_VIDEO);
+	SDL_Init(SDL_INIT_EVERYTHING);
 
 #ifdef __WINDOWS__
 	_assetManager = new WinAssetManager();
@@ -21,6 +24,13 @@ int Engine::run() {
 
 	_renderer = new Renderer();
 	_renderer->init();
+
+	Scene* testScene = ASSET_MANAGER->loadAsset<Scene>("/scenes/TestScene/TestScene.level");
+	_scenes.insert(_scenes.end(), testScene);
+	testScene->init();
+	testScene->activate();
+
+	//loadConfiguration();
 
 	SDL_Event quitEvent;
 	while (_running) {
@@ -38,13 +48,12 @@ int Engine::run() {
 			}
 		}
 
+		_renderer->render(_deltaTime);
 		for (unsigned int i = 0; i < _scenes.size(); i++) {
 			if (_scenes[i]->getActive()) {
 				_scenes[i]->render(_renderer);
 			}
 		}
-
-		_renderer->render(_deltaTime);
 
 		//this should be either the last command in the loop, or the first
 		_lastFrameTime = _frameTime;

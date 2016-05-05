@@ -24,10 +24,10 @@ SDL_GLContext glContext;
 
 //helper function
 void LoadMedia() {
-	image = ASSET_MANAGER->loadAsset<SDL_Surface>("/textures/ZnamSDL.bmp");
+	//image = ASSET_MANAGER->loadAsset<SDL_Surface>("/textures/ZnamSDL.bmp");
 	//model = ASSET_MANAGER->loadAsset<Asset3D>("/models/house.fbx");
-	meshModel = ASSET_MANAGER->loadAsset<Model3D>("/models/path.fbx");
-	meshModel->setUp();	
+	//meshModel = ASSET_MANAGER->loadAsset<Model3D>("/models/path.fbx");
+	//meshModel->setUp();	
 }
 
 GLfloat ambient[] = { 0.5f, 0.5f, 0.5f };
@@ -37,8 +37,8 @@ GLfloat light_position[] = { 10.0, 10.0, 10.0, 1.0 };
 
 void Renderer::init() {
 	//renderer initialization
-	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
-	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
+	//SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
+	//SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
 	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 	gameWindow = SDL_CreateWindow("Game Window", 300, 150, 1280, 768, SDL_WINDOW_OPENGL);
 	glContext = SDL_GL_CreateContext(gameWindow);
@@ -60,7 +60,7 @@ void Renderer::init() {
 	//SDL_GL_SetSwapInterval(1);
 	//screenSurface = SDL_GetWindowSurface(gameWindow);
 	//glClearColor(0.2f, 0.2f, 0.2f, 1.f);
-	glOrtho(-8.3, 8.3, -5, 5, -10, 10);
+	glOrtho(-250., 250., -250., 250., -60., 60.);
 	//gluLookAt(
 	//	5, 5, 5,
 	//	0, 0, 0,

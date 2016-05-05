@@ -15,6 +15,8 @@
 // -Level Scene
 class Scene {
 	//friend class Engine;
+	// Refactor this to function with getters and setters instead of friend classes
+	friend class WinAssetManager;
 public:
 	GameObject* makeNewObject();
 	std::vector<GameObject*> getObjectsWithTags(int tags);
@@ -32,9 +34,13 @@ public:
 	// Render scene
 	void render(Renderer *renderer); 
 	bool getActive();
+	void init();
+
 protected:
 	bool _isActive;
-	std::vector<GameObject> _gameObjects;
+	std::vector<GameObject*> _gameObjects;
+	char* _name;
+	void addGameObject(GameObject* gameObject);
 };
 
 #endif

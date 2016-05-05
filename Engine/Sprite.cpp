@@ -1,5 +1,6 @@
 #include <GL\glew.h>
 #include "Sprite.h"
+#include <stdexcept>
 
 using namespace glm;
 
@@ -13,6 +14,24 @@ void Sprite::init() {
 	glGenVertexArrays(sizeof(vec3), &_glVertexArray);
 	//Optimize so that a single texture is generated exactly once and accessed from all the places it is required
 	glGenTextures(1, &_glTexture);
+
+	glBindTexture(GL_TEXTURE_2D, _glTexture);
+
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER,
+		GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER,
+		GL_NEAREST);
+	glPixelStorei(GL_PACK_ALIGNMENT, 1);
+	try {
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, _texture->w,
+			_texture->h, 0, GL_RGBA, GL_UNSIGNED_BYTE,
+			_texture->pixels);
+	}
+	catch (...) {
+		int x = 0;
+	}
 }
 
 void Sprite::update(float deltaTime) {

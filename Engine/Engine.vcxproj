@@ -50,6 +50,7 @@
       <SuppressStartupBanner>false</SuppressStartupBanner>
       <CompileAs>CompileAsCpp</CompileAs>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS; _CRT_NONSTDC_NO_DEPRECATE;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalOptions>/sdl- %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -107,6 +108,36 @@
     <ClCompile Include="..\libs\lua-5.3.2\src\lutf8lib.c" />
     <ClCompile Include="..\libs\lua-5.3.2\src\lvm.c" />
     <ClCompile Include="..\libs\lua-5.3.2\src\lzio.c" />
+    <ClCompile Include="..\libs\physfs-2.0.3\adler32.c" />
+    <ClCompile Include="..\libs\physfs-2.0.3\beos.cpp" />
+    <ClCompile Include="..\libs\physfs-2.0.3\compress.c" />
+    <ClCompile Include="..\libs\physfs-2.0.3\crc32.c" />
+    <ClCompile Include="..\libs\physfs-2.0.3\deflate.c" />
+    <ClCompile Include="..\libs\physfs-2.0.3\dir.c" />
+    <ClCompile Include="..\libs\physfs-2.0.3\grp.c" />
+    <ClCompile Include="..\libs\physfs-2.0.3\gzio.c" />
+    <ClCompile Include="..\libs\physfs-2.0.3\hog.c" />
+    <ClCompile Include="..\libs\physfs-2.0.3\infback.c" />
+    <ClCompile Include="..\libs\physfs-2.0.3\inffast.c" />
+    <ClCompile Include="..\libs\physfs-2.0.3\inflate.c" />
+    <ClCompile Include="..\libs\physfs-2.0.3\inftrees.c" />
+    <ClCompile Include="..\libs\physfs-2.0.3\lzma.c" />
+    <ClCompile Include="..\libs\physfs-2.0.3\macosx.c" />
+    <ClCompile Include="..\libs\physfs-2.0.3\mvl.c" />
+    <ClCompile Include="..\libs\physfs-2.0.3\os2.c" />
+    <ClCompile Include="..\libs\physfs-2.0.3\physfs.c" />
+    <ClCompile Include="..\libs\physfs-2.0.3\physfs_byteorder.c" />
+    <ClCompile Include="..\libs\physfs-2.0.3\physfs_unicode.c" />
+    <ClCompile Include="..\libs\physfs-2.0.3\pocketpc.c" />
+    <ClCompile Include="..\libs\physfs-2.0.3\posix.c" />
+    <ClCompile Include="..\libs\physfs-2.0.3\qpak.c" />
+    <ClCompile Include="..\libs\physfs-2.0.3\trees.c" />
+    <ClCompile Include="..\libs\physfs-2.0.3\uncompr.c" />
+    <ClCompile Include="..\libs\physfs-2.0.3\unix.c" />
+    <ClCompile Include="..\libs\physfs-2.0.3\wad.c" />
+    <ClCompile Include="..\libs\physfs-2.0.3\windows.c" />
+    <ClCompile Include="..\libs\physfs-2.0.3\zip.c" />
+    <ClCompile Include="..\libs\physfs-2.0.3\zutil.c" />
     <ClCompile Include="3DAsset.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameObjectLoaderFactory.cpp" />
@@ -126,9 +157,6 @@
   <ItemGroup>
     <ProjectReference Include="..\libs\assimplib\code\assimp.vcxproj">
       <Project>{e506c81b-7a0d-3153-8df6-804f599c1e65}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\physfs\physfs.vcxproj">
-      <Project>{fc200021-381a-4649-8ba6-f30bc0f00d97}</Project>
     </ProjectReference>
     <ProjectReference Include="..\SDL2-2.0.4\VisualC\SDLmain\SDLmain.vcxproj">
       <Project>{da956fd3-e142-46f2-9dd5-c78bebb56b7a}</Project>
@@ -164,6 +192,20 @@
     <ClInclude Include="..\libs\lua-5.3.2\src\lundump.h" />
     <ClInclude Include="..\libs\lua-5.3.2\src\lvm.h" />
     <ClInclude Include="..\libs\lua-5.3.2\src\lzio.h" />
+    <ClInclude Include="..\libs\physfs-2.0.3\crc32.h" />
+    <ClInclude Include="..\libs\physfs-2.0.3\deflate.h" />
+    <ClInclude Include="..\libs\physfs-2.0.3\inffast.h" />
+    <ClInclude Include="..\libs\physfs-2.0.3\inffixed.h" />
+    <ClInclude Include="..\libs\physfs-2.0.3\inflate.h" />
+    <ClInclude Include="..\libs\physfs-2.0.3\inftrees.h" />
+    <ClInclude Include="..\libs\physfs-2.0.3\physfs.h" />
+    <ClInclude Include="..\libs\physfs-2.0.3\physfs_casefolding.h" />
+    <ClInclude Include="..\libs\physfs-2.0.3\physfs_internal.h" />
+    <ClInclude Include="..\libs\physfs-2.0.3\physfs_platforms.h" />
+    <ClInclude Include="..\libs\physfs-2.0.3\trees.h" />
+    <ClInclude Include="..\libs\physfs-2.0.3\zconf.h" />
+    <ClInclude Include="..\libs\physfs-2.0.3\zlib.h" />
+    <ClInclude Include="..\libs\physfs-2.0.3\zutil.h" />
     <ClInclude Include="..\libs\rapidxml-1.13\rapidxml.hpp" />
     <ClInclude Include="..\libs\rapidxml-1.13\rapidxml_iterators.hpp" />
     <ClInclude Include="..\libs\rapidxml-1.13\rapidxml_print.hpp" />
@@ -171,6 +213,7 @@
     <ClInclude Include="3DAsset.h" />
     <ClInclude Include="AbstractGameObjectLoader.h" />
     <ClInclude Include="AssetManager.h" />
+    <ClInclude Include="ConfigurationManager.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameObjectLoaderFactory.h" />
@@ -185,6 +228,9 @@
     <ClInclude Include="SpriteLoader.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="Transform.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\libs\physfs-2.0.3\LICENSE.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

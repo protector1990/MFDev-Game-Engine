@@ -23,7 +23,7 @@ bool Scene::deserialize() {
 }
 // Is updated and rendered?
 void Scene::activate() {
-
+	_isActive = true;
 }
 void Scene::deactivate(){
 
@@ -35,10 +35,20 @@ void Scene::update(float deltaTime) {
 // Render scene
 void Scene::render(Renderer *renderer) {
 	for (int i = 0; i < _gameObjects.size(); i++) {
-		_gameObjects[i].render(renderer);
+		_gameObjects[i]->render(renderer);
 	}
 }
 
 bool Scene::getActive() {
-	return false;
+	return _isActive;
+}
+
+void Scene::addGameObject(GameObject* gameObject) {
+	_gameObjects.insert(_gameObjects.end(), gameObject);
+}
+
+void Scene::init() {
+	for (int i = 0; i < _gameObjects.size(); i++) {
+		_gameObjects[i]->init();
+	}
 }
