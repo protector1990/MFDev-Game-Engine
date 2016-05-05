@@ -35,7 +35,7 @@
    available, an end-of-block is encountered, or a data error is encountered.
    When large enough input and output buffers are supplied to inflate(), for
    example, a 16K input buffer and a 64K output buffer, more than 95% of the
-   inflate execution time is spent in this routine.
+   inflate execution time is spent in mThis routine.
 
    Entry assumptions:
 
@@ -87,7 +87,7 @@ void inflate_fast(z_streamp strm, unsigned start)
     code const FAR *dcode;      /* local strm->distcode */
     unsigned lmask;             /* mask for first level of length codes */
     unsigned dmask;             /* mask for first level of distance codes */
-    code this;                  /* retrieved table entry */
+    code mThis;                  /* retrieved table entry */
     unsigned op;                /* code bits, operation, extra bits, or */
                                 /*  window position, window bytes to copy */
     unsigned len;               /* match length, unused bytes */
@@ -124,20 +124,20 @@ void inflate_fast(z_streamp strm, unsigned start)
             hold += (unsigned long)(PUP(in)) << bits;
             bits += 8;
         }
-        this = lcode[hold & lmask];
+        mThis = lcode[hold & lmask];
       dolen:
-        op = (unsigned)(this.bits);
+        op = (unsigned)(mThis.bits);
         hold >>= op;
         bits -= op;
-        op = (unsigned)(this.op);
+        op = (unsigned)(mThis.op);
         if (op == 0) {                          /* literal */
-            Tracevv((stderr, this.val >= 0x20 && this.val < 0x7f ?
+            Tracevv((stderr, mThis.val >= 0x20 && mThis.val < 0x7f ?
                     "inflate:         literal '%c'\n" :
-                    "inflate:         literal 0x%02x\n", this.val));
-            PUP(out) = (unsigned char)(this.val);
+                    "inflate:         literal 0x%02x\n", mThis.val));
+            PUP(out) = (unsigned char)(mThis.val);
         }
         else if (op & 16) {                     /* length base */
-            len = (unsigned)(this.val);
+            len = (unsigned)(mThis.val);
             op &= 15;                           /* number of extra bits */
             if (op) {
                 if (bits < op) {
@@ -155,14 +155,14 @@ void inflate_fast(z_streamp strm, unsigned start)
                 hold += (unsigned long)(PUP(in)) << bits;
                 bits += 8;
             }
-            this = dcode[hold & dmask];
+            mThis = dcode[hold & dmask];
           dodist:
-            op = (unsigned)(this.bits);
+            op = (unsigned)(mThis.bits);
             hold >>= op;
             bits -= op;
-            op = (unsigned)(this.op);
+            op = (unsigned)(mThis.op);
             if (op & 16) {                      /* distance base */
-                dist = (unsigned)(this.val);
+                dist = (unsigned)(mThis.val);
                 op &= 15;                       /* number of extra bits */
                 if (bits < op) {
                     hold += (unsigned long)(PUP(in)) << bits;
@@ -259,7 +259,7 @@ void inflate_fast(z_streamp strm, unsigned start)
                 }
             }
             else if ((op & 64) == 0) {          /* 2nd level distance code */
-                this = dcode[this.val + (hold & ((1U << op) - 1))];
+                mThis = dcode[mThis.val + (hold & ((1U << op) - 1))];
                 goto dodist;
             }
             else {
@@ -269,7 +269,7 @@ void inflate_fast(z_streamp strm, unsigned start)
             }
         }
         else if ((op & 64) == 0) {              /* 2nd level length code */
-            this = lcode[this.val + (hold & ((1U << op) - 1))];
+            mThis = lcode[mThis.val + (hold & ((1U << op) - 1))];
             goto dolen;
         }
         else if (op & 32) {                     /* end-of-block */

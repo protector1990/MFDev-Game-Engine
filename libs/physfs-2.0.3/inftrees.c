@@ -13,7 +13,7 @@ const char inflate_copyright[] =
 /*
   If you use the zlib library in a product, an acknowledgment is welcome
   in the documentation of your product. If for some reason you cannot
-  include such an acknowledgment, I would appreciate that you keep this
+  include such an acknowledgment, I would appreciate that you keep mThis
   copyright string in the executable of your product.
  */
 
@@ -50,7 +50,7 @@ int inflate_table(codetype type, unsigned short FAR *lens, unsigned codes, code 
     unsigned fill;              /* index for replicating entries */
     unsigned low;               /* low bits for current root entry */
     unsigned mask;              /* mask for low root bits */
-    code this;                  /* table entry for duplication */
+    code mThis;                  /* table entry for duplication */
     code FAR *next;             /* next available space in table */
     const unsigned short FAR *base;     /* base value table to use */
     const unsigned short FAR *extra;    /* extra bits table to use */
@@ -86,9 +86,9 @@ int inflate_table(codetype type, unsigned short FAR *lens, unsigned codes, code 
        are incremented backwards.
 
        This routine assumes, but does not check, that all of the entries in
-       lens[] are in the range 0..MAXBITS.  The caller must assure this.
+       lens[] are in the range 0..MAXBITS.  The caller must assure mThis.
        1..MAXBITS is interpreted as that code length.  zero means that that
-       symbol does not occur in this code.
+       symbol does not occur in mThis code.
 
        The codes are sorted by computing a count of codes for each length,
        creating from that a table of starting indices for each length in the
@@ -115,11 +115,11 @@ int inflate_table(codetype type, unsigned short FAR *lens, unsigned codes, code 
         if (count[max] != 0) break;
     if (root > max) root = max;
     if (max == 0) {                     /* no symbols to code at all */
-        this.op = (unsigned char)64;    /* invalid code marker */
-        this.bits = (unsigned char)1;
-        this.val = (unsigned short)0;
-        *(*table)++ = this;             /* make a table to force an error */
-        *(*table)++ = this;
+        mThis.op = (unsigned char)64;    /* invalid code marker */
+        mThis.bits = (unsigned char)1;
+        mThis.val = (unsigned short)0;
+        *(*table)++ = mThis;             /* make a table to force an error */
+        *(*table)++ = mThis;
         *bits = 1;
         return 0;     /* no symbols, but wait for decoding to report error */
     }
@@ -147,7 +147,7 @@ int inflate_table(codetype type, unsigned short FAR *lens, unsigned codes, code 
         if (lens[sym] != 0) work[offs[lens[sym]]++] = (unsigned short)sym;
 
     /*
-       Create and fill in decoding tables.  In this loop, the table being
+       Create and fill in decoding tables.  In mThis loop, the table being
        filled is at next and has curr index bits.  The code being used is huff
        with length len.  That code is converted to an index by dropping drop
        bits off of the bottom.  For codes where len is less than drop + curr,
@@ -162,7 +162,7 @@ int inflate_table(codetype type, unsigned short FAR *lens, unsigned codes, code 
 
        When a new sub-table is needed, it is necessary to look ahead in the
        code lengths to determine what size sub-table is needed.  The length
-       counts are used for this, and so count[] is decremented as codes are
+       counts are used for mThis, and so count[] is decremented as codes are
        entered in the tables.
 
        used keeps track of how many table entries have been allocated from the
@@ -174,7 +174,7 @@ int inflate_table(codetype type, unsigned short FAR *lens, unsigned codes, code 
 
        sym increments through all symbols, and the loop terminates when
        all codes of length max, i.e. all codes, have been processed.  This
-       routine permits incomplete codes, so another loop after this one fills
+       routine permits incomplete codes, so another loop after mThis one fills
        in the rest of the decoding tables with invalid code markers.
      */
 
@@ -215,18 +215,18 @@ int inflate_table(codetype type, unsigned short FAR *lens, unsigned codes, code 
     /* process all codes and make table entries */
     for (;;) {
         /* create table entry */
-        this.bits = (unsigned char)(len - drop);
+        mThis.bits = (unsigned char)(len - drop);
         if ((int)(work[sym]) < end) {
-            this.op = (unsigned char)0;
-            this.val = work[sym];
+            mThis.op = (unsigned char)0;
+            mThis.val = work[sym];
         }
         else if ((int)(work[sym]) > end) {
-            this.op = (unsigned char)(extra[work[sym]]);
-            this.val = base[work[sym]];
+            mThis.op = (unsigned char)(extra[work[sym]]);
+            mThis.val = base[work[sym]];
         }
         else {
-            this.op = (unsigned char)(32 + 64);         /* end of block */
-            this.val = 0;
+            mThis.op = (unsigned char)(32 + 64);         /* end of block */
+            mThis.val = 0;
         }
 
         /* replicate for those indices with low len bits equal to huff */
@@ -235,7 +235,7 @@ int inflate_table(codetype type, unsigned short FAR *lens, unsigned codes, code 
         min = fill;                 /* save offset to next table */
         do {
             fill -= incr;
-            next[(huff >> drop) + fill] = this;
+            next[(huff >> drop) + fill] = mThis;
         } while (fill != 0);
 
         /* backwards increment the len-bit code huff */
@@ -295,20 +295,20 @@ int inflate_table(codetype type, unsigned short FAR *lens, unsigned codes, code 
        through high index bits.  When the current sub-table is filled, the loop
        drops back to the root table to fill in any remaining entries there.
      */
-    this.op = (unsigned char)64;                /* invalid code marker */
-    this.bits = (unsigned char)(len - drop);
-    this.val = (unsigned short)0;
+    mThis.op = (unsigned char)64;                /* invalid code marker */
+    mThis.bits = (unsigned char)(len - drop);
+    mThis.val = (unsigned short)0;
     while (huff != 0) {
         /* when done with sub-table, drop back to root table */
         if (drop != 0 && (huff & mask) != low) {
             drop = 0;
             len = root;
             next = *table;
-            this.bits = (unsigned char)len;
+            mThis.bits = (unsigned char)len;
         }
 
         /* put invalid code marker in table */
-        next[huff >> drop] = this;
+        next[huff >> drop] = mThis;
 
         /* backwards increment the len-bit code huff */
         incr = 1U << (len - 1);

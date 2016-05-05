@@ -194,16 +194,16 @@ int ZEXPORT inflateInit_(z_streamp strm, const char *version, int stream_size)
 
 /*
    Return state with length and distance decoding tables and index sizes set to
-   fixed code decoding.  Normally this returns fixed tables from inffixed.h.
-   If BUILDFIXED is defined, then instead this routine builds the tables the
+   fixed code decoding.  Normally mThis returns fixed tables from inffixed.h.
+   If BUILDFIXED is defined, then instead mThis routine builds the tables the
    first time it's called, and returns those tables the first time and
    thereafter.  This reduces the size of the code by about 2K bytes, in
    exchange for a little execution time.  However, BUILDFIXED should not be
    used for threaded applications, since the rewriting of the tables and virgin
    may not be thread-safe.
  */
-local void fixedtables(state)
-struct inflate_state FAR *state;
+local void fixedtables(struct inflate_state FAR *state)
+//struct inflate_state FAR *state;
 {
 #ifdef BUILDFIXED
     static int virgin = 1;
@@ -233,7 +233,7 @@ struct inflate_state FAR *state;
         bits = 5;
         inflate_table(DISTS, state->lens, 32, &(next), &(bits), state->work);
 
-        /* do this just once */
+        /* do mThis just once */
         virgin = 0;
     }
 #else /* !BUILDFIXED */
@@ -252,7 +252,7 @@ struct inflate_state FAR *state;
    Write out the inffixed.h that is #include'd above.  Defining MAKEFIXED also
    defines BUILDFIXED, so the tables are built on the fly.  makefixed() writes
    those tables to stdout, which would be piped to inffixed.h.  A small program
-   can simply call makefixed to do this:
+   can simply call makefixed to do mThis:
 
     void makefixed(void);
 
@@ -276,8 +276,8 @@ void makefixed()
     puts("     * Generated automatically by makefixed().");
     puts("     */");
     puts("");
-    puts("    /* WARNING: this file should *not* be used by applications.");
-    puts("       It is part of the implementation of this library and is");
+    puts("    /* WARNING: mThis file should *not* be used by applications.");
+    puts("       It is part of the implementation of mThis library and is");
     puts("       subject to change. Applications should only use zlib.h.");
     puts("     */");
     puts("");
@@ -309,7 +309,7 @@ void makefixed()
 /*
    Update the window with the last wsize (normally 32K) bytes written before
    returning.  If window does not exist yet, create it.  This is only called
-   when a window is already in use, or when output has been written during this
+   when a window is already in use, or when output has been written during mThis
    inflate call, but the end of the deflate stream has not been reached yet.
    It is also called to create a window for dictionary data when a dictionary
    is loaded.
@@ -540,7 +540,7 @@ local int updatewindow(z_streamp strm, unsigned out)
    and there is no window currently, goto inf_leave will create one and copy
    output to the window for the next call of inflate().
 
-   In this implementation, the flush parameter of inflate() only affects the
+   In mThis implementation, the flush parameter of inflate() only affects the
    return code (per zlib.h).  inflate() always writes as much as possible to
    strm->next_out, given the space available and the provided input--the effect
    documented in zlib.h of Z_SYNC_FLUSH.  Furthermore, inflate() always defers
@@ -564,7 +564,7 @@ int ZEXPORT inflate(z_streamp strm, int flush)
     unsigned in, out;           /* save starting available input and output */
     unsigned copy;              /* number of stored or match bytes to copy */
     unsigned char FAR *from;    /* where to copy match bytes from */
-    code this;                  /* current decoding table entry */
+    code mThis;                  /* current decoding table entry */
     code last;                  /* parent table entry */
     unsigned len;               /* length to copy for repeats, bits to drop */
     int ret;                    /* return code */
@@ -876,19 +876,19 @@ int ZEXPORT inflate(z_streamp strm, int flush)
         case CODELENS:
             while (state->have < state->nlen + state->ndist) {
                 for (;;) {
-                    this = state->lencode[BITS(state->lenbits)];
-                    if ((unsigned)(this.bits) <= bits) break;
+                    mThis = state->lencode[BITS(state->lenbits)];
+                    if ((unsigned)(mThis.bits) <= bits) break;
                     PULLBYTE();
                 }
-                if (this.val < 16) {
-                    NEEDBITS(this.bits);
-                    DROPBITS(this.bits);
-                    state->lens[state->have++] = this.val;
+                if (mThis.val < 16) {
+                    NEEDBITS(mThis.bits);
+                    DROPBITS(mThis.bits);
+                    state->lens[state->have++] = mThis.val;
                 }
                 else {
-                    if (this.val == 16) {
-                        NEEDBITS(this.bits + 2);
-                        DROPBITS(this.bits);
+                    if (mThis.val == 16) {
+                        NEEDBITS(mThis.bits + 2);
+                        DROPBITS(mThis.bits);
                         if (state->have == 0) {
                             strm->msg = (char *)"invalid bit length repeat";
                             state->mode = BAD;
@@ -898,16 +898,16 @@ int ZEXPORT inflate(z_streamp strm, int flush)
                         copy = 3 + BITS(2);
                         DROPBITS(2);
                     }
-                    else if (this.val == 17) {
-                        NEEDBITS(this.bits + 3);
-                        DROPBITS(this.bits);
+                    else if (mThis.val == 17) {
+                        NEEDBITS(mThis.bits + 3);
+                        DROPBITS(mThis.bits);
                         len = 0;
                         copy = 3 + BITS(3);
                         DROPBITS(3);
                     }
                     else {
-                        NEEDBITS(this.bits + 7);
-                        DROPBITS(this.bits);
+                        NEEDBITS(mThis.bits + 7);
+                        DROPBITS(mThis.bits);
                         len = 0;
                         copy = 11 + BITS(7);
                         DROPBITS(7);
@@ -955,40 +955,40 @@ int ZEXPORT inflate(z_streamp strm, int flush)
                 break;
             }
             for (;;) {
-                this = state->lencode[BITS(state->lenbits)];
-                if ((unsigned)(this.bits) <= bits) break;
+                mThis = state->lencode[BITS(state->lenbits)];
+                if ((unsigned)(mThis.bits) <= bits) break;
                 PULLBYTE();
             }
-            if (this.op && (this.op & 0xf0) == 0) {
-                last = this;
+            if (mThis.op && (mThis.op & 0xf0) == 0) {
+                last = mThis;
                 for (;;) {
-                    this = state->lencode[last.val +
+                    mThis = state->lencode[last.val +
                             (BITS(last.bits + last.op) >> last.bits)];
-                    if ((unsigned)(last.bits + this.bits) <= bits) break;
+                    if ((unsigned)(last.bits + mThis.bits) <= bits) break;
                     PULLBYTE();
                 }
                 DROPBITS(last.bits);
             }
-            DROPBITS(this.bits);
-            state->length = (unsigned)this.val;
-            if ((int)(this.op) == 0) {
-                Tracevv((stderr, this.val >= 0x20 && this.val < 0x7f ?
+            DROPBITS(mThis.bits);
+            state->length = (unsigned)mThis.val;
+            if ((int)(mThis.op) == 0) {
+                Tracevv((stderr, mThis.val >= 0x20 && mThis.val < 0x7f ?
                         "inflate:         literal '%c'\n" :
-                        "inflate:         literal 0x%02x\n", this.val));
+                        "inflate:         literal 0x%02x\n", mThis.val));
                 state->mode = LIT;
                 break;
             }
-            if (this.op & 32) {
+            if (mThis.op & 32) {
                 Tracevv((stderr, "inflate:         end of block\n"));
                 state->mode = TYPE;
                 break;
             }
-            if (this.op & 64) {
+            if (mThis.op & 64) {
                 strm->msg = (char *)"invalid literal/length code";
                 state->mode = BAD;
                 break;
             }
-            state->extra = (unsigned)(this.op) & 15;
+            state->extra = (unsigned)(mThis.op) & 15;
             state->mode = LENEXT;
         case LENEXT:
             if (state->extra) {
@@ -1000,28 +1000,28 @@ int ZEXPORT inflate(z_streamp strm, int flush)
             state->mode = DIST;
         case DIST:
             for (;;) {
-                this = state->distcode[BITS(state->distbits)];
-                if ((unsigned)(this.bits) <= bits) break;
+                mThis = state->distcode[BITS(state->distbits)];
+                if ((unsigned)(mThis.bits) <= bits) break;
                 PULLBYTE();
             }
-            if ((this.op & 0xf0) == 0) {
-                last = this;
+            if ((mThis.op & 0xf0) == 0) {
+                last = mThis;
                 for (;;) {
-                    this = state->distcode[last.val +
+                    mThis = state->distcode[last.val +
                             (BITS(last.bits + last.op) >> last.bits)];
-                    if ((unsigned)(last.bits + this.bits) <= bits) break;
+                    if ((unsigned)(last.bits + mThis.bits) <= bits) break;
                     PULLBYTE();
                 }
                 DROPBITS(last.bits);
             }
-            DROPBITS(this.bits);
-            if (this.op & 64) {
+            DROPBITS(mThis.bits);
+            if (mThis.op & 64) {
                 strm->msg = (char *)"invalid distance code";
                 state->mode = BAD;
                 break;
             }
-            state->offset = (unsigned)this.val;
-            state->extra = (unsigned)(this.op) & 15;
+            state->offset = (unsigned)mThis.val;
+            state->extra = (unsigned)(mThis.op) & 15;
             state->mode = DISTEXT;
         case DISTEXT:
             if (state->extra) {
@@ -1236,10 +1236,10 @@ int ZEXPORT inflateGetHeader(z_streamp strm, gz_headerp head)
    called again with more data and the *have state.  *have is initialized to
    zero for the first call.
  */
-local unsigned syncsearch(have, buf, len)
-unsigned FAR *have;
-unsigned char FAR *buf;
-unsigned len;
+local unsigned syncsearch(unsigned FAR *have, unsigned char FAR *buf, unsigned len)
+//unsigned FAR *have;
+//unsigned char FAR *buf;
+//unsigned len;
 {
     unsigned got;
     unsigned next;
