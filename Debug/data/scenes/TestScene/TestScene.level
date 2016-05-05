@@ -1,0 +1,31 @@
+<?xml version="1.0" ?>
+<mscene type="Level" name="TestLevel">
+<gameObject type="Sprite" name="Background">
+   <transform>
+      <positionX>300</positionX>
+      <positionY>250</positionY>
+      <positionZ>50</positionZ>
+   </transform>
+   <texture>/textures/background.bmp</texture>
+   <sheet>
+      <height>1</height>
+      <width>1</width>
+      <animSpeed>-1</animSpeed>
+   </sheet>
+   <children></children>
+</gameObject>
+
+<gameObject type="Sprite" name="Player">
+   <transform>
+      <positionX>300</positionX>
+      <positionY>250</positionY>
+      <positionZ>40</positionZ>
+   </transform>
+   <texture>/textures/player.bmp</texture>
+   <sheet>
+      <height>1</height>
+      <width>1</width>
+      <animSpeed>-1</animSpeed>
+   </sheet>
+</gameObject>
+</mscene>
