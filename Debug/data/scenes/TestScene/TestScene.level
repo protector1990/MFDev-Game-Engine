@@ -26,5 +26,6 @@
       <width>1</width>
       <animSpeed>-1</animSpeed>
    </sheet>
+   <luaScript>/scripts/player.lua</luaScript>
 </gameObject>
 </mscene>

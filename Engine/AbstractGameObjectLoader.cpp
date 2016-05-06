@@ -1,0 +1,26 @@
+#include "AbstractGameObjectLoader.h"
+#include "Common.h"
+
+using namespace rapidxml;
+
+std::vector<LuaScript*> AbstractGameObjectLoader::loadLuaScripts(xml_node<char>* configuration) {
+	std::vector<LuaScript*> ret;
+	//
+	xml_node<char>* node = configuration->first_node();
+	while (node) {
+		char* x = node->name();
+		if (strcmp(node->name(), "luaScript") == 0) {
+			LuaScript* script = ASSET_MANAGER->loadAsset<LuaScript>(node->value());
+			if (script) {
+				ret.insert(ret.end(), script);
+			}
+#ifdef DEBUG
+			else {
+				printf("%s%s", "Error loading lua script at ", node->value());
+			}
+#endif
+		}
+		node = node->next_sibling();
+	}
+	return ret;
+}
