@@ -2,11 +2,11 @@
 <mscene type="Level" name="TestLevel">
 <gameObject type="Sprite" name="Background">
    <transform>
-      <positionX>300</positionX>
-      <positionY>250</positionY>
+      <positionX>0</positionX>
+      <positionY>0</positionY>
       <positionZ>50</positionZ>
    </transform>
-   <texture>/textures/background.bmp</texture>
+   <texture>/textures/nest.bmp</texture>
    <sheet>
       <height>1</height>
       <width>1</width>
@@ -14,12 +14,11 @@
    </sheet>
    <children></children>
 </gameObject>
-
 <gameObject type="Sprite" name="Player">
    <transform>
-      <positionX>300</positionX>
-      <positionY>250</positionY>
-      <positionZ>40</positionZ>
+      <positionX>0</positionX>
+      <positionY>0</positionY>
+      <positionZ>60</positionZ>
    </transform>
    <texture>/textures/player.bmp</texture>
    <sheet>

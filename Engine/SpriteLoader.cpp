@@ -1,11 +1,11 @@
+/** Copyright 2016 MarFil Studios **/
+
+#include "Common.h"
 #include "SpriteLoader.h"
 #include "Sprite.h"
 #include "Engine.h"
 
 using namespace rapidxml;
-
-//TODO: Move to globals
-#define ASSET_MANAGER Engine::getInstance().getAssetManager()
 
 char* textureID = "texture";
 char* sheetID = "sheet";

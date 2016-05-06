@@ -1,4 +1,4 @@
-
+#include "Common.h"
 #include "Engine.h"
 #include <SDL.h>
 #include <SDL_opengl.h>
@@ -19,8 +19,7 @@ Asset3D* model;
 Model3D* meshModel;
 SDL_GLContext glContext;
 
-#define ASSET_MANAGER Engine::getInstance().getAssetManager()
-#define ENGINE Engine::getInstance()
+
 
 //helper function
 void LoadMedia() {
@@ -37,11 +36,13 @@ GLfloat light_position[] = { 10.0, 10.0, 10.0, 1.0 };
 
 void Renderer::init() {
 	//renderer initialization
-	//SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
-	//SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
 	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
-	gameWindow = SDL_CreateWindow("Game Window", 300, 150, 1280, 768, SDL_WINDOW_OPENGL);
+	gameWindow = SDL_CreateWindow("Game Window", 300, 150, 640, 384, SDL_WINDOW_OPENGL);
 	glContext = SDL_GL_CreateContext(gameWindow);
+	
+
 	GLenum err = glewInit();
 	if (GLEW_OK != err)
 	{
@@ -49,18 +50,18 @@ void Renderer::init() {
 		fprintf(stderr, "Error: %s\n", glewGetErrorString(err));
 	}
 
-	_triangles = new vec3[_trianglesVertexCapacity];
-	_quads = new vec3[_quadsVertexCapacity];
-	_trianglesVertexCount = 0;
-	_quadsVertexCount = 0;
-
-	glGenVertexArrays(sizeof(vec3), &_trianglesGLArray);
-	glGenVertexArrays(sizeof(vec3), &_quadsGLArray);
+	//_triangles = new vec3[_trianglesVertexCapacity];
+	//_quads = new vec3[_quadsVertexCapacity];
+	//_trianglesVertexCount = 0;
+	//_quadsVertexCount = 0;
+	//
+	//glGenVertexArrays(sizeof(vec3), &_trianglesGLArray);
+	//glGenVertexArrays(sizeof(vec3), &_quadsGLArray);
 
 	//SDL_GL_SetSwapInterval(1);
 	//screenSurface = SDL_GetWindowSurface(gameWindow);
 	//glClearColor(0.2f, 0.2f, 0.2f, 1.f);
-	glOrtho(-250., 250., -250., 250., -60., 60.);
+	glOrtho(-250., 250., -250., 250., -100., 100.);
 	//gluLookAt(
 	//	5, 5, 5,
 	//	0, 0, 0,
@@ -69,18 +70,22 @@ void Renderer::init() {
 	//glPushMatrix();
 	//mat4x4 mat = lookAt(vec3(5, 5, 5), vec3(-1, -1, -1), vec3(-1, 1, -1));
 	//glLoadMatrixf(&mat[0][0]);
-	glCullFace(GL_BACK);
+	//glCullFace(GL_BACK);
 	
-	glClearColor(0.0, 0.0, 0.0, 0.0);
-	glShadeModel(GL_SMOOTH);
+	glClearColor(1.0, 1.0, 1.0, 1.0);
+	//glShadeModel(GL_SMOOTH);
 	//glMaterialfv(GL_FRONT, GL_SPECULAR, mat_specular);
-	glEnable(GL_LIGHTING);
-	glEnable(GL_LIGHT0);
-	glMaterialfv(GL_FRONT, GL_DIFFUSE, mat_specular);
-	glLightfv(GL_LIGHT0, GL_POSITION, light_position);
+	//glEnable(GL_LIGHTING);
+	//glEnable(GL_LIGHT0);
+	//glMaterialfv(GL_FRONT, GL_DIFFUSE, mat_specular);
+	//glLightfv(GL_LIGHT0, GL_POSITION, light_position);
 	
-	glEnable(GL_DEPTH_TEST);
+	//glEnable(GL_DEPTH_TEST);
 	//glEnable(GL_COLOR_MATERIAL);
+
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
 	LoadMedia();
 	//printf("%i %i", x, y);
 }
@@ -89,23 +94,25 @@ bool firstTime = true;
 float totalTime = 0;
 
 void Renderer::render(float deltaTime) {
-	totalTime += deltaTime * 20.f;
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	//totalTime += deltaTime * 20.f;
+	glClear(GL_COLOR_BUFFER_BIT);
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 
-	//Draw triangles
-	glBindVertexArray(_trianglesGLArray);
-	glDrawElements(GL_TRIANGLES, _trianglesVertexCount / 3, GL_UNSIGNED_INT, 0);
-	glBindVertexArray(0);
+	////Draw triangles
+	//glBindVertexArray(_trianglesGLArray);
+	//glDrawElements(GL_TRIANGLES, _trianglesVertexCount / 3, GL_UNSIGNED_INT, 0);
+	//glBindVertexArray(0);
+	//
+	////Draw quads
+	//glBindVertexArray(_quadsGLArray);
+	//glDrawElements(GL_QUADS, _quadsVertexCount / 4, GL_UNSIGNED_INT, 0);
+	//glBindVertexArray(0);
 
-	//Draw quads
-	glBindVertexArray(_quadsGLArray);
-	glDrawElements(GL_QUADS, _quadsVertexCount / 4, GL_UNSIGNED_INT, 0);
-	glBindVertexArray(0);
+	ENGINE.renderScenes();
 
 	glFlush();
-	SDL_UpdateWindowSurface(gameWindow);
+	SDL_GL_SwapWindow(gameWindow);
 }
 
 //Will be mostly used for sprites

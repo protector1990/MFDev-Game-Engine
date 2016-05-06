@@ -476,6 +476,9 @@
     <ClInclude Include="..\libs\physfs-2.0.3\zutil.h">
       <Filter>physfs</Filter>
     </ClInclude>
+    <ClInclude Include="Common.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\libs\physfs-2.0.3\LICENSE.txt">

@@ -2412,7 +2412,7 @@ int PHYSFS_flush(PHYSFS_File *handle)
     return(1);
 } /* PHYSFS_flush */
 
-
+//TODO: Review all of this memory management code to see if it has to do anything with heap corruption
 int PHYSFS_setAllocator(const PHYSFS_Allocator *a)
 {
     BAIL_IF_MACRO(initialized, ERR_IS_INITIALIZED, 0);

@@ -22,6 +22,8 @@ public:
 		return instance;
 	}
 
+	void renderScenes();
+
 private:
 	Engine();
 

@@ -1,21 +1,19 @@
+#include "Common.h"
 #include "Engine.h"
 #include <iostream>
 #include <SDL.h>
 #include <SDL_platform.h>
+
+//temp, make this platform independant or remove altogether
 #include <windows.h>
 
-//#include "..\libs\physfs-2.0.3\physfs.h"
-
-//TODO: Move to globals
-#define ASSET_MANAGER Engine::getInstance().getAssetManager()
-
 int Engine::run() {
-
+	bool firstTime = true;
 	_luaInterpreter = luaL_newstate();
 	luaBind(_luaInterpreter);
-	Sleep(1000);
+	//Sleep(1000);
 
-	SDL_Init(SDL_INIT_EVERYTHING);
+	SDL_Init(SDL_INIT_VIDEO);
 	Sleep(1500);
 #ifdef __WINDOWS__
 	_assetManager = new WinAssetManager();
@@ -25,15 +23,16 @@ int Engine::run() {
 #endif;
 	_assetManager->init();
 
-	Sleep(1000);
+	//Sleep(1000);
 
 	_renderer = new Renderer();
 	_renderer->init();
-	Sleep(1000);
+	//Sleep(1000);
 	Scene* testScene = ASSET_MANAGER->loadAsset<Scene>("/scenes/TestScene/TestScene.level");
 	_scenes.insert(_scenes.end(), testScene);
+	//Sleep(1000);
 	testScene->init();
-	Sleep(1000);
+	//Sleep(1000);
 	testScene->activate();
 
 	//loadConfiguration();
@@ -46,6 +45,10 @@ int Engine::run() {
 				break;
 			}
 		}
+		if (firstTime) {
+			Sleep(2000);
+			firstTime = false;
+		}
 		_frameTime = SDL_GetTicks();
 		_deltaTime = (_frameTime - _lastFrameTime) / 1000.f;
 		for (unsigned int i = 0; i < _scenes.size(); i++) {
@@ -55,11 +58,6 @@ int Engine::run() {
 		}
 
 		_renderer->render(_deltaTime);
-		for (unsigned int i = 0; i < _scenes.size(); i++) {
-			if (_scenes[i]->getActive()) {
-				_scenes[i]->render(_renderer);
-			}
-		}
 
 		//this should be either the last command in the loop, or the first
 		_lastFrameTime = _frameTime;
@@ -67,6 +65,14 @@ int Engine::run() {
 	_assetManager->deInit();
 	SDL_Quit();
 	return 0;
+}
+
+void Engine::renderScenes() {
+	for (unsigned int i = 0; i < _scenes.size(); i++) {
+		if (_scenes[i]->getActive()) {
+			_scenes[i]->render(_renderer);
+		}
+	}
 }
 
 Engine::Engine() {
