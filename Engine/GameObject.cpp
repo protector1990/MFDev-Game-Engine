@@ -25,3 +25,7 @@ LuaScript* GameObject::getScript(const char* name) {
 		}
 	}
 }
+
+void GameObject::keyPressed(int keyPressed){
+	//printf("Pressed: %i", keyPressed);
+}

@@ -35,6 +35,7 @@ public:
 	void render(Renderer *renderer); 
 	bool getActive();
 	void init();
+	void keyPressed(int keyPressed);
 
 protected:
 	bool _isActive;

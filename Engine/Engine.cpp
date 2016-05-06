@@ -37,12 +37,18 @@ int Engine::run() {
 
 	//loadConfiguration();
 
-	SDL_Event quitEvent;
+	SDL_Event sdlEvent;
 	while (_running) {
-		while (SDL_PollEvent(&quitEvent)) {
-			if (quitEvent.type == SDL_QUIT) {
+		while (SDL_PollEvent(&sdlEvent)) {
+			if (sdlEvent.type == SDL_QUIT) {
 				_running = false;
 				break;
+			}
+			if (sdlEvent.type == SDL_KEYDOWN){
+				int keyDown = sdlEvent.key.keysym.sym;
+				for (unsigned int i = 0; i < _scenes.size(); i++){
+					_scenes[i]->keyPressed(keyDown);
+				}
 			}
 		}
 		if (firstTime) {

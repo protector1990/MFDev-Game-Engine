@@ -37,6 +37,7 @@ public:
 
 	LuaScript* getScript(const char* name);
 	std::vector<LuaScript*> _scripts;
+	virtual void keyPressed(int keyPressed);
 
 protected:
 	unsigned int _tag;
