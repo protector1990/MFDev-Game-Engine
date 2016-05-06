@@ -1,5 +1,8 @@
 /**  Copyright 2016 MarFil Studios  **/
 
+#ifndef _LUA_SCRIPT_H
+#define _LUA_SCRIPT_H
+
 #include "..\libs\lua-5.3.2\src\lua.h"
 #include "..\libs\lua-5.3.2\src\lualib.h"
 #include "..\libs\lua-5.3.2\src\lauxlib.h"
@@ -25,3 +28,9 @@ void luaBind(lua_State *interpreter);
 void luaExecute(lua_State *interpreter, LuaScript *script);
 
 int luaTest(lua_State*);
+
+int luaGameObjectUpdate(lua_State*);
+
+int luaQueryInput(lua_State*);
+
+#endif

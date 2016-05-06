@@ -141,6 +141,7 @@
     <ClCompile Include="..\libs\physfs-2.0.3\zip.c" />
     <ClCompile Include="..\libs\physfs-2.0.3\zutil.c" />
     <ClCompile Include="3DAsset.cpp" />
+    <ClCompile Include="AbstractGameObjectLoader.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameObjectLoaderFactory.cpp" />
     <ClCompile Include="IOSAssetManager.cpp" />

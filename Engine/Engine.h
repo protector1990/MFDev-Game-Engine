@@ -1,5 +1,8 @@
 /**  Copyright 2016 MarFil Studios  **/
 
+#ifndef _ENGINE_H
+#define _ENGINE_H
+
 // main engine class
 #include "Renderer.h"
 #include <SDL.h>
@@ -43,3 +46,5 @@ public:
 	Engine(Engine const&) = delete;
 	void operator=(Engine const&) = delete;
 };
+
+#endif

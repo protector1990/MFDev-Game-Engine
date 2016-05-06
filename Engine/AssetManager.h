@@ -1,5 +1,8 @@
 /**  Copyright 2016 MarFil Studios  **/
 
+#ifndef _ASSET_MANAGER_H
+#define _ASSET_MANAGER_H
+
 #include <SDL_platform.h>
 #include <SDL.h>
 #include "Lua.h"
@@ -65,4 +68,6 @@ protected:
 	Model3D* loadModel3D(const char *path) override;
 	Scene* loadScene(const char *path) override;
 };
+#endif
+
 #endif

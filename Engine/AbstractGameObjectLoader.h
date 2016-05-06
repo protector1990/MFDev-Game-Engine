@@ -7,5 +7,9 @@
 class AbstractGameObjectLoader {
 public:
 	virtual GameObject* load(rapidxml::xml_node<char>* configuration) = 0;
+protected:
+	//Utility functions for all game objects
+	glm::vec3 loadPosition(rapidxml::xml_node<char>* configuration);
+	std::vector<LuaScript*> loadLuaScripts(rapidxml::xml_node<char>* configuration);
 };
 #endif

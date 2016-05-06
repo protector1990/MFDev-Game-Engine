@@ -61,7 +61,7 @@ void Renderer::init() {
 	//SDL_GL_SetSwapInterval(1);
 	//screenSurface = SDL_GetWindowSurface(gameWindow);
 	//glClearColor(0.2f, 0.2f, 0.2f, 1.f);
-	glOrtho(-250., 250., -250., 250., -100., 100.);
+	glOrtho(-320., 320, -192, 192, -100., 100.);
 	//gluLookAt(
 	//	5, 5, 5,
 	//	0, 0, 0,

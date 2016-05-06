@@ -288,6 +288,9 @@
     <ClCompile Include="..\libs\physfs-2.0.3\compress.c">
       <Filter>physfs</Filter>
     </ClCompile>
+    <ClCompile Include="AbstractGameObjectLoader.cpp">
+      <Filter>Source Files\GameObjectLoaders</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\libs\lua-5.3.2\src\lapi.h">

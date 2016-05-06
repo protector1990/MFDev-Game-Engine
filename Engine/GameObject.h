@@ -5,6 +5,7 @@
 
 #include <vector>
 #include "Renderer.h"
+#include "Lua.h"
 //typedef Renderer Renderer;
 
 // Abstract game object class. Should be implemented as needed for specific game 
@@ -14,6 +15,9 @@
 // defined as a c++ class. That enables game objects to have some predefined behaviours (differs from
 // Unity, where complete GameObject behaviour is defined through its components
 class GameObject {
+	//TODO: refactor this so that there is a loader class that can be friend
+	// and Win/iOS asset managers should only concern input methods
+	friend class WinAssetManager;
 public:
 	//GameObject();
 	unsigned int getTag();
@@ -31,9 +35,13 @@ public:
 
 	glm::vec3 _Position;
 
+	LuaScript* getScript(const char* name);
+	std::vector<LuaScript*> _scripts;
+
 protected:
 	unsigned int _tag;
 	GameObject *_parent;
 	std::vector<GameObject*> _children;
+	
 };
 #endif
