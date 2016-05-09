@@ -30,6 +30,7 @@ public:
 	void activate();
 	void deactivate();
 	// Update scene
+	// TODO: make a separate updateInternal function
 	virtual void update(float deltaTime);
 	// Render scene
 	void render(Renderer *renderer); 

@@ -1,4 +1,6 @@
 #include "Scene.h"
+#include "Common.h"
+#include "Lua.h"
 
 GameObject* Scene::makeNewObject() {
 	return NULL;
@@ -30,7 +32,11 @@ void Scene::deactivate(){
 }
 // Update scene
 void Scene::update(float deltaTime) {
-
+	for (int i = 0; i < _gameObjects.size(); i++) {
+		for (int j = 0; j < _gameObjects[i]->_scripts.size(); j++) {
+			luaExecute(ENGINE.getLuaInterpreter(), _gameObjects[i]->_scripts[j]);
+		}
+	}
 }
 // Render scene
 void Scene::render(Renderer *renderer) {

@@ -1,4 +1,5 @@
 #include "Lua.h"
+#include "lua-5.3.2\src\lstate.h"
 #include <iostream>
 
 void luaBind(lua_State *interpreter) {
