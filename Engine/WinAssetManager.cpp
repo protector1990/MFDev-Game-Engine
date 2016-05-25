@@ -66,13 +66,19 @@ SDL_Surface* WinAssetManager::loadSDL_Surface(const char *path) {
 	}
 }
 
-LuaScript* WinAssetManager::loadLuaScript(const char *path) {
+Script* WinAssetManager::loadLuaScript(const char *path) {
 	PHYSFS_file* file = PHYSFS_openRead(path);
 	if (file) {
 		PHYSFS_sint64 fileSize = PHYSFS_fileLength(file);
 		char* inBuff = new char[fileSize];
 		PHYSFS_read(file, inBuff, fileSize, 1);
-		return new LuaScript(path, inBuff, fileSize);
+
+		//Budz fix za cudne karaktere koji se citaju iz fajla skripte
+		int i = fileSize - 1;
+		for (; inBuff[i] != 'd'; i--);
+		inBuff[++i] = '\0';
+
+		return new Script(path, inBuff, i);
 	}
 	else {
 		return NULL;

@@ -1,6 +1,7 @@
 #include <GL\glew.h> 
 #include "Sprite.h"
 #include <stdexcept>
+#include "Common.h"
 
 using namespace glm;
 
@@ -9,6 +10,9 @@ using namespace glm;
 //}
 void Sprite::init() {
 	// call lua init script from here
+	for (int i = 0; i < _scripts.size(); i++) {
+		luaNewObject(ENGINE.getLuaInterpreter(), _scripts[i]);
+	}
 
 	glGenBuffers(1, &_glVertexBufferObjects);
 	glGenVertexArrays(sizeof(vec3), &_glVertexArray);
@@ -29,7 +33,8 @@ void Sprite::init() {
 
 void Sprite::update(float deltaTime) {
 	// empty for now
-	
+	int params[] = { 4 };
+	LuaManager::luaCall(ENGINE.getLuaInterpreter(), this->getScript("player.lua"), "someExampleFunction", 0, 0);
 }
 
 GLuint indices[] = { 0, 1, 2, 3 };

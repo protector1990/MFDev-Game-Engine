@@ -35,8 +35,8 @@ public:
 
 	glm::vec3 _Position;
 
-	LuaScript* getScript(const char* name);
-	std::vector<LuaScript*> _scripts;
+	ScriptComponent* getLuaComponent(const char* scriptName);
+	std::vector<ScriptComponent*> _luaComponents;
 	virtual void keyPressed(int keyPressed);
 
 protected:

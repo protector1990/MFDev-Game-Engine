@@ -18,10 +18,10 @@ GameObject* GameObject::getChildren(int &count) {
 	return _children[0];
 }
 
-LuaScript* GameObject::getScript(const char* name) {
-	for (int i = 0; i < _scripts.size(); i++) {
-		if (strcmp(name, _scripts[i]->_name) == 0) {
-			return _scripts[i];
+ScriptComponent* GameObject::getLuaComponent(const char* name) {
+	for (int i = 0; i < _luaComponents.size(); i++) {
+		if (strcmp(name, _luaComponents[i]->getScript()->_name) == 0) {
+			return _luaComponents[i];
 		}
 	}
 }

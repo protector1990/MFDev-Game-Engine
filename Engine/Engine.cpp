@@ -10,6 +10,7 @@
 int Engine::run() {
 	bool firstTime = true;
 	_luaInterpreter = luaL_newstate();
+	luaL_openlibs(_luaInterpreter);
 	luaBind(_luaInterpreter);
 	//Sleep(1000);
 

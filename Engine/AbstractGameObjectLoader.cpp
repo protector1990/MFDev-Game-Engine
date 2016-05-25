@@ -3,14 +3,14 @@
 
 using namespace rapidxml;
 
-std::vector<LuaScript*> AbstractGameObjectLoader::loadLuaScripts(xml_node<char>* configuration) {
-	std::vector<LuaScript*> ret;
+std::vector<ScriptComponent*> AbstractGameObjectLoader::loadLuaComponents(xml_node<char>* configuration) {
+	std::vector<Script*> ret;
 	//
 	xml_node<char>* node = configuration->first_node();
 	while (node) {
 		char* x = node->name();
 		if (strcmp(node->name(), "luaScript") == 0) {
-			LuaScript* script = ASSET_MANAGER->loadAsset<LuaScript>(node->value());
+			Script* script = ASSET_MANAGER->loadAsset<Script>(node->value());
 			if (script) {
 				ret.insert(ret.end(), script);
 			}

@@ -25,14 +25,14 @@ public:
 	// junk code added
 	template <> int* loadAsset<int>(const char *path) { return loadInt(path); };
 	template <> SDL_Surface* loadAsset<SDL_Surface>(const char *path){return loadSDL_Surface(path);};
-	template <> LuaScript* loadAsset<LuaScript>(const char *path){ return loadLuaScript(path); };
+	template <> Script* loadAsset<Script>(const char *path){ return loadLuaScript(path); };
 	template <> Asset3D* loadAsset<Asset3D>(const char *path){ return loadAsset3D(path); };
 	template <> Model3D* loadAsset<Model3D>(const char *path){ return loadModel3D(path); };
 	template <> Scene* loadAsset<Scene>(const char *path){ return loadScene(path); };
 protected:
 	virtual int* loadInt(const char *path) = 0;
 	virtual SDL_Surface* loadSDL_Surface(const char *path) = 0;
-	virtual LuaScript* loadLuaScript(const char *path) = 0;
+	virtual Script* loadLuaScript(const char *path) = 0;
 	virtual Asset3D* loadAsset3D(const char *path) = 0;
 	virtual Model3D* loadModel3D(const char *path) = 0;
 	virtual Scene* loadScene(const char *path) = 0;
@@ -47,7 +47,7 @@ public:
 protected:
 	int* loadInt(const char *path) override;
 	SDL_Surface* loadSDL_Surface(const char *path) override;
-	LuaScript* loadLuaScript(const char *path) override;
+	Script* loadLuaScript(const char *path) override;
 	Asset3D* loadAsset3D(const char *path) override;
 	Model3D* loadModel3D(const char *path) override;
 	Scene* loadScene(const char *path) override;
@@ -63,7 +63,7 @@ public:
 protected:
 	int* loadInt(const char *path) override;
 	SDL_Surface* loadSDL_Surface(const char *path) override;
-	LuaScript* loadLuaScript(const char *path) override;
+	Script* loadLuaScript(const char *path) override;
 	Asset3D* loadAsset3D(const char *path) override;
 	Model3D* loadModel3D(const char *path) override;
 	Scene* loadScene(const char *path) override;
