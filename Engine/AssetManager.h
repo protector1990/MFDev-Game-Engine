@@ -37,6 +37,8 @@ protected:
 	virtual Model3D* loadModel3D(const char *path) = 0;
 	virtual Scene* loadScene(const char *path) = 0;
 
+	std::vector<Script*> _loadedScripts;
+
 };
 
 #ifdef __WINDOWS__

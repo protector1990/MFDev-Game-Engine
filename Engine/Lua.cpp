@@ -1,6 +1,22 @@
 #include "Lua.h"
 #include "lua-5.3.2\src\lstate.h"
 #include <iostream>
+#include "Common.h"
+
+ScriptComponent::ScriptComponent(Script *script) {
+	_script = script;
+
+	lua_newtable(ENGINE.getLuaInterpreter());
+	_reference = luaL_ref(ENGINE.getLuaInterpreter(), LUA_REGISTRYINDEX);
+}
+
+int ScriptComponent::getReference() {
+	return _reference;
+}
+
+Script* ScriptComponent::getScript() {
+	return _script;
+}
 
 void LuaManager::luaBind(lua_State *interpreter) {
 	luaL_openlibs(interpreter);
@@ -15,27 +31,55 @@ void LuaManager::luaExecute(lua_State *interpreter, Script *script) {
 	lua_pcall(interpreter, 0, LUA_MULTRET, 0);
 	//luaL_dofile(interpreter, "some");
 }
-
-ScriptComponent* LuaManager::luaNewObject(lua_State *interpreter, Script *script) {
+void LuaManager::luaParse(lua_State *interpreter, Script *script) {
+	printf("%s", script->_contents);
 	int res = luaL_loadbufferx(interpreter, script->_contents, script->_size, script->_name, NULL);
 	if (!lua_isfunction(interpreter, -1))
 	{
-		printf("\n\n[C++]: Oops! The lua function '%s' has not been defined", script->_name);
+		printf("\n\n[C++]: Oops! The lua script '%s' has not been defined", script->_name);
 	}
 	lua_pcall(interpreter, 0, 0, 0);
+
+	lua_getglobal(interpreter, "currentClass");
+	const char *className = lua_tostring(interpreter, -1);
+
+	lua_getglobal(interpreter, className);
+	if (lua_istable(interpreter, -1)) {
+		printf("istable");
+	}
+	script->reference = luaL_ref(interpreter, LUA_REGISTRYINDEX);
+
+//	lua_pop(interpreter, 3);
 	//lua_err
 	//luaL_loadstring(interpreter, script->_contents);
 	//luaL_dofile(interpreter, "data/scripts/player.lua");
 }
 
-void LuaManager::luaCall(lua_State *interpreter, Script *script, const char* name, int* params, int paramsNum) {
+void LuaManager::luaCall(lua_State *interpreter, ScriptComponent *component, const char* name, float* params, int paramsNum) {
 	//lua_settop(interpreter, 0);
-	if (!script) {
+	if (!component) {
 		return;
 	}
+
+	//lua_settop(interpreter, 0);
+	int reference = component->getScript()->reference;
+	lua_rawgeti(interpreter, LUA_REGISTRYINDEX, component->getScript()->reference);
+	//if (lua_istable(interpreter, -1)) {
+	//	printf("%i table reference referenced properly", LUA_REGISTRYINDEX);
+	//}
 	
-	int x = lua_getglobal(interpreter, name);
-	if (!lua_isfunction(interpreter, -1))
+	int x = lua_getfield(interpreter, -1, name);
+
+	if (!lua_isfunction(interpreter, -1)) {
+		printf("\nnot defined.");
+	}
+
+	lua_rawgeti(interpreter, LUA_REGISTRYINDEX, component->getReference());
+
+	//lua_gettable(interpreter, -2);
+	//lua_insert(interpreter, -2);
+
+	if (!lua_isfunction(interpreter, -2))
 	{
 		printf("\n\n[C++]: Oops! The lua function '%s' has not been defined", name);
 	}
@@ -43,7 +87,7 @@ void LuaManager::luaCall(lua_State *interpreter, Script *script, const char* nam
 		for (int i = 0; i < paramsNum; i++) {
 			lua_pushnumber(interpreter, *(params + i));
 		}
-		lua_call(interpreter, paramsNum, 0);
+		lua_call(interpreter, paramsNum + 1, 0);
 		//int x = lua_pcall(interpreter, 0, LUA_MULTRET, 0);
 	}
 }

@@ -4,7 +4,7 @@
 using namespace rapidxml;
 
 std::vector<ScriptComponent*> AbstractGameObjectLoader::loadLuaComponents(xml_node<char>* configuration) {
-	std::vector<Script*> ret;
+	std::vector<ScriptComponent*> ret;
 	//
 	xml_node<char>* node = configuration->first_node();
 	while (node) {
@@ -12,7 +12,7 @@ std::vector<ScriptComponent*> AbstractGameObjectLoader::loadLuaComponents(xml_no
 		if (strcmp(node->name(), "luaScript") == 0) {
 			Script* script = ASSET_MANAGER->loadAsset<Script>(node->value());
 			if (script) {
-				ret.insert(ret.end(), script);
+				ret.insert(ret.end(), new ScriptComponent(script));
 			}
 #ifdef DEBUG
 			else {

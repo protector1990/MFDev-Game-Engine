@@ -12,6 +12,7 @@
 #include "SpriteLoader.h"
 #include "Level.h"
 #include "GameObjectLoaderFactory.h"
+#include "Common.h"
 
 #ifdef __WINDOWS__
 
@@ -30,11 +31,11 @@ namespace rapidxml
 void WinAssetManager::init() {
 	PHYSFS_init(0);
 	const char *baseDir = PHYSFS_getBaseDir();
-	char *dataPath = new char;// = new char[strlen(baseDir) + 7];
+	char *dataPath = new char[strlen(baseDir) + 9];
 	strcpy(dataPath, baseDir);
 	strcat(dataPath, "data.zip");
 	PHYSFS_mount(dataPath, "/", 1);
-	char *uncompressedDataPath = new char;
+	char *uncompressedDataPath = new char[strlen(baseDir) + 5];
 	strcpy(uncompressedDataPath, baseDir);
 	strcat(uncompressedDataPath, "data");
 	PHYSFS_mount(uncompressedDataPath, "/", 1);
@@ -42,8 +43,8 @@ void WinAssetManager::init() {
 }
 
 void WinAssetManager::deInit() {
-	PHYSFS_deinit();
 	asset3DImporter.FreeScene();
+	PHYSFS_deinit();
 }
 
 int* WinAssetManager::loadInt(const char *path) {
@@ -67,6 +68,12 @@ SDL_Surface* WinAssetManager::loadSDL_Surface(const char *path) {
 }
 
 Script* WinAssetManager::loadLuaScript(const char *path) {
+	for (int i = 0; i < _loadedScripts.size(); i++) {
+		if (strcmp(_loadedScripts[i]->_name, path) == 0) {
+			return _loadedScripts[i];
+		}
+	}
+
 	PHYSFS_file* file = PHYSFS_openRead(path);
 	if (file) {
 		PHYSFS_sint64 fileSize = PHYSFS_fileLength(file);
@@ -78,7 +85,10 @@ Script* WinAssetManager::loadLuaScript(const char *path) {
 		for (; inBuff[i] != 'd'; i--);
 		inBuff[++i] = '\0';
 
-		return new Script(path, inBuff, i);
+		Script* ret = new Script(path, inBuff, i);
+		_loadedScripts.insert(_loadedScripts.end(), ret);
+		LuaManager::luaParse(ENGINE.getLuaInterpreter(), ret);
+		return ret;
 	}
 	else {
 		return NULL;

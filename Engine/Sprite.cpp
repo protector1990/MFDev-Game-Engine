@@ -10,9 +10,9 @@ using namespace glm;
 //}
 void Sprite::init() {
 	// call lua init script from here
-	for (int i = 0; i < _scripts.size(); i++) {
-		luaNewObject(ENGINE.getLuaInterpreter(), _scripts[i]);
-	}
+	//for (int i = 0; i < _scripts.size(); i++) {
+	//	LuaManager::luaParse(ENGINE.getLuaInterpreter(), _scripts[i]);
+	//}
 
 	glGenBuffers(1, &_glVertexBufferObjects);
 	glGenVertexArrays(sizeof(vec3), &_glVertexArray);
@@ -33,8 +33,11 @@ void Sprite::init() {
 
 void Sprite::update(float deltaTime) {
 	// empty for now
-	int params[] = { 4 };
-	LuaManager::luaCall(ENGINE.getLuaInterpreter(), this->getScript("player.lua"), "someExampleFunction", 0, 0);
+	//int params[] = { 4 };
+	//LuaManager::luaCall(ENGINE.getLuaInterpreter(), this->getLuaComponent("player.lua"), "someExampleFunction", 0, 0);
+	for (int i = 0; i < _luaComponents.size(); i++) {
+		LuaManager::luaCall(ENGINE.getLuaInterpreter(), _luaComponents[i], "update", &deltaTime, 1);
+	}
 }
 
 GLuint indices[] = { 0, 1, 2, 3 };

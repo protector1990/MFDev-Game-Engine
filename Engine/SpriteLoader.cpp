@@ -39,6 +39,6 @@ GameObject* SpriteLoader::load(xml_node<char>* configuration) {
 	ret->_animSpeed = atof(animSpeed->value());
 	ret->_sheetHeight = atoi(sheetWidth->value());
 	ret->_sheetWidth = atoi(sheetHeight->value());
-	ret->_scripts = loadLuaScripts(configuration);
+	ret->_luaComponents = loadLuaComponents(configuration);
 	return (GameObject*)ret;
 }
