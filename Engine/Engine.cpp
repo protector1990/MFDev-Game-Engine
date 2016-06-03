@@ -8,7 +8,6 @@
 #include <windows.h>
 
 int Engine::run() {
-	bool firstTime = true;
 	_luaInterpreter = luaL_newstate();
 	luaL_openlibs(_luaInterpreter);
 	LuaManager::luaBind(_luaInterpreter);
@@ -51,10 +50,6 @@ int Engine::run() {
 					_scenes[i]->keyPressed(keyDown);
 				}
 			}
-		}
-		if (firstTime) {
-			Sleep(2000);
-			firstTime = false;
 		}
 		_frameTime = SDL_GetTicks();
 		_deltaTime = (_frameTime - _lastFrameTime) / 1000.f;
