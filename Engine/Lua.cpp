@@ -95,7 +95,7 @@ void LuaManager::luaCall(lua_State *interpreter, ScriptComponent *component, con
 		//int c = lua_type(interpreter, -3);
 		lua_insert(interpreter, -2);
 		lua_call(interpreter, paramsNum+1, 0);
-		lua_pop(interpreter, paramsNum + 2);
+		lua_pop(interpreter, paramsNum);
 		//int x = lua_pcall(interpreter, 0, LUA_MULTRET, 0);
 	}
 }

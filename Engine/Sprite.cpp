@@ -15,7 +15,7 @@ void Sprite::init() {
 	//}
 
 	glGenBuffers(1, &_glVertexBufferObjects);
-	glGenVertexArrays(sizeof(vec3), &_glVertexArray);
+	glGenVertexArrays(1, &_glVertexArray);
 	//Optimize so that a single texture is generated exactly once and accessed from all the places it is required
 	glActiveTexture(GL_TEXTURE0);
 	glGenTextures(1, &_glTexture);
@@ -35,7 +35,7 @@ void Sprite::update(float deltaTime) {
 	// empty for now
 	//int params[] = { 4 };
 	//LuaManager::luaCall(ENGINE.getLuaInterpreter(), this->getLuaComponent("player.lua"), "someExampleFunction", 0, 0);
-	for (int i = 0; i < _luaComponents.size(); i++) {
+	for (unsigned int i = 0; i < _luaComponents.size(); i++) {
 		LuaManager::luaCall(ENGINE.getLuaInterpreter(), _luaComponents[i], "update", &deltaTime, 1);
 	}
 }

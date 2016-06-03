@@ -7,8 +7,6 @@ function player2:update(deltaTime)
 		self.local_x = 0
 	end
 	self.local_x = self.local_x + deltaTime + 5
-	print(self)
-	print(self.local_x)
 end
 
 --TODO: Proveriti zasto ova sintaksa nece da radi

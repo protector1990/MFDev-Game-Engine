@@ -7,6 +7,4 @@ function player:update(deltaTime)
 		self.local_x = 0
 	end
 	self.local_x = self.local_x + deltaTime
-	print(self)
-	print(self.local_x)
 end

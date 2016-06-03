@@ -15,7 +15,7 @@ int Engine::run() {
 	//Sleep(1000);
 
 	SDL_Init(SDL_INIT_VIDEO);
-	Sleep(1500);
+	//Sleep(1500);
 #ifdef __WINDOWS__
 	_assetManager = new WinAssetManager();
 #endif
