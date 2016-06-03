@@ -32,8 +32,10 @@ void LuaManager::luaExecute(lua_State *interpreter, Script *script) {
 	//luaL_dofile(interpreter, "some");
 }
 void LuaManager::luaParse(lua_State *interpreter, Script *script) {
-	printf("%s", script->_contents);
 	int res = luaL_loadbufferx(interpreter, script->_contents, script->_size, script->_name, NULL);
+	if (lua_isstring(interpreter, -1)) {
+		printf("%s", lua_tostring(interpreter, -1));
+	}
 	if (!lua_isfunction(interpreter, -1))
 	{
 		printf("\n\n[C++]: Oops! The lua script '%s' has not been defined", script->_name);
@@ -74,20 +76,26 @@ void LuaManager::luaCall(lua_State *interpreter, ScriptComponent *component, con
 		printf("\nnot defined.");
 	}
 
-	lua_rawgeti(interpreter, LUA_REGISTRYINDEX, component->getReference());
-
 	//lua_gettable(interpreter, -2);
 	//lua_insert(interpreter, -2);
 
-	if (!lua_isfunction(interpreter, -2))
+	if (!lua_isfunction(interpreter, -1))
 	{
 		printf("\n\n[C++]: Oops! The lua function '%s' has not been defined", name);
 	}
 	else {
 		for (int i = 0; i < paramsNum; i++) {
-			lua_pushnumber(interpreter, *(params + i));
+			//printf("\n%f\n%f\n", *(params + i), params[i]);
+			lua_pushnumber(interpreter, params[i]);
 		}
-		lua_call(interpreter, paramsNum + 1, 0);
+		//int b = lua_type(interpreter, -2);
+		lua_rawgeti(interpreter, LUA_REGISTRYINDEX, component->getReference());
+		//int a = lua_type(interpreter, -1);
+		//int b = lua_type(interpreter, -2);
+		//int c = lua_type(interpreter, -3);
+		lua_insert(interpreter, -2);
+		lua_call(interpreter, paramsNum+1, 0);
+		lua_pop(interpreter, paramsNum + 2);
 		//int x = lua_pcall(interpreter, 0, LUA_MULTRET, 0);
 	}
 }

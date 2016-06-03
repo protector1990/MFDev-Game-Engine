@@ -28,4 +28,18 @@
    </sheet>
    <luaScript>/scripts/player.lua</luaScript>
 </gameObject>
+<gameObject type="Sprite" name="SecondPlayer">
+   <transform>
+      <positionX>150</positionX>
+      <positionY>0</positionY>
+      <positionZ>70</positionZ>
+   </transform>
+   <texture>/textures/player.bmp</texture>
+   <sheet>
+      <height>1</height>
+      <width>1</width>
+      <animSpeed>-1</animSpeed>
+   </sheet>
+   <luaScript>/scripts/player2.lua</luaScript>
+</gameObject>
 </mscene>
