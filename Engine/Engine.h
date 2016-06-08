@@ -10,6 +10,8 @@
 //#include "Scene.h"
 #include <vector>
 
+class InputManager;
+
 class Engine {
 public:
 	~Engine();
@@ -18,6 +20,7 @@ public:
 	lua_State* getLuaInterpreter() { return _luaInterpreter; }
 	Renderer* getRenderer() { return _renderer; }
 	AssetManager* getAssetManager() { return _assetManager; }
+	InputManager* getInputManager() { return _inputManager; }
 
 
 	static Engine& getInstance() {
@@ -33,6 +36,8 @@ private:
 	lua_State * _luaInterpreter;
 	Renderer * _renderer;
 	AssetManager * _assetManager;
+	InputManager* _inputManager;
+
 	std::vector<Scene*> _scenes;
 
 	bool _running = true;

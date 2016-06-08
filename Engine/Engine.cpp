@@ -3,6 +3,7 @@
 #include <iostream>
 #include <SDL.h>
 #include <SDL_platform.h>
+#include "InputManager.h"
 
 //temp, make this platform independant or remove altogether
 #include <windows.h>
@@ -11,10 +12,9 @@ int Engine::run() {
 	_luaInterpreter = luaL_newstate();
 	luaL_openlibs(_luaInterpreter);
 	LuaManager::luaBind(_luaInterpreter);
-	//Sleep(1000);
 
 	SDL_Init(SDL_INIT_VIDEO);
-	//Sleep(1500);
+
 #ifdef __WINDOWS__
 	_assetManager = new WinAssetManager();
 #endif
@@ -23,16 +23,15 @@ int Engine::run() {
 #endif;
 	_assetManager->init();
 
-	//Sleep(1000);
 
 	_renderer = new Renderer();
 	_renderer->init();
-	//Sleep(1000);
+
+	_inputManager = new InputManager();
+
 	Scene* testScene = ASSET_MANAGER->loadAsset<Scene>("/scenes/TestScene/TestScene.level");
 	_scenes.insert(_scenes.end(), testScene);
-	//Sleep(1000);
 	testScene->init();
-	//Sleep(1000);
 	testScene->activate();
 
 	//loadConfiguration();
@@ -49,6 +48,14 @@ int Engine::run() {
 				for (unsigned int i = 0; i < _scenes.size(); i++){
 					_scenes[i]->keyPressed(keyDown);
 				}
+				_inputManager->keyPressed(sdlEvent.key.keysym.sym);
+			}
+			if (sdlEvent.type == SDL_KEYUP){
+				int keyDown = sdlEvent.key.keysym.sym;
+				for (unsigned int i = 0; i < _scenes.size(); i++){
+					_scenes[i]->keyPressed(keyDown);
+				}
+				_inputManager->keyReleased(sdlEvent.key.keysym.sym);
 			}
 		}
 		_frameTime = SDL_GetTicks();

@@ -12,7 +12,7 @@ std::vector<ScriptComponent*> AbstractGameObjectLoader::loadLuaComponents(xml_no
 		if (strcmp(node->name(), "luaScript") == 0) {
 			Script* script = ASSET_MANAGER->loadAsset<Script>(node->value());
 			if (script) {
-				ret.insert(ret.end(), new ScriptComponent(script));
+				ret.insert(ret.end(), new ScriptComponent(script, _currentlyLoadingObject));
 			}
 #ifdef DEBUG
 			else {

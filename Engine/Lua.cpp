@@ -2,11 +2,18 @@
 #include "lua-5.3.2\src\lstate.h"
 #include <iostream>
 #include "Common.h"
+#include "InputManager.h"
 
-ScriptComponent::ScriptComponent(Script *script) {
+ScriptComponent::ScriptComponent(Script *script, GameObject *parentObject) {
 	_script = script;
 
 	lua_newtable(ENGINE.getLuaInterpreter());
+	//lua_rawgeti(ENGINE.getLuaInterpreter(), LUA_REGISTRYINDEX, _reference);
+	lua_pushlightuserdata(ENGINE.getLuaInterpreter(), parentObject);
+	//printf("\n%i %i\n", lua_tonumber(ENGINE.getLuaInterpreter(), -1), (long)parentObject);
+	lua_setfield(ENGINE.getLuaInterpreter(), -2, "gameObject");
+	// lua_pop(ENGINE.getLuaInterpreter(), 2);
+
 	_reference = luaL_ref(ENGINE.getLuaInterpreter(), LUA_REGISTRYINDEX);
 }
 
@@ -22,7 +29,8 @@ void LuaManager::luaBind(lua_State *interpreter) {
 	luaL_openlibs(interpreter);
 	lua_register(interpreter, "test", &luaTest);
 	lua_register(interpreter, "mprint", &luaPrint);
-	lua_register(interpreter, "setPosition", &luaSetPosition);
+	lua_register(interpreter, "translate", &luaTranslate);
+	lua_register(interpreter, "queryKeyDown", &luaQueryKeyDown);
 }
 
 //calling lua from c++
@@ -46,15 +54,8 @@ void LuaManager::luaParse(lua_State *interpreter, Script *script) {
 	const char *className = lua_tostring(interpreter, -1);
 
 	lua_getglobal(interpreter, className);
-	if (lua_istable(interpreter, -1)) {
-		printf("istable");
-	}
-	script->reference = luaL_ref(interpreter, LUA_REGISTRYINDEX);
 
-//	lua_pop(interpreter, 3);
-	//lua_err
-	//luaL_loadstring(interpreter, script->_contents);
-	//luaL_dofile(interpreter, "data/scripts/player.lua");
+	script->reference = luaL_ref(interpreter, LUA_REGISTRYINDEX);
 }
 
 void LuaManager::luaCall(lua_State *interpreter, ScriptComponent *component, const char* name, float* params, int paramsNum) {
@@ -111,6 +112,19 @@ int LuaManager::luaPrint(lua_State *state) {
 	return 0;
 }
 
-int LuaManager::luaSetPosition(lua_State *state) {
+int LuaManager::luaTranslate(lua_State *state) {
+	GameObject* targetObject = (GameObject*)lua_touserdata(state, -4);
+	float x = lua_tonumber(state, -3);
+	float y = lua_tonumber(state, -2);
+	float z = lua_tonumber(state, -1);
+	targetObject->_Position.x += x;
+	targetObject->_Position.y += y;
+	targetObject->_Position.z += z;
 	return 0;
+}
+
+int LuaManager::luaQueryKeyDown(lua_State *state) {
+	char key = lua_tonumber(state, -1);
+	lua_pushboolean(state, ENGINE.getInputManager()->queryKeyDown(key));
+	return 1;
 }

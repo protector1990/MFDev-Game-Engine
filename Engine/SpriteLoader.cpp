@@ -20,6 +20,10 @@ char* positionZID = "positionZ";
 
 GameObject* SpriteLoader::load(xml_node<char>* configuration) {
 	Sprite* ret = new Sprite();
+	// See where this line will fit best
+	_currentlyLoadingObject = ret;
+
+
 	xml_node<char>* texture_node = configuration->first_node(textureID);
 	char* texture_path = texture_node->value();
 	ret->_texture = ASSET_MANAGER->loadAsset<SDL_Surface>(texture_path);

@@ -144,6 +144,7 @@
     <ClCompile Include="AbstractGameObjectLoader.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameObjectLoaderFactory.cpp" />
+    <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="IOSAssetManager.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="Model3D.cpp" />
@@ -221,6 +222,7 @@
     <ClInclude Include="Engine.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameObjectLoaderFactory.h" />
+    <ClInclude Include="InputManager.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="Lua.h" />
     <ClInclude Include="mhfile.h" />

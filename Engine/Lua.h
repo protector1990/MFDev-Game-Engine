@@ -9,6 +9,8 @@
 #include "..\libs\lua-5.3.2\src\lualib.h"
 #include "..\libs\lua-5.3.2\src\lauxlib.h"
 
+class GameObject;
+
 class Script {
 public:
 	Script(const char *name, const char *contents, int size) :
@@ -28,7 +30,7 @@ public:
 
 class ScriptComponent {
 public:
-	ScriptComponent(Script *script);
+	ScriptComponent(Script *script, GameObject *parentObject);
 
 	Script* getScript();
 	int getReference();
@@ -54,7 +56,8 @@ public:
 	static int luaTest(lua_State*);
 	static int luaGameObjectUpdate(lua_State*);
 	static int luaPrint(lua_State *state);
-	static int luaSetPosition(lua_State *state);
+	static int luaTranslate(lua_State *state);
+	static int luaQueryKeyDown(lua_State *state);
 
 };
 
