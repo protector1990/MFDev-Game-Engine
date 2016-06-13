@@ -53,12 +53,15 @@ public:
 	static void luaParse(lua_State *interpreter, Script *script);
 	void luaLoad(lua_State *interpreter, Script *Script);
 
+	static void initManager(lua_State *interpreter);
+
 	static int luaTest(lua_State*);
 	static int luaGameObjectUpdate(lua_State*);
 	static int luaPrint(lua_State *state);
 	static int luaTranslate(lua_State *state);
+	static int luaGetPosition(lua_State *state);
+	static int luaSetPosition(lua_State *state);
 	static int luaQueryKeyDown(lua_State *state);
-
 };
 
 #endif
