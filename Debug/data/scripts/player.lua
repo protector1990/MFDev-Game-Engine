@@ -2,6 +2,7 @@ player = {}
 
 currentClass = "player"
 extends = "actor"
+
 player.speed_multiplier = 70
 player.lower_bound = -150
 player.is_jumping = false

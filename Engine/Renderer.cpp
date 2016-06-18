@@ -1,3 +1,5 @@
+/**  Copyright 2016 MarFil Studios  **/
+
 #include "Common.h"
 #include "Engine.h"
 #include <SDL.h>

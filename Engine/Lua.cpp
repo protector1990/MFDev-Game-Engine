@@ -13,30 +13,12 @@ ScriptComponent::ScriptComponent(Script *script, GameObject *parentObject) {
 	int tb = lua_rawgeti(interpreter, LUA_REGISTRYINDEX, script->reference);
 	lua_pushnil(interpreter);
 
-	//lua_pop(interpreter, 5);
-	int x = lua_type(interpreter, -1);
-	int y = lua_type(interpreter, -2);
-	const char* yc = lua_tostring(interpreter, -2);
-	int z = lua_type(interpreter, -3);
-	int c = lua_type(interpreter, -4);
-	int v = lua_type(interpreter, -5);
-
 	while (lua_next(interpreter, -2)) {
-		int x = lua_type(interpreter, -1);
-		int y = lua_type(interpreter, -2);
-		const char* yc = lua_tostring(interpreter, -2);
-		int z = lua_type(interpreter, -3);
-		int c = lua_type(interpreter, -4);
-		int v = lua_type(interpreter, -5);
 		lua_setfield(interpreter, -4, lua_tostring(interpreter, -2));
 		//lua_pop(interpreter, 1);
 	}
 
 	lua_pop(interpreter, 1);
-
-
-
-	printf("\n%s\n", lua_tostring(interpreter, -3));
 
 	//lua_rawgeti(ENGINE.getLuaInterpreter(), LUA_REGISTRYINDEX, _reference);
 	lua_pushlightuserdata(interpreter, parentObject);

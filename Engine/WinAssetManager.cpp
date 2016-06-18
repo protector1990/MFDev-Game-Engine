@@ -77,15 +77,11 @@ Script* WinAssetManager::loadLuaScript(const char *path) {
 	PHYSFS_file* file = PHYSFS_openRead(path);
 	if (file) {
 		PHYSFS_sint64 fileSize = PHYSFS_fileLength(file);
-		char* inBuff = new char[fileSize];
-		PHYSFS_read(file, inBuff, fileSize, 1);
+		char* inBuff = new char[fileSize + 1];
+ 		PHYSFS_read(file, inBuff, fileSize, 1);
+		inBuff[fileSize] = 0;
 
-		//Budz fix za cudne karaktere koji se citaju iz fajla skripte
-		int i = fileSize - 1;
-		for (; inBuff[i] != 'd'; i--);
-		inBuff[++i] = '\0';
-
-		Script* ret = new Script(path, inBuff, i);
+		Script* ret = new Script(path, inBuff, fileSize);
 		_loadedScripts.insert(_loadedScripts.end(), ret);
 		LuaManager::luaParse(ENGINE.getLuaInterpreter(), ret);
 		return ret;
@@ -147,13 +143,9 @@ Scene* WinAssetManager::loadScene(const char *path) {
 		PHYSFS_file* file = PHYSFS_openRead(path);
 		if (file) {
 			PHYSFS_sint64 fileSize = PHYSFS_fileLength(file);
-			char* inBuff = new char[fileSize];
+			char* inBuff = new char[fileSize + 1];
 			PHYSFS_read(file, inBuff, fileSize, 1);
-
-			//Budz fix za cudne karaktere koji se citaju iz fajla scene
-			int i = fileSize - 1;
-			for (; inBuff[i] != '>'; i--);
-			inBuff[++i] = '\0';
+			inBuff[fileSize] = 0;
 
 			xml_document<> doc;
 			doc.parse<0>(inBuff);
