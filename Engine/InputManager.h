@@ -1,4 +1,8 @@
-/**  Copyright 2016 MarFil studios  **/
+/**  Copyright 2016 MarFil Studios. All rights reserved.  **/
+
+#ifndef _INPUT_MANAGER_H
+#define _INPUT_MANAGER_H
+
 #include "Common.h"
 #include <set>
 
@@ -12,3 +16,5 @@ protected:
 	std::set<char> _keysDown;
 
 };
+
+#endif

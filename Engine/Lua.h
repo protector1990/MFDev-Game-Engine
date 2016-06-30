@@ -1,4 +1,4 @@
-/**  Copyright 2016 MarFil Studios  **/
+/**  Copyright 2016 MarFil Studios. All rights reserved.  **/
 
 //TODO: Make all of these generic and scripting language independant
 

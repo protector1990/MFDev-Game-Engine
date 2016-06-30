@@ -34,8 +34,6 @@ function player:update(deltaTime)
 	
 	self.local_x, self.local_y, self.local_z = getPosition(self.gameObject)
 	
-	--x = x * self.speed_multiplier * deltaTime
-	--y = y * deltaTime * self.speed
 	if y > 0 and self.is_jumping == false then
 		self.speed_y = self.jumping_speed
 		self.is_jumping = true
@@ -56,8 +54,6 @@ function player:update(deltaTime)
 		speed_sign = 0
 	end
 	local inverse_speed_sign = speed_sign * -1
-	--print ("speed sign, ", speed_sign)
-	--print ("inverse speed sign, ", inverse_speed_sign)
 	
 	local force_x_modifier = 1
 	if speed_sign + x == 0 then
@@ -81,12 +77,12 @@ function player:update(deltaTime)
 		self.speed_x = 0
 	end
 	
-	
 	self.local_x = self.local_x + self.speed_x * deltaTime
 	
-	
-	
+
 	setPosition(self.gameObject, self.local_x, self.local_y, self.local_z)
+	
+	-- This is sample calling of a parent class function
 	self:madd(5, 3)
 	
 end

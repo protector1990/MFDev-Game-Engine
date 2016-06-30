@@ -1,3 +1,5 @@
+/** Copyright 2016 MarFil Studios. All rights reserved. **/
+
 #include "Lua.h"
 #include "lua-5.3.2\src\lstate.h"
 #include <iostream>
@@ -15,16 +17,12 @@ ScriptComponent::ScriptComponent(Script *script, GameObject *parentObject) {
 
 	while (lua_next(interpreter, -2)) {
 		lua_setfield(interpreter, -4, lua_tostring(interpreter, -2));
-		//lua_pop(interpreter, 1);
 	}
 
 	lua_pop(interpreter, 1);
 
-	//lua_rawgeti(ENGINE.getLuaInterpreter(), LUA_REGISTRYINDEX, _reference);
 	lua_pushlightuserdata(interpreter, parentObject);
-	//printf("\n%i %i\n", lua_tonumber(ENGINE.getLuaInterpreter(), -1), (long)parentObject);
 	lua_setfield(interpreter, -2, "gameObject");
-	// lua_pop(ENGINE.getLuaInterpreter(), 2);
 
 	_reference = luaL_ref(interpreter, LUA_REGISTRYINDEX);
 }
@@ -47,17 +45,18 @@ void LuaManager::luaBind(lua_State *interpreter) {
 	lua_register(interpreter, "setPosition", &luaSetPosition);
 }
 
-//calling lua from c++
 void LuaManager::luaExecute(lua_State *interpreter, Script *script) {
 	int res = luaL_loadbufferx(interpreter, script->_contents, script->_size, script->_name, NULL);
 	lua_pcall(interpreter, 0, LUA_MULTRET, 0);
-	//luaL_dofile(interpreter, "some");
 }
+
+//TODO: Clean this up and properly test it. It's bound to have some leaks
 void LuaManager::luaParse(lua_State *interpreter, Script *script) {
 	int res = luaL_loadbufferx(interpreter, script->_contents, script->_size, script->_name, NULL);
 	if (!lua_isfunction(interpreter, -1))
 	{
-		printf("\n\n[C++]: Oops! The lua script '%s' has not been defined", script->_name);
+		printf("[Lua]: Parsing failed for script {%s}", script->_name);
+		return;
 	}
 	lua_pcall(interpreter, 0, 0, 0);
 
@@ -76,7 +75,7 @@ void LuaManager::luaParse(lua_State *interpreter, Script *script) {
 			lua_getglobal(interpreter, extends);
 
 			if (!lua_istable(interpreter, -1)) {
-				printf("\nLua Parsing Error: Parent class not found: %s!\n", extends);
+				printf("[Lua]: Parent class not loaded: {%s}, attempting to load...\n", extends);
 				char* path = new char[64];
 				strcpy(path, "/scripts/");
 				strcat(path, extends);
@@ -85,13 +84,11 @@ void LuaManager::luaParse(lua_State *interpreter, Script *script) {
 				lua_pop(interpreter, 1);
 				lua_getglobal(interpreter, extends);
 				if (!lua_istable(interpreter, -1)) {
-					printf("\nLua Parsing Error: lua script not found: %s!\n", path);
+					printf("\nLua Parsing Error: lua script not found: {%s}!\n", path);
 					lua_pop(interpreter, 1);
 					return;
 				}
 			}
-
-			
 
 			//maybe lua rotate trick?
 			lua_pushnil(interpreter);
@@ -99,10 +96,8 @@ void LuaManager::luaParse(lua_State *interpreter, Script *script) {
 				const char* field = lua_tostring(interpreter, -2);
 				int x = lua_getfield(interpreter, -5, field);
 				if (x == LUA_TNIL) {
-					printf("\nDoesn't exist: %s", field);
 					lua_pop(interpreter, 1);
 					lua_setfield(interpreter, -5, field);
-					//lua_pop(interpreter, 1);
 				}
 				else {
 					lua_pop(interpreter, 2);
@@ -116,51 +111,36 @@ void LuaManager::luaParse(lua_State *interpreter, Script *script) {
 		}
 		const char * x1 = lua_tostring(interpreter, -1);
 		script->reference = luaL_ref(interpreter, LUA_REGISTRYINDEX);
+		printf("[Lua]: Successfully loaded: {%s}\n", className);
 	}
 #if defined(_DEBUG)
 	else {
-		printf("\nLua Parsing Error: class not found: %s!", className);
+		printf("[Lua]: Parsing Error: class not found: {%s}!", className);
 	}
 #endif
-	//lua_pop(interpreter, 1);
 }
 
 void LuaManager::luaCall(lua_State *interpreter, ScriptComponent *component, const char* name, float* params, int paramsNum) {
-	//lua_settop(interpreter, 0);
 	if (!component) {
 		return;
 	}
 
-	//lua_settop(interpreter, 0);
-	//int reference = component->getScript()->reference;
 	lua_rawgeti(interpreter, LUA_REGISTRYINDEX, component->getReference());
-	//if (lua_istable(interpreter, -1)) {
-	//	printf("%i table reference referenced properly", LUA_REGISTRYINDEX);
-	//}
-	
-	int x = lua_getfield(interpreter, -1, name);
 
-	//lua_gettable(interpreter, -2);
-	//lua_insert(interpreter, -2);
+	lua_getfield(interpreter, -1, name);
 
 	if (!lua_isfunction(interpreter, -1))
 	{
-		//printf("\n\n[C++]: Oops! The lua function '%s' has not been defined", name);
+		printf("[Lua]: The lua function {%s} not defined", name);
 	}
 	else {
 		for (int i = 0; i < paramsNum; i++) {
-			//printf("\n%f\n%f\n", *(params + i), params[i]);
 			lua_pushnumber(interpreter, params[i]);
 		}
-		//int b = lua_type(interpreter, -2);
 		lua_rawgeti(interpreter, LUA_REGISTRYINDEX, component->getReference());
-		//int a = lua_type(interpreter, -1);
-		//int b = lua_type(interpreter, -2);
-		//int c = lua_type(interpreter, -3);
 		lua_insert(interpreter, -2);
 		lua_call(interpreter, paramsNum+1, 0);
 		lua_pop(interpreter, paramsNum);
-		//int x = lua_pcall(interpreter, 0, LUA_MULTRET, 0);
 	}
 }
 

@@ -1,3 +1,5 @@
+/** Copyright 2016 MarFil Studios. All rights reserved. **/
+
 #ifndef _Transform_H
 #define _Transform_H
 

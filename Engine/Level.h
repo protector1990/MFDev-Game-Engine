@@ -1,3 +1,8 @@
+/** Copyright 2016 MarFil Studios. All rights reserved. **/
+
+#ifndef _LEVEL_H
+#define _LEVEL_H
+
 #include "Scene.h"
 
 class Level : public Scene {
@@ -6,3 +11,5 @@ public:
 	bool unload(Scene *scene) override;
 	void update(float deltaTime) override;
 };
+
+#endif

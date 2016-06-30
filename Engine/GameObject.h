@@ -1,4 +1,4 @@
-/** Copyright 2016 MarFil Studios **/
+/** Copyright 2016 MarFil Studios. All rights reserved. **/
 
 #ifndef _GameObject_H
 #define _GameObject_H

@@ -1,3 +1,5 @@
+/** Copyright 2016 MarFil Studios. All rights reserved. **/
+
 #include <GL\glew.h>
 #include <glm\glm.hpp>
 #include <vector>

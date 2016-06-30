@@ -1,3 +1,5 @@
+/** Copyright 2016 MarFil Studios. All rights reserved. **/
+
 #include "AssetManager.h"
 
 #ifdef __IOS__

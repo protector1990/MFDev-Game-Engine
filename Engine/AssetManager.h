@@ -1,4 +1,4 @@
-/**  Copyright 2016 MarFil Studios  **/
+/**  Copyright 2016 MarFil Studios. All rights reserved.  **/
 
 #ifndef _ASSET_MANAGER_H
 #define _ASSET_MANAGER_H
@@ -10,6 +10,8 @@
 #include "Model3D.h"
 #include "Scene.h"
 
+//TODO: In current implementation, Asset Manager and Asset Loader funcionalities are inside the same class.
+// Set those tho apart.
 class AssetManager {
 public:
 	AssetManager(){}
@@ -21,7 +23,7 @@ public:
 	template <typename T>
 	T* loadAsset(const char *path);
 public:
-	// Maybe forget the template, since because it cannot be overriden, there must be additional helper function call and
+	// Maybe drop the templates, because there must be an additional helper function call and
 	// junk code added
 	template <> int* loadAsset<int>(const char *path) { return loadInt(path); };
 	template <> SDL_Surface* loadAsset<SDL_Surface>(const char *path){return loadSDL_Surface(path);};

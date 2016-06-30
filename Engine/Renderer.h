@@ -1,4 +1,4 @@
-/**  Copyright 2016 MarFil Studios  **/
+/**  Copyright 2016 MarFil Studios. All rights reserved.  **/
 
 #ifndef _Renderer_H
 #define _Renderer_H

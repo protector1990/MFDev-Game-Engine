@@ -1,3 +1,5 @@
+/** Copyright 2016 MarFil Studios. All rights reserved. **/
+
 #include "AbstractGameObjectLoader.h"
 #include "Common.h"
 
@@ -5,7 +7,6 @@ using namespace rapidxml;
 
 std::vector<ScriptComponent*> AbstractGameObjectLoader::loadLuaComponents(xml_node<char>* configuration) {
 	std::vector<ScriptComponent*> ret;
-	//
 	xml_node<char>* node = configuration->first_node();
 	while (node) {
 		char* x = node->name();

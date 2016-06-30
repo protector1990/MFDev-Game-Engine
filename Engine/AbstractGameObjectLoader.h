@@ -1,3 +1,5 @@
+/** Copyright 2016 MarFil Studios. All rights reserved. **/
+
 #ifndef _AbstractGameObjectLoader_H
 #define _AbstractGameObjectLoader_H
 

@@ -1,3 +1,5 @@
+/** Copyright 2016 MarFil Studios. All rights reserved. **/
+
 #include "Level.h"
 
 Scene* Level::load(const char* cfgPath, bool parallel){

@@ -1,4 +1,4 @@
-/**  Copyright 2016 MarFil Studios  **/
+/**  Copyright 2016 MarFil Studios. All rights reserved.  **/
 
 #include "Common.h"
 #include "Engine.h"
@@ -38,8 +38,8 @@ GLfloat light_position[] = { 10.0, 10.0, 10.0, 1.0 };
 
 void Renderer::init() {
 	//renderer initialization
-	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
-	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
+	//SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
+	//SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
 	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 	gameWindow = SDL_CreateWindow("Game Window", 300, 150, 640, 384, SDL_WINDOW_OPENGL);
 	glContext = SDL_GL_CreateContext(gameWindow);
@@ -56,7 +56,6 @@ void Renderer::init() {
 	//_quads = new vec3[_quadsVertexCapacity];
 	//_trianglesVertexCount = 0;
 	//_quadsVertexCount = 0;
-	//
 	//glGenVertexArrays(sizeof(vec3), &_trianglesGLArray);
 	//glGenVertexArrays(sizeof(vec3), &_quadsGLArray);
 
@@ -117,7 +116,6 @@ void Renderer::render(float deltaTime) {
 	SDL_GL_SwapWindow(gameWindow);
 }
 
-//Will be mostly used for sprites
 void Renderer::addTriangles(vec3 *vertices, int size) {
 	_trianglesVertexCount += size;
 	if (size % 3 != 0) {

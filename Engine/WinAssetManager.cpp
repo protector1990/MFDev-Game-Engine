@@ -1,3 +1,5 @@
+/** Copyright 2016 MarFil Studios. All rights reserved. **/
+
 #define RAPIDXML_NO_EXCEPTIONS
 #include "AssetManager.h"
 #include <physfs.h>
@@ -39,6 +41,7 @@ void WinAssetManager::init() {
 	strcpy(uncompressedDataPath, baseDir);
 	strcat(uncompressedDataPath, "data");
 	PHYSFS_mount(uncompressedDataPath, "/", 1);
+	//We don't want Assimp to handle the file loading on its own. We want all 
 	asset3DImporter.SetIOHandler(new P2AIOSystem());
 }
 

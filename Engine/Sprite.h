@@ -1,3 +1,5 @@
+/** Copyright 2016 MarFil Studios. All rights reserved. **/
+
 #ifndef _Sprite_H
 #define _Sprite_H
 
@@ -10,7 +12,6 @@
 class Sprite : public GameObject {
 	friend class SpriteLoader;
 public:
-	// void load(const char* cfgPath) override;
 	void init() override;
 	void update(float deltaTime) override;
 	void render(Renderer *renderer) override;

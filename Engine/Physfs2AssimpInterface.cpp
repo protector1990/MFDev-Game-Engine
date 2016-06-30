@@ -1,3 +1,5 @@
+/** Copyright 2016 MarFil Studios. All rights reserved. **/
+
 #include "Physfs2AssimpInterface.h"
 
 P2AIOStream::P2AIOStream(const char *filePath) {
@@ -13,7 +15,7 @@ size_t P2AIOStream::Read(void* pvBuffer, size_t pSize, size_t pCount) {
 }
 
 size_t P2AIOStream::Write(const void* pvBuffer, size_t pSize, size_t pCount) {
-	//Pisanje zabranjeno. Dobro nam došo Stole na brod... :D
+	//Writing forbidden. Dobro nam došo Stole na brod... :D
 	return 0;
 }
 
@@ -32,7 +34,7 @@ aiReturn P2AIOStream::Seek(size_t pOffset, aiOrigin pOrigin) {
 	}; break;
 	}
 	if (result) {
-		// Implementirati podršku za aiReturn_OUTOFMEMORY
+		// TODO: Implement support for aiReturn_OUTOFMEMORY
 		return aiReturn_FAILURE;
 	}
 	else {

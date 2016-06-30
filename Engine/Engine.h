@@ -1,4 +1,4 @@
-/**  Copyright 2016 MarFil Studios  **/
+/**  Copyright 2016 MarFil Studios. All rights reserved.  **/
 
 #ifndef _ENGINE_H
 #define _ENGINE_H

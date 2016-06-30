@@ -1,4 +1,7 @@
-/**  Copyright 2016 MarFil Studios  **/
+/**  Copyright 2016 MarFil Studios. All rights reserved.  **/
+
+#ifndef _PHYSFS_2_ASSIMP_INTERFACE_H
+#define _PHYSFS_2_ASSIMP_INTERFACE_H
 
 #include <assimp-3.2\include\assimp\IOStream.hpp>
 #include <assimp-3.2\include\assimp\IOSystem.hpp>
@@ -34,3 +37,5 @@ public:
 	IOStream* Open(const char* pFile, const char* pMode) override;
 	void Close(IOStream* pFile);
 };
+
+#endif

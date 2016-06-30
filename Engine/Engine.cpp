@@ -1,12 +1,11 @@
+/** Copyright 2016 MarFil Studios. All rights reserved. **/
+
 #include "Common.h"
 #include "Engine.h"
 #include <iostream>
 #include <SDL.h>
 #include <SDL_platform.h>
 #include "InputManager.h"
-
-//temp, make this platform independant or remove altogether
-#include <windows.h>
 
 int Engine::run() {
 	_luaInterpreter = luaL_newstate();
