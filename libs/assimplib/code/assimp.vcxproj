@@ -64,19 +64,19 @@
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.dll</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</GenerateManifest>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\Marfil Studios\Engine\trunk\libs\assimplib\code\Release\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\assimplib\code\Release\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">assimp.dir\Release\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">assimp-vc120-mt</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.dll</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</GenerateManifest>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">D:\Marfil Studios\Engine\trunk\libs\assimplib\code\MinSizeRel\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">..\..\assimplib\code\MinSizeRel\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">assimp.dir\MinSizeRel\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">assimp-vc120-mt</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">.dll</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">false</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">true</GenerateManifest>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">D:\Marfil Studios\Engine\trunk\libs\assimplib\code\RelWithDebInfo\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">..\..\assimplib\code\RelWithDebInfo\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">assimp.dir\RelWithDebInfo\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">assimp-vc120-mt</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">.dll</TargetExt>
@@ -103,10 +103,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;OPENDDL_NO_USE_CPP11;ASSIMP_BUILD_BOOST_WORKAROUND;ASSIMP_BUILD_NO_C4D_IMPORTER;ASSIMP_BUILD_DLL_EXPORT;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;OPENDDLPARSER_BUILD;CMAKE_INTDIR=\"Debug\";assimp_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\Marfil Studios\Engine\trunk\libs\assimplib;D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\include;D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\BoostWorkaround;D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\zlib;D:\Marfil Studios\Engine\trunk\libs\assimplib\contrib\zlib;D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\..\contrib\openddlparser\include;D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\..\contrib\unzip;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\assimplib;..\..\assimp-3.2\include;..\..\assimp-3.2\code\BoostWorkaround;..\..\assimp-3.2\contrib\zlib;..\..\assimplib\contrib\zlib;..\..\assimp-3.2\code\..\contrib\openddlparser\include;..\..\assimp-3.2\code\..\contrib\unzip;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>D:\Marfil Studios\Engine\trunk\libs\assimplib;D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\include;D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\BoostWorkaround;D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\zlib;D:\Marfil Studios\Engine\trunk\libs\assimplib\contrib\zlib;D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\..\contrib\openddlparser\include;D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\..\contrib\unzip;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\assimplib;..\..\assimp-3.2\include;..\..\assimp-3.2\code\BoostWorkaround;..\..\assimp-3.2\contrib\zlib;..\..\assimplib\contrib\zlib;..\..\assimp-3.2\code\..\contrib\openddlparser\include;..\..\assimp-3.2\code\..\contrib\unzip;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -131,7 +131,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\Marfil Studios\Engine\trunk\libs\assimplib;D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\include;D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\BoostWorkaround;D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\zlib;D:\Marfil Studios\Engine\trunk\libs\assimplib\contrib\zlib;D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\..\contrib\openddlparser\include;D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\..\contrib\unzip;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\assimplib;..\..\assimp-3.2\include;..\..\assimp-3.2\code\BoostWorkaround;..\..\assimp-3.2\contrib\zlib;..\..\assimplib\contrib\zlib;..\..\assimp-3.2\code\..\contrib\openddlparser\include;..\..\assimp-3.2\code\..\contrib\unzip;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>Release/</AssemblerListingLocation>
       <CompileAs>CompileAsCpp</CompileAs>
       <ExceptionHandling>Sync</ExceptionHandling>
@@ -149,10 +149,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;OPENDDL_NO_USE_CPP11;ASSIMP_BUILD_BOOST_WORKAROUND;ASSIMP_BUILD_NO_C4D_IMPORTER;ASSIMP_BUILD_DLL_EXPORT;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;OPENDDLPARSER_BUILD;CMAKE_INTDIR=\"Release\";assimp_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\Marfil Studios\Engine\trunk\libs\assimplib;D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\include;D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\BoostWorkaround;D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\zlib;D:\Marfil Studios\Engine\trunk\libs\assimplib\contrib\zlib;D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\..\contrib\openddlparser\include;D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\..\contrib\unzip;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\assimplib;..\..\assimp-3.2\include;..\..\assimp-3.2\code\BoostWorkaround;..\..\assimp-3.2\contrib\zlib;..\..\assimplib\contrib\zlib;..\..\assimp-3.2\code\..\contrib\openddlparser\include;..\..\assimp-3.2\code\..\contrib\unzip;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>D:\Marfil Studios\Engine\trunk\libs\assimplib;D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\include;D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\BoostWorkaround;D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\zlib;D:\Marfil Studios\Engine\trunk\libs\assimplib\contrib\zlib;D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\..\contrib\openddlparser\include;D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\..\contrib\unzip;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\assimplib;..\..\assimp-3.2\include;..\..\assimp-3.2\code\BoostWorkaround;..\..\assimp-3.2\contrib\zlib;..\..\assimplib\contrib\zlib;..\..\assimp-3.2\code\..\contrib\openddlparser\include;..\..\assimp-3.2\code\..\contrib\unzip;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -177,7 +177,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\Marfil Studios\Engine\trunk\libs\assimplib;D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\include;D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\BoostWorkaround;D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\zlib;D:\Marfil Studios\Engine\trunk\libs\assimplib\contrib\zlib;D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\..\contrib\openddlparser\include;D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\..\contrib\unzip;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\assimplib;..\..\assimp-3.2\include;..\..\assimp-3.2\code\BoostWorkaround;..\..\assimp-3.2\contrib\zlib;..\..\assimplib\contrib\zlib;..\..\assimp-3.2\code\..\contrib\openddlparser\include;..\..\assimp-3.2\code\..\contrib\unzip;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>MinSizeRel/</AssemblerListingLocation>
       <CompileAs>CompileAsCpp</CompileAs>
       <ExceptionHandling>Sync</ExceptionHandling>
@@ -195,10 +195,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;OPENDDL_NO_USE_CPP11;ASSIMP_BUILD_BOOST_WORKAROUND;ASSIMP_BUILD_NO_C4D_IMPORTER;ASSIMP_BUILD_DLL_EXPORT;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;OPENDDLPARSER_BUILD;CMAKE_INTDIR=\"MinSizeRel\";assimp_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\Marfil Studios\Engine\trunk\libs\assimplib;D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\include;D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\BoostWorkaround;D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\zlib;D:\Marfil Studios\Engine\trunk\libs\assimplib\contrib\zlib;D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\..\contrib\openddlparser\include;D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\..\contrib\unzip;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\assimplib;..\..\assimp-3.2\include;..\..\assimp-3.2\code\BoostWorkaround;..\..\assimp-3.2\contrib\zlib;..\..\assimplib\contrib\zlib;..\..\assimp-3.2\code\..\contrib\openddlparser\include;..\..\assimp-3.2\code\..\contrib\unzip;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>D:\Marfil Studios\Engine\trunk\libs\assimplib;D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\include;D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\BoostWorkaround;D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\zlib;D:\Marfil Studios\Engine\trunk\libs\assimplib\contrib\zlib;D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\..\contrib\openddlparser\include;D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\..\contrib\unzip;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\assimplib;..\..\assimp-3.2\include;..\..\assimp-3.2\code\BoostWorkaround;..\..\assimp-3.2\contrib\zlib;..\..\assimplib\contrib\zlib;..\..\assimp-3.2\code\..\contrib\openddlparser\include;..\..\assimp-3.2\code\..\contrib\unzip;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -223,7 +223,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\Marfil Studios\Engine\trunk\libs\assimplib;D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\include;D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\BoostWorkaround;D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\zlib;D:\Marfil Studios\Engine\trunk\libs\assimplib\contrib\zlib;D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\..\contrib\openddlparser\include;D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\..\contrib\unzip;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\assimplib;..\..\assimp-3.2\include;..\..\assimp-3.2\code\BoostWorkaround;..\..\assimp-3.2\contrib\zlib;..\..\assimplib\contrib\zlib;..\..\assimp-3.2\code\..\contrib\openddlparser\include;..\..\assimp-3.2\code\..\contrib\unzip;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>RelWithDebInfo/</AssemblerListingLocation>
       <CompileAs>CompileAsCpp</CompileAs>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -240,10 +240,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;OPENDDL_NO_USE_CPP11;ASSIMP_BUILD_BOOST_WORKAROUND;ASSIMP_BUILD_NO_C4D_IMPORTER;ASSIMP_BUILD_DLL_EXPORT;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;OPENDDLPARSER_BUILD;CMAKE_INTDIR=\"RelWithDebInfo\";assimp_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\Marfil Studios\Engine\trunk\libs\assimplib;D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\include;D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\BoostWorkaround;D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\zlib;D:\Marfil Studios\Engine\trunk\libs\assimplib\contrib\zlib;D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\..\contrib\openddlparser\include;D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\..\contrib\unzip;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\assimplib;..\..\assimp-3.2\include;..\..\assimp-3.2\code\BoostWorkaround;..\..\assimp-3.2\contrib\zlib;..\..\assimplib\contrib\zlib;..\..\assimp-3.2\code\..\contrib\openddlparser\include;..\..\assimp-3.2\code\..\contrib\unzip;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>D:\Marfil Studios\Engine\trunk\libs\assimplib;D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\include;D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\BoostWorkaround;D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\zlib;D:\Marfil Studios\Engine\trunk\libs\assimplib\contrib\zlib;D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\..\contrib\openddlparser\include;D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\..\contrib\unzip;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\assimplib;..\..\assimp-3.2\include;..\..\assimp-3.2\code\BoostWorkaround;..\..\assimp-3.2\contrib\zlib;..\..\assimplib\contrib\zlib;..\..\assimp-3.2\code\..\contrib\openddlparser\include;..\..\assimp-3.2\code\..\contrib\unzip;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -270,435 +270,435 @@
     
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\fast_atof.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\qnan.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\BaseImporter.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\BaseProcess.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\Importer.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\ScenePrivate.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\ByteSwapper.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\DefaultProgressHandler.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\DefaultIOStream.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\DefaultIOSystem.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\CInterfaceIOWrapper.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\Hash.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\IFF.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\MemoryIOWrapper.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\ParsingUtils.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\StreamReader.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\StreamWriter.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\StringComparison.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\SGSpatialSort.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\VertexTriangleAdjacency.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\GenericProperty.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\SpatialSort.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\SceneCombiner.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\ScenePreprocessor.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\SkeletonMeshBuilder.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\SplitByBoneCountProcess.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\SmoothingGroups.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\StandardShapes.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\TargetAnimation.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\RemoveComments.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\Subdivision.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\Vertex.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\LineSplitter.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\TinyFormatter.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\Profiler.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\LogAux.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\Bitmap.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\XMLTools.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\include\assimp\DefaultLogger.hpp" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\include\assimp\LogStream.hpp" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\include\assimp\Logger.hpp" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\include\assimp\NullLogger.hpp" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\Win32DebugLogStream.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\FileLogStream.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\StdOStreamLogStream.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\BlobIOSystem.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\CalcTangentsProcess.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\ComputeUVMappingProcess.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\ConvertToLHProcess.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\FindDegenerates.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\FindInstancesProcess.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\FindInvalidDataProcess.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\FixNormalsStep.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\GenFaceNormalsProcess.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\GenVertexNormalsProcess.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\PretransformVertices.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\ImproveCacheLocality.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\JoinVerticesProcess.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\LimitBoneWeightsProcess.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\RemoveRedundantMaterials.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\RemoveVCProcess.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\SortByPTypeProcess.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\SplitLargeMeshes.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\TextureTransform.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\TriangulateProcess.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\ValidateDataStructure.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\OptimizeGraph.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\OptimizeMeshes.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\DeboneProcess.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\ProcessHelper.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\PolyTools.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\MakeVerboseFormat.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\MaterialSystem.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\StepExporter.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\3DSHelper.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\3DSLoader.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\3DSExporter.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\ACLoader.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\ASELoader.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\ASEParser.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\AssbinExporter.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\AssbinLoader.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\AssxmlExporter.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\B3DImporter.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\BVHLoader.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\ColladaHelper.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\ColladaLoader.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\ColladaParser.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\ColladaExporter.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\DXFLoader.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\DXFHelper.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\CSMLoader.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\HMPFileData.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\HMPLoader.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\HalfLifeFileData.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\IRRLoader.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\IRRMeshLoader.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\IRRShared.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\LWOAnimation.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\LWOFileData.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\LWOLoader.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\LWSLoader.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\MD2FileData.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\MD2Loader.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\MD2NormalTable.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\MD3FileData.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\MD3Loader.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\MD5Loader.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\MD5Parser.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\MDCFileData.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\MDCLoader.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\MDCNormalTable.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\MDLDefaultColorMap.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\MDLFileData.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\MDLLoader.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\NFFLoader.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\NDOLoader.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\OFFLoader.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\ObjFileData.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\ObjFileImporter.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\ObjFileMtlImporter.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\ObjFileParser.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\ObjTools.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\ObjExporter.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\OgreImporter.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\OgreStructs.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\OgreParsingUtils.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\OgreBinarySerializer.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\OgreXmlSerializer.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\OpenGEXExporter.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\OpenGEXImporter.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\OpenGEXStructs.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\PlyLoader.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\PlyParser.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\PlyExporter.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\MS3DLoader.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\COBLoader.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\COBScene.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\BlenderLoader.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\BlenderDNA.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\BlenderDNA.inl" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\BlenderScene.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\BlenderSceneGen.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\BlenderIntermediate.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\BlenderModifier.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\BlenderBMesh.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\BlenderTessellator.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\IFCLoader.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\IFCReaderGen.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\IFCUtil.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\STEPFile.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\STEPFileReader.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\STEPFileEncoding.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\XGLLoader.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\FBXCompileConfig.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\FBXImporter.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\FBXParser.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\FBXTokenizer.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\FBXImportSettings.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\FBXConverter.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\FBXUtil.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\FBXDocument.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\FBXProperties.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\Q3DLoader.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\Q3BSPFileData.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\Q3BSPFileParser.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\Q3BSPFileImporter.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\Q3BSPZipArchive.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\RawLoader.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\SMDLoader.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\STLLoader.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\STLExporter.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\TerragenLoader.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\UnrealLoader.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\XFileHelper.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\XFileImporter.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\XFileParser.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\XFileExporter.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\irrXMLWrapper.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\irrXML\CXMLReaderImpl.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\irrXML\heapsort.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\irrXML\irrArray.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\irrXML\irrString.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\irrXML\irrTypes.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\irrXML\irrXML.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\ConvertUTF\ConvertUTF.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\unzip\crypt.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\unzip\ioapi.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\unzip\unzip.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\poly2tri\poly2tri\common\shapes.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\poly2tri\poly2tri\common\utils.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\poly2tri\poly2tri\sweep\advancing_front.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\poly2tri\poly2tri\sweep\cdt.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\poly2tri\poly2tri\sweep\sweep.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\poly2tri\poly2tri\sweep\sweep_context.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\clipper\clipper.hpp" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\openddlparser\include\openddlparser\OpenDDLParser.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\openddlparser\include\openddlparser\OpenDDLParserUtils.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\openddlparser\include\openddlparser\OpenDDLCommon.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\openddlparser\include\openddlparser\OpenDDLExport.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\openddlparser\include\openddlparser\DDLNode.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\openddlparser\include\openddlparser\Value.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\BoostWorkaround\boost\math\common_factor_rt.hpp" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\BoostWorkaround\boost\foreach.hpp" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\BoostWorkaround\boost\format.hpp" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\BoostWorkaround\boost\scoped_array.hpp" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\BoostWorkaround\boost\scoped_ptr.hpp" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\BoostWorkaround\boost\shared_array.hpp" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\BoostWorkaround\boost\shared_ptr.hpp" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\BoostWorkaround\boost\make_shared.hpp" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\BoostWorkaround\boost\static_assert.hpp" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\BoostWorkaround\boost\tuple\tuple.hpp" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\include\assimp\anim.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\include\assimp\ai_assert.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\include\assimp\camera.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\include\assimp\color4.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\include\assimp\color4.inl" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\include\assimp\config.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\include\assimp\defs.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\include\assimp\cfileio.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\include\assimp\light.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\include\assimp\material.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\include\assimp\material.inl" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\include\assimp\matrix3x3.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\include\assimp\matrix3x3.inl" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\include\assimp\matrix4x4.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\include\assimp\matrix4x4.inl" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\include\assimp\mesh.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\include\assimp\postprocess.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\include\assimp\quaternion.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\include\assimp\quaternion.inl" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\include\assimp\scene.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\include\assimp\metadata.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\include\assimp\texture.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\include\assimp\types.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\include\assimp\vector2.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\include\assimp\vector2.inl" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\include\assimp\vector3.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\include\assimp\vector3.inl" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\include\assimp\version.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\include\assimp\cimport.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\include\assimp\importerdesc.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\include\assimp\Importer.hpp" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\include\assimp\ProgressHandler.hpp" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\include\assimp\IOStream.hpp" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\include\assimp\IOSystem.hpp" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\include\assimp\cexport.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\include\assimp\Exporter.hpp" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\include\assimp\Compiler\pushpack1.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\include\assimp\Compiler\poppack1.h" />
-    <ClInclude Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\include\assimp\Compiler\pstdint.h" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\Assimp.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\BaseImporter.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\BaseProcess.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\PostStepRegistry.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\ImporterRegistry.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\DefaultIOStream.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\DefaultIOSystem.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\Importer.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\SGSpatialSort.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\VertexTriangleAdjacency.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\SpatialSort.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\SceneCombiner.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\ScenePreprocessor.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\SkeletonMeshBuilder.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\SplitByBoneCountProcess.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\StandardShapes.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\TargetAnimation.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\RemoveComments.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\Subdivision.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\Bitmap.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\Version.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\DefaultLogger.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\Exporter.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\AssimpCExport.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\CalcTangentsProcess.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\ComputeUVMappingProcess.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\ConvertToLHProcess.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\FindDegenerates.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\FindInstancesProcess.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\FindInvalidDataProcess.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\FixNormalsStep.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\GenFaceNormalsProcess.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\GenVertexNormalsProcess.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\PretransformVertices.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\ImproveCacheLocality.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\JoinVerticesProcess.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\LimitBoneWeightsProcess.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\RemoveRedundantMaterials.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\RemoveVCProcess.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\SortByPTypeProcess.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\SplitLargeMeshes.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\TextureTransform.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\TriangulateProcess.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\ValidateDataStructure.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\OptimizeGraph.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\OptimizeMeshes.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\DeboneProcess.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\ProcessHelper.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\MakeVerboseFormat.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\MaterialSystem.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\StepExporter.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\3DSConverter.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\3DSLoader.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\3DSExporter.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\ACLoader.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\ASELoader.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\ASEParser.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\AssbinExporter.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\AssbinLoader.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\AssxmlExporter.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\B3DImporter.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\BVHLoader.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\ColladaLoader.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\ColladaParser.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\ColladaExporter.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\DXFLoader.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\CSMLoader.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\HMPLoader.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\IRRLoader.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\IRRMeshLoader.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\IRRShared.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\LWOAnimation.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\LWOBLoader.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\LWOLoader.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\LWOMaterial.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\LWSLoader.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\MD2Loader.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\MD3Loader.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\MD5Loader.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\MD5Parser.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\MDCLoader.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\MDLLoader.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\MDLMaterialLoader.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\NFFLoader.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\NDOLoader.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\OFFLoader.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\ObjFileImporter.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\ObjFileMtlImporter.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\ObjFileParser.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\ObjExporter.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\OgreImporter.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\OgreStructs.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\OgreBinarySerializer.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\OgreXmlSerializer.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\OgreMaterial.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\OpenGEXExporter.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\OpenGEXImporter.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\PlyLoader.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\PlyParser.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\PlyExporter.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\MS3DLoader.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\COBLoader.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\BlenderLoader.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\BlenderDNA.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\BlenderScene.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\BlenderModifier.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\BlenderBMesh.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\BlenderTessellator.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\IFCLoader.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\IFCReaderGen.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\IFCUtil.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\IFCGeometry.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\IFCMaterial.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\IFCProfile.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\IFCCurve.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\IFCBoolean.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\IFCOpenings.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\STEPFileReader.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\STEPFileEncoding.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\XGLLoader.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\FBXImporter.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\FBXParser.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\FBXTokenizer.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\FBXConverter.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\FBXUtil.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\FBXDocument.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\FBXProperties.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\FBXMeshGeometry.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\FBXMaterial.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\FBXModel.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\FBXAnimation.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\FBXNodeAttribute.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\FBXDeformer.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\FBXBinaryTokenizer.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\FBXDocumentUtil.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\Q3DLoader.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\Q3BSPFileParser.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\Q3BSPFileImporter.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\Q3BSPZipArchive.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\RawLoader.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\SMDLoader.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\STLLoader.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\STLExporter.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\TerragenLoader.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\UnrealLoader.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\XFileImporter.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\XFileParser.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\code\XFileExporter.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\irrXML\irrXML.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\ConvertUTF\ConvertUTF.c">
+    <ClInclude Include="..\..\assimp-3.2\code\fast_atof.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\qnan.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\BaseImporter.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\BaseProcess.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\Importer.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\ScenePrivate.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\ByteSwapper.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\DefaultProgressHandler.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\DefaultIOStream.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\DefaultIOSystem.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\CInterfaceIOWrapper.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\Hash.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\IFF.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\MemoryIOWrapper.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\ParsingUtils.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\StreamReader.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\StreamWriter.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\StringComparison.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\SGSpatialSort.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\VertexTriangleAdjacency.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\GenericProperty.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\SpatialSort.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\SceneCombiner.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\ScenePreprocessor.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\SkeletonMeshBuilder.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\SplitByBoneCountProcess.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\SmoothingGroups.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\StandardShapes.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\TargetAnimation.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\RemoveComments.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\Subdivision.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\Vertex.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\LineSplitter.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\TinyFormatter.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\Profiler.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\LogAux.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\Bitmap.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\XMLTools.h" />
+    <ClInclude Include="..\..\assimp-3.2\include\assimp\DefaultLogger.hpp" />
+    <ClInclude Include="..\..\assimp-3.2\include\assimp\LogStream.hpp" />
+    <ClInclude Include="..\..\assimp-3.2\include\assimp\Logger.hpp" />
+    <ClInclude Include="..\..\assimp-3.2\include\assimp\NullLogger.hpp" />
+    <ClInclude Include="..\..\assimp-3.2\code\Win32DebugLogStream.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\FileLogStream.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\StdOStreamLogStream.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\BlobIOSystem.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\CalcTangentsProcess.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\ComputeUVMappingProcess.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\ConvertToLHProcess.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\FindDegenerates.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\FindInstancesProcess.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\FindInvalidDataProcess.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\FixNormalsStep.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\GenFaceNormalsProcess.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\GenVertexNormalsProcess.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\PretransformVertices.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\ImproveCacheLocality.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\JoinVerticesProcess.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\LimitBoneWeightsProcess.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\RemoveRedundantMaterials.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\RemoveVCProcess.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\SortByPTypeProcess.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\SplitLargeMeshes.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\TextureTransform.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\TriangulateProcess.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\ValidateDataStructure.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\OptimizeGraph.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\OptimizeMeshes.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\DeboneProcess.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\ProcessHelper.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\PolyTools.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\MakeVerboseFormat.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\MaterialSystem.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\StepExporter.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\3DSHelper.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\3DSLoader.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\3DSExporter.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\ACLoader.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\ASELoader.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\ASEParser.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\AssbinExporter.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\AssbinLoader.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\AssxmlExporter.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\B3DImporter.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\BVHLoader.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\ColladaHelper.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\ColladaLoader.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\ColladaParser.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\ColladaExporter.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\DXFLoader.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\DXFHelper.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\CSMLoader.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\HMPFileData.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\HMPLoader.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\HalfLifeFileData.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\IRRLoader.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\IRRMeshLoader.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\IRRShared.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\LWOAnimation.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\LWOFileData.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\LWOLoader.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\LWSLoader.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\MD2FileData.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\MD2Loader.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\MD2NormalTable.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\MD3FileData.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\MD3Loader.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\MD5Loader.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\MD5Parser.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\MDCFileData.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\MDCLoader.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\MDCNormalTable.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\MDLDefaultColorMap.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\MDLFileData.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\MDLLoader.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\NFFLoader.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\NDOLoader.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\OFFLoader.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\ObjFileData.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\ObjFileImporter.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\ObjFileMtlImporter.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\ObjFileParser.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\ObjTools.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\ObjExporter.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\OgreImporter.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\OgreStructs.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\OgreParsingUtils.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\OgreBinarySerializer.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\OgreXmlSerializer.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\OpenGEXExporter.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\OpenGEXImporter.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\OpenGEXStructs.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\PlyLoader.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\PlyParser.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\PlyExporter.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\MS3DLoader.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\COBLoader.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\COBScene.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\BlenderLoader.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\BlenderDNA.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\BlenderDNA.inl" />
+    <ClInclude Include="..\..\assimp-3.2\code\BlenderScene.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\BlenderSceneGen.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\BlenderIntermediate.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\BlenderModifier.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\BlenderBMesh.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\BlenderTessellator.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\IFCLoader.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\IFCReaderGen.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\IFCUtil.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\STEPFile.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\STEPFileReader.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\STEPFileEncoding.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\XGLLoader.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\FBXCompileConfig.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\FBXImporter.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\FBXParser.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\FBXTokenizer.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\FBXImportSettings.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\FBXConverter.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\FBXUtil.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\FBXDocument.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\FBXProperties.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\Q3DLoader.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\Q3BSPFileData.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\Q3BSPFileParser.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\Q3BSPFileImporter.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\Q3BSPZipArchive.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\RawLoader.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\SMDLoader.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\STLLoader.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\STLExporter.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\TerragenLoader.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\UnrealLoader.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\XFileHelper.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\XFileImporter.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\XFileParser.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\XFileExporter.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\irrXMLWrapper.h" />
+    <ClInclude Include="..\..\assimp-3.2\contrib\irrXML\CXMLReaderImpl.h" />
+    <ClInclude Include="..\..\assimp-3.2\contrib\irrXML\heapsort.h" />
+    <ClInclude Include="..\..\assimp-3.2\contrib\irrXML\irrArray.h" />
+    <ClInclude Include="..\..\assimp-3.2\contrib\irrXML\irrString.h" />
+    <ClInclude Include="..\..\assimp-3.2\contrib\irrXML\irrTypes.h" />
+    <ClInclude Include="..\..\assimp-3.2\contrib\irrXML\irrXML.h" />
+    <ClInclude Include="..\..\assimp-3.2\contrib\ConvertUTF\ConvertUTF.h" />
+    <ClInclude Include="..\..\assimp-3.2\contrib\unzip\crypt.h" />
+    <ClInclude Include="..\..\assimp-3.2\contrib\unzip\ioapi.h" />
+    <ClInclude Include="..\..\assimp-3.2\contrib\unzip\unzip.h" />
+    <ClInclude Include="..\..\assimp-3.2\contrib\poly2tri\poly2tri\common\shapes.h" />
+    <ClInclude Include="..\..\assimp-3.2\contrib\poly2tri\poly2tri\common\utils.h" />
+    <ClInclude Include="..\..\assimp-3.2\contrib\poly2tri\poly2tri\sweep\advancing_front.h" />
+    <ClInclude Include="..\..\assimp-3.2\contrib\poly2tri\poly2tri\sweep\cdt.h" />
+    <ClInclude Include="..\..\assimp-3.2\contrib\poly2tri\poly2tri\sweep\sweep.h" />
+    <ClInclude Include="..\..\assimp-3.2\contrib\poly2tri\poly2tri\sweep\sweep_context.h" />
+    <ClInclude Include="..\..\assimp-3.2\contrib\clipper\clipper.hpp" />
+    <ClInclude Include="..\..\assimp-3.2\contrib\openddlparser\include\openddlparser\OpenDDLParser.h" />
+    <ClInclude Include="..\..\assimp-3.2\contrib\openddlparser\include\openddlparser\OpenDDLParserUtils.h" />
+    <ClInclude Include="..\..\assimp-3.2\contrib\openddlparser\include\openddlparser\OpenDDLCommon.h" />
+    <ClInclude Include="..\..\assimp-3.2\contrib\openddlparser\include\openddlparser\OpenDDLExport.h" />
+    <ClInclude Include="..\..\assimp-3.2\contrib\openddlparser\include\openddlparser\DDLNode.h" />
+    <ClInclude Include="..\..\assimp-3.2\contrib\openddlparser\include\openddlparser\Value.h" />
+    <ClInclude Include="..\..\assimp-3.2\code\BoostWorkaround\boost\math\common_factor_rt.hpp" />
+    <ClInclude Include="..\..\assimp-3.2\code\BoostWorkaround\boost\foreach.hpp" />
+    <ClInclude Include="..\..\assimp-3.2\code\BoostWorkaround\boost\format.hpp" />
+    <ClInclude Include="..\..\assimp-3.2\code\BoostWorkaround\boost\scoped_array.hpp" />
+    <ClInclude Include="..\..\assimp-3.2\code\BoostWorkaround\boost\scoped_ptr.hpp" />
+    <ClInclude Include="..\..\assimp-3.2\code\BoostWorkaround\boost\shared_array.hpp" />
+    <ClInclude Include="..\..\assimp-3.2\code\BoostWorkaround\boost\shared_ptr.hpp" />
+    <ClInclude Include="..\..\assimp-3.2\code\BoostWorkaround\boost\make_shared.hpp" />
+    <ClInclude Include="..\..\assimp-3.2\code\BoostWorkaround\boost\static_assert.hpp" />
+    <ClInclude Include="..\..\assimp-3.2\code\BoostWorkaround\boost\tuple\tuple.hpp" />
+    <ClInclude Include="..\..\assimp-3.2\include\assimp\anim.h" />
+    <ClInclude Include="..\..\assimp-3.2\include\assimp\ai_assert.h" />
+    <ClInclude Include="..\..\assimp-3.2\include\assimp\camera.h" />
+    <ClInclude Include="..\..\assimp-3.2\include\assimp\color4.h" />
+    <ClInclude Include="..\..\assimp-3.2\include\assimp\color4.inl" />
+    <ClInclude Include="..\..\assimp-3.2\include\assimp\config.h" />
+    <ClInclude Include="..\..\assimp-3.2\include\assimp\defs.h" />
+    <ClInclude Include="..\..\assimp-3.2\include\assimp\cfileio.h" />
+    <ClInclude Include="..\..\assimp-3.2\include\assimp\light.h" />
+    <ClInclude Include="..\..\assimp-3.2\include\assimp\material.h" />
+    <ClInclude Include="..\..\assimp-3.2\include\assimp\material.inl" />
+    <ClInclude Include="..\..\assimp-3.2\include\assimp\matrix3x3.h" />
+    <ClInclude Include="..\..\assimp-3.2\include\assimp\matrix3x3.inl" />
+    <ClInclude Include="..\..\assimp-3.2\include\assimp\matrix4x4.h" />
+    <ClInclude Include="..\..\assimp-3.2\include\assimp\matrix4x4.inl" />
+    <ClInclude Include="..\..\assimp-3.2\include\assimp\mesh.h" />
+    <ClInclude Include="..\..\assimp-3.2\include\assimp\postprocess.h" />
+    <ClInclude Include="..\..\assimp-3.2\include\assimp\quaternion.h" />
+    <ClInclude Include="..\..\assimp-3.2\include\assimp\quaternion.inl" />
+    <ClInclude Include="..\..\assimp-3.2\include\assimp\scene.h" />
+    <ClInclude Include="..\..\assimp-3.2\include\assimp\metadata.h" />
+    <ClInclude Include="..\..\assimp-3.2\include\assimp\texture.h" />
+    <ClInclude Include="..\..\assimp-3.2\include\assimp\types.h" />
+    <ClInclude Include="..\..\assimp-3.2\include\assimp\vector2.h" />
+    <ClInclude Include="..\..\assimp-3.2\include\assimp\vector2.inl" />
+    <ClInclude Include="..\..\assimp-3.2\include\assimp\vector3.h" />
+    <ClInclude Include="..\..\assimp-3.2\include\assimp\vector3.inl" />
+    <ClInclude Include="..\..\assimp-3.2\include\assimp\version.h" />
+    <ClInclude Include="..\..\assimp-3.2\include\assimp\cimport.h" />
+    <ClInclude Include="..\..\assimp-3.2\include\assimp\importerdesc.h" />
+    <ClInclude Include="..\..\assimp-3.2\include\assimp\Importer.hpp" />
+    <ClInclude Include="..\..\assimp-3.2\include\assimp\ProgressHandler.hpp" />
+    <ClInclude Include="..\..\assimp-3.2\include\assimp\IOStream.hpp" />
+    <ClInclude Include="..\..\assimp-3.2\include\assimp\IOSystem.hpp" />
+    <ClInclude Include="..\..\assimp-3.2\include\assimp\cexport.h" />
+    <ClInclude Include="..\..\assimp-3.2\include\assimp\Exporter.hpp" />
+    <ClInclude Include="..\..\assimp-3.2\include\assimp\Compiler\pushpack1.h" />
+    <ClInclude Include="..\..\assimp-3.2\include\assimp\Compiler\poppack1.h" />
+    <ClInclude Include="..\..\assimp-3.2\include\assimp\Compiler\pstdint.h" />
+    <ClCompile Include="..\..\assimp-3.2\code\Assimp.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\BaseImporter.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\BaseProcess.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\PostStepRegistry.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\ImporterRegistry.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\DefaultIOStream.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\DefaultIOSystem.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\Importer.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\SGSpatialSort.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\VertexTriangleAdjacency.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\SpatialSort.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\SceneCombiner.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\ScenePreprocessor.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\SkeletonMeshBuilder.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\SplitByBoneCountProcess.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\StandardShapes.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\TargetAnimation.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\RemoveComments.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\Subdivision.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\Bitmap.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\Version.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\DefaultLogger.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\Exporter.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\AssimpCExport.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\CalcTangentsProcess.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\ComputeUVMappingProcess.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\ConvertToLHProcess.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\FindDegenerates.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\FindInstancesProcess.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\FindInvalidDataProcess.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\FixNormalsStep.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\GenFaceNormalsProcess.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\GenVertexNormalsProcess.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\PretransformVertices.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\ImproveCacheLocality.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\JoinVerticesProcess.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\LimitBoneWeightsProcess.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\RemoveRedundantMaterials.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\RemoveVCProcess.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\SortByPTypeProcess.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\SplitLargeMeshes.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\TextureTransform.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\TriangulateProcess.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\ValidateDataStructure.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\OptimizeGraph.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\OptimizeMeshes.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\DeboneProcess.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\ProcessHelper.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\MakeVerboseFormat.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\MaterialSystem.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\StepExporter.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\3DSConverter.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\3DSLoader.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\3DSExporter.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\ACLoader.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\ASELoader.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\ASEParser.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\AssbinExporter.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\AssbinLoader.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\AssxmlExporter.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\B3DImporter.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\BVHLoader.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\ColladaLoader.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\ColladaParser.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\ColladaExporter.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\DXFLoader.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\CSMLoader.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\HMPLoader.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\IRRLoader.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\IRRMeshLoader.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\IRRShared.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\LWOAnimation.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\LWOBLoader.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\LWOLoader.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\LWOMaterial.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\LWSLoader.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\MD2Loader.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\MD3Loader.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\MD5Loader.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\MD5Parser.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\MDCLoader.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\MDLLoader.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\MDLMaterialLoader.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\NFFLoader.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\NDOLoader.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\OFFLoader.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\ObjFileImporter.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\ObjFileMtlImporter.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\ObjFileParser.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\ObjExporter.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\OgreImporter.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\OgreStructs.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\OgreBinarySerializer.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\OgreXmlSerializer.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\OgreMaterial.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\OpenGEXExporter.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\OpenGEXImporter.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\PlyLoader.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\PlyParser.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\PlyExporter.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\MS3DLoader.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\COBLoader.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\BlenderLoader.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\BlenderDNA.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\BlenderScene.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\BlenderModifier.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\BlenderBMesh.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\BlenderTessellator.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\IFCLoader.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\IFCReaderGen.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\IFCUtil.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\IFCGeometry.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\IFCMaterial.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\IFCProfile.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\IFCCurve.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\IFCBoolean.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\IFCOpenings.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\STEPFileReader.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\STEPFileEncoding.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\XGLLoader.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\FBXImporter.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\FBXParser.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\FBXTokenizer.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\FBXConverter.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\FBXUtil.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\FBXDocument.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\FBXProperties.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\FBXMeshGeometry.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\FBXMaterial.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\FBXModel.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\FBXAnimation.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\FBXNodeAttribute.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\FBXDeformer.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\FBXBinaryTokenizer.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\FBXDocumentUtil.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\Q3DLoader.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\Q3BSPFileParser.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\Q3BSPFileImporter.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\Q3BSPZipArchive.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\RawLoader.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\SMDLoader.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\STLLoader.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\STLExporter.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\TerragenLoader.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\UnrealLoader.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\XFileImporter.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\XFileParser.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\code\XFileExporter.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\contrib\irrXML\irrXML.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\contrib\ConvertUTF\ConvertUTF.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">CompileAsC</CompileAs>
     </ClCompile>
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\unzip\ioapi.c">
+    <ClCompile Include="..\..\assimp-3.2\contrib\unzip\ioapi.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">CompileAsC</CompileAs>
     </ClCompile>
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\unzip\unzip.c">
+    <ClCompile Include="..\..\assimp-3.2\contrib\unzip\unzip.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">CompileAsC</CompileAs>
     </ClCompile>
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\poly2tri\poly2tri\common\shapes.cc" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\poly2tri\poly2tri\sweep\advancing_front.cc" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\poly2tri\poly2tri\sweep\cdt.cc" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\poly2tri\poly2tri\sweep\sweep.cc" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\poly2tri\poly2tri\sweep\sweep_context.cc" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\clipper\clipper.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\openddlparser\code\OpenDDLParser.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\openddlparser\code\DDLNode.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\openddlparser\code\OpenDDLCommon.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\openddlparser\code\OpenDDLExport.cpp" />
-    <ClCompile Include="D:\Marfil Studios\Engine\trunk\libs\assimp-3.2\contrib\openddlparser\code\Value.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\contrib\poly2tri\poly2tri\common\shapes.cc" />
+    <ClCompile Include="..\..\assimp-3.2\contrib\poly2tri\poly2tri\sweep\advancing_front.cc" />
+    <ClCompile Include="..\..\assimp-3.2\contrib\poly2tri\poly2tri\sweep\cdt.cc" />
+    <ClCompile Include="..\..\assimp-3.2\contrib\poly2tri\poly2tri\sweep\sweep.cc" />
+    <ClCompile Include="..\..\assimp-3.2\contrib\poly2tri\poly2tri\sweep\sweep_context.cc" />
+    <ClCompile Include="..\..\assimp-3.2\contrib\clipper\clipper.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\contrib\openddlparser\code\OpenDDLParser.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\contrib\openddlparser\code\DDLNode.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\contrib\openddlparser\code\OpenDDLCommon.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\contrib\openddlparser\code\OpenDDLExport.cpp" />
+    <ClCompile Include="..\..\assimp-3.2\contrib\openddlparser\code\Value.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="D:/Marfil Studios/Engine/trunk/libs/assimplib/ZERO_CHECK.vcxproj">
