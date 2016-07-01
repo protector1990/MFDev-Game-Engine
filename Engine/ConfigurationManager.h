@@ -1,6 +1,6 @@
 /**  Copyright 2016 MarFil Studios. All rights reserved.  **/
-#ifndef _ConfigurationManager_H
-#define _ConfigurationManager_H
+#ifndef _CONFIGURATION_MANAGER_H
+#define _CONFIGURATION_MANAGER_H
 
 //TODO: Find a better string class
 //#include <string>

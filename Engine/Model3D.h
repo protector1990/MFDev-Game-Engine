@@ -1,5 +1,8 @@
 /** Copyright 2016 MarFil Studios. All rights reserved. **/
 
+#ifndef _MODEL_3D_H
+#define _MODEL_3D_H
+
 #include <GL\glew.h>
 #include <glm\glm.hpp>
 #include <vector>
@@ -24,3 +27,5 @@ struct Model3D {
 	void setUp();
 	void draw();
 };
+
+#endif

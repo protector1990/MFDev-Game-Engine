@@ -1,7 +1,7 @@
 /**  Copyright 2016 MarFil Studios. All rights reserved.  **/
 
-#ifndef _Renderer_H
-#define _Renderer_H
+#ifndef _RENDERER_H
+#define _RENDERER_H
 
 #include <glm\glm.hpp>
 #include <vector>

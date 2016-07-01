@@ -1,7 +1,7 @@
 /** Copyright 2016 MarFil Studios. All rights reserved. **/
 
-#ifndef _GameObject_H
-#define _GameObject_H
+#ifndef _GAME_OBJECT_H
+#define _GAME_OBJECT_H
 
 #include <vector>
 #include "Renderer.h"

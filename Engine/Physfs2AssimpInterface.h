@@ -1,5 +1,7 @@
 /**  Copyright 2016 MarFil Studios. All rights reserved.  **/
 
+//Contains necessary components for interfacing assimp with physfs, assimp physfs to read files through physfs
+
 #ifndef _PHYSFS_2_ASSIMP_INTERFACE_H
 #define _PHYSFS_2_ASSIMP_INTERFACE_H
 

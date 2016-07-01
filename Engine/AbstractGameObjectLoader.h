@@ -1,7 +1,7 @@
 /** Copyright 2016 MarFil Studios. All rights reserved. **/
 
-#ifndef _AbstractGameObjectLoader_H
-#define _AbstractGameObjectLoader_H
+#ifndef _ABSTRACT_GAME_OBJECT_LOADER_H
+#define _ABSTRACT_GAME_OBJECT_LOADER_H
 
 #include "GameObject.h"
 #include <rapidxml-1.13\rapidxml.hpp>

@@ -34,9 +34,7 @@ void Sprite::init() {
 }
 
 void Sprite::update(float deltaTime) {
-	// empty for now
-	//int params[] = { 4 };
-	//LuaManager::luaCall(ENGINE.getLuaInterpreter(), this->getLuaComponent("player.lua"), "someExampleFunction", 0, 0);
+	// TODO: move updating scripts upwards in hierarchy
 	for (unsigned int i = 0; i < _luaComponents.size(); i++) {
 		LuaManager::luaCall(ENGINE.getLuaInterpreter(), _luaComponents[i], "update", &deltaTime, 1);
 	}
@@ -45,6 +43,7 @@ void Sprite::update(float deltaTime) {
 GLuint indices[] = { 0, 1, 2, 3 };
 
 void Sprite::render(Renderer *renderer) {
+	// This code is still very experimental
 	GLenum i;
 	_points[0].x = _points[3].x = _Position.x - _texture->w / 2.f;
 	_points[1].x = _points[2].x = _Position.x + _texture->w / 2.f;

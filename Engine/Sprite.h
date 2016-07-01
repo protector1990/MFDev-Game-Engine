@@ -1,7 +1,7 @@
 /** Copyright 2016 MarFil Studios. All rights reserved. **/
 
-#ifndef _Sprite_H
-#define _Sprite_H
+#ifndef _SPRITE_H
+#define _SPRITE_H
 
 #include "GameObject.h"
 #include <SDL.h>

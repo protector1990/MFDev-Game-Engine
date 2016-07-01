@@ -1,7 +1,7 @@
 /** Copyright 2016 MarFil Studios. All rights reserved. **/
 
-#ifndef _Transform_H
-#define _Transform_H
+#ifndef _TRANSFORM_H
+#define _TRANSFORM_H
 
 #include <glm\glm.hpp>
 #include <glm\gtc\quaternion.hpp>

@@ -1,7 +1,7 @@
 /** Copyright 2016 MarFil Studios. All rights reserved. **/
 
-#ifndef _GameObjectLoaderFactory_H
-#define _GameObjectLoaderFactory_H
+#ifndef _GAME_OBJECT_LOADER_FACTORY_H
+#define _GAME_OBJECT_LOADER_FACTORY_H
 
 //Game Object loaders dependency injection
 

@@ -65,6 +65,7 @@ int Engine::run() {
 			}
 		}
 
+		//Currently only calls Engine::renderScenes()
 		_renderer->render(_deltaTime);
 
 		//this should be either the last command in the loop, or the first

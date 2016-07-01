@@ -1,7 +1,7 @@
 /** Copyright 2016 MarFil Studios. All rights reserved. **/
 
-#ifndef _Scene_H
-#define _Scene_H
+#ifndef _SCENE_H
+#define _SCENE_H
 
 #include "GameObject.h"
 

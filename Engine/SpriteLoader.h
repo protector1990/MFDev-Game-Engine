@@ -1,7 +1,7 @@
 /** Copyright 2016 MarFil Studios. All rights reserved. **/
 
-#ifndef _SpriteLoader_H
-#define _SpriteLoader_H
+#ifndef _SPRITE_LOADER_H
+#define _SPRITE_LOADER_H
 
 #include "AbstractGameObjectLoader.h"
 
