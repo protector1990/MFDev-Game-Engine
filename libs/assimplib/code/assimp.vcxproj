@@ -165,8 +165,8 @@
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImportLibrary>D:/Marfil Studios/Engine/trunk/libs/assimplib/code/Release/assimp-vc120-mt.lib</ImportLibrary>
-      <ProgramDataBaseFile>D:/Marfil Studios/Engine/trunk/libs/assimplib/code/Release/assimp-vc120-mt.pdb</ProgramDataBaseFile>
+      <ImportLibrary>../../assimplib/code/Release/assimp-vc120-mt.lib</ImportLibrary>
+      <ProgramDataBaseFile>../../assimplib/code/Release/assimp-vc120-mt.pdb</ProgramDataBaseFile>
       <SubSystem>Console</SubSystem>
       <Version>
       </Version>
@@ -211,8 +211,8 @@
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImportLibrary>D:/Marfil Studios/Engine/trunk/libs/assimplib/code/MinSizeRel/assimp-vc120-mt.lib</ImportLibrary>
-      <ProgramDataBaseFile>D:/Marfil Studios/Engine/trunk/libs/assimplib/code/MinSizeRel/assimp-vc120-mt.pdb</ProgramDataBaseFile>
+      <ImportLibrary>../../assimplib/code/MinSizeRel/assimp-vc120-mt.lib</ImportLibrary>
+      <ProgramDataBaseFile>../../assimplib/code/MinSizeRel/assimp-vc120-mt.pdb</ProgramDataBaseFile>
       <SubSystem>Console</SubSystem>
       <Version>
       </Version>
@@ -256,8 +256,8 @@
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImportLibrary>D:/Marfil Studios/Engine/trunk/libs/assimplib/code/RelWithDebInfo/assimp-vc120-mt.lib</ImportLibrary>
-      <ProgramDataBaseFile>D:/Marfil Studios/Engine/trunk/libs/assimplib/code/RelWithDebInfo/assimp-vc120-mt.pdb</ProgramDataBaseFile>
+      <ImportLibrary>../../assimplib/code/RelWithDebInfo/assimp-vc120-mt.lib</ImportLibrary>
+      <ProgramDataBaseFile>../../assimplib/code/RelWithDebInfo/assimp-vc120-mt.pdb</ProgramDataBaseFile>
       <SubSystem>Console</SubSystem>
       <Version>
       </Version>
@@ -701,10 +701,10 @@
     <ClCompile Include="..\..\assimp-3.2\contrib\openddlparser\code\Value.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="D:/Marfil Studios/Engine/trunk/libs/assimplib/ZERO_CHECK.vcxproj">
+    <ProjectReference Include="../../assimplib/ZERO_CHECK.vcxproj">
       <Project>9C5A01AC-99A8-3775-B979-D6234BC7A28A</Project>
     </ProjectReference>
-    <ProjectReference Include="D:/Marfil Studios/Engine/trunk/libs/assimplib/contrib/zlib/zlibstatic.vcxproj">
+    <ProjectReference Include="../../assimplib/contrib/zlib/zlibstatic.vcxproj">
       <Project>BE31517D-D09F-3268-A897-CFE08D2A9406</Project>
     </ProjectReference>
   </ItemGroup>
