@@ -24,6 +24,7 @@ int Engine::run() {
 
 
 	_renderer = new Renderer();
+	// TODO: Maybe move init code to constructor?
 	_renderer->init();
 
 	_inputManager = new InputManager();

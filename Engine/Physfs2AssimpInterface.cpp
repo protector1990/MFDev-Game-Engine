@@ -1,6 +1,7 @@
 /** Copyright 2016 MarFil Studios. All rights reserved. **/
 
 #include "Physfs2AssimpInterface.h"
+using namespace Assimp;
 
 P2AIOStream::P2AIOStream(const char *filePath) {
 	file = PHYSFS_openRead(filePath);
@@ -25,21 +26,19 @@ aiReturn P2AIOStream::Seek(size_t pOffset, aiOrigin pOrigin) {
 	switch (pOrigin) {
 	case aiOrigin_SET: {
 		result = PHYSFS_seek(file, pOffset);
-	}; break;
+	} break;
 	case aiOrigin_CUR: {
 		result = PHYSFS_seek(file, PHYSFS_tell(file) + pOffset);
-	}; break;
+	} break;
 	case aiOrigin_END: {
 		result = PHYSFS_seek(file, PHYSFS_fileLength(file) - pOffset);
-	}; break;
+	} break;
 	}
-	if (result) {
-		// TODO: Implement support for aiReturn_OUTOFMEMORY
-		return aiReturn_FAILURE;
-	}
-	else {
+	if (!result) {
 		return aiReturn_SUCCESS;
 	}
+	// TODO: Implement support for aiReturn_OUTOFMEMORY
+	return aiReturn_FAILURE;
 }
 
 size_t P2AIOStream::Tell() const {

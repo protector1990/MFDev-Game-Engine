@@ -38,10 +38,6 @@ GLfloat mat_shininess[] = { 50.0 };
 GLfloat light_position[] = { 10.0, 10.0, 10.0, 1.0 };
 
 void Renderer::init() {
-
-	auto zz = "neki string";
-
-	std::cout << zz << '\n';
 	//renderer initialization
 	//SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
 	//SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);

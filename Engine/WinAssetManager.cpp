@@ -7,11 +7,9 @@
 #include <stdio.h>
 #include <..\include\assimp\Importer.hpp>
 #include <..\include\assimp\scene.h>
-#include <..\include\assimp\postprocess.h>
 #include "Physfs2AssimpInterface.h"
 #include <..\rapidxml-1.13\rapidxml.hpp>
 #include "Sprite.h"
-#include "SpriteLoader.h"
 #include "Level.h"
 #include "GameObjectLoaderFactory.h"
 #include "Common.h"
