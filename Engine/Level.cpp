@@ -3,7 +3,7 @@
 #include "Level.h"
 
 Scene* Level::load(const char* cfgPath, bool parallel){
-	return NULL;
+	return nullptr;
 }
 
 bool Level::unload(Scene* scene) {

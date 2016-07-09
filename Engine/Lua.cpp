@@ -46,13 +46,13 @@ void LuaManager::luaBind(lua_State *interpreter) {
 }
 
 void LuaManager::luaExecute(lua_State *interpreter, Script *script) {
-	int res = luaL_loadbufferx(interpreter, script->_contents, script->_size, script->_name, NULL);
+	int res = luaL_loadbufferx(interpreter, script->_contents, script->_size, script->_name, nullptr);
 	lua_pcall(interpreter, 0, LUA_MULTRET, 0);
 }
 
 //TODO: Clean this up and properly test it. It's bound to have some leaks
 void LuaManager::luaParse(lua_State *interpreter, Script *script) {
-	int res = luaL_loadbufferx(interpreter, script->_contents, script->_size, script->_name, NULL);
+	int res = luaL_loadbufferx(interpreter, script->_contents, script->_size, script->_name, nullptr);
 	if (!lua_isfunction(interpreter, -1))
 	{
 		printf("[Lua]: Parsing failed for script {%s}", script->_name);
@@ -156,7 +156,7 @@ int LuaManager::luaPrint(lua_State *state) {
 }
 
 int LuaManager::luaTranslate(lua_State *state) {
-	GameObject* targetObject = (GameObject*)lua_touserdata(state, -4);
+	GameObject* targetObject = static_cast<GameObject*>(lua_touserdata(state, -4));
 	float x = lua_tonumber(state, -3);
 	float y = lua_tonumber(state, -2);
 	float z = lua_tonumber(state, -1);
@@ -167,7 +167,7 @@ int LuaManager::luaTranslate(lua_State *state) {
 }
 
 int LuaManager::luaSetPosition(lua_State *state) {
-	GameObject* targetObject = (GameObject*)lua_touserdata(state, -4);
+	GameObject* targetObject = static_cast<GameObject*>(lua_touserdata(state, -4));
 	float x = lua_tonumber(state, -3);
 	float y = lua_tonumber(state, -2);
 	float z = lua_tonumber(state, -1);
@@ -178,7 +178,7 @@ int LuaManager::luaSetPosition(lua_State *state) {
 }
 
 int LuaManager::luaGetPosition(lua_State *state) {
-	GameObject* targetObject = (GameObject*)lua_touserdata(state, -1);
+	GameObject* targetObject = static_cast<GameObject*>(lua_touserdata(state, -1));
 	lua_pushnumber(state, targetObject->_Position.x);
 	lua_pushnumber(state, targetObject->_Position.y);
 	lua_pushnumber(state, targetObject->_Position.z);

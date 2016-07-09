@@ -417,9 +417,6 @@
     <ClInclude Include="3DAsset.h">
       <Filter>Engine</Filter>
     </ClInclude>
-    <ClInclude Include="AssetManager.h">
-      <Filter>Engine</Filter>
-    </ClInclude>
     <ClInclude Include="Common.h">
       <Filter>Engine</Filter>
     </ClInclude>
@@ -470,6 +467,9 @@
     </ClInclude>
     <ClInclude Include="Transform.h">
       <Filter>Engine\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="AssetManager.h">
+      <Filter>Engine\AssetManagers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

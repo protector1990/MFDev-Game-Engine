@@ -15,7 +15,7 @@
 class AssetManager {
 public:
 	AssetManager(){}
-	~AssetManager(){}
+	virtual ~AssetManager(){}
 	
 	virtual void init() = 0;
 	virtual void deInit() = 0;

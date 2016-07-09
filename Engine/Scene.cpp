@@ -5,15 +5,18 @@
 #include "Lua.h"
 
 GameObject* Scene::makeNewObject() {
-	return NULL;
+	//Not Implemented
+	return nullptr;
 }
 std::vector<GameObject*> Scene::getObjectsWithTags(int tags) {
+	//Not Implemented
 	std::vector<GameObject*> a;
 	return a;
 }
 // Load assets and instantiate game objects
 Scene* Scene::load(const char *cfgPath, bool parallel) {
-	return NULL;
+	//Not Implemented
+	return nullptr;
 }
 bool Scene::unload(Scene *scene) {
 	return false;

@@ -20,12 +20,12 @@ void Model3D::setUp() {
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(GLuint), &indices[0], GL_STATIC_DRAW);
 
 	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(0, 3, GL_FLOAT, false, sizeof(Vertex), (GLvoid*)0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, false, sizeof(Vertex), nullptr);
 
 	// Vertex Normals
 	glEnableVertexAttribArray(1);
 	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex),
-		(GLvoid*)offsetof(Vertex, normal));
+		reinterpret_cast<GLvoid*>(offsetof(Vertex, normal)));
 	//glNormalPointer(GL_FLOAT, sizeof(Vertex), (GLvoid*)offsetof(Vertex, normal));
 	// Vertex Texture Coords
 	//glEnableVertexAttribArray(2);7glNormalPointer(GL_FLOAT, sizeof(Vertex), (GLvoid*)&(vertices[0].normal));

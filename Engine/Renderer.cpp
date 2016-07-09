@@ -10,13 +10,14 @@
 #include <glm\gtc\matrix_access.hpp>
 #include <glm\gtc\matrix_transform.hpp>
 #include "Sprite.h"
+#include <iostream>
 
 using namespace std;
 using namespace glm;
 
-SDL_Window *gameWindow = 0;
-SDL_Surface *screenSurface = 0;
-SDL_Surface *image = 0;
+SDL_Window *gameWindow = nullptr;
+SDL_Surface *screenSurface = nullptr;
+SDL_Surface *image = nullptr;
 Asset3D* model;
 Model3D* meshModel;
 SDL_GLContext glContext;
@@ -37,6 +38,10 @@ GLfloat mat_shininess[] = { 50.0 };
 GLfloat light_position[] = { 10.0, 10.0, 10.0, 1.0 };
 
 void Renderer::init() {
+
+	auto zz = "neki string";
+
+	std::cout << zz << '\n';
 	//renderer initialization
 	//SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
 	//SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
@@ -56,8 +61,8 @@ void Renderer::init() {
 	//_quads = new vec3[_quadsVertexCapacity];
 	//_trianglesVertexCount = 0;
 	//_quadsVertexCount = 0;
-	//glGenVertexArrays(sizeof(vec3), &_trianglesGLArray);
-	//glGenVertexArrays(sizeof(vec3), &_quadsGLArray);
+	glGenVertexArrays(1, &_trianglesGLArray);
+	glGenVertexArrays(1, &_quadsGLArray);
 
 	//SDL_GL_SetSwapInterval(1);
 	//screenSurface = SDL_GetWindowSurface(gameWindow);

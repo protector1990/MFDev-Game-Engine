@@ -31,7 +31,7 @@ namespace rapidxml
 }
 
 void WinAssetManager::init() {
-	PHYSFS_init(0);
+	PHYSFS_init(nullptr);
 	const char *baseDir = PHYSFS_getBaseDir();
 	char *dataPath = new char[strlen(baseDir) + 9];
 	strcpy(dataPath, baseDir);
@@ -41,7 +41,7 @@ void WinAssetManager::init() {
 	strcpy(uncompressedDataPath, baseDir);
 	strcat(uncompressedDataPath, "data");
 	PHYSFS_mount(uncompressedDataPath, "/", 1);
-	//We don't want Assimp to handle the file loading on its own. We want all 
+	//We don't want Assimp to handle the file loading on its own. We want all loading to go through physfs
 	asset3DImporter.SetIOHandler(new P2AIOSystem());
 }
 
@@ -66,7 +66,7 @@ SDL_Surface* WinAssetManager::loadSDL_Surface(const char *path) {
 		return SDL_LoadBMP_RW(rw, 1);
 	}
 	else {
-		return NULL;
+		return nullptr;
 	}
 }
 
@@ -90,16 +90,15 @@ Script* WinAssetManager::loadLuaScript(const char *path) {
 		return ret;
 	}
 	else {
-		return NULL;
+		return nullptr;
 	}
 }
 
 // A more generic way of loading 3D assets. Will load whole scene
 Asset3D* WinAssetManager::loadAsset3D(const char *path) {
-	const aiScene* temp = asset3DImporter.ReadFile(path, 0);
+	aiScene* temp = const_cast<aiScene*>(asset3DImporter.ReadFile(path, 0));
 	Asset3D* ret = new Asset3D();
-	//We do not want const aiScene
-	ret->scene = new aiScene(*temp);
+	ret->scene = temp;
 	return ret;
 }
 
@@ -108,7 +107,7 @@ Asset3D* WinAssetManager::loadAsset3D(const char *path) {
 Model3D* WinAssetManager::loadModel3D(const char *path) {
 	const aiScene* temp = asset3DImporter.ReadFile(path, 0);
 	if (!(temp->HasMeshes())) {
-		return NULL;
+		return nullptr;
 	}
 	Model3D* ret = new Model3D();
 	aiMesh* currentMesh = temp->mMeshes[0];
@@ -154,7 +153,7 @@ Scene* WinAssetManager::loadScene(const char *path) {
 			doc.parse<0>(inBuff);
 			xml_node<char>* mScene = doc.first_node("mscene");
 			if (mScene)	{
-				Scene* ret;
+				Scene* ret = nullptr;
 				//Get scene type and make a new scene object
 				if (strcmp(mScene->first_attribute("type")->value(), "Level") == 0) {
 					ret = new Level();
@@ -173,13 +172,11 @@ Scene* WinAssetManager::loadScene(const char *path) {
 				}
 				return ret;
 			}
-			return NULL;
+			return nullptr;
 		}
-		else {
-			return NULL;
-		}
+		return nullptr;
 	}
-	return NULL;
+	return nullptr;
 }
 
 

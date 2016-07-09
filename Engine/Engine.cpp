@@ -84,9 +84,7 @@ void Engine::renderScenes() {
 	}
 }
 
-Engine::Engine() {
-
-}
+Engine::Engine(): _luaInterpreter(nullptr), _renderer(nullptr), _assetManager(nullptr), _inputManager(nullptr), _deltaTime(0) {}
 
 Engine::~Engine() {
 
