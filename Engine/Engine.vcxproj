@@ -148,6 +148,7 @@
     <ClCompile Include="IOSAssetManager.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="Model3D.cpp" />
+    <ClCompile Include="NavGrid.cpp" />
     <ClCompile Include="Physfs2AssimpInterface.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Sprite.cpp" />
@@ -227,6 +228,8 @@
     <ClInclude Include="Lua.h" />
     <ClInclude Include="mhfile.h" />
     <ClInclude Include="Model3D.h" />
+    <ClInclude Include="NavAgent.h" />
+    <ClInclude Include="NavGrid.h" />
     <ClInclude Include="Physfs2AssimpInterface.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="Scene.h" />

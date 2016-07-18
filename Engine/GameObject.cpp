@@ -2,6 +2,31 @@
 
 #include "GameObject.h"
 
+GameObject::~GameObject() {
+}
+
+unsigned GameObject::getTag() const {
+	return _tag;
+}
+
+void GameObject::setTag(unsigned tag) {
+	_tag = tag;
+}
+
+bool GameObject::compareTag(unsigned tag) const {
+	// Redesign this. Currently, works by asking if object contains any of the tags.
+	// Maybe introduce both && and || logic
+	if (_tag & tag)
+	{
+		return true;
+	}
+	return false;
+}
+
+void GameObject::appendTag(unsigned tag) {
+	_tag |= tag;
+}
+
 GameObject* GameObject::getRoot() {
 	if (_parent) {
 		return _parent->getRoot();
@@ -24,6 +49,7 @@ ScriptComponent* GameObject::getLuaComponent(const char* name) {
 			return _luaComponents[i];
 		}
 	}
+	return nullptr;
 }
 
 void GameObject::keyPressed(int keyPressed){

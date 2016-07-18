@@ -8,9 +8,16 @@ GameObject* Scene::makeNewObject() {
 	//Not Implemented
 	return nullptr;
 }
-std::vector<GameObject*> Scene::getObjectsWithTags(int tags) {
-	//Not Implemented
+std::vector<GameObject*> Scene::getObjectsWithTags(unsigned tags) {
 	std::vector<GameObject*> a;
+	size_t objSize = _gameObjects.size();
+	for (size_t i = 0; i < objSize; ++i)
+	{
+		if (_gameObjects[i]->compareTag(tags))
+		{
+			a.push_back(_gameObjects[i]);
+		}
+	}
 	return a;
 }
 // Load assets and instantiate game objects

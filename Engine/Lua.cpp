@@ -1,7 +1,7 @@
 /** Copyright 2016 MarFil Studios. All rights reserved. **/
 
 #include "Lua.h"
-#include "lua-5.3.2\src\lstate.h"
+#include <lua-5.3.2/src/lstate.h>
 #include <iostream>
 #include "Common.h"
 #include "InputManager.h"
@@ -27,11 +27,11 @@ ScriptComponent::ScriptComponent(Script *script, GameObject *parentObject) {
 	_reference = luaL_ref(interpreter, LUA_REGISTRYINDEX);
 }
 
-int ScriptComponent::getReference() {
+int ScriptComponent::getReference() const {
 	return _reference;
 }
 
-Script* ScriptComponent::getScript() {
+Script* ScriptComponent::getScript() const {
 	return _script;
 }
 
@@ -76,7 +76,7 @@ void LuaManager::luaParse(lua_State *interpreter, Script *script) {
 
 			if (!lua_istable(interpreter, -1)) {
 				printf("[Lua]: Parent class not loaded: {%s}, attempting to load...\n", extends);
-				char* path = new char[64];
+				char path[64];
 				strcpy(path, "/scripts/");
 				strcat(path, extends);
 				strcat(path, ".lua");

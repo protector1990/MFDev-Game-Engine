@@ -277,6 +277,9 @@
     <ClCompile Include="InputManager.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
+    <ClCompile Include="NavGrid.cpp">
+      <Filter>Engine\GameObjects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\libs\lua-5.3.2\src\lapi.h">
@@ -470,6 +473,12 @@
     </ClInclude>
     <ClInclude Include="AssetManager.h">
       <Filter>Engine\AssetManagers</Filter>
+    </ClInclude>
+    <ClInclude Include="NavAgent.h">
+      <Filter>Engine\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="NavGrid.h">
+      <Filter>Engine\GameObjects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

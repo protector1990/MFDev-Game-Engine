@@ -131,7 +131,7 @@ void Renderer::addTriangles(vec3 *vertices, int size) {
 			for (int j = 0; j < _trianglesVertexCapacity - 1; j++) {
 				newTriangles[j] = _triangles[j];
 			}
-			delete[_trianglesVertexCount - 1] _triangles;
+			delete[] _triangles;
 			_triangles = newTriangles;
 		}
 		_triangles[_trianglesVertexCount] = *vertices;
@@ -152,7 +152,7 @@ void Renderer::addQuads(vec3 *vertices, int size) {
 			for (int j = 0; j < _quadsVertexCapacity - 1; j++) {
 				newQuads[j] = _quads[j];
 			}
-			delete[_quadsVertexCount - 1] _quads;
+			delete[] _quads;
 			_quads = newQuads;
 		}
 		_quads[_quadsVertexCount] = *vertices;

@@ -50,7 +50,7 @@ int Engine::run() {
 				}
 				_inputManager->keyPressed(sdlEvent.key.keysym.sym);
 			}
-			if (sdlEvent.type == SDL_KEYUP){
+			if (sdlEvent.type == SDL_KEYUP) {
 				int keyDown = sdlEvent.key.keysym.sym;
 				for (unsigned int i = 0; i < _scenes.size(); i++){
 					_scenes[i]->keyPressed(keyDown);

@@ -9,7 +9,7 @@
 #include <glm\glm.hpp>
 #include <SDL_opengl.h>
 
-class Sprite : public GameObject {
+class Sprite : public virtual GameObject {
 	friend class SpriteLoader;
 public:
 	void init() override;

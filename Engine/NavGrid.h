@@ -1,0 +1,46 @@
+/** Copyright 2016 MarFil Studios. All rights reserved. **/
+
+#ifndef _NAV_GRID_H
+#define _NAV_GRID_H
+
+#include "Common.h"
+#include "GameObject.h"
+#include <glm/glm.hpp>
+
+struct NavPoint {
+	glm::vec3 _position;
+	std::vector <NavPoint*> _neighbours;
+	NavPoint();
+	NavPoint(const NavPoint& other);
+	NavPoint(glm::vec3 &position, std::vector<NavPoint*> neighbours);
+	NavPoint(const glm::vec3 &position);
+};
+
+class NavPath {
+	// Implement each NavPath as a fixed size reusable collection of NavPoints. Grow only as needed, remove visited nodes
+	// and keep a pointer to next target node. That is a general plan
+protected:
+	
+};
+
+class NavGrid : public GameObject {
+public:
+	explicit NavGrid()
+		: _sampleDensity(10),
+		  _initialized(false) {}
+
+	void getNavPath(glm::vec3 start, glm::vec3 end, NavPath &out) const;
+	~NavGrid() override;
+	void init() override;
+	void update(float deltaTime) override;
+	void render(Renderer* renderer) override;
+	void setSampleDensity(int density);
+	void setBorders(glm::vec4 borders);
+protected:
+	std::vector <NavPoint*> _navPoints;
+	int _sampleDensity; // How dense should the grid place waypoints
+	bool _initialized;
+	glm::vec4 _borders;
+};
+
+#endif

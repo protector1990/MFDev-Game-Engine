@@ -5,10 +5,10 @@
 #include <physfs.h>
 #include <string>
 #include <stdio.h>
-#include <..\include\assimp\Importer.hpp>
-#include <..\include\assimp\scene.h>
+#include "../include/assimp/Importer.hpp"
+#include "../include/assimp/scene.h"
 #include "Physfs2AssimpInterface.h"
-#include <..\rapidxml-1.13\rapidxml.hpp>
+#include "../rapidxml-1.13/rapidxml.hpp"
 #include "Sprite.h"
 #include "Level.h"
 #include "GameObjectLoaderFactory.h"
@@ -41,6 +41,8 @@ void WinAssetManager::init() {
 	PHYSFS_mount(uncompressedDataPath, "/", 1);
 	//We don't want Assimp to handle the file loading on its own. We want all loading to go through physfs
 	asset3DImporter.SetIOHandler(new P2AIOSystem());
+	delete[] uncompressedDataPath;
+	delete[] dataPath;
 }
 
 void WinAssetManager::deInit() {
@@ -104,7 +106,7 @@ Asset3D* WinAssetManager::loadAsset3D(const char *path) {
 // Finish this to be able to load vertex colors, skeletal animations and so on
 Model3D* WinAssetManager::loadModel3D(const char *path) {
 	const aiScene* temp = asset3DImporter.ReadFile(path, 0);
-	if (!(temp->HasMeshes())) {
+	if (!temp->HasMeshes()) {
 		return nullptr;
 	}
 	Model3D* ret = new Model3D();

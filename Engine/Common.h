@@ -4,8 +4,21 @@
 #define _COMMON_H
 
 #include "Engine.h"
+#include <hash_map>
 
-#define ASSET_MANAGER Engine::getInstance().getAssetManager()
+// Common shortcuts
 #define ENGINE Engine::getInstance()
+#define ASSET_MANAGER ENGINE.getAssetManager()
+
+//Predefined tags
+#define TAG_NAV_OBSTACLE 1u
+//#define TAG_NEXT 2u
+//#define TAG_NEXT 4u
+//#define TAG_NEXT 8u
+//#define TAG_NEXT 16u
+//#define TAG_NEXT 32u
+//#define TAG_NEXT 64u
+//#define TAG_NEXT 128u
+//#define TAG_NEXT 256u
 
 #endif

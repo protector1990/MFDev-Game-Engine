@@ -13,6 +13,8 @@ public:
 	void keyReleased(char key);
 protected:
 	//TODO: Use some kind of map
+	//We would benefit from having a copy of this in a LUA table somewhere, or lua callbacks \
+	  current system for querying for every key in every frame is inefficient.
 	std::set<char> _keysDown;
 
 };

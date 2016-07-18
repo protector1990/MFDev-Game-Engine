@@ -1,6 +1,6 @@
 /** Copyright 2016 MarFil Studios. All rights reserved. **/
 
-#include <GL\glew.h> 
+#include <GL/glew.h>
 #include "Sprite.h"
 #include <stdexcept>
 #include "Common.h"

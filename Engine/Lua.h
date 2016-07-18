@@ -16,8 +16,8 @@ public:
 	Script(const char *name, const char *contents, int size) :
 		_name(name),
 		_contents(contents),
-		_size(size)
-	{}
+		_size(size), 
+		reference(0) {}
 	~Script() {
 		delete[] _contents;
 		delete[] _name;
@@ -32,8 +32,8 @@ class ScriptComponent {
 public:
 	ScriptComponent(Script *script, GameObject *parentObject);
 
-	Script* getScript();
-	int getReference();
+	Script* getScript() const;
+	int getReference() const;
 
 private:
 	Script *_script;

@@ -19,7 +19,7 @@ class Scene {
 	friend class WinAssetManager;
 public:
 	GameObject* makeNewObject();
-	std::vector<GameObject*> getObjectsWithTags(int tags);
+	std::vector<GameObject*> getObjectsWithTags(unsigned tags);
 	// Load assets and instantiate game objects
 	virtual Scene* load(const char *cfgPath, bool parallel);
 	virtual bool unload(Scene *scene);
