@@ -41,6 +41,7 @@ void WinAssetManager::init() {
 	PHYSFS_mount(uncompressedDataPath, "/", 1);
 	//We don't want Assimp to handle the file loading on its own. We want all loading to go through physfs
 	asset3DImporter.SetIOHandler(new P2AIOSystem());
+	//TODO: implement string pooling
 	delete[] uncompressedDataPath;
 	delete[] dataPath;
 }

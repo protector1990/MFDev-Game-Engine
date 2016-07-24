@@ -32,6 +32,9 @@
     <Filter Include="Engine\Components">
       <UniqueIdentifier>{690a65b6-e5bf-4209-913f-776e10a81f08}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\DataStructures">
+      <UniqueIdentifier>{47023df7-3aa4-4ba1-b23a-0293927a086c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -479,6 +482,24 @@
     </ClInclude>
     <ClInclude Include="NavGrid.h">
       <Filter>Engine\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Area.h">
+      <Filter>Engine\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Component.h">
+      <Filter>Engine\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="PriorityQueue.h">
+      <Filter>Engine\DataStructures</Filter>
+    </ClInclude>
+    <ClInclude Include="ICollection.h">
+      <Filter>Engine\DataStructures</Filter>
+    </ClInclude>
+    <ClInclude Include="IComparer.h">
+      <Filter>Engine\DataStructures</Filter>
+    </ClInclude>
+    <ClInclude Include="Mixed.h">
+      <Filter>Engine\DataStructures</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

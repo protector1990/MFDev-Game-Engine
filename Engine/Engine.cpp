@@ -6,8 +6,43 @@
 #include <SDL.h>
 #include <SDL_platform.h>
 #include "InputManager.h"
+#include "PriorityQueue.h"
+
+void printQueue(PriorityQueue<int>* arg) {
+	for (size_t i = 1; i <= arg->size(); ++i)
+	{
+		printf("%i ", arg->_array[i]);
+	}
+	printf("\n");
+}
+
+void testbed() {
+	PriorityQueue<int> queue;
+	queue.insert(5);
+	printQueue(&queue);
+	queue.insert(7);
+	printQueue(&queue);
+	queue.insert(3);
+	printQueue(&queue);
+	queue.insert(1);
+	printQueue(&queue);
+	queue.insert(6);
+	printQueue(&queue);
+	queue.insert(9);
+	printQueue(&queue);
+	queue.insert(4);
+	printQueue(&queue);
+	queue.insert(11);
+	printQueue(&queue);
+	queue.pop();
+	printQueue(&queue);
+	system("pause");
+}
 
 int Engine::run() {
+#ifdef _DEBUG
+	testbed();
+#endif
 	_luaInterpreter = luaL_newstate();
 	luaL_openlibs(_luaInterpreter);
 	LuaManager::luaBind(_luaInterpreter);
