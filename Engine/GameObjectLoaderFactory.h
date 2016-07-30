@@ -9,6 +9,6 @@
 
 class GameObjectLoaderFactory {
 public:
-	AbstractGameObjectLoader* getGameObjectLoader(const char *type);
+	AbstractGameObjectLoader* getGameObjectLoader(const char *type) const;
 };
 #endif

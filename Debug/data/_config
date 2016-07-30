@@ -1,0 +1,5 @@
+<config>
+	<scenes>
+		<scene orderNum="0" name="test">scenes/TestScene/TestScene.level</scene>
+	</scenes>
+</config>

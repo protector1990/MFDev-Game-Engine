@@ -142,6 +142,8 @@
     <ClCompile Include="..\libs\physfs-2.0.3\zutil.c" />
     <ClCompile Include="3DAsset.cpp" />
     <ClCompile Include="AbstractGameObjectLoader.cpp" />
+    <ClCompile Include="Area.cpp" />
+    <ClCompile Include="ConfigurationManager.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameObjectLoaderFactory.cpp" />
     <ClCompile Include="InputManager.cpp" />
@@ -241,11 +243,15 @@
     <ClInclude Include="Scene.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="SpriteLoader.h" />
+    <ClInclude Include="TextAsset.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="Transform.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\libs\physfs-2.0.3\LICENSE.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

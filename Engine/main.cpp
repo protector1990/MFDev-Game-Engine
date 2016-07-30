@@ -5,6 +5,6 @@
 
 int main(int argc, char **argv) {
 	Engine* m_Engine = &Engine::getInstance();
-	m_Engine->run();
+	m_Engine->run(argc, argv);
 	return 0;
 }

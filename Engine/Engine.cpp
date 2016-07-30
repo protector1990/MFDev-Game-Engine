@@ -9,37 +9,37 @@
 #include "PriorityQueue.h"
 
 void printQueue(PriorityQueue<int>* arg) {
-	for (size_t i = 1; i <= arg->size(); ++i)
-	{
-		printf("%i ", arg->_array[i]);
-	}
-	printf("\n");
+	//for (size_t i = 1; i <= arg->size(); ++i)
+	//{
+	//	printf("%i ", arg->_array[i]);
+	//}
+	//printf("\n");
 }
 
 void testbed() {
-	PriorityQueue<int> queue;
-	queue.insert(5);
-	printQueue(&queue);
-	queue.insert(7);
-	printQueue(&queue);
-	queue.insert(3);
-	printQueue(&queue);
-	queue.insert(1);
-	printQueue(&queue);
-	queue.insert(6);
-	printQueue(&queue);
-	queue.insert(9);
-	printQueue(&queue);
-	queue.insert(4);
-	printQueue(&queue);
-	queue.insert(11);
-	printQueue(&queue);
-	queue.pop();
-	printQueue(&queue);
-	system("pause");
+	//PriorityQueue<int> queue;
+	//queue.insert(5);
+	//printQueue(&queue);
+	//queue.insert(7);
+	//printQueue(&queue);
+	//queue.insert(3);
+	//printQueue(&queue);
+	//queue.insert(1);
+	//printQueue(&queue);
+	//queue.insert(6);
+	//printQueue(&queue);
+	//queue.insert(9);
+	//printQueue(&queue);
+	//queue.insert(4);
+	//printQueue(&queue);
+	//queue.insert(11);
+	//printQueue(&queue);
+	//queue.pop();
+	//printQueue(&queue);
+	//system("pause");
 }
 
-int Engine::run() {
+int Engine::run(int argv, char** argc) {
 #ifdef _DEBUG
 	testbed();
 #endif
@@ -64,12 +64,16 @@ int Engine::run() {
 
 	_inputManager = new InputManager();
 
-	Scene* testScene = ASSET_MANAGER->loadAsset<Scene>("/scenes/TestScene/TestScene.level");
-	_scenes.insert(_scenes.end(), testScene);
+
+	//TODO: make scenes manager class
+	_configurationManager = new ConfigurationManager();
+	_configurationManager->init();
+
+	// Scene with index 0 is always the first scene engine loads. Should enable passing it as a command line argument in debug mode
+	Scene* testScene = ASSET_MANAGER->loadAsset<Scene>(_configurationManager->getScenePath(0));
+	_scenes.push_back(testScene);
 	testScene->init();
 	testScene->activate();
-
-	//loadConfiguration();
 
 	SDL_Event sdlEvent;
 	while (_running) {
@@ -78,7 +82,7 @@ int Engine::run() {
 				_running = false;
 				break;
 			}
-			if (sdlEvent.type == SDL_KEYDOWN){
+			if (sdlEvent.type == SDL_KEYDOWN) {
 				int keyDown = sdlEvent.key.keysym.sym;
 				for (unsigned int i = 0; i < _scenes.size(); i++){
 					_scenes[i]->keyPressed(keyDown);

@@ -5,8 +5,9 @@
 
 SpriteLoader spriteLoader;
 
-AbstractGameObjectLoader* GameObjectLoaderFactory::getGameObjectLoader(const char *type) {
+AbstractGameObjectLoader* GameObjectLoaderFactory::getGameObjectLoader(const char *type) const {
 	if (strcmp(type, "sprite")) {
-		return (AbstractGameObjectLoader*)&spriteLoader;
+		return static_cast<AbstractGameObjectLoader*>(&spriteLoader);
 	}
+	return nullptr;
 }

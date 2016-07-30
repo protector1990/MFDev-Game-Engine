@@ -21,10 +21,13 @@ struct NavPoint {
 
 struct NavPointSearchAdapter {
 	NavPointSearchAdapter(NavPoint* navPoint, float score);
+	NavPointSearchAdapter(NavPoint* navPoint);
 	NavPoint *_navPoint;
 	NavPointSearchAdapter* _previous;
 	float _scoreToArrive;
-	float _distanceToDestination = -1;
+	float _funScoreToArrive() const;
+	bool equals(NavPointSearchAdapter* other);
+	float _distanceToDestination;
 };
 
 class NavPointSearchAdapterComparer : public IComparer<NavPointSearchAdapter*> {
@@ -32,14 +35,15 @@ protected:
 	NavPoint* _destination;
 public:
 	NavPointSearchAdapterComparer(NavPoint* destination);
-	bool compare(NavPointSearchAdapter** left, NavPointSearchAdapter** right) override;
+
+	bool compare(NavPointSearchAdapter* const& left, NavPointSearchAdapter* const& right) override;
 };
 
 class NavPath {
 	// Implement each NavPath as a fixed size reusable collection of NavPoints. Grow only as needed, remove visited nodes
 	// and keep a pointer to next target node. That is a general plan
 	friend class NavGrid;
-protected:
+public:
 	std::vector<NavPoint*> _path;
 };
 

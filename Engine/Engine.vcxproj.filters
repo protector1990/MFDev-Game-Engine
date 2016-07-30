@@ -283,6 +283,12 @@
     <ClCompile Include="NavGrid.cpp">
       <Filter>Engine\GameObjects</Filter>
     </ClCompile>
+    <ClCompile Include="ConfigurationManager.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Area.cpp">
+      <Filter>Engine\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\libs\lua-5.3.2\src\lapi.h">
@@ -501,10 +507,16 @@
     <ClInclude Include="Mixed.h">
       <Filter>Engine\DataStructures</Filter>
     </ClInclude>
+    <ClInclude Include="TextAsset.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\libs\physfs-2.0.3\LICENSE.txt">
       <Filter>physfs</Filter>
     </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>

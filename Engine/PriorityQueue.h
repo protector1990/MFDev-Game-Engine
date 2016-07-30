@@ -17,7 +17,7 @@ protected:
 	void reorderFromTop(size_t);
 	IComparer<T>* _comparer;
 	// Public only for testing purposes
-public:
+protected:
 	T* _array;
 public:
 	PriorityQueue() : _capacity(16), _size(0)
@@ -37,6 +37,7 @@ public:
 	void append(const ICollection<T>* other) override;
 	size_t size() const override;
 	void setComparer(IComparer<T>* comparer);
+	bool _containsEqual(T t);
 };
 
 template <class T>
@@ -153,5 +154,18 @@ void PriorityQueue<T>::setComparer(IComparer<T>* comparer) {
 		delete _comparer;
 	}
 	_comparer = comparer;
+}
+
+// Budz, budz... Videti sta i kako sa ovim...
+template <class T>
+bool PriorityQueue<T>::_containsEqual(T t) {
+	for (int i = 0; i < _size; ++i)
+	{
+		if (_array[i]->equals(t))
+		{
+			return true;
+		}
+	}
+	return false;
 }
 #endif

@@ -9,6 +9,7 @@
 #include "AssetManager.h"
 //#include "Scene.h"
 #include <vector>
+#include "ConfigurationManager.h"
 
 class InputManager;
 
@@ -16,11 +17,13 @@ class Engine {
 public:
 	~Engine();
 	void quit();
-	int run();
+	int run(int argc, char** argv);
 	lua_State* getLuaInterpreter() { return _luaInterpreter; }
 	Renderer* getRenderer() { return _renderer; }
 	AssetManager* getAssetManager() { return _assetManager; }
 	InputManager* getInputManager() { return _inputManager; }
+
+	char* _startupScene;
 
 
 	static Engine& getInstance() {
@@ -37,6 +40,7 @@ private:
 	Renderer * _renderer;
 	AssetManager * _assetManager;
 	InputManager* _inputManager;
+	ConfigurationManager* _configurationManager;
 
 	std::vector<Scene*> _scenes;
 

@@ -9,22 +9,15 @@
 #include "..\libs\lua-5.3.2\src\lualib.h"
 #include "..\libs\lua-5.3.2\src\lauxlib.h"
 
+#include "TextAsset.h"
+
 class GameObject;
 
-class Script {
+class Script : public TextAsset {
 public:
 	Script(const char *name, const char *contents, int size) :
-		_name(name),
-		_contents(contents),
-		_size(size), 
+		TextAsset(name, contents, size),
 		reference(0) {}
-	~Script() {
-		delete[] _contents;
-		delete[] _name;
-	}
-	const char *_contents;
-	const char *_name;
-	const int _size;
 	int reference;
 };
 

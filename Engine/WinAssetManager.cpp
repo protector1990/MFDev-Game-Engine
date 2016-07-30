@@ -51,6 +51,24 @@ void WinAssetManager::deInit() {
 	PHYSFS_deinit();
 }
 
+TextAsset* AssetManager::loadTextAsset(const char* path) {
+	PHYSFS_file* file = PHYSFS_openRead(path);
+	if (file) {
+		PHYSFS_sint64 fileSize = PHYSFS_fileLength(file);
+		char* inBuff = new char[fileSize + 1];
+		PHYSFS_read(file, inBuff, fileSize, 1);
+		inBuff[fileSize] = 0;
+
+		TextAsset* ret = new TextAsset(path, inBuff, fileSize);
+		return ret;
+	}
+	else
+	{
+		return nullptr;
+	}
+}
+
+
 int* WinAssetManager::loadInt(const char *path) {
 	//implement this
 	int i = 0;
@@ -86,7 +104,7 @@ Script* WinAssetManager::loadLuaScript(const char *path) {
 		inBuff[fileSize] = 0;
 
 		Script* ret = new Script(path, inBuff, fileSize);
-		_loadedScripts.insert(_loadedScripts.end(), ret);
+		_loadedScripts.push_back(ret);
 		LuaManager::luaParse(ENGINE.getLuaInterpreter(), ret);
 		return ret;
 	}

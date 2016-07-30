@@ -7,16 +7,16 @@
 template <class T>
 class IComparer {
 public:
-	virtual bool compare(T* left, T* right) = 0;
+	virtual bool compare(const T& left, const T& right) = 0;
 };
 
 template <class T>
-class DefaultComparer : IComparer<T> {
-	bool compare(T* left, T* right) override;
+class DefaultComparer : public IComparer<T> {
+	bool compare(const T& left, const T& right) override;
 };
 
 template <class T>
-bool DefaultComparer<T>::compare(T* left, T* right) {
-	return *left < *right;
+bool DefaultComparer<T>::compare(const T& left, const T& right) {
+	return left < right;
 }
 #endif  //_ICOMPARER_H

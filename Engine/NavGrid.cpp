@@ -2,9 +2,9 @@
 
 #include "NavGrid.h"
 #include "Area.h"
-#include <queue>
 #include <set>
 #include "PriorityQueue.h"
+#include <cfloat>
 using namespace glm;
 using namespace std;
 
@@ -25,22 +25,45 @@ NavPoint::NavPoint(const vec3& position) {
 	_position = position;
 }
 
+NavPointSearchAdapter::NavPointSearchAdapter(NavPoint* navPoint, float score) 
+	: _navPoint(navPoint), _scoreToArrive(score)
+{}
+
+NavPointSearchAdapter::NavPointSearchAdapter(NavPoint* navPoint)
+	: _navPoint(navPoint)
+{
+	_scoreToArrive = FLT_MAX;
+}
+
+
+float NavPointSearchAdapter::_funScoreToArrive() const {
+	if (_previous)
+	{
+		return _previous->_funScoreToArrive() + _navPoint->_cost;
+	}
+	return _navPoint->_cost;
+}
+
+bool NavPointSearchAdapter::equals(NavPointSearchAdapter* other) {
+	return _navPoint == other->_navPoint;
+}
+
 NavPointSearchAdapterComparer::NavPointSearchAdapterComparer(NavPoint* destination) : _destination(destination) {}
 
-bool NavPointSearchAdapterComparer::compare(NavPointSearchAdapter** left, NavPointSearchAdapter** right) {
-	if ((*left)->_distanceToDestination < 0)
+bool NavPointSearchAdapterComparer::compare(NavPointSearchAdapter* const& left, NavPointSearchAdapter* const& right) {
+	if ((left)->_distanceToDestination < 0)
 	{
-		float xDist = (*left)->_navPoint->_position.x - _destination->_position.x;
-		float yDist = (*left)->_navPoint->_position.y - _destination->_position.y;
-		(*left)->_distanceToDestination = sqrt(xDist * xDist + yDist * yDist);
+		float xDist = (left)->_navPoint->_position.x - _destination->_position.x;
+		float yDist = (left)->_navPoint->_position.y - _destination->_position.y;
+		(left)->_distanceToDestination = sqrt(xDist * xDist + yDist * yDist);
 	}
-	if ((*right)->_distanceToDestination < 0)
+	if ((right)->_distanceToDestination < 0)
 	{
-		float xDist = (*right)->_navPoint->_position.x - _destination->_position.x;
-		float yDist = (*right)->_navPoint->_position.y - _destination->_position.y;
-		(*right)->_distanceToDestination = sqrt(xDist * xDist + yDist * yDist);
+		float xDist = (right)->_navPoint->_position.x - _destination->_position.x;
+		float yDist = (right)->_navPoint->_position.y - _destination->_position.y;
+		(right)->_distanceToDestination = sqrt(xDist * xDist + yDist * yDist);
 	}
-	return ((*left)->_scoreToArrive + (*left)->_distanceToDestination) < ((*right)->_scoreToArrive + (*right)->_distanceToDestination);
+	return (left->_funScoreToArrive() + left->_distanceToDestination) < right->_funScoreToArrive() + right->_distanceToDestination;
 }
 
 NavPath* NavGrid::getNavPath(vec3 start, vec3 end, NavPath& out) const {
@@ -91,15 +114,26 @@ NavPath* NavGrid::getNavPath(vec3 start, vec3 end, NavPath& out) const {
 			NavPath* path = new NavPath();
 			do
 			{
-				//path->_path.push
-			} while (true);
+				path->_path.push_back(a->_navPoint);
+				a = a->_previous;
+			} while (a);
+			return path;
 		}
 		openSet.pop();
 		for (size_t i = 0; i < a->_navPoint->_neighbours.size(); ++i)
 		{
-			NavPointSearchAdapter* adapter = new NavPointSearchAdapter(a->_navPoint->_neighbours[i], a->_scoreToArrive + a->_navPoint->_cost);
-			if (!openSet.contains(adapter)) {
+			float costToA = a->_funScoreToArrive();
+			NavPointSearchAdapter* adapter = new NavPointSearchAdapter(a->_navPoint->_neighbours[i], costToA + a->_navPoint->_cost);
+			if (!openSet._containsEqual(adapter)) {
 				openSet.insert(adapter);
+			}
+			else
+			{
+				// Check if there is a shorter path
+				if (a->_funScoreToArrive() + adapter->_navPoint->_cost < adapter->_funScoreToArrive())
+				{
+					adapter->_previous = a;
+				}
 			}
 		}
 	}
