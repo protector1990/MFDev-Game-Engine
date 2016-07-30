@@ -6,13 +6,28 @@
 #include "Common.h"
 #include "InputManager.h"
 
-ScriptComponent::ScriptComponent(Script *script, GameObject *parentObject) {
-	_script = script;
+Script* ScriptClass::getScript() const {
+	return script;
+}
+
+void ScriptClass::setScript(Script* script) {
+	this->script = script;
+}
+
+int ScriptClass::getReference() const {
+	return _reference;
+}
+
+void ScriptClass::setReference(int reference) {
+	_reference = reference;
+}
+
+ScriptComponent::ScriptComponent(ScriptClass *scriptClass, GameObject *parentObject) : _script(scriptClass) {
 	lua_State* interpreter = ENGINE.getLuaInterpreter();
 
 	lua_newtable(interpreter);
 
-	int tb = lua_rawgeti(interpreter, LUA_REGISTRYINDEX, script->reference);
+	int tb = lua_rawgeti(interpreter, LUA_REGISTRYINDEX, scriptClass->getReference());
 	lua_pushnil(interpreter);
 
 	while (lua_next(interpreter, -2)) {
@@ -31,8 +46,12 @@ int ScriptComponent::getReference() const {
 	return _reference;
 }
 
-Script* ScriptComponent::getScript() const {
+ScriptClass* ScriptComponent::getScriptClass() const {
 	return _script;
+}
+
+int luaSample(lua_State* a) {
+	return 1;
 }
 
 void LuaManager::luaBind(lua_State *interpreter) {
@@ -43,6 +62,7 @@ void LuaManager::luaBind(lua_State *interpreter) {
 	lua_register(interpreter, "queryKeyDown", &luaQueryKeyDown);
 	lua_register(interpreter, "getPosition", &luaGetPosition);
 	lua_register(interpreter, "setPosition", &luaSetPosition);
+	lua_register(interpreter, "luaSample", &luaSample);
 }
 
 void LuaManager::luaExecute(lua_State *interpreter, Script *script) {
@@ -51,12 +71,12 @@ void LuaManager::luaExecute(lua_State *interpreter, Script *script) {
 }
 
 //TODO: Clean this up and properly test it. It's bound to have some leaks
-void LuaManager::luaParse(lua_State *interpreter, Script *script) {
+int LuaManager::luaParseComponent(lua_State *interpreter, Script *script) {
 	int res = luaL_loadbufferx(interpreter, script->_contents, script->_size, script->_name, nullptr);
 	if (!lua_isfunction(interpreter, -1))
 	{
 		printf("[Lua]: Parsing failed for script {%s}", script->_name);
-		return;
+		return LUA_NOREF;
 	}
 	lua_pcall(interpreter, 0, 0, 0);
 
@@ -80,13 +100,14 @@ void LuaManager::luaParse(lua_State *interpreter, Script *script) {
 				strcpy(path, "/scripts/");
 				strcat(path, extends);
 				strcat(path, ".lua");
-				ASSET_MANAGER->loadAsset<Script>(path);
+				//TODO: Break mutual dependancies between lua manager and asset manager
+				ASSET_MANAGER->loadAsset<ScriptClass>(path);
 				lua_pop(interpreter, 1);
 				lua_getglobal(interpreter, extends);
 				if (!lua_istable(interpreter, -1)) {
 					printf("\nLua Parsing Error: lua script not found: {%s}!\n", path);
 					lua_pop(interpreter, 1);
-					return;
+					return LUA_NOREF;
 				}
 			}
 
@@ -110,14 +131,21 @@ void LuaManager::luaParse(lua_State *interpreter, Script *script) {
 			lua_pop(interpreter, 1);
 		}
 		const char * x1 = lua_tostring(interpreter, -1);
-		script->reference = luaL_ref(interpreter, LUA_REGISTRYINDEX);
+		//script->reference = luaL_ref(interpreter, LUA_REGISTRYINDEX);
 		printf("[Lua]: Successfully loaded: {%s}\n", className);
+		return luaL_ref(interpreter, LUA_REGISTRYINDEX);
 	}
 #if defined(_DEBUG)
 	else {
 		printf("[Lua]: Parsing Error: class not found: {%s}!", className);
+		return LUA_NOREF;
 	}
 #endif
+}
+
+void LuaManager::luaParsePlainScript(lua_State* interpreter, Script* script)
+{
+
 }
 
 void LuaManager::luaCall(lua_State *interpreter, ScriptComponent *component, const char* name, float* params, int paramsNum) {

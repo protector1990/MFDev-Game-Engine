@@ -35,6 +35,9 @@
     <Filter Include="Engine\DataStructures">
       <UniqueIdentifier>{47023df7-3aa4-4ba1-b23a-0293927a086c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Script">
+      <UniqueIdentifier>{ff8810a0-48a1-425a-b7fe-60f7b727fb73}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -150,9 +153,6 @@
     </ClCompile>
     <ClCompile Include="IOSAssetManager.cpp">
       <Filter>Engine\AssetManagers</Filter>
-    </ClCompile>
-    <ClCompile Include="Lua.cpp">
-      <Filter>Engine</Filter>
     </ClCompile>
     <ClCompile Include="Physfs2AssimpInterface.cpp">
       <Filter>Engine</Filter>
@@ -288,6 +288,9 @@
     </ClCompile>
     <ClCompile Include="Area.cpp">
       <Filter>Engine\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Lua.cpp">
+      <Filter>Engine\Script</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -441,9 +444,6 @@
     <ClInclude Include="InputManager.h">
       <Filter>Engine</Filter>
     </ClInclude>
-    <ClInclude Include="Lua.h">
-      <Filter>Engine</Filter>
-    </ClInclude>
     <ClInclude Include="mhfile.h">
       <Filter>Engine</Filter>
     </ClInclude>
@@ -509,6 +509,9 @@
     </ClInclude>
     <ClInclude Include="TextAsset.h">
       <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Lua.h">
+      <Filter>Engine\Script</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

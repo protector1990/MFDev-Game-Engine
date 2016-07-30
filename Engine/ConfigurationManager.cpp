@@ -9,17 +9,17 @@ void ConfigurationManager::init() {
 	_configFile.parse<0>(const_cast<char*>(_configFileRaw->_contents));
 }
 
-const char* ConfigurationManager::getString(const char* id) {
+const char* ConfigurationManager::getString(const char* id) const {
 	// Not implemented
 	return nullptr;
 }
 
-int ConfigurationManager::getInt(const char* id) {
+int ConfigurationManager::getInt(const char* id) const {
 	// Not implemented
 	return 0;
 }
 
-float ConfigurationManager::getFloat(const char* id) {
+float ConfigurationManager::getFloat(const char* id) const {
 	//Not implemented
 	return 0.f;
 }

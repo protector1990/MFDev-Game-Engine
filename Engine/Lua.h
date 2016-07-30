@@ -16,20 +16,34 @@ class GameObject;
 class Script : public TextAsset {
 public:
 	Script(const char *name, const char *contents, int size) :
-		TextAsset(name, contents, size),
-		reference(0) {}
-	int reference;
+		TextAsset(name, contents, size)
+	{}
+};
+
+class ScriptClass {
+public:
+	Script* getScript() const;
+
+	void setScript(Script* script);
+
+	int getReference() const;
+
+	void setReference(int reference);
+
+protected:
+	Script *script;
+	int _reference;
 };
 
 class ScriptComponent {
 public:
-	ScriptComponent(Script *script, GameObject *parentObject);
+	ScriptComponent(ScriptClass *script, GameObject *parentObject);
 
-	Script* getScript() const;
+	ScriptClass* getScriptClass() const;
 	int getReference() const;
 
 private:
-	Script *_script;
+	ScriptClass *_script;
 	int _reference;
 };
 
@@ -43,7 +57,8 @@ public:
 	void luaExecute(lua_State *interpreter, Script *script);
 	int luaQueryInput(lua_State*);
 	static void luaCall(lua_State* interpreter, ScriptComponent *component, const char* name, float* params, int paramsNum);
-	static void luaParse(lua_State *interpreter, Script *script);
+	static int luaParseComponent(lua_State *interpreter, Script *script);
+	static void luaParsePlainScript(lua_State *interpreter, Script *script);
 	void luaLoad(lua_State *interpreter, Script *Script);
 
 	static void initManager(lua_State *interpreter);

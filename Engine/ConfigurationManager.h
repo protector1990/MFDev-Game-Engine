@@ -18,9 +18,9 @@ protected:
 public:
 	void init();
 	//General config
-	const char* getString(const char* id);
-	int getInt(const char* id);
-	float getFloat(const char* id);
+	const char* getString(const char* id) const;
+	int getInt(const char* id) const;
+	float getFloat(const char* id) const;
 	//Scenes
 	const char* getScenePath(const char* name) const;
 	const char* getScenePath(int orderNum) const;

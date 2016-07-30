@@ -13,7 +13,7 @@ using namespace glm;
 void Sprite::init() {
 	// call lua init script from here
 	//for (int i = 0; i < _scripts.size(); i++) {
-	//	LuaManager::luaParse(ENGINE.getLuaInterpreter(), _scripts[i]);
+	//	LuaManager::luaParseComponent(ENGINE.getLuaInterpreter(), _scripts[i]);
 	//}
 
 	glGenBuffers(1, &_glVertexBufferObjects);

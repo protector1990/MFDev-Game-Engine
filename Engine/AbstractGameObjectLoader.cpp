@@ -11,9 +11,9 @@ std::vector<ScriptComponent*> AbstractGameObjectLoader::loadLuaComponents(xml_no
 	while (node) {
 		char* x = node->name();
 		if (strcmp(node->name(), "luaScript") == 0) {
-			Script* script = ASSET_MANAGER->loadAsset<Script>(node->value());
-			if (script) {
-				ret.insert(ret.end(), new ScriptComponent(script, _currentlyLoadingObject));
+			ScriptClass* luaClass = ASSET_MANAGER->loadAsset<ScriptClass>(node->value());
+			if (luaClass) {
+				ret.insert(ret.end(), new ScriptComponent(luaClass, _currentlyLoadingObject));
 			}
 #ifdef DEBUG
 			else {

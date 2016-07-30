@@ -17,7 +17,7 @@ public:
 	}
 	TextAsset(const TextAsset& other);
 	const char * _name;
-	const char * _contents;
+	const char* _contents;
 	int _size;
 };
 

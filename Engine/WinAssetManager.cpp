@@ -59,7 +59,7 @@ TextAsset* AssetManager::loadTextAsset(const char* path) {
 		PHYSFS_read(file, inBuff, fileSize, 1);
 		inBuff[fileSize] = 0;
 
-		TextAsset* ret = new TextAsset(path, inBuff, fileSize);
+		TextAsset* ret = new TextAsset(const_cast<char*>(path), inBuff, fileSize);
 		return ret;
 	}
 	else
@@ -67,7 +67,6 @@ TextAsset* AssetManager::loadTextAsset(const char* path) {
 		return nullptr;
 	}
 }
-
 
 int* WinAssetManager::loadInt(const char *path) {
 	//implement this
@@ -105,12 +104,21 @@ Script* WinAssetManager::loadLuaScript(const char *path) {
 
 		Script* ret = new Script(path, inBuff, fileSize);
 		_loadedScripts.push_back(ret);
-		LuaManager::luaParse(ENGINE.getLuaInterpreter(), ret);
+		//LuaManager::luaParseComponent(ENGINE.getLuaInterpreter(), ret);
 		return ret;
 	}
 	else {
 		return nullptr;
 	}
+}
+
+ScriptClass* WinAssetManager::loadScriptClass(const char* path) {
+	Script *script = loadLuaScript(path);
+	ScriptClass *ret = new ScriptClass();
+	// TODO: Implement error checking
+	ret->setReference(LuaManager::luaParseComponent(ENGINE.getLuaInterpreter(), script));
+	ret->setScript(script);
+	return ret;
 }
 
 // A more generic way of loading 3D assets. Will load whole scene
