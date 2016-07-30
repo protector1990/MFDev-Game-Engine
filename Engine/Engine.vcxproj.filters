@@ -516,7 +516,4 @@
       <Filter>physfs</Filter>
     </Text>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="ClassDiagram.cd" />
-  </ItemGroup>
 </Project>

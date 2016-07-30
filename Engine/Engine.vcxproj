@@ -250,9 +250,6 @@
   <ItemGroup>
     <Text Include="..\libs\physfs-2.0.3\LICENSE.txt" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="ClassDiagram.cd" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
