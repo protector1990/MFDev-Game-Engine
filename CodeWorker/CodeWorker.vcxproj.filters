@@ -1,0 +1,1280 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{e7357546-540c-4d29-b790-31598f4c094f}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;idl;hpj;bat</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{e7d01117-9502-49b7-9c1b-874fa36df806}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="ASTCommand.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BNFAndOrJunction.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BNFBreak.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BNFCharBoundaries.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BNFCharLitteral.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BNFCheck.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BNFClause.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BNFClauseCall.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BNFComplementary.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BNFConjunction.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BNFDisjunction.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BNFEndOfFile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BNFEndOfLine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BNFFindToken.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BNFForeach.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BNFIgnore.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BNFInsert.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BNFMoveAhead.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BNFMultiplicity.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BNFNextStep.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BNFNot.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BNFPushItem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BNFRatchet.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BNFReadAdaString.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BNFReadByte.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BNFReadBytes.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BNFReadCChar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BNFReadChar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BNFReadChars.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BNFReadCompleteIdentifier.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BNFReadCString.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BNFReadIdentifier.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BNFReadInteger.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BNFReadNumeric.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BNFReadPythonString.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BNFReadText.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BNFReadToken.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BNFReadUptoIgnore.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BNFScanWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BNFSkipIgnore.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BNFStepintoHook.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BNFStepoutHook.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BNFStepper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BNFString.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BNFTransformationMode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BNFTryCatch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CGCompiler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CGExternalHandling.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CGRuntime.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CppCompilerEnvironment.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CppParsingTree.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DtaArrayIterator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DtaASTNavigator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DtaAttributeType.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DtaBNFScript.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DtaClass.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DtaCommandScript.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DtaConsoleScript.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DtaDesignScript.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DtaPatternScript.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DtaProject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DtaProtectedAreasBag.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DtaScript.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DtaScriptFactory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DtaScriptVariable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DtaSharpTagsHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DtaTranslateScript.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DtaVisitor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DynPackage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ExprScriptBinaryExpression.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ExprScriptExpression.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ExprScriptFunction.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ExprScriptMotif.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ExprScriptVariable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ExternalValueNode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfAlienInstruction.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfAllFloatingLocations.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfAppendedFile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfAppendFile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfAspectAdvice.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfAttachInputToSocket.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfAttachOutputToSocket.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfAutoexpand.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfBlock.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfBreak.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfClearVariable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfCloseSocket.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfCommand.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfCompileToCpp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfContinue.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfCopyFile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfCopyGenerableFile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfCopySmartDirectory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfCutString.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfDebugExecution.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfDelay.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfDetachInputFromSocket.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfDetachOutputFromSocket.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfDo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfEnvironTable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfError.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfExecuteString.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfExecutionContext.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfExit.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfExpand.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfExtendExecutedScript.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfFileAsStandardInput.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfForeach.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfFunction.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfGenerate.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfGeneratedFile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfGeneratedString.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfGenerateString.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfGlobalVariable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfGoBack.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfIfThenElse.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfIncrementIndentLevel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfInsertAssignment.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfInsertElementAt.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfInsertText.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfInsertTextOnce.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfInsertTextOnceToFloatingLocation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfInsertTextToFloatingLocation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfInvertArray.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfJointPoint.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfJointPointCall.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfListAllGeneratedFiles.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfLoadProject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfLocalReference.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfLocalVariable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfMerge.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfNewProject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfNop.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfOpenLogFile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfOverwritePortion.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfParseAsBNF.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfParsedFile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfParsedString.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfParseFree.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfParseStringAsBNF.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfPopulateProtectedArea.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfProduceHTML.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfPushItem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfPutEnv.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfQuantifyExecution.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfQuiet.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfRandomSeed.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfReadonlyHook.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfReference.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfRemoveAllElements.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfRemoveElement.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfRemoveFirstElement.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfRemoveLastElement.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfRemoveRecursive.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfRemoveVariable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfResizeOutputStream.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfReturn.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfSaveBinaryToFile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfSaveProject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfSaveProjectTypes.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfSaveToFile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfSelect.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfSetAll.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfSetAssignment.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfSetCommentBegin.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfSetCommentEnd.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfSetFloatingLocation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfSetGenerationHeader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfSetIncludePath.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfSetInputLocation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfSetNow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfSetOutputLocation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfSetProperty.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfSetProtectedArea.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfSetTextMode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfSetVersion.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfSetWorkingPath.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfSetWriteMode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfSleep.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfSlideNodeContent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfSortArray.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfStringAsStandardInput.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfSwitch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfText.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfTraceEngine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfTraceLine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfTraceObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfTraceStack.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfTraceText.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfTranslate.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfTryCatch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfWhile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfWriteBytes.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfWritefileHook.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfWriteText.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrfWriteTextOnce.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HTTPRequest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="JNIExternalHandling.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="md5.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NetSocket.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ScpStream.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UtlDate.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UtlDirectory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UtlException.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UtlString.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UtlTimer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UtlTrace.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UtlXMLStream.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Workspace.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ASTCommand.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BNFAndOrJunction.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BNFBreak.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BNFCharBoundaries.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BNFCharLitteral.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BNFCheck.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BNFClause.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BNFClauseCall.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BNFComplementary.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BNFConjunction.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BNFDisjunction.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BNFEndOfFile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BNFEndOfLine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BNFFindToken.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BNFForeach.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BNFIgnore.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BNFInsert.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BNFMoveAhead.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BNFMultiplicity.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BNFNextStep.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BNFNot.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BNFPushItem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BNFRatchet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BNFReadAdaString.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BNFReadByte.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BNFReadBytes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BNFReadCChar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BNFReadChar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BNFReadChars.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BNFReadCompleteIdentifier.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BNFReadCString.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BNFReadIdentifier.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BNFReadInteger.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BNFReadNumeric.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BNFReadPythonString.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BNFReadText.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BNFReadToken.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BNFReadUptoIgnore.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BNFScanWindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BNFSkipIgnore.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BNFStepintoHook.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BNFStepoutHook.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BNFStepper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BNFString.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BNFTransformationMode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BNFTryCatch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CGCompiler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CGExternalHandling.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CGRuntime.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CppCompilerEnvironment.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CppParsingTree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CW4dl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DtaArrayIterator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DtaAspectAdvices.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DtaASTNavigator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DtaAttributeType.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DtaBNFScript.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DtaClass.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DtaCommandScript.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DtaConsoleScript.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DtaDesignScript.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DtaPatternScript.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DtaProject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DtaProtectedAreasBag.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DtaScript.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DtaScriptFactory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DtaScriptVariable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DtaSharpTagsHandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DtaTranslateScript.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DtaVisitor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DynFunction.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DynPackage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ExprScriptBinaryExpression.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ExprScriptExpression.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ExprScriptFunction.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ExprScriptMotif.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ExprScriptVariable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ExternalValueNode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfAlienInstruction.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfAllFloatingLocations.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfAppendedFile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfAppendFile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfAspectAdvice.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfAttachInputToSocket.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfAttachOutputToSocket.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfAutoexpand.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfBlock.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfBreak.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfClearVariable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfCloseSocket.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfCommand.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfCompileToCpp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfContinue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfCopyFile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfCopyGenerableFile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfCopySmartDirectory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfCutString.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfDebugExecution.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfDelay.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfDetachInputFromSocket.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfDetachOutputFromSocket.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfDo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfEnvironTable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfError.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfExecuteString.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfExecutionContext.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfExit.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfExpand.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfExtendExecutedScript.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfFileAsStandardInput.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfForeach.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfFunction.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfGenerate.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfGeneratedFile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfGeneratedString.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfGenerateString.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfGlobalVariable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfGoBack.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfIfThenElse.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfIncrementIndentLevel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfInsertAssignment.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfInsertElementAt.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfInsertText.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfInsertTextOnce.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfInsertTextOnceToFloatingLocation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfInsertTextToFloatingLocation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfInvertArray.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfJointPoint.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfJointPointCall.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfListAllGeneratedFiles.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfLoadProject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfLocalReference.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfLocalVariable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfMerge.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfNewProject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfNop.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfOpenLogFile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfOverwritePortion.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfParseAsBNF.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfParsedFile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfParsedString.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfParseFree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfParseStringAsBNF.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfPopulateProtectedArea.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfProduceHTML.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfPushItem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfPutEnv.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfQuantifyExecution.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfQuiet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfRandomSeed.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfReadonlyHook.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfReference.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfRemoveAllElements.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfRemoveElement.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfRemoveFirstElement.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfRemoveLastElement.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfRemoveRecursive.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfRemoveVariable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfResizeOutputStream.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfReturn.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfSaveBinaryToFile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfSaveProject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfSaveProjectTypes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfSaveToFile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfSelect.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfSetAll.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfSetAssignment.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfSetCommentBegin.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfSetCommentEnd.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfSetFloatingLocation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfSetGenerationHeader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfSetIncludePath.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfSetInputLocation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfSetNow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfSetOutputLocation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfSetProperty.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfSetProtectedArea.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfSetTextMode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfSetVersion.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfSetWorkingPath.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfSetWriteMode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfSleep.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfSlideNodeContent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfSortArray.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfStringAsStandardInput.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfSwitch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfText.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfTraceEngine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfTraceLine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfTraceObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfTraceStack.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfTraceText.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfTranslate.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfTryCatch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfWhile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfWriteBytes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfWritefileHook.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfWriteText.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrfWriteTextOnce.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HTTPRequest.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="JNIExternalHandling.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="md5.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NetSocket.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ScpStream.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UtlDate.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UtlDirectory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UtlException.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UtlString.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UtlTimer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UtlTrace.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UtlXMLStream.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Workspace.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

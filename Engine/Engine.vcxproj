@@ -144,6 +144,7 @@
     <ClCompile Include="AbstractGameObjectLoader.cpp" />
     <ClCompile Include="Area.cpp" />
     <ClCompile Include="ConfigurationManager.cpp" />
+    <ClCompile Include="ExposedFunctions.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameObjectLoaderFactory.cpp" />
     <ClCompile Include="InputManager.cpp" />
@@ -153,6 +154,7 @@
     <ClCompile Include="NavGrid.cpp" />
     <ClCompile Include="Physfs2AssimpInterface.cpp" />
     <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="ScriptableInterface.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="SpriteLoader.cpp" />
     <ClCompile Include="WinAssetManager.cpp" />
@@ -221,6 +223,7 @@
     <ClInclude Include="AbstractGameObjectLoader.h" />
     <ClInclude Include="Area.h" />
     <ClInclude Include="AssetManager.h" />
+    <ClInclude Include="ExposedFunctions.h" />
     <ClInclude Include="ICollection.h" />
     <ClInclude Include="Common.h" />
     <ClInclude Include="Component.h" />
@@ -241,6 +244,7 @@
     <ClInclude Include="PriorityQueue.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="Scene.h" />
+    <ClInclude Include="ScriptableInterface.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="SpriteLoader.h" />
     <ClInclude Include="TextAsset.h" />

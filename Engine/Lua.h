@@ -5,9 +5,9 @@
 #ifndef _LUA_SCRIPT_H
 #define _LUA_SCRIPT_H
 
-#include "..\libs\lua-5.3.2\src\lua.h"
-#include "..\libs\lua-5.3.2\src\lualib.h"
-#include "..\libs\lua-5.3.2\src\lauxlib.h"
+#include <lua-5.3.2/src/lua.h>
+#include <lua-5.3.2/src/lualib.h>
+#include <lua-5.3.2/src/lauxlib.h>
 
 #include "TextAsset.h"
 
@@ -61,7 +61,7 @@ public:
 	static void luaParsePlainScript(lua_State *interpreter, Script *script);
 	void luaLoad(lua_State *interpreter, Script *Script);
 
-	static void initManager(lua_State *interpreter);
+	void initManager(lua_State *interpreter);
 
 	static int luaTest(lua_State*);
 	static int luaGameObjectUpdate(lua_State*);
@@ -70,6 +70,8 @@ public:
 	static int luaGetPosition(lua_State *state);
 	static int luaSetPosition(lua_State *state);
 	static int luaQueryKeyDown(lua_State *state);
+private:
+	int _gameObjectMetaTable;
 };
 
 #endif

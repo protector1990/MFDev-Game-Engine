@@ -220,5 +220,17 @@ int LuaManager::luaQueryKeyDown(lua_State *state) {
 }
 
 void LuaManager::initManager(lua_State *interpreter) {
-	
+	Script* metaTableScript = ASSET_MANAGER->loadAsset<Script>("scripts/system/_lua_Game_object.lua");
+	int res = luaL_loadbufferx(interpreter, metaTableScript->_contents, metaTableScript->_size, metaTableScript->_name, nullptr);
+	if (!lua_isfunction(interpreter, -1))
+	{
+		printf("[Lua]: Parsing failed for script {%s}", metaTableScript->_name);
+		return;
+	}
+	lua_getglobal(interpreter, "Accessors");
+	if (!lua_istable(interpreter, -1))
+	{
+		return;
+	}
+	_gameObjectMetaTable = luaL_ref(interpreter, LUA_REGISTRYINDEX);
 }

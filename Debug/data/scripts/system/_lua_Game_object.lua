@@ -6,6 +6,6 @@ Accessors.__index = function (tb, key)
 	if valType == "table" then
 		return value
 	elseif valType == "function" then
-		luaObjectCall(object, value)
+		value(tb.reference, value)
 	end
 end

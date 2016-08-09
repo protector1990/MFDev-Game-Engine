@@ -39,15 +39,11 @@ void testbed() {
 	//system("pause");
 }
 
+// The architecture and location of the main loop will maybe have to change to add support for hot realoding and restarting the game
 int Engine::run(int argv, char** argc) {
 #ifdef _DEBUG
 	testbed();
 #endif
-	_luaInterpreter = luaL_newstate();
-	luaL_openlibs(_luaInterpreter);
-	LuaManager::luaBind(_luaInterpreter);
-
-	SDL_Init(SDL_INIT_VIDEO);
 
 #ifdef __WINDOWS__
 	_assetManager = new WinAssetManager();
@@ -57,6 +53,14 @@ int Engine::run(int argv, char** argc) {
 #endif;
 	_assetManager->init();
 
+	_luaManager = new LuaManager();
+	_luaInterpreter = luaL_newstate();
+	luaL_openlibs(_luaInterpreter);
+	// TODO: Make these non static
+	_luaManager->initManager(_luaInterpreter);
+	LuaManager::luaBind(_luaInterpreter);
+
+	SDL_Init(SDL_INIT_VIDEO);
 
 	_renderer = new Renderer();
 	// TODO: Maybe move init code to constructor?

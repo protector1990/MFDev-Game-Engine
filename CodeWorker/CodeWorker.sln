@@ -1,0 +1,42 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CodeWorker", "CodeWorker.vcxproj", "{2F88D263-3F59-4344-81D6-E2CEB0FE48ED}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CodeWorkerEXE", "CodeWorkerEXE.vcxproj", "{FAA4A96B-3244-4DCE-8286-785048DA77E2}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CodeWorker.NET", "cs\CodeWorker.NET.vcxproj", "{0C6741D4-2A42-451B-80B5-EE480B0FB155}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CodeWorker.JNI", "java\CodeWorker.JNI.vcxproj", "{E123F3E0-BAB6-4845-BB9D-47DE5F0D5575}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2F88D263-3F59-4344-81D6-E2CEB0FE48ED}.Debug|Win32.ActiveCfg = Debug|Win32
+		{2F88D263-3F59-4344-81D6-E2CEB0FE48ED}.Debug|Win32.Build.0 = Debug|Win32
+		{2F88D263-3F59-4344-81D6-E2CEB0FE48ED}.Release|Win32.ActiveCfg = Release|Win32
+		{2F88D263-3F59-4344-81D6-E2CEB0FE48ED}.Release|Win32.Build.0 = Release|Win32
+		{FAA4A96B-3244-4DCE-8286-785048DA77E2}.Debug|Win32.ActiveCfg = Debug|Win32
+		{FAA4A96B-3244-4DCE-8286-785048DA77E2}.Debug|Win32.Build.0 = Debug|Win32
+		{FAA4A96B-3244-4DCE-8286-785048DA77E2}.Release|Win32.ActiveCfg = Release|Win32
+		{FAA4A96B-3244-4DCE-8286-785048DA77E2}.Release|Win32.Build.0 = Release|Win32
+		{0C6741D4-2A42-451B-80B5-EE480B0FB155}.Debug|Win32.ActiveCfg = Debug|Win32
+		{0C6741D4-2A42-451B-80B5-EE480B0FB155}.Debug|Win32.Build.0 = Debug|Win32
+		{0C6741D4-2A42-451B-80B5-EE480B0FB155}.Release|Win32.ActiveCfg = Release|Win32
+		{0C6741D4-2A42-451B-80B5-EE480B0FB155}.Release|Win32.Build.0 = Release|Win32
+		{E123F3E0-BAB6-4845-BB9D-47DE5F0D5575}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E123F3E0-BAB6-4845-BB9D-47DE5F0D5575}.Debug|Win32.Build.0 = Debug|Win32
+		{E123F3E0-BAB6-4845-BB9D-47DE5F0D5575}.Release|Win32.ActiveCfg = Release|Win32
+		{E123F3E0-BAB6-4845-BB9D-47DE5F0D5575}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(DPCodeReviewSolutionGUID) = preSolution
+		DPCodeReviewSolutionGUID = {00000000-0000-0000-0000-000000000000}
+	EndGlobalSection
+EndGlobal

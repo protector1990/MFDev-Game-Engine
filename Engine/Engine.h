@@ -37,6 +37,7 @@ private:
 	Engine();
 
 	lua_State * _luaInterpreter;
+	LuaManager * _luaManager;
 	Renderer * _renderer;
 	AssetManager * _assetManager;
 	InputManager* _inputManager;

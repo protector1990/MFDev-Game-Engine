@@ -38,6 +38,9 @@
     <Filter Include="Engine\Script">
       <UniqueIdentifier>{ff8810a0-48a1-425a-b7fe-60f7b727fb73}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\MixIns">
+      <UniqueIdentifier>{7fe58641-0123-40cb-9ddd-4610e98e1501}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -292,6 +295,12 @@
     <ClCompile Include="Lua.cpp">
       <Filter>Engine\Script</Filter>
     </ClCompile>
+    <ClCompile Include="ScriptableInterface.cpp">
+      <Filter>Engine\MixIns</Filter>
+    </ClCompile>
+    <ClCompile Include="ExposedFunctions.cpp">
+      <Filter>Engine\Script</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\libs\lua-5.3.2\src\lapi.h">
@@ -511,6 +520,12 @@
       <Filter>Engine</Filter>
     </ClInclude>
     <ClInclude Include="Lua.h">
+      <Filter>Engine\Script</Filter>
+    </ClInclude>
+    <ClInclude Include="ScriptableInterface.h">
+      <Filter>Engine\MixIns</Filter>
+    </ClInclude>
+    <ClInclude Include="ExposedFunctions.h">
       <Filter>Engine\Script</Filter>
     </ClInclude>
   </ItemGroup>
