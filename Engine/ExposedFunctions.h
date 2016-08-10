@@ -4,6 +4,6 @@
 #define _EXPOSED_FUNCTIONS_H
 #include <lua-5.3.2/src/lua.h>
 
-void ExposeFunctionsToScript();
+int ExposeFunctionsToScript(type_info &type);
 
 #endif //  ifndef _EXPOSED_FUNCTIONS_H

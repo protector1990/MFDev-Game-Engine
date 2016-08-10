@@ -56,6 +56,6 @@ void GameObject::keyPressed(int keyPressed) {
 	//printf("Pressed: %i", keyPressed);
 }
 
-ScriptableInterface* GameObject::getScriptableIterface() const {
-	return _scriptableInterface;
+const ScriptableInterface* GameObject::getScriptableIterface() const {
+	return &_scriptableInterface;
 }

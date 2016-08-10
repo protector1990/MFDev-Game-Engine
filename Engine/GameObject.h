@@ -50,7 +50,7 @@ public:
 	//Why again we have this function?
 	virtual void keyPressed(int keyPressed);
 
-	ScriptableInterface* getScriptableIterface() const;
+	const ScriptableInterface* getScriptableIterface() const;
 
 protected:
 	unsigned int _tag;
