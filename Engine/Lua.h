@@ -61,7 +61,7 @@ public:
 	static void luaParsePlainScript(lua_State *interpreter, Script *script);
 	void luaLoad(lua_State *interpreter, Script *Script);
 
-	void initManager(lua_State *interpreter);
+	void initManager();
 
 	static int luaTest(lua_State*);
 	static int luaGameObjectUpdate(lua_State*);
@@ -70,7 +70,9 @@ public:
 	static int luaGetPosition(lua_State *state);
 	static int luaSetPosition(lua_State *state);
 	static int luaQueryKeyDown(lua_State *state);
+	lua_State* getLuaInterpreter();
 private:
+	lua_State* 	_luaInterpreter;
 	int _gameObjectMetaTable;
 };
 

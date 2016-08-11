@@ -52,13 +52,9 @@ int Engine::run(int argv, char** argc) {
 	_assetManager = new IOSAssetManager();
 #endif;
 	_assetManager->init();
-
-	_luaManager = new LuaManager();
-	_luaInterpreter = luaL_newstate();
-	luaL_openlibs(_luaInterpreter);
-	// TODO: Make these non static
-	_luaManager->initManager(_luaInterpreter);
-	LuaManager::luaBind(_luaInterpreter);
+	
+	_luaManager = new LuaManager;
+	_luaManager->initManager();
 
 	SDL_Init(SDL_INIT_VIDEO);
 
@@ -128,7 +124,7 @@ void Engine::renderScenes() {
 	}
 }
 
-Engine::Engine(): _luaInterpreter(nullptr), _renderer(nullptr), _assetManager(nullptr), _inputManager(nullptr), _deltaTime(0) {}
+Engine::Engine(): _renderer(nullptr), _assetManager(nullptr), _inputManager(nullptr), _deltaTime(0) {}
 
 Engine::~Engine() {
 

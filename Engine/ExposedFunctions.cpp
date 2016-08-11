@@ -20,7 +20,7 @@ int ExposeFunctionsToScript(type_info &type) {
 	
 	if (type == typeid(NavGrid))
 	{
-		lua_State* interpreter = ENGINE.getLuaInterpreter();
+		lua_State* interpreter = SCRIPT_MANAGER->getLuaInterpreter();
 		// First, create a table with C functions for this type
 		lua_createtable(interpreter, 0, 1);
 		// Now add functions

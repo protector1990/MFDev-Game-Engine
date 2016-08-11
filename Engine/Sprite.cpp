@@ -16,8 +16,8 @@ void Sprite::init() {
 	//	LuaManager::luaParseComponent(ENGINE.getLuaInterpreter(), _scripts[i]);
 	//}
 
-	glGenBuffers(1, &_glVertexBufferObjects);
-	glGenVertexArrays(1, &_glVertexArray);
+	//glGenBuffers(1, &_glVertexBufferObjects);
+	//glGenVertexArrays(1, &_glVertexArray);
 	//Optimize so that a single texture is generated exactly once and accessed from all the places it is required
 	glActiveTexture(GL_TEXTURE0);
 	glGenTextures(1, &_glTexture);
@@ -36,7 +36,7 @@ void Sprite::init() {
 void Sprite::update(float deltaTime) {
 	// TODO: move updating scripts upwards in hierarchy
 	for (unsigned int i = 0; i < _luaComponents.size(); i++) {
-		LuaManager::luaCall(ENGINE.getLuaInterpreter(), _luaComponents[i], "update", &deltaTime, 1);
+		LuaManager::luaCall(SCRIPT_MANAGER->getLuaInterpreter(), _luaComponents[i], "update", &deltaTime, 1);
 	}
 }
 

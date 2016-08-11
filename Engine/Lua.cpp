@@ -23,7 +23,7 @@ void ScriptClass::setReference(int reference) {
 }
 
 ScriptComponent::ScriptComponent(ScriptClass *scriptClass, GameObject *parentObject) : _script(scriptClass) {
-	lua_State* interpreter = ENGINE.getLuaInterpreter();
+	lua_State* interpreter = SCRIPT_MANAGER->getLuaInterpreter();
 
 	lua_newtable(interpreter);
 
@@ -219,18 +219,26 @@ int LuaManager::luaQueryKeyDown(lua_State *state) {
 	return 1;
 }
 
-void LuaManager::initManager(lua_State *interpreter) {
+void LuaManager::initManager() {
+	_luaInterpreter = luaL_newstate();
+	luaL_openlibs(_luaInterpreter);
+	// TODO: Make these non static
 	Script* metaTableScript = ASSET_MANAGER->loadAsset<Script>("scripts/system/_lua_Game_object.lua");
-	int res = luaL_loadbufferx(interpreter, metaTableScript->_contents, metaTableScript->_size, metaTableScript->_name, nullptr);
-	if (!lua_isfunction(interpreter, -1))
+	int res = luaL_loadbufferx(_luaInterpreter, metaTableScript->_contents, metaTableScript->_size, metaTableScript->_name, nullptr);
+	if (!lua_isfunction(_luaInterpreter, -1))
 	{
 		printf("[Lua]: Parsing failed for script {%s}", metaTableScript->_name);
 		return;
 	}
-	lua_getglobal(interpreter, "Accessors");
-	if (!lua_istable(interpreter, -1))
+	lua_getglobal(_luaInterpreter, "Accessors");
+	if (!lua_istable(_luaInterpreter, -1))
 	{
 		return;
 	}
-	_gameObjectMetaTable = luaL_ref(interpreter, LUA_REGISTRYINDEX);
+	_gameObjectMetaTable = luaL_ref(_luaInterpreter, LUA_REGISTRYINDEX);
+}
+
+lua_State* LuaManager::getLuaInterpreter()
+{
+	return _luaInterpreter;
 }
