@@ -15,7 +15,30 @@ player.x_speed_limit = 120
 player.x_low_speed_limit = 20
 player.x_friction = 0.2
 
+SampleMeta = {
+	__index = function (tb, key)
+		print(105)
+		print(tb)
+		print(key)
+		return 505
+	end
+}
+
+
+
+SomeTable = {
+	value = function(x)
+		print (x)
+	end,
+	z = 5
+}
+
+setmetatable(SomeTable, SampleMeta)
+
 function player:update(deltaTime)
+	SomeTable.value(10)
+	print(SomeTable.z)
+	print(SomeTable.y)
 	local x = 0
 	local y = 0
 	

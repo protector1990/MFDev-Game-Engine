@@ -1,3 +1,6 @@
+-- primer:
+-- self.navGrid.setSampleDensity(5)
+
 Accessors = {}
 
 Accessors.__index = function (tb, key)
@@ -9,3 +12,5 @@ Accessors.__index = function (tb, key)
 		value(tb.reference, value)
 	end
 end
+
+SampleMeta = {}
