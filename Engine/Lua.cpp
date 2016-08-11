@@ -54,20 +54,15 @@ int luaSample(lua_State* a) {
 	return 1;
 }
 
-void LuaManager::luaBind(lua_State *interpreter) {
-	luaL_openlibs(interpreter);
-	lua_register(interpreter, "test", &luaTest);
-	lua_register(interpreter, "mprint", &luaPrint);
-	lua_register(interpreter, "translate", &luaTranslate);
-	lua_register(interpreter, "queryKeyDown", &luaQueryKeyDown);
-	lua_register(interpreter, "getPosition", &luaGetPosition);
-	lua_register(interpreter, "setPosition", &luaSetPosition);
-	lua_register(interpreter, "luaSample", &luaSample);
-}
-
-void LuaManager::luaExecute(lua_State *interpreter, Script *script) {
-	int res = luaL_loadbufferx(interpreter, script->_contents, script->_size, script->_name, nullptr);
-	lua_pcall(interpreter, 0, LUA_MULTRET, 0);
+void LuaManager::luaBind() const {
+	//luaL_openlibs(interpreter);
+	lua_register(_luaInterpreter, "test", &luaTest);
+	lua_register(_luaInterpreter, "mprint", &luaPrint);
+	lua_register(_luaInterpreter, "translate", &luaTranslate);
+	lua_register(_luaInterpreter, "queryKeyDown", &luaQueryKeyDown);
+	lua_register(_luaInterpreter, "getPosition", &luaGetPosition);
+	lua_register(_luaInterpreter, "setPosition", &luaSetPosition);
+	lua_register(_luaInterpreter, "luaSample", &luaSample);
 }
 
 //TODO: Clean this up and properly test it. It's bound to have some leaks
@@ -222,6 +217,7 @@ int LuaManager::luaQueryKeyDown(lua_State *state) {
 void LuaManager::initManager() {
 	_luaInterpreter = luaL_newstate();
 	luaL_openlibs(_luaInterpreter);
+	luaBind();
 	// TODO: Make these non static
 	Script* metaTableScript = ASSET_MANAGER->loadAsset<Script>("scripts/system/_lua_Game_object.lua");
 	int res = luaL_loadbufferx(_luaInterpreter, metaTableScript->_contents, metaTableScript->_size, metaTableScript->_name, nullptr);

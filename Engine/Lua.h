@@ -53,8 +53,7 @@ private:
 // Also, it would make LuaManager take responsibility for lua_state and the rest of the egnine won't know about it at all.
 class LuaManager {
 public:
-	static void luaBind(lua_State *interpreter);
-	void luaExecute(lua_State *interpreter, Script *script);
+	void luaBind() const;
 	int luaQueryInput(lua_State*);
 	static void luaCall(lua_State* interpreter, ScriptComponent *component, const char* name, float* params, int paramsNum);
 	static int luaParseComponent(lua_State *interpreter, Script *script);
