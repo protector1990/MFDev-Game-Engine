@@ -18,7 +18,7 @@ public:
 	~Engine();
 	void quit();
 	int run(int argc, char** argv);
-	lua_State* getLuaInterpreter() { return _luaInterpreter; }
+	LuaManager* getLuaManager() { return _luaManager; }
 	Renderer* getRenderer() { return _renderer; }
 	AssetManager* getAssetManager() { return _assetManager; }
 	InputManager* getInputManager() { return _inputManager; }
@@ -36,7 +36,7 @@ public:
 private:
 	Engine();
 
-	lua_State * _luaInterpreter;
+	//lua_State * _luaInterpreter;
 	LuaManager * _luaManager;
 	Renderer * _renderer;
 	AssetManager * _assetManager;

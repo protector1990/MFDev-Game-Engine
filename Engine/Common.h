@@ -9,6 +9,7 @@
 // Common shortcuts
 #define ENGINE Engine::getInstance()
 #define ASSET_MANAGER ENGINE.getAssetManager()
+#define SCRIPT_MANAGER ENGINE.getLuaManager()
 
 //Predefined tags
 #define TAG_NAV_OBSTACLE 1u

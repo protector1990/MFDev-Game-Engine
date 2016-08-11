@@ -116,7 +116,7 @@ ScriptClass* WinAssetManager::loadScriptClass(const char* path) {
 	Script *script = loadLuaScript(path);
 	ScriptClass *ret = new ScriptClass();
 	// TODO: Implement error checking
-	ret->setReference(LuaManager::luaParseComponent(ENGINE.getLuaInterpreter(), script));
+	ret->setReference(LuaManager::luaParseComponent(SCRIPT_MANAGER->getLuaInterpreter(), script));
 	ret->setScript(script);
 	return ret;
 }
