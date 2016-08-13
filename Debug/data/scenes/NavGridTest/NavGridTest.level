@@ -1,3 +1,11 @@
 <?xml version="1.0" ?>
 <mscene type="Level" name="NavGridTest">
+	<gameObject type="NavGrid" name="NavGridTest">
+		<transform>
+			<positionX>0</positionX>
+			<positionY>0</positionY>
+			<positionZ>50</positionZ>
+		</transform>
+		<luaScript>/scripts/rookieNavigator.lua</luaScript>
+	</gameObject>
 </mscene>

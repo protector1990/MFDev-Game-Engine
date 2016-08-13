@@ -5,6 +5,38 @@
 #include <iostream>
 #include "Common.h"
 #include "InputManager.h"
+#include "ExposedFunctions.h"
+
+static void stackDump(lua_State *L) {
+	int i;
+	int top = lua_gettop(L);
+	for (i = 1; i <= top; i++) {  /* repeat for each level */
+		int t = lua_type(L, i);
+		switch (t) {
+
+		case LUA_TSTRING:  /* strings */
+			printf("`%s'", lua_tostring(L, i));
+			break;
+
+		case LUA_TBOOLEAN:  /* booleans */
+			printf(lua_toboolean(L, i) ? "true" : "false");
+			break;
+
+		case LUA_TNUMBER:  /* numbers */
+			printf("%g", lua_tonumber(L, i));
+			break;
+
+		default:  /* other values */
+			printf("%s", lua_typename(L, t));
+			break;
+
+		}
+		printf("  ");  /* put a separator */
+	}
+	printf("\n");  /* end the listing */
+}
+
+#define DUMP stackDump(SCRIPT_MANAGER->getLuaInterpreter());
 
 Script* ScriptClass::getScript() const {
 	return script;
@@ -33,13 +65,47 @@ ScriptComponent::ScriptComponent(ScriptClass *scriptClass, GameObject *parentObj
 	while (lua_next(interpreter, -2)) {
 		lua_setfield(interpreter, -4, lua_tostring(interpreter, -2));
 	}
+	//DUMP printf("1\n");
 
 	lua_pop(interpreter, 1);
+	//DUMP printf("2\n");
+
+	const type_info &a = typeid(*parentObject);
+
+	// Accessor table
+	lua_getglobal(interpreter, "Accessor");
+	SCRIPT_MANAGER->luaCopyTable(-1);
+	//DUMP
+
+	int exposedFunctions = GetExposedFunctionsForType(a);
+	if (exposedFunctions) {
+		lua_rawgeti(interpreter, LUA_REGISTRYINDEX, GetExposedFunctionsForType(a));
+		lua_setfield(interpreter, -2, "_tb");
+	}
+	//DUMP
+
+	//lua_pop(interpreter, 1);
 
 	lua_pushlightuserdata(interpreter, parentObject);
-	lua_setfield(interpreter, -2, "gameObject");
+	lua_setfield(interpreter, -2, "ref");
+
+	lua_setfield(interpreter, -3, a.name());
+	lua_pop(interpreter, 1);
+	//DUMP
+
+	DUMP
+	
 
 	_reference = luaL_ref(interpreter, LUA_REGISTRYINDEX);
+	DUMP
+}
+
+void LuaManager::luaCopyTable(int index) {
+	lua_newtable(_luaInterpreter);
+	lua_pushnil(_luaInterpreter);
+	while (lua_next(_luaInterpreter, index - 2)) {
+		lua_setfield(_luaInterpreter, -3, lua_tostring(_luaInterpreter, -2));
+	}
 }
 
 int ScriptComponent::getReference() const {
@@ -70,7 +136,7 @@ int LuaManager::luaParseComponent(lua_State *interpreter, Script *script) {
 	int res = luaL_loadbufferx(interpreter, script->_contents, script->_size, script->_name, nullptr);
 	if (!lua_isfunction(interpreter, -1))
 	{
-		printf("[Lua]: Parsing failed for script {%s}", script->_name);
+		printf("[Lua]: Parsing failed for script {%s}: %s", script->_name, lua_tostring(interpreter, -1));
 		return LUA_NOREF;
 	}
 	lua_pcall(interpreter, 0, 0, 0);
@@ -226,15 +292,17 @@ void LuaManager::initManager() {
 		printf("[Lua]: Parsing failed for script {%s}", metaTableScript->_name);
 		return;
 	}
-	lua_getglobal(_luaInterpreter, "Accessors");
+	lua_call(_luaInterpreter, 0, -1);
+	lua_getglobal(_luaInterpreter, "Accessor");
 	if (!lua_istable(_luaInterpreter, -1))
 	{
+		printf("[Lua]: Acessor table not found!\n");
 		return;
 	}
 	_gameObjectMetaTable = luaL_ref(_luaInterpreter, LUA_REGISTRYINDEX);
+	ExposeFunctionsToScript();
 }
 
-lua_State* LuaManager::getLuaInterpreter()
-{
+lua_State* LuaManager::getLuaInterpreter() const {
 	return _luaInterpreter;
 }

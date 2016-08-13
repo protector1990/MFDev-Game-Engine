@@ -15,12 +15,16 @@ player.x_speed_limit = 120
 player.x_low_speed_limit = 20
 player.x_friction = 0.2
 
+smplFun = function(i)
+	print(i + 8)
+end
+
 SampleMeta = {
 	__index = function (tb, key)
 		print(105)
 		print(tb)
 		print(key)
-		return 505
+		return smplFun
 	end
 }
 
@@ -36,9 +40,7 @@ SomeTable = {
 setmetatable(SomeTable, SampleMeta)
 
 function player:update(deltaTime)
-	SomeTable.value(10)
-	print(SomeTable.z)
-	print(SomeTable.y)
+	SomeTable.someFun(5)
 	local x = 0
 	local y = 0
 	
@@ -55,7 +57,7 @@ function player:update(deltaTime)
 		y = y - 1
 	end
 	
-	self.local_x, self.local_y, self.local_z = getPosition(self.gameObject)
+	self.local_x, self.local_y, self.local_z = getPosition(self.Sprite.ref)
 	
 	if y > 0 and self.is_jumping == false then
 		self.speed_y = self.jumping_speed
@@ -103,7 +105,7 @@ function player:update(deltaTime)
 	self.local_x = self.local_x + self.speed_x * deltaTime
 	
 
-	setPosition(self.gameObject, self.local_x, self.local_y, self.local_z)
+	setPosition(self.Sprite.ref, self.local_x, self.local_y, self.local_z)
 	
 	-- This is sample calling of a parent class function
 	self:madd(5, 3)

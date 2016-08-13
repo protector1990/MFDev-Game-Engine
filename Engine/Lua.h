@@ -58,6 +58,7 @@ public:
 	static void luaCall(lua_State* interpreter, ScriptComponent *component, const char* name, float* params, int paramsNum);
 	static int luaParseComponent(lua_State *interpreter, Script *script);
 	static void luaParsePlainScript(lua_State *interpreter, Script *script);
+	void luaCopyTable(int index);
 	void luaLoad(lua_State *interpreter, Script *Script);
 
 	void initManager();
@@ -69,7 +70,7 @@ public:
 	static int luaGetPosition(lua_State *state);
 	static int luaSetPosition(lua_State *state);
 	static int luaQueryKeyDown(lua_State *state);
-	lua_State* getLuaInterpreter();
+	lua_State* getLuaInterpreter() const;
 private:
 	lua_State* 	_luaInterpreter;
 	int _gameObjectMetaTable;
