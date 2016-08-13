@@ -152,6 +152,7 @@
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="Model3D.cpp" />
     <ClCompile Include="NavGrid.cpp" />
+    <ClCompile Include="NavGridLoader.cpp" />
     <ClCompile Include="Physfs2AssimpInterface.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="ScriptableInterface.cpp" />
@@ -240,6 +241,7 @@
     <ClInclude Include="Model3D.h" />
     <ClInclude Include="NavAgent.h" />
     <ClInclude Include="NavGrid.h" />
+    <ClInclude Include="NavGridLoader.h" />
     <ClInclude Include="Physfs2AssimpInterface.h" />
     <ClInclude Include="PriorityQueue.h" />
     <ClInclude Include="Renderer.h" />

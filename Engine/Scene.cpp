@@ -73,7 +73,7 @@ void Scene::init() {
 }
 
 void Scene::keyPressed(int keyPressed){
-	for (unsigned int i = 0; i < _gameObjects.size(); i++){
+	for (unsigned int i = 0; i < _gameObjects.size(); i++) {
 		_gameObjects[i]->keyPressed(keyPressed);
 	}
 }

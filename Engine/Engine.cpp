@@ -70,10 +70,10 @@ int Engine::run(int argv, char** argc) {
 	_configurationManager->init();
 
 	// Scene with index 0 is always the first scene engine loads. Should enable passing it as a command line argument in debug mode
-	Scene* testScene = ASSET_MANAGER->loadAsset<Scene>(_configurationManager->getScenePath(0));
-	_scenes.push_back(testScene);
-	testScene->init();
-	testScene->activate();
+	Scene* firstScene = ASSET_MANAGER->loadAsset<Scene>(_configurationManager->getScenePath(0));
+	_scenes.push_back(firstScene);
+	firstScene->init();
+	firstScene->activate();
 
 	SDL_Event sdlEvent;
 	while (_running) {

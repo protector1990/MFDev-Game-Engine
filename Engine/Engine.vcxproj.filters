@@ -301,6 +301,9 @@
     <ClCompile Include="ExposedFunctions.cpp">
       <Filter>Engine\Script</Filter>
     </ClCompile>
+    <ClCompile Include="NavGridLoader.cpp">
+      <Filter>Engine\GameObjectLoaders</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\libs\lua-5.3.2\src\lapi.h">
@@ -527,6 +530,9 @@
     </ClInclude>
     <ClInclude Include="ExposedFunctions.h">
       <Filter>Engine\Script</Filter>
+    </ClInclude>
+    <ClInclude Include="NavGridLoader.h">
+      <Filter>Engine\GameObjectLoaders</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

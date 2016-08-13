@@ -149,7 +149,7 @@ int LuaManager::luaParseComponent(lua_State *interpreter, Script *script) {
 
 		lua_getglobal(interpreter, "extends");
 		const char *extends = lua_tostring(interpreter, -1);
-		if (strlen(extends) > 0) {
+		if ((extends) && (strlen(extends) > 0)) {
 
 			lua_pop(interpreter, 1);
 
