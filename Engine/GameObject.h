@@ -8,9 +8,11 @@
 #include "Lua.h"
 #include "ScriptableInterface.h"
 #include <typeinfo>
+//#include "Component.h"
 //typedef Renderer Renderer;
 
 class Scene;
+class Component;
 
 // Abstract game object class. Should be implemented as needed for specific game 
 // requirements. You can go as far as programming every single game object
@@ -33,6 +35,7 @@ public:
 	//virtual void load(const char* cfgPath) = 0;
 	virtual void init() = 0;
 	virtual void update(float deltaTime) = 0;
+	virtual void updateComponents(float deltaTime);
 	virtual void render(Renderer *renderer) = 0;
 
 	virtual GameObject *getRoot();
@@ -46,7 +49,7 @@ public:
 	glm::vec3 _Position;
 
 	ScriptComponent* getLuaComponent(const char* scriptName);
-	std::vector<ScriptComponent*> _luaComponents;
+	std::vector<ScriptComponent*> _scriptComponents;
 	//Why again we have this function?
 	virtual void keyPressed(int keyPressed);
 
@@ -56,6 +59,7 @@ protected:
 	unsigned int _tag;
 	GameObject *_parent;
 	std::vector<GameObject*> _children;
+	std::vector<Component*> _components;
 	// This might benefit from having setter and not being const, because we shall yet to see to the problem of loading and unloading scenes
 	// and object migration between them.
 	Scene *_scene;

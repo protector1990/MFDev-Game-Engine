@@ -26,9 +26,6 @@
     <Filter Include="Engine\GameObjects">
       <UniqueIdentifier>{ad939f7b-e960-4681-b9ef-771079c57dfa}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\GameObjectLoaders">
-      <UniqueIdentifier>{9ffdebbb-fc83-4736-97bb-070748eae1ca}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Engine\Components">
       <UniqueIdentifier>{690a65b6-e5bf-4209-913f-776e10a81f08}</UniqueIdentifier>
     </Filter>
@@ -40,6 +37,9 @@
     </Filter>
     <Filter Include="Engine\MixIns">
       <UniqueIdentifier>{7fe58641-0123-40cb-9ddd-4610e98e1501}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Loaders">
+      <UniqueIdentifier>{9ffdebbb-fc83-4736-97bb-070748eae1ca}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -181,11 +181,8 @@
     <ClCompile Include="Scene.cpp">
       <Filter>Engine\Scenes</Filter>
     </ClCompile>
-    <ClCompile Include="GameObjectLoaderFactory.cpp">
-      <Filter>Engine\GameObjectLoaders</Filter>
-    </ClCompile>
     <ClCompile Include="SpriteLoader.cpp">
-      <Filter>Engine\GameObjectLoaders</Filter>
+      <Filter>Engine\Loaders</Filter>
     </ClCompile>
     <ClCompile Include="..\libs\physfs-2.0.3\crc32.c">
       <Filter>physfs</Filter>
@@ -278,7 +275,7 @@
       <Filter>physfs</Filter>
     </ClCompile>
     <ClCompile Include="AbstractGameObjectLoader.cpp">
-      <Filter>Engine\GameObjectLoaders</Filter>
+      <Filter>Engine\Loaders</Filter>
     </ClCompile>
     <ClCompile Include="InputManager.cpp">
       <Filter>Engine</Filter>
@@ -302,7 +299,19 @@
       <Filter>Engine\Script</Filter>
     </ClCompile>
     <ClCompile Include="NavGridLoader.cpp">
-      <Filter>Engine\GameObjectLoaders</Filter>
+      <Filter>Engine\Loaders</Filter>
+    </ClCompile>
+    <ClCompile Include="Component.cpp">
+      <Filter>Engine\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="LoaderFactories.cpp">
+      <Filter>Engine\Loaders</Filter>
+    </ClCompile>
+    <ClCompile Include="AreaLoader.cpp">
+      <Filter>Engine\Loaders</Filter>
+    </ClCompile>
+    <ClCompile Include="AbstractComponentLoader.cpp">
+      <Filter>Engine\Loaders</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -481,13 +490,10 @@
       <Filter>Engine\GameObjects</Filter>
     </ClInclude>
     <ClInclude Include="AbstractGameObjectLoader.h">
-      <Filter>Engine\GameObjectLoaders</Filter>
-    </ClInclude>
-    <ClInclude Include="GameObjectLoaderFactory.h">
-      <Filter>Engine\GameObjectLoaders</Filter>
+      <Filter>Engine\Loaders</Filter>
     </ClInclude>
     <ClInclude Include="SpriteLoader.h">
-      <Filter>Engine\GameObjectLoaders</Filter>
+      <Filter>Engine\Loaders</Filter>
     </ClInclude>
     <ClInclude Include="Transform.h">
       <Filter>Engine\Components</Filter>
@@ -532,7 +538,16 @@
       <Filter>Engine\Script</Filter>
     </ClInclude>
     <ClInclude Include="NavGridLoader.h">
-      <Filter>Engine\GameObjectLoaders</Filter>
+      <Filter>Engine\Loaders</Filter>
+    </ClInclude>
+    <ClInclude Include="LoaderFactories.h">
+      <Filter>Engine\Loaders</Filter>
+    </ClInclude>
+    <ClInclude Include="AreaLoader.h">
+      <Filter>Engine\Loaders</Filter>
+    </ClInclude>
+    <ClInclude Include="AbstractComponentLoader.h">
+      <Filter>Engine\Loaders</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

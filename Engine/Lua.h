@@ -11,6 +11,9 @@
 
 #include "TextAsset.h"
 
+void luaStackDump(lua_State *L);
+#define DUMP luaStackDump(SCRIPT_MANAGER->getLuaInterpreter());
+
 class GameObject;
 
 class Script : public TextAsset {
@@ -38,6 +41,8 @@ protected:
 class ScriptComponent {
 public:
 	ScriptComponent(ScriptClass *script, GameObject *parentObject);
+
+	void init();
 
 	ScriptClass* getScriptClass() const;
 	int getReference() const;

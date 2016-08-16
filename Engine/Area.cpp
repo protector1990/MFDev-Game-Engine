@@ -50,3 +50,9 @@ bool Area::contains(vec3 point) const {
 	}
 	return true;
 }
+
+void Area::init() {
+}
+
+void Area::update(float deltaTime) {
+}

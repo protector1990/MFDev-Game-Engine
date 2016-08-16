@@ -1,6 +1,7 @@
 /** Copyright 2016 MarFil Studios. All rights reserved. **/
 
 #include "GameObject.h"
+#include "Common.h"
 
 GameObject::~GameObject() {
 }
@@ -27,6 +28,12 @@ void GameObject::appendTag(unsigned tag) {
 	_tag |= tag;
 }
 
+void GameObject::updateComponents(float deltaTime) {
+	for (unsigned int i = 0; i < _scriptComponents.size(); i++) {
+		LuaManager::luaCall(SCRIPT_MANAGER->getLuaInterpreter(), _scriptComponents[i], "update", &deltaTime, 1);
+	}
+}
+
 GameObject* GameObject::getRoot() {
 	if (_parent) {
 		return _parent->getRoot();
@@ -44,9 +51,9 @@ GameObject* GameObject::getChildren(int &count) {
 }
 
 ScriptComponent* GameObject::getLuaComponent(const char* name) {
-	for (int i = 0; i < _luaComponents.size(); i++) {
-		if (strcmp(name, _luaComponents[i]->getScriptClass()->getScript()->_name) == 0) {
-			return _luaComponents[i];
+	for (int i = 0; i < _scriptComponents.size(); i++) {
+		if (strcmp(name, _scriptComponents[i]->getScriptClass()->getScript()->_name) == 0) {
+			return _scriptComponents[i];
 		}
 	}
 	return nullptr;

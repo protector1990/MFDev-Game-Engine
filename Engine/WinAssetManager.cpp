@@ -11,7 +11,7 @@
 #include "../rapidxml-1.13/rapidxml.hpp"
 #include "Sprite.h"
 #include "Level.h"
-#include "GameObjectLoaderFactory.h"
+#include "LoaderFactories.h"
 #include "Common.h"
 
 #ifdef __WINDOWS__
@@ -190,7 +190,7 @@ Scene* WinAssetManager::loadScene(const char *path) {
 				for (xml_node<> *gameObject = mScene->first_node(); gameObject; gameObject = gameObject->next_sibling())
 				{
 					//Ensure it is a game object node
-					if (strcmp(gameObject->name(), "gameObject") == 0) {
+					if (!strcmp(gameObject->name(), "gameObject")) {
 						//Get its type and call apropriate loader
 						AbstractGameObjectLoader* loader = loaderFactory.getGameObjectLoader(gameObject->first_attribute("type")->value());
 						GameObject* obj = loader->load(gameObject);

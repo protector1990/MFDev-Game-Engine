@@ -57,7 +57,7 @@ function player:update(deltaTime)
 		y = y - 1
 	end
 	
-	self.local_x, self.local_y, self.local_z = getPosition(self.Sprite.ref)
+	self.local_x, self.local_y, self.local_z = getPosition(self.Sprite.cref)
 	
 	if y > 0 and self.is_jumping == false then
 		self.speed_y = self.jumping_speed
@@ -105,7 +105,7 @@ function player:update(deltaTime)
 	self.local_x = self.local_x + self.speed_x * deltaTime
 	
 
-	setPosition(self.Sprite.ref, self.local_x, self.local_y, self.local_z)
+	setPosition(self.Sprite.cref, self.local_x, self.local_y, self.local_z)
 	
 	-- This is sample calling of a parent class function
 	self:madd(5, 3)

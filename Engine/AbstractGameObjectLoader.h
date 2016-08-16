@@ -12,8 +12,10 @@ public:
 protected:
 	//Utility functions for all game objects
 	glm::vec3 loadPosition(rapidxml::xml_node<char>* configuration);
-	std::vector<ScriptComponent*> loadLuaComponents(rapidxml::xml_node<char>* configuration);
+	std::vector<ScriptComponent*> loadScriptComponents(rapidxml::xml_node<char>* configuration);
+	std::vector<Component*> loadComponents(rapidxml::xml_node<char>* configuration);
 	//TODO: Videti ako moze nekako bez ovoga
 	GameObject* _currentlyLoadingObject;
 };
+
 #endif

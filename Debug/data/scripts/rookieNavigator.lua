@@ -7,5 +7,5 @@ function rookieNavigator:init()
 end
 
 function rookieNavigator:update(deltaTime)
-	
+	--print("Rookie Navigator")
 end

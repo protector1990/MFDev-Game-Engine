@@ -46,6 +46,7 @@ void Scene::deactivate(){
 void Scene::update(float deltaTime) {
 	for (int i = 0; i < _gameObjects.size(); i++) {
 		_gameObjects[i]->update(deltaTime);
+		_gameObjects[i]->updateComponents(deltaTime);
 		//for (int j = 0; j < _gameObjects[i]->_scripts.size(); j++) {
 			//luaExecute(ENGINE.getLuaInterpreter(), _gameObjects[i]->_scripts[j]);
 		//}

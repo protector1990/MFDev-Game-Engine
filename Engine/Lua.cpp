@@ -7,7 +7,7 @@
 #include "InputManager.h"
 #include "ExposedFunctions.h"
 
-static void stackDump(lua_State *L) {
+void luaStackDump(lua_State *L) {
 	int i;
 	int top = lua_gettop(L);
 	for (i = 1; i <= top; i++) {  /* repeat for each level */
@@ -35,8 +35,6 @@ static void stackDump(lua_State *L) {
 	}
 	printf("\n");  /* end the listing */
 }
-
-#define DUMP stackDump(SCRIPT_MANAGER->getLuaInterpreter());
 
 Script* ScriptClass::getScript() const {
 	return script;
@@ -87,7 +85,7 @@ ScriptComponent::ScriptComponent(ScriptClass *scriptClass, GameObject *parentObj
 	//lua_pop(interpreter, 1);
 
 	lua_pushlightuserdata(interpreter, parentObject);
-	lua_setfield(interpreter, -2, "ref");
+	lua_setfield(interpreter, -2, "cref");
 
 	lua_setfield(interpreter, -3, a.name());
 	lua_pop(interpreter, 1);
@@ -98,6 +96,10 @@ ScriptComponent::ScriptComponent(ScriptClass *scriptClass, GameObject *parentObj
 
 	_reference = luaL_ref(interpreter, LUA_REGISTRYINDEX);
 	DUMP
+}
+
+void ScriptComponent::init() {
+
 }
 
 void LuaManager::luaCopyTable(int index) {
@@ -121,7 +123,7 @@ int luaSample(lua_State* a) {
 }
 
 void LuaManager::luaBind() const {
-	//luaL_openlibs(interpreter);
+	//TODO: Push all of these to a global 'engine' table. So we can have something like (from lua): engine.test()
 	lua_register(_luaInterpreter, "test", &luaTest);
 	lua_register(_luaInterpreter, "mprint", &luaPrint);
 	lua_register(_luaInterpreter, "translate", &luaTranslate);

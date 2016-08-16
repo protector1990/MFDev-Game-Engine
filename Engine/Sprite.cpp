@@ -34,10 +34,7 @@ void Sprite::init() {
 }
 
 void Sprite::update(float deltaTime) {
-	// TODO: move updating scripts upwards in hierarchy
-	for (unsigned int i = 0; i < _luaComponents.size(); i++) {
-		LuaManager::luaCall(SCRIPT_MANAGER->getLuaInterpreter(), _luaComponents[i], "update", &deltaTime, 1);
-	}
+
 }
 
 GLuint indices[] = { 0, 1, 2, 3 };

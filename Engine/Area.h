@@ -9,10 +9,13 @@
 
 class Area : public Component {
 public:
+	Area(GameObject* obj) : Component(obj) {}
 	std::vector<glm::vec3>* getPoints() const;
 	const std::vector<glm::vec3>* getPointsConst() const;
 	void addPoint(glm::vec3 point);
 	virtual bool contains(glm::vec3 point) const;
+	void init() override;
+	void update(float deltaTime) override;
 private:
 	std::vector<glm::vec3> _points;
 };

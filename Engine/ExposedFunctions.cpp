@@ -3,6 +3,7 @@
 
 #include "ExposedFunctions.h"
 #include "NavGrid.h"
+#include "Sprite.h"
 #include <map>
 #include "Common.h"
 
@@ -17,6 +18,10 @@ int LuaNavGridSetSampleDensity(lua_State* state) {
 	return 0;
 }
 
+int SampleSpriteFun(lua_State* state) {
+	return 0;
+}
+
 void ExposeFunctionsToScript() {
 	lua_State* interpreter = SCRIPT_MANAGER->getLuaInterpreter();
 	// First, create a table with C functions for this type
@@ -25,8 +30,16 @@ void ExposeFunctionsToScript() {
 	lua_pushcfunction(interpreter, LuaNavGridSetSampleDensity);
 	lua_setfield(interpreter, -2, "setSampleDensity");
 	lua_pop(interpreter, 1);
+	DUMP
 	// Reference the table and return it
 	MappedValues.insert(make_pair(typeid(NavGrid).name(), luaL_ref(interpreter, -1)));
+
+
+	lua_pushcfunction(interpreter, SampleSpriteFun);
+	lua_setfield(interpreter, -2, "sampleSpriteFun");
+	lua_pop(interpreter, 1);
+	lua_createtable(interpreter, 0, 1);
+	MappedValues.insert(make_pair(typeid(Sprite).name(), luaL_ref(interpreter, -1)));
 }
 
 int GetExposedFunctionsForType(const type_info &type) {
