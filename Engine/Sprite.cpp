@@ -41,6 +41,7 @@ GLuint indices[] = { 0, 1, 2, 3 };
 
 void Sprite::render(Renderer *renderer) {
 	// This code is still very experimental
+	glColor3f(1.f, 1.f, 1.f);
 	GLenum i;
 	_points[0].x = _points[3].x = _Position.x - _texture->w / 2.f;
 	_points[1].x = _points[2].x = _Position.x + _texture->w / 2.f;

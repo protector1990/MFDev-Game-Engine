@@ -59,18 +59,13 @@ private:
 class LuaManager {
 public:
 	void luaBind() const;
-	int luaQueryInput(lua_State*);
 	static void luaCall(lua_State* interpreter, ScriptComponent *component, const char* name, float* params, int paramsNum);
 	static int luaParseComponent(lua_State *interpreter, Script *script);
 	static void luaParsePlainScript(lua_State *interpreter, Script *script);
 	void luaCopyTable(int index);
-	void luaLoad(lua_State *interpreter, Script *Script);
 
 	void initManager();
 
-	static int luaTest(lua_State*);
-	static int luaGameObjectUpdate(lua_State*);
-	static int luaPrint(lua_State *state);
 	static int luaTranslate(lua_State *state);
 	static int luaGetPosition(lua_State *state);
 	static int luaSetPosition(lua_State *state);

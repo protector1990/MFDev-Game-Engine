@@ -25,6 +25,10 @@ class GameObject {
 	// and Win/iOS asset managers should only concern input methods
 	friend class WinAssetManager;
 public:
+	GameObject()
+		: _tag(0) {
+	}
+
 	virtual ~GameObject();
 
 	//GameObject();
@@ -37,6 +41,7 @@ public:
 	virtual void update(float deltaTime) = 0;
 	virtual void updateComponents(float deltaTime);
 	virtual void render(Renderer *renderer) = 0;
+	virtual void renderDebugComponents(float deltaTime);
 
 	virtual GameObject *getRoot();
 	virtual GameObject *getParent();
@@ -54,6 +59,7 @@ public:
 	virtual void keyPressed(int keyPressed);
 
 	const ScriptableInterface* getScriptableIterface() const;
+	const std::vector<Component*>* getComponentsConst() const;
 
 protected:
 	unsigned int _tag;

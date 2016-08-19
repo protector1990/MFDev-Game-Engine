@@ -22,11 +22,12 @@
 		</sheet>
 
 		<luaScript>/scripts/player.lua</luaScript>
+		<luaScript>/scripts/sampleComponent.lua</luaScript>
 
 		<component type="Area">
-			<vertex x="50" y="35" z="0"/>
-			<vertex x="60" y="45" z="0"/>
-			<vertex x="55" y="55" z="0"/>
+			<vertex x="55" y="5" z="0"/>
+			<vertex x="150" y="45" z="0"/>
+			<vertex x="5" y="155" z="0"/>
 		</component>
 	</gameObject>
 </mscene>

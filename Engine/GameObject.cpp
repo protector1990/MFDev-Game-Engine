@@ -2,6 +2,7 @@
 
 #include "GameObject.h"
 #include "Common.h"
+#include "Component.h"
 
 GameObject::~GameObject() {
 }
@@ -34,6 +35,15 @@ void GameObject::updateComponents(float deltaTime) {
 	}
 }
 
+#ifdef _DEBUG
+void GameObject::renderDebugComponents(float deltaTime) {
+	for (unsigned int i = 0; i < _components.size(); i++) {
+		_components[i]->renderDebug(deltaTime);
+	}
+}
+#endif // _DEBUG
+
+
 GameObject* GameObject::getRoot() {
 	if (_parent) {
 		return _parent->getRoot();
@@ -65,4 +75,8 @@ void GameObject::keyPressed(int keyPressed) {
 
 const ScriptableInterface* GameObject::getScriptableIterface() const {
 	return &_scriptableInterface;
+}
+
+const std::vector<Component*>* GameObject::getComponentsConst() const {
+	return &_components;
 }

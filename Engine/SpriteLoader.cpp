@@ -47,6 +47,7 @@ GameObject* SpriteLoader::load(xml_node<char>* configuration) {
 	ret->_animSpeed = atof(animSpeed->value());
 	ret->_sheetHeight = atoi(sheetWidth->value());
 	ret->_sheetWidth = atoi(sheetHeight->value());
+	ret->_components = loadComponents(configuration);
 	ret->_scriptComponents = loadScriptComponents(configuration);
-	return (GameObject*)ret;
+	return static_cast<GameObject*>(ret);
 }

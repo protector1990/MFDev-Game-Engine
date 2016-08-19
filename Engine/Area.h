@@ -16,6 +16,9 @@ public:
 	virtual bool contains(glm::vec3 point) const;
 	void init() override;
 	void update(float deltaTime) override;
+#ifdef _DEBUG
+	void renderDebug(float deltaTime) override;
+#endif
 private:
 	std::vector<glm::vec3> _points;
 };

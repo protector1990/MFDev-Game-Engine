@@ -14,33 +14,15 @@ player.x_force = 1500
 player.x_speed_limit = 120
 player.x_low_speed_limit = 20
 player.x_friction = 0.2
+player.zz = true
 
-smplFun = function(i)
-	print(i + 8)
-end
-
-SampleMeta = {
-	__index = function (tb, key)
-		print(105)
-		print(tb)
-		print(key)
-		return smplFun
-	end
-}
-
-
-
-SomeTable = {
-	value = function(x)
-		print (x)
-	end,
-	z = 5
-}
-
-setmetatable(SomeTable, SampleMeta)
 
 function player:update(deltaTime)
-	SomeTable.someFun(5)
+	--if(self.zz) then
+		--SomeTable()
+	--end
+	self.cobj.SampleSpriteFun()
+	self.zz = false
 	local x = 0
 	local y = 0
 	
@@ -57,8 +39,7 @@ function player:update(deltaTime)
 		y = y - 1
 	end
 	
-	self.local_x, self.local_y, self.local_z = getPosition(self.Sprite.cref)
-	
+	self.local_x, self.local_y, self.local_z = getPosition(self.cobj.cptr)
 	if y > 0 and self.is_jumping == false then
 		self.speed_y = self.jumping_speed
 		self.is_jumping = true
@@ -105,9 +86,38 @@ function player:update(deltaTime)
 	self.local_x = self.local_x + self.speed_x * deltaTime
 	
 
-	setPosition(self.Sprite.cref, self.local_x, self.local_y, self.local_z)
+	setPosition(self.cobj.cptr, self.local_x, self.local_y, self.local_z)
 	
 	-- This is sample calling of a parent class function
 	self:madd(5, 3)
 	
 end
+
+SampleMeta = {
+	__index = function (tb, key)
+		return smplFun
+	end,
+	__call = function (func, ...)
+		--print("call triggered")
+		print (func)
+		print (func[1])
+		--func(45, arg[1])
+	end,
+	something = function()
+		print "zzzs"
+	end
+}
+
+SomeTable = {
+	function()
+		print ("something")
+	end
+}
+
+function someFuncs(x, y)
+	print (x)
+	print (y)
+end
+
+setmetatable(SomeTable, SampleMeta)
+--setmetatable(someFuncs, SampleMeta)

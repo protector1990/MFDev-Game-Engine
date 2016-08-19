@@ -5,11 +5,14 @@
 #include "NavGrid.h"
 #include "Sprite.h"
 #include <map>
+//#include <list>
 #include "Common.h"
+#include "Area.h"
 
 using namespace std;
+using namespace glm;
 
-map<const char*, int> MappedValues;
+map<const char*, map<const char*, lua_CFunction>*> MappedValues;
 
 int LuaNavGridSetSampleDensity(lua_State* state) {
 	NavGrid* targetObject = static_cast<NavGrid*>(lua_touserdata(state, -2));
@@ -22,28 +25,31 @@ int SampleSpriteFun(lua_State* state) {
 	return 0;
 }
 
-void ExposeFunctionsToScript() {
-	lua_State* interpreter = SCRIPT_MANAGER->getLuaInterpreter();
-	// First, create a table with C functions for this type
-	lua_createtable(interpreter, 0, 1);
-	// Now add functions
-	lua_pushcfunction(interpreter, LuaNavGridSetSampleDensity);
-	lua_setfield(interpreter, -2, "setSampleDensity");
-	lua_pop(interpreter, 1);
-	DUMP
-	// Reference the table and return it
-	MappedValues.insert(make_pair(typeid(NavGrid).name(), luaL_ref(interpreter, -1)));
-
-
-	lua_pushcfunction(interpreter, SampleSpriteFun);
-	lua_setfield(interpreter, -2, "sampleSpriteFun");
-	lua_pop(interpreter, 1);
-	lua_createtable(interpreter, 0, 1);
-	MappedValues.insert(make_pair(typeid(Sprite).name(), luaL_ref(interpreter, -1)));
+int AreaContains(lua_State* state) {
+	Area* targetArea = static_cast<Area*>(lua_touserdata(state, lua_upvalueindex(1)));
+	bool contains = targetArea->contains(vec3(lua_tonumber(state, -3), lua_tonumber(state, -2), lua_tonumber(state, -1)));
+	lua_pushboolean(state, contains);
+	return 1;
 }
 
-int GetExposedFunctionsForType(const type_info &type) {
-	map<const char*, int>::iterator it = MappedValues.find(type.name());
+void ExposeFunctionsToScript() {
+	lua_State* interpreter = SCRIPT_MANAGER->getLuaInterpreter();
+
+	map<const char*, lua_CFunction>* navGridFuns = new map<const char*, lua_CFunction>;
+	navGridFuns->insert(make_pair("SetSampleDensity", LuaNavGridSetSampleDensity));
+	MappedValues.insert(make_pair(typeid(NavGrid).name(), navGridFuns));
+
+	map<const char*, lua_CFunction>* spriteFuns = new map<const char*, lua_CFunction>;
+	spriteFuns->insert(make_pair("SampleSpriteFun", SampleSpriteFun));
+	MappedValues.insert(make_pair(typeid(Sprite).name(), spriteFuns));
+
+	map<const char*, lua_CFunction>* areaFuns = new map<const char*, lua_CFunction>;
+	areaFuns->insert(make_pair("Contains", AreaContains));
+	MappedValues.insert(make_pair(typeid(Area).name(), areaFuns));
+}
+
+map<const char*, lua_CFunction>* GetExposedFunctionsForType(const type_info &type) {
+	map<const char*, map<const char*, lua_CFunction>*>::iterator it = MappedValues.find(type.name());
 	if (it == MappedValues.end())
 	{
 		return 0;

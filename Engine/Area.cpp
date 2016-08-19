@@ -2,6 +2,7 @@
 
 #include "Area.h"
 #include <cfloat>
+#include <SDL_opengl.h>
 
 using namespace std;
 using namespace glm;
@@ -55,4 +56,29 @@ void Area::init() {
 }
 
 void Area::update(float deltaTime) {
+	
 }
+
+#ifdef _DEBUG
+void Area::renderDebug(float deltaTime) {
+	glColor3f(0, 0, 0);
+	glLineWidth(5.f);
+	glBegin(GL_LINE_STRIP);
+	for (int i = 0; i < _points.size(); ++i)
+	{
+		float x = _points[i].x;
+		float y = _points[i].y;
+		float z = _points[i].z;
+		glVertex3f(_points[i].x, _points[i].y, _points[i].z);
+	}
+	glVertex3f(_points[0].x, _points[0].y, _points[0].z);
+	glEnd();
+	glFlush();
+	//glPointSize(10.f);
+	//glBegin(GL_POINTS);
+	//glVertex3f(55, 45, 0);
+	//glEnd();
+	//glFlush();
+}
+
+#endif // _DEBUG

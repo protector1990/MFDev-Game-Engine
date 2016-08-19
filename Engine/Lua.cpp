@@ -6,6 +6,10 @@
 #include "Common.h"
 #include "InputManager.h"
 #include "ExposedFunctions.h"
+#include "Component.h"
+#include <map>
+
+using namespace std;
 
 void luaStackDump(lua_State *L) {
 	int i;
@@ -55,7 +59,7 @@ void ScriptClass::setReference(int reference) {
 ScriptComponent::ScriptComponent(ScriptClass *scriptClass, GameObject *parentObject) : _script(scriptClass) {
 	lua_State* interpreter = SCRIPT_MANAGER->getLuaInterpreter();
 
-	lua_newtable(interpreter);
+	lua_createtable(interpreter, 0, 0);
 
 	int tb = lua_rawgeti(interpreter, LUA_REGISTRYINDEX, scriptClass->getReference());
 	lua_pushnil(interpreter);
@@ -63,39 +67,53 @@ ScriptComponent::ScriptComponent(ScriptClass *scriptClass, GameObject *parentObj
 	while (lua_next(interpreter, -2)) {
 		lua_setfield(interpreter, -4, lua_tostring(interpreter, -2));
 	}
-	//DUMP printf("1\n");
 
 	lua_pop(interpreter, 1);
-	//DUMP printf("2\n");
 
 	const type_info &a = typeid(*parentObject);
 
 	// Accessor table
-	lua_getglobal(interpreter, "Accessor");
-	SCRIPT_MANAGER->luaCopyTable(-1);
-	//DUMP
+	//lua_getglobal(interpreter, "Accessor");
+	//SCRIPT_MANAGER->luaCopyTable(-1);
 
-	int exposedFunctions = GetExposedFunctionsForType(a);
+	lua_newtable(interpreter);
+	map<const char*, lua_CFunction>* exposedFunctions = GetExposedFunctionsForType(a);
 	if (exposedFunctions) {
-		lua_rawgeti(interpreter, LUA_REGISTRYINDEX, GetExposedFunctionsForType(a));
-		lua_setfield(interpreter, -2, "_tb");
-	}
-	//DUMP
+		for (pair<const char*, lua_CFunction> iv : *exposedFunctions) {
+			lua_pushlightuserdata(interpreter, parentObject);
+			lua_pushcclosure(interpreter, iv.second, 1);
+			lua_setfield(interpreter, -2, iv.first);
+		}
 
-	//lua_pop(interpreter, 1);
+	}
 
 	lua_pushlightuserdata(interpreter, parentObject);
-	lua_setfield(interpreter, -2, "cref");
-
-	lua_setfield(interpreter, -3, a.name());
-	lua_pop(interpreter, 1);
+	lua_setfield(interpreter, -2, "cptr");
+	lua_setfield(interpreter, -2, "cobj");
+	//lua_pop(interpreter, 1);
 	//DUMP
-
-	DUMP
-	
+	//Set component reference tables
+	const std::vector<Component*>* components = parentObject->getComponentsConst();
+	for (auto component : *components)
+	{
+		const type_info& componentInfo = typeid(*component);
+		
+		map<const char*, lua_CFunction>* componentExposedFunctinos = GetExposedFunctionsForType(componentInfo);
+		if (componentExposedFunctinos) {
+			lua_newtable(interpreter);
+			for (pair<const char*, lua_CFunction> iv : *componentExposedFunctinos) {
+				lua_pushlightuserdata(interpreter, component);
+				lua_pushcclosure(interpreter, iv.second, 1);
+				lua_setfield(interpreter, -2, iv.first);
+			}
+		
+			const char* componentName = strchr(componentInfo.name(), ' ') + 1;
+			DUMP
+			lua_setfield(interpreter, -2, componentName);
+		}
+	}
 
 	_reference = luaL_ref(interpreter, LUA_REGISTRYINDEX);
-	DUMP
 }
 
 void ScriptComponent::init() {
@@ -124,8 +142,6 @@ int luaSample(lua_State* a) {
 
 void LuaManager::luaBind() const {
 	//TODO: Push all of these to a global 'engine' table. So we can have something like (from lua): engine.test()
-	lua_register(_luaInterpreter, "test", &luaTest);
-	lua_register(_luaInterpreter, "mprint", &luaPrint);
 	lua_register(_luaInterpreter, "translate", &luaTranslate);
 	lua_register(_luaInterpreter, "queryKeyDown", &luaQueryKeyDown);
 	lua_register(_luaInterpreter, "getPosition", &luaGetPosition);
@@ -233,17 +249,6 @@ void LuaManager::luaCall(lua_State *interpreter, ScriptComponent *component, con
 		lua_call(interpreter, paramsNum+1, 0);
 		lua_pop(interpreter, paramsNum);
 	}
-}
-
-//c++ callbacks from lua
-int LuaManager::luaTest(lua_State *state) {
-	std::cout << "test working";
-	return 0;
-}
-
-int LuaManager::luaPrint(lua_State *state) {
-	std::cout << (state, lua_gettop(state));
-	return 0;
 }
 
 int LuaManager::luaTranslate(lua_State *state) {
