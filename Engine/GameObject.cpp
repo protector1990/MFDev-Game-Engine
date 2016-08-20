@@ -85,3 +85,7 @@ const ScriptableInterface* GameObject::getScriptableIterface() const {
 const std::vector<Component*>* GameObject::getComponentsConst() const {
 	return &_components;
 }
+
+const char* GameObject::getName() const {
+	return _name;
+}

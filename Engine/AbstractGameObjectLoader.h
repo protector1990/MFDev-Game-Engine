@@ -6,6 +6,7 @@
 #include "GameObject.h"
 #include <rapidxml-1.13\rapidxml.hpp>
 
+//TODO: Fix object and component loaders hierarchy. Define what should go where and make teh system robust
 class AbstractGameObjectLoader {
 public:
 	virtual GameObject* load(rapidxml::xml_node<char>* configuration) = 0;

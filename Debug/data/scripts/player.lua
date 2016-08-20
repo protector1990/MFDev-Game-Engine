@@ -21,7 +21,7 @@ function player:update(deltaTime)
 	--if(self.zz) then
 		--SomeTable()
 	--end
-	self.cobj.SampleSpriteFun()
+	--self.cobj.SampleSpriteFun()
 	self.zz = false
 	local x = 0
 	local y = 0

@@ -30,4 +30,25 @@
 			<vertex x="5" y="155" z="0"/>
 		</component>
 	</gameObject>
+	<gameObject type="Sprite" name="SecondPlayer">
+		<transform>
+			<positionX>100</positionX>
+			<positionY>-200</positionY>
+			<positionZ>60</positionZ>
+		</transform>
+		<texture>/textures/player.bmp</texture>
+		<sheet>
+			<height>1</height>
+			<width>1</width>
+			<animSpeed>-1</animSpeed>
+		</sheet>
+
+		<luaScript>/scripts/sampleComponent.lua</luaScript>
+
+		<component type="Area">
+			<vertex x="55" y="5" z="0"/>
+			<vertex x="150" y="45" z="0"/>
+			<vertex x="5" y="155" z="0"/>
+		</component>
+	</gameObject>
 </mscene>

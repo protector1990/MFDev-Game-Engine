@@ -15,18 +15,23 @@ using namespace glm;
 map<const char*, map<const char*, lua_CFunction>*> MappedValues;
 
 int LuaNavGridSetSampleDensity(lua_State* state) {
-	NavGrid* targetObject = static_cast<NavGrid*>(lua_touserdata(state, -2));
+	GameObject* intermediate = static_cast<GameObject*>(lua_touserdata(state, lua_upvalueindex(1)));
+	NavGrid* targetObject = dynamic_cast<NavGrid*>(intermediate);
 	//TODO: make error checking
 	targetObject->setSampleDensity(lua_tonumber(state, -1));
 	return 0;
 }
 
 int SampleSpriteFun(lua_State* state) {
+	GameObject* intermediate = static_cast<GameObject*>(lua_touserdata(state, lua_upvalueindex(1)));
+	Sprite* targetObject = dynamic_cast<Sprite*>(intermediate);
+	//targetObject->sampleFun();
 	return 0;
 }
 
 int AreaContains(lua_State* state) {
-	Area* targetArea = static_cast<Area*>(lua_touserdata(state, lua_upvalueindex(1)));
+	Component* intermediate = static_cast<Component*>(lua_touserdata(state, lua_upvalueindex(1)));
+	Area* targetArea = dynamic_cast<Area*>(intermediate);
 	bool contains = targetArea->contains(vec3(lua_tonumber(state, -3), lua_tonumber(state, -2), lua_tonumber(state, -1)));
 	lua_pushboolean(state, contains);
 	return 1;

@@ -8,6 +8,7 @@
 
 using namespace rapidxml;
 
+//TODO: fix, fix, fix
 namespace temp_sprite_loader {
 
 	char* transformID = "transform";
@@ -24,6 +25,11 @@ namespace temp_sprite_loader {
 
 GameObject* SpriteLoader::load(xml_node<char>* configuration) {
 	Sprite* ret = new Sprite();
+
+	const char* tempName = configuration->first_attribute("name")->value();
+	ret->_name = new char[strlen(tempName) + 1];
+	strcpy(ret->_name, tempName);
+
 	// See where this line will fit best
 	_currentlyLoadingObject = ret;
 
@@ -49,5 +55,6 @@ GameObject* SpriteLoader::load(xml_node<char>* configuration) {
 	ret->_sheetWidth = atoi(sheetHeight->value());
 	ret->_components = loadComponents(configuration);
 	ret->_scriptComponents = loadScriptComponents(configuration);
+
 	return static_cast<GameObject*>(ret);
 }

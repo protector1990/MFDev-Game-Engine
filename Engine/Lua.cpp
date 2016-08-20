@@ -233,7 +233,7 @@ void LuaManager::luaCall(ScriptComponent * component, const char* name, float* p
 
 	if (!lua_isfunction(_luaInterpreter, -1))
 	{
-		printf("[Lua]: The lua function {%s} not defined", name);
+		//printf("[Lua]: The lua function {%s} not defined", name);
 	}
 	else {
 		for (int i = 0; i < paramsNum; i++) {

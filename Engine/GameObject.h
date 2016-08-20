@@ -61,7 +61,10 @@ public:
 	const ScriptableInterface* getScriptableIterface() const;
 	const std::vector<Component*>* getComponentsConst() const;
 
+	const char* getName() const;
+
 protected:
+	char* _name;
 	unsigned int _tag;
 	GameObject *_parent;
 	std::vector<GameObject*> _children;
