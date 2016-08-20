@@ -31,14 +31,19 @@ void GameObject::appendTag(unsigned tag) {
 
 void GameObject::updateComponents(float deltaTime) {
 	for (unsigned int i = 0; i < _scriptComponents.size(); i++) {
-		LuaManager::luaCall(SCRIPT_MANAGER->getLuaInterpreter(), _scriptComponents[i], "update", &deltaTime, 1);
+		SCRIPT_MANAGER->luaCall(_scriptComponents[i], "update", &deltaTime, 1);
 	}
 }
 
 #ifdef _DEBUG
 void GameObject::renderDebugComponents(float deltaTime) {
-	for (unsigned int i = 0; i < _components.size(); i++) {
+	for (size_t i = 0; i < _components.size(); i++)
+	{
 		_components[i]->renderDebug(deltaTime);
+	}
+	for (size_t i = 0; i < _scriptComponents.size(); i++)
+	{
+		SCRIPT_MANAGER->luaCall(_scriptComponents[i], "draw", &deltaTime, 1);
 	}
 }
 #endif // _DEBUG

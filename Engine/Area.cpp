@@ -32,6 +32,7 @@ bool Area::contains(vec3 point) const {
 		float poly1Min = FLT_MAX;
 		float poly1Max = -FLT_MAX;
 		for (int a = 0; a < p1Count; a++) {
+			if (a == i) continue;
 			vec3 verticeToVertice = _points[i] - _points[a];
 			float projection = axis.x * verticeToVertice.x + axis.y * verticeToVertice.y;
 			if (projection > poly1Max) {

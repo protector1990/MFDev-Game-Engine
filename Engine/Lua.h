@@ -59,9 +59,9 @@ private:
 class LuaManager {
 public:
 	void luaBind() const;
-	static void luaCall(lua_State* interpreter, ScriptComponent *component, const char* name, float* params, int paramsNum);
-	static int luaParseComponent(lua_State *interpreter, Script *script);
-	static void luaParsePlainScript(lua_State *interpreter, Script *script);
+	void luaCall(ScriptComponent * component, const char* name, float* params, int paramsNum);
+	int luaParseComponent(Script *script);
+	void luaParsePlainScript(Script * script);
 	void luaCopyTable(int index);
 
 	void initManager();
@@ -70,6 +70,7 @@ public:
 	static int luaGetPosition(lua_State *state);
 	static int luaSetPosition(lua_State *state);
 	static int luaQueryKeyDown(lua_State *state);
+	static int luadDraw(lua_State *state);
 	lua_State* getLuaInterpreter() const;
 private:
 	lua_State* 	_luaInterpreter;

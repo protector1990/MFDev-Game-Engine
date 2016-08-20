@@ -72,10 +72,6 @@ ScriptComponent::ScriptComponent(ScriptClass *scriptClass, GameObject *parentObj
 
 	const type_info &a = typeid(*parentObject);
 
-	// Accessor table
-	//lua_getglobal(interpreter, "Accessor");
-	//SCRIPT_MANAGER->luaCopyTable(-1);
-
 	lua_newtable(interpreter);
 	map<const char*, lua_CFunction>* exposedFunctions = GetExposedFunctionsForType(a);
 	if (exposedFunctions) {
@@ -90,8 +86,6 @@ ScriptComponent::ScriptComponent(ScriptClass *scriptClass, GameObject *parentObj
 	lua_pushlightuserdata(interpreter, parentObject);
 	lua_setfield(interpreter, -2, "cptr");
 	lua_setfield(interpreter, -2, "cobj");
-	//lua_pop(interpreter, 1);
-	//DUMP
 	//Set component reference tables
 	const std::vector<Component*>* components = parentObject->getComponentsConst();
 	for (auto component : *components)
@@ -147,33 +141,34 @@ void LuaManager::luaBind() const {
 	lua_register(_luaInterpreter, "getPosition", &luaGetPosition);
 	lua_register(_luaInterpreter, "setPosition", &luaSetPosition);
 	lua_register(_luaInterpreter, "luaSample", &luaSample);
+	lua_register(_luaInterpreter, "draw", &luadDraw);
 }
 
 //TODO: Clean this up and properly test it. It's bound to have some leaks
-int LuaManager::luaParseComponent(lua_State *interpreter, Script *script) {
-	int res = luaL_loadbufferx(interpreter, script->_contents, script->_size, script->_name, nullptr);
-	if (!lua_isfunction(interpreter, -1))
+int LuaManager::luaParseComponent(Script *script) {
+	int res = luaL_loadbufferx(_luaInterpreter, script->_contents, script->_size, script->_name, nullptr);
+	if (!lua_isfunction(_luaInterpreter, -1))
 	{
-		printf("[Lua]: Parsing failed for script {%s}: %s", script->_name, lua_tostring(interpreter, -1));
+		printf("[Lua]: Parsing failed for script {%s}: %s", script->_name, lua_tostring(_luaInterpreter, -1));
 		return LUA_NOREF;
 	}
-	lua_pcall(interpreter, 0, 0, 0);
+	lua_pcall(_luaInterpreter, 0, 0, 0);
 
-	lua_getglobal(interpreter, "currentClass");
-	const char *className = lua_tostring(interpreter, -1);
+	lua_getglobal(_luaInterpreter, "currentClass");
+	const char *className = lua_tostring(_luaInterpreter, -1);
 
-	lua_getglobal(interpreter, className);
-	if (lua_istable(interpreter, -1)) {
+	lua_getglobal(_luaInterpreter, className);
+	if (lua_istable(_luaInterpreter, -1)) {
 
-		lua_getglobal(interpreter, "extends");
-		const char *extends = lua_tostring(interpreter, -1);
+		lua_getglobal(_luaInterpreter, "extends");
+		const char *extends = lua_tostring(_luaInterpreter, -1);
 		if ((extends) && (strlen(extends) > 0)) {
 
-			lua_pop(interpreter, 1);
+			lua_pop(_luaInterpreter, 1);
 
-			lua_getglobal(interpreter, extends);
+			lua_getglobal(_luaInterpreter, extends);
 
-			if (!lua_istable(interpreter, -1)) {
+			if (!lua_istable(_luaInterpreter, -1)) {
 				printf("[Lua]: Parent class not loaded: {%s}, attempting to load...\n", extends);
 				char path[64];
 				strcpy(path, "/scripts/");
@@ -181,38 +176,38 @@ int LuaManager::luaParseComponent(lua_State *interpreter, Script *script) {
 				strcat(path, ".lua");
 				//TODO: Break mutual dependancies between lua manager and asset manager
 				ASSET_MANAGER->loadAsset<ScriptClass>(path);
-				lua_pop(interpreter, 1);
-				lua_getglobal(interpreter, extends);
-				if (!lua_istable(interpreter, -1)) {
+				lua_pop(_luaInterpreter, 1);
+				lua_getglobal(_luaInterpreter, extends);
+				if (!lua_istable(_luaInterpreter, -1)) {
 					printf("\nLua Parsing Error: lua script not found: {%s}!\n", path);
-					lua_pop(interpreter, 1);
+					lua_pop(_luaInterpreter, 1);
 					return LUA_NOREF;
 				}
 			}
 
 			//maybe lua rotate trick?
-			lua_pushnil(interpreter);
-			while (lua_next(interpreter, -2)) {
-				const char* field = lua_tostring(interpreter, -2);
-				int x = lua_getfield(interpreter, -5, field);
+			lua_pushnil(_luaInterpreter);
+			while (lua_next(_luaInterpreter, -2)) {
+				const char* field = lua_tostring(_luaInterpreter, -2);
+				int x = lua_getfield(_luaInterpreter, -5, field);
 				if (x == LUA_TNIL) {
-					lua_pop(interpreter, 1);
-					lua_setfield(interpreter, -5, field);
+					lua_pop(_luaInterpreter, 1);
+					lua_setfield(_luaInterpreter, -5, field);
 				}
 				else {
-					lua_pop(interpreter, 2);
+					lua_pop(_luaInterpreter, 2);
 				}
 			}
 
-			lua_pop(interpreter, 2);
+			lua_pop(_luaInterpreter, 2);
 		}
 		else {
-			lua_pop(interpreter, 1);
+			lua_pop(_luaInterpreter, 1);
 		}
-		const char * x1 = lua_tostring(interpreter, -1);
-		//script->reference = luaL_ref(interpreter, LUA_REGISTRYINDEX);
+		const char * x1 = lua_tostring(_luaInterpreter, -1);
+		//script->reference = luaL_ref(_luaInterpreter, LUA_REGISTRYINDEX);
 		printf("[Lua]: Successfully loaded: {%s}\n", className);
-		return luaL_ref(interpreter, LUA_REGISTRYINDEX);
+		return luaL_ref(_luaInterpreter, LUA_REGISTRYINDEX);
 	}
 #if defined(_DEBUG)
 	else {
@@ -222,32 +217,32 @@ int LuaManager::luaParseComponent(lua_State *interpreter, Script *script) {
 #endif
 }
 
-void LuaManager::luaParsePlainScript(lua_State* interpreter, Script* script)
+void LuaManager::luaParsePlainScript(Script* script)
 {
 
 }
 
-void LuaManager::luaCall(lua_State *interpreter, ScriptComponent *component, const char* name, float* params, int paramsNum) {
+void LuaManager::luaCall(ScriptComponent * component, const char* name, float* params, int paramsNum) {
 	if (!component) {
 		return;
 	}
 
-	lua_rawgeti(interpreter, LUA_REGISTRYINDEX, component->getReference());
+	lua_rawgeti(_luaInterpreter, LUA_REGISTRYINDEX, component->getReference());
 
-	lua_getfield(interpreter, -1, name);
+	lua_getfield(_luaInterpreter, -1, name);
 
-	if (!lua_isfunction(interpreter, -1))
+	if (!lua_isfunction(_luaInterpreter, -1))
 	{
 		printf("[Lua]: The lua function {%s} not defined", name);
 	}
 	else {
 		for (int i = 0; i < paramsNum; i++) {
-			lua_pushnumber(interpreter, params[i]);
+			lua_pushnumber(_luaInterpreter, params[i]);
 		}
-		lua_rawgeti(interpreter, LUA_REGISTRYINDEX, component->getReference());
-		lua_insert(interpreter, -2);
-		lua_call(interpreter, paramsNum+1, 0);
-		lua_pop(interpreter, paramsNum);
+		lua_rawgeti(_luaInterpreter, LUA_REGISTRYINDEX, component->getReference());
+		lua_insert(_luaInterpreter, -2);
+		lua_call(_luaInterpreter, paramsNum + 1, 0);
+		lua_pop(_luaInterpreter, paramsNum);
 	}
 }
 
@@ -285,6 +280,29 @@ int LuaManager::luaQueryKeyDown(lua_State *state) {
 	char key = lua_tonumber(state, -1);
 	lua_pushboolean(state, ENGINE.getInputManager()->queryKeyDown(key));
 	return 1;
+}
+
+enum LuaDrawType {
+	dPoint = 1,
+	dLine,
+};
+
+int LuaManager::luadDraw(lua_State* state) {
+	int type = lua_tonumber(state, -1);
+	glColor3f(0.f, 0.f, 0.f);
+	switch (type) {
+		case dPoint: {
+			float x = lua_tonumber(state, -4);
+			float y	= lua_tonumber(state, -3);
+			float z	= lua_tonumber(state, -2);
+			glPointSize(5.f);
+			glBegin(GL_POINTS);
+			glVertex3f(x, y, z);
+			glEnd();
+			glFlush();
+		} break;
+	}
+	return 0;
 }
 
 void LuaManager::initManager() {
