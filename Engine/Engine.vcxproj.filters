@@ -495,9 +495,6 @@
     <ClInclude Include="SpriteLoader.h">
       <Filter>Engine\Loaders</Filter>
     </ClInclude>
-    <ClInclude Include="Transform.h">
-      <Filter>Engine\Components</Filter>
-    </ClInclude>
     <ClInclude Include="AssetManager.h">
       <Filter>Engine\AssetManagers</Filter>
     </ClInclude>
@@ -548,6 +545,9 @@
     </ClInclude>
     <ClInclude Include="AbstractComponentLoader.h">
       <Filter>Engine\Loaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Transform.h">
+      <Filter>Engine\MixIns</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -59,7 +59,7 @@ private:
 class LuaManager {
 public:
 	void luaBind() const;
-	void luaCall(ScriptComponent * component, const char* name, float* params, int paramsNum);
+	void scriptCall(ScriptComponent * component, const char* name, float* params, int paramsNum);
 	int luaParseComponent(Script *script);
 	void luaParsePlainScript(Script * script);
 	void luaCopyTable(int index);

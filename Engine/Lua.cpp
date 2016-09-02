@@ -8,6 +8,7 @@
 #include "ExposedFunctions.h"
 #include "Component.h"
 #include <map>
+#include "lua-5.3.2/src/lobject.h"
 
 using namespace std;
 
@@ -219,10 +220,12 @@ int LuaManager::luaParseComponent(Script *script) {
 
 void LuaManager::luaParsePlainScript(Script* script)
 {
-
+	Value ret;
+	ret.gc = new GCObject();
+	ret.gc->tt = "nesto";
 }
 
-void LuaManager::luaCall(ScriptComponent * component, const char* name, float* params, int paramsNum) {
+void LuaManager::scriptCall(ScriptComponent * component, const char* name, float* params, int paramsNum) {
 	if (!component) {
 		return;
 	}
