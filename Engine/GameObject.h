@@ -8,6 +8,7 @@
 #include "Lua.h"
 #include "ScriptableInterface.h"
 #include <typeinfo>
+#include "Transform.h"
 //#include "Component.h"
 //typedef Renderer Renderer;
 
@@ -52,6 +53,8 @@ public:
 
 	//TODO: Implement that transform system already!
 	glm::vec3 _Position;
+
+	Transform _transform;
 
 	ScriptComponent* getLuaComponent(const char* scriptName);
 	std::vector<ScriptComponent*> _scriptComponents;
