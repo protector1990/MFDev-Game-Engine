@@ -25,6 +25,7 @@ function player:update(deltaTime)
 	self.zz = false
 	local x = 0
 	local y = 0
+	local angle = 0
 	
 	if queryKeyDown(97) then
 		x = x - 1
@@ -37,6 +38,22 @@ function player:update(deltaTime)
 	end
 	if queryKeyDown(115) then
 		y = y - 1
+	end
+
+	if queryKeyDown(1073741903) then
+		angle = angle + 1
+	end
+	
+	if queryKeyDown(1073741904) then
+		angle = angle - 1
+	end
+	
+	if x ~= 0 or y ~= 0 then
+		translate(self.cobj.cptr, x * 0.1, y * 0.1, 0)
+	end
+	
+	if angle ~= 0 then
+		rotateAround(self.cobj.cptr, 0, 0, 1, angle * 0.001)
 	end
 	
 	self.local_x, self.local_y, self.local_z = getPosition(self.cobj.cptr)

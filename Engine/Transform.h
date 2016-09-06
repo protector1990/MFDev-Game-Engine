@@ -33,6 +33,7 @@ public:
 	glm::vec4 getLocalRotation();  // Quaternion
 	Transform* translate(glm::vec3 amount); // Builder type trick
 	Transform* rotate(glm::vec4 amount);
+	Transform* rotateAround(glm::vec3 axis, float amount);
 	Transform* scale(glm::vec3 amount);
 	glm::vec4 get(TransformReference pointOfReference, TransformComponent component);
 	glm::vec4 get(TransformComponent component, Transform* relativeTo);
@@ -40,6 +41,6 @@ protected:
 	glm::vec3 _localPosition;
 	glm::vec3 _localScale;
 	glm::vec4 _localRotation;
-	glm::mat4x4 _transformations;
+	glm::mat4 _transformations;
 };
 #endif

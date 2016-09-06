@@ -138,6 +138,7 @@ int luaSample(lua_State* a) {
 void LuaManager::luaBind() const {
 	//TODO: Push all of these to a global 'engine' table. So we can have something like (from lua): engine.test()
 	lua_register(_luaInterpreter, "translate", &luaTranslate);
+	lua_register(_luaInterpreter, "rotateAround", &luaRotateAround);
 	lua_register(_luaInterpreter, "queryKeyDown", &luaQueryKeyDown);
 	lua_register(_luaInterpreter, "getPosition", &luaGetPosition);
 	lua_register(_luaInterpreter, "setPosition", &luaSetPosition);
@@ -220,9 +221,6 @@ int LuaManager::luaParseComponent(Script *script) {
 
 void LuaManager::luaParsePlainScript(Script* script)
 {
-	Value ret;
-	ret.gc = new GCObject();
-	ret.gc->tt = "nesto";
 }
 
 void LuaManager::scriptCall(ScriptComponent * component, const char* name, float* params, int paramsNum) {
@@ -254,9 +252,17 @@ int LuaManager::luaTranslate(lua_State *state) {
 	float x = lua_tonumber(state, -3);
 	float y = lua_tonumber(state, -2);
 	float z = lua_tonumber(state, -1);
-	targetObject->_Position.x += x;
-	targetObject->_Position.y += y;
-	targetObject->_Position.z += z;
+	targetObject->_transform.translate(glm::vec3(x, y, z));
+	return 0;
+}
+
+int LuaManager::luaRotateAround(lua_State* state) {
+	GameObject* targetObject = static_cast<GameObject*>(lua_touserdata(state, -5));
+	float x = lua_tonumber(state, -4);
+	float y = lua_tonumber(state, -3);
+	float z = lua_tonumber(state, -2);
+	float amount = lua_tonumber(state, -1);
+	targetObject->_transform.rotateAround(glm::vec3(x, y, z), amount);
 	return 0;
 }
 

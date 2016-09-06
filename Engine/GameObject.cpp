@@ -75,7 +75,7 @@ ScriptComponent* GameObject::getLuaComponent(const char* name) {
 }
 
 void GameObject::keyPressed(int keyPressed) {
-	//printf("Pressed: %i", keyPressed);
+	printf("Pressed: %i", keyPressed);
 }
 
 const ScriptableInterface* GameObject::getScriptableIterface() const {

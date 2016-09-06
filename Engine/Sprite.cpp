@@ -43,11 +43,12 @@ void Sprite::render(Renderer *renderer) {
 	// This code is still very experimental
 	glColor3f(1.f, 1.f, 1.f);
 	GLenum i;
-	_points[0].x = _points[3].x = _Position.x - _texture->w / 2.f;
-	_points[1].x = _points[2].x = _Position.x + _texture->w / 2.f;
-	_points[0].y = _points[1].y = _Position.y - _texture->h / 2.f;
-	_points[2].y = _points[3].y = _Position.y + _texture->h / 2.f;
-	_points[0].z = _points[1].z = _points[2].z = _points[3].z = _Position.z;
+	vec3 position = _transform.getPosition();
+	_points[0].x = _points[3].x = position.x - _texture->w / 2.f;
+	_points[1].x = _points[2].x = position.x + _texture->w / 2.f;
+	_points[0].y = _points[1].y = position.y - _texture->h / 2.f;
+	_points[2].y = _points[3].y = position.y + _texture->h / 2.f;
+	_points[0].z = _points[1].z = _points[2].z = _points[3].z = position.z;
 	//renderer->addQuads(_points, 4);
 	//glBindVertexArray(_glVertexArray);
 	//glBindBuffer(GL_ARRAY_BUFFER, _glVertexBufferObjects);

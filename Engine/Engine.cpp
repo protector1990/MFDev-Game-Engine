@@ -88,6 +88,7 @@ int Engine::run(int argv, char** argc) {
 					_scenes[i]->keyPressed(keyDown);
 				}
 				_inputManager->keyPressed(sdlEvent.key.keysym.sym);
+				printf("\nPressed engine %d\n", sdlEvent.key.keysym.sym);
 			}
 			if (sdlEvent.type == SDL_KEYUP) {
 				int keyDown = sdlEvent.key.keysym.sym;

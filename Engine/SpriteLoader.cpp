@@ -42,9 +42,10 @@ GameObject* SpriteLoader::load(xml_node<char>* configuration) {
 	xml_node<char>* positionX = transform->first_node(temp_sprite_loader::positionXID);
 	xml_node<char>* positionY = transform->first_node(temp_sprite_loader::positionYID);
 	xml_node<char>* positionZ = transform->first_node(temp_sprite_loader::positionZID);
-	ret->_Position.x = atof(positionX->value());
-	ret->_Position.y = atof(positionY->value());
-	ret->_Position.z = atof(positionZ->value());
+	ret->_transform.translate(glm::vec3(atof(positionX->value()), atof(positionY->value()), atof(positionZ->value())));
+	//ret->_Position.x = atof(positionX->value());
+	//ret->_Position.y = atof(positionY->value());
+	//ret->_Position.z = atof(positionZ->value());
 
 	xml_node<char>* sheet = configuration->first_node(temp_sprite_loader::sheetID);
 	xml_node<char>* sheetWidth = sheet->first_node(temp_sprite_loader::widthID);

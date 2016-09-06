@@ -1,6 +1,6 @@
 <config>
 	<scenes>
-		<scene orderNum="0" name="navGridTest">scenes/NavGridTest/NavGridTest.level</scene>
-		<scene orderNum="1" name="test">scenes/TestScene/TestScene.level</scene>
+		<scene orderNum="0" name="test">scenes/TestScene/TestScene.level</scene>
+		<scene orderNum="1" name="navGridTest">scenes/NavGridTest/NavGridTest.level</scene>
 	</scenes>
 </config>
