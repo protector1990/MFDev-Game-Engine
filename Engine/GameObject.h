@@ -25,9 +25,11 @@ class GameObject {
 	//TODO: refactor this so that there is a loader class that can be friend
 	// and Win/iOS asset managers should only concern input methods
 	friend class WinAssetManager;
+	//TODO: integrate transform and Game Object properly
+	friend class Transform;
 public:
 	GameObject()
-		: _tag(0) {
+		: _tag(0), _transform(this) {
 	}
 
 	virtual ~GameObject();
@@ -69,7 +71,7 @@ public:
 protected:
 	char* _name;
 	unsigned int _tag;
-	GameObject *_parent;
+	GameObject *_parent = nullptr;
 	std::vector<GameObject*> _children;
 	std::vector<Component*> _components;
 	// This might benefit from having setter and not being const, because we shall yet to see to the problem of loading and unloading scenes

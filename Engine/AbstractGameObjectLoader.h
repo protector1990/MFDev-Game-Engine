@@ -17,6 +17,7 @@ protected:
 	std::vector<Component*> loadComponents(rapidxml::xml_node<char>* configuration);
 	//TODO: Videti ako moze nekako bez ovoga
 	GameObject* _currentlyLoadingObject;
+	Scene* _currentlyLoadingScene;
 };
 
 #endif

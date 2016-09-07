@@ -25,7 +25,7 @@ protected:
 	// and maybe deformed by animations, and only transform matrixes given to renderer so that
 	// the shader can move vertices aroyund in world space
 	// This should be done for all of the vertices in all the classes
-	glm::vec3 _points[4];
+	glm::vec4 _points[4];
 
 	//Opengl specifics. Move this somewhere else at some point
 	GLuint _glVertexArray;

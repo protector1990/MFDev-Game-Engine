@@ -39,16 +39,34 @@ void Sprite::update(float deltaTime) {
 
 GLuint indices[] = { 0, 1, 2, 3 };
 
+mat4 pointOffsetMatrix = mat4
+{
+	1.f, 0.f, 0.f, 0.f,
+	0.f, 1.f, 0.f, 0.f,
+	0.f, 0.f, 1.f, 0.f,
+	0.f, 0.f, 0.f, 1.f
+};
+
+vec4 tmp(0.f, 0.f, 0.f, 1.f);
+
 void Sprite::render(Renderer *renderer) {
-	// This code is still very experimental
 	glColor3f(1.f, 1.f, 1.f);
-	GLenum i;
-	vec3 position = _transform.getPosition();
-	_points[0].x = _points[3].x = position.x - _texture->w / 2.f;
-	_points[1].x = _points[2].x = position.x + _texture->w / 2.f;
-	_points[0].y = _points[1].y = position.y - _texture->h / 2.f;
-	_points[2].y = _points[3].y = position.y + _texture->h / 2.f;
-	_points[0].z = _points[1].z = _points[2].z = _points[3].z = position.z;
+	//GLenum i;
+	//TODO: See if it is practical to offload this to a vertex shader
+	mat4 masterTransformationMatrix = _transform.getGlobalTransformationMatrix();
+	
+	pointOffsetMatrix[3][0] = -_texture->w / 2.f;
+	pointOffsetMatrix[3][1] = -_texture->h / 2.f;
+
+	// if we ever get multithreading for whatever reason, make sure that each thread has its own copy of this matrix
+	_points[0] = masterTransformationMatrix * pointOffsetMatrix * tmp;
+	pointOffsetMatrix[3][0] *= -1.f;
+	_points[1] = masterTransformationMatrix * pointOffsetMatrix * tmp;
+	pointOffsetMatrix[3][1] *= -1.f;
+	_points[2] = masterTransformationMatrix * pointOffsetMatrix * tmp;
+	pointOffsetMatrix[3][0] *= -1.f;
+	_points[3] = masterTransformationMatrix * pointOffsetMatrix * tmp;
+
 	//renderer->addQuads(_points, 4);
 	//glBindVertexArray(_glVertexArray);
 	//glBindBuffer(GL_ARRAY_BUFFER, _glVertexBufferObjects);
@@ -63,16 +81,16 @@ void Sprite::render(Renderer *renderer) {
 	glBegin(GL_QUADS);
 	//for (int i = 0; i < 4; i++) {
 		glTexCoord2f(1,1);
-		glVertex3f(_points[0].x, _points[0].y, _points[0].z);
+		glVertex4f(_points[0].x, _points[0].y, _points[0].z, _points[0].w);
 		//(-50.f, -50.f, 0.f);
 		glTexCoord2f(0, 1);
-		glVertex3f(_points[1].x, _points[1].y, _points[1].z);
+		glVertex4f(_points[1].x, _points[1].y, _points[1].z, _points[1].w);
 		//glVertex3f(50.f, -50.f, 0.f);
 		glTexCoord2f(0, 0);
-		glVertex3f(_points[2].x, _points[2].y, _points[2].z);
+		glVertex4f(_points[2].x, _points[2].y, _points[2].z, _points[2].w);
 		//glVertex3f(50.f, 50.f, 0.f);
 		glTexCoord2f(1, 0);
-		glVertex3f(_points[3].x, _points[3].y, _points[3].z);
+		glVertex4f(_points[3].x, _points[3].y, _points[3].z, _points[3].w);
 		//glVertex3f(-50.f, 50.f, 0.f);
 	//}
 	glEnd();
@@ -82,7 +100,7 @@ void Sprite::render(Renderer *renderer) {
 
 	glDisable(GL_TEXTURE_2D);
 
-	i = glGetError();
+	//i = glGetError();
 }
 
 const SDL_Surface* Sprite::getTexture() {

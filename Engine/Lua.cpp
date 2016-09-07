@@ -139,6 +139,7 @@ void LuaManager::luaBind() const {
 	//TODO: Push all of these to a global 'engine' table. So we can have something like (from lua): engine.test()
 	lua_register(_luaInterpreter, "translate", &luaTranslate);
 	lua_register(_luaInterpreter, "rotateAround", &luaRotateAround);
+	lua_register(_luaInterpreter, "rotate", &luaRotate);
 	lua_register(_luaInterpreter, "queryKeyDown", &luaQueryKeyDown);
 	lua_register(_luaInterpreter, "getPosition", &luaGetPosition);
 	lua_register(_luaInterpreter, "setPosition", &luaSetPosition);
@@ -263,6 +264,15 @@ int LuaManager::luaRotateAround(lua_State* state) {
 	float z = lua_tonumber(state, -2);
 	float amount = lua_tonumber(state, -1);
 	targetObject->_transform.rotateAround(glm::vec3(x, y, z), amount);
+	return 0;
+}
+
+int LuaManager::luaRotate(lua_State* state) {
+	GameObject* targetObject = static_cast<GameObject*>(lua_touserdata(state, -4));
+	float x = lua_tonumber(state, -3);
+	float y = lua_tonumber(state, -2);
+	float z = lua_tonumber(state, -1);
+	targetObject->_transform.rotate(glm::vec3(x, y, z));
 	return 0;
 }
 

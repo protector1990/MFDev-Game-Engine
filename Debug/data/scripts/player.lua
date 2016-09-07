@@ -41,11 +41,11 @@ function player:update(deltaTime)
 	end
 
 	if queryKeyDown(1073741903) then
-		angle = angle + 1
+		angle = angle - 1
 	end
 	
 	if queryKeyDown(1073741904) then
-		angle = angle - 1
+		angle = angle + 1
 	end
 	
 	if x ~= 0 or y ~= 0 then
@@ -53,7 +53,8 @@ function player:update(deltaTime)
 	end
 	
 	if angle ~= 0 then
-		rotateAround(self.cobj.cptr, 0, 0, 1, angle * 0.001)
+		--rotateAround(self.cobj.cptr, 0, 0, 1, angle * 0.001)
+		rotate(self.cobj.cptr, 0, 0, angle * 0.001)
 	end
 	
 	self.local_x, self.local_y, self.local_z = getPosition(self.cobj.cptr)
