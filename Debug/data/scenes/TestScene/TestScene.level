@@ -30,9 +30,10 @@
 </gameObject>
 <gameObject type="Sprite" name="SecondPlayer">
    <transform>
-      <positionX>150</positionX>
-      <positionY>0</positionY>
-      <positionZ>70</positionZ>
+      <positionX>50</positionX>
+      <positionY>50</positionY>
+      <positionZ>0</positionZ>
+	  <parent>Player</parent>
    </transform>
    <texture>/textures/player.bmp</texture>
    <sheet>

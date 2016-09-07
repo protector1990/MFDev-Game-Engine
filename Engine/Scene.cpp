@@ -20,6 +20,18 @@ std::vector<GameObject*> Scene::getObjectsWithTags(unsigned tags) {
 	}
 	return a;
 }
+
+GameObject* Scene::getGameObjectByName(const char* name) const {
+	for (GameObject* obj : _gameObjects)
+	{
+		if (!strcmp(name, obj->getName()))
+		{
+			return obj;
+		}
+	}
+	return nullptr;
+}
+
 // Load assets and instantiate game objects
 Scene* Scene::load(const char *cfgPath, bool parallel) {
 	//Not Implemented

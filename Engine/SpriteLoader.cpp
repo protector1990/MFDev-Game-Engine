@@ -47,7 +47,7 @@ GameObject* SpriteLoader::load(xml_node<char>* configuration) {
 	xml_node<char>* parent = transform->first_node(temp_sprite_loader::parent);
 	if (parent)
 	{
-		
+		ret->setParent(_currentlyLoadingScene->getGameObjectByName(parent->value()));
 	}
 	//ret->_Position.x = atof(positionX->value());
 	//ret->_Position.y = atof(positionY->value());

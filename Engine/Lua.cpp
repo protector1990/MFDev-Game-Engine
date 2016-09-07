@@ -289,9 +289,10 @@ int LuaManager::luaSetPosition(lua_State *state) {
 
 int LuaManager::luaGetPosition(lua_State *state) {
 	GameObject* targetObject = static_cast<GameObject*>(lua_touserdata(state, -1));
-	lua_pushnumber(state, targetObject->_Position.x);
-	lua_pushnumber(state, targetObject->_Position.y);
-	lua_pushnumber(state, targetObject->_Position.z);
+	glm::vec3 position = targetObject->_transform.getPosition();
+	lua_pushnumber(state, position.x);
+	lua_pushnumber(state, position.y);
+	lua_pushnumber(state, position.z);
 	return 3;
 }
 

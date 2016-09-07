@@ -48,6 +48,7 @@ public:
 
 	virtual GameObject *getRoot();
 	virtual GameObject *getParent();
+	void setParent(GameObject* newParent);
 	virtual GameObject *getChildren(int &count);
 
 	template<class T> T* getChildPolymorphic() const;

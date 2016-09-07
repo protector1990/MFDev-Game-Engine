@@ -20,6 +20,7 @@ class Scene {
 public:
 	GameObject* makeNewObject();
 	std::vector<GameObject*> getObjectsWithTags(unsigned tags);
+	GameObject* getGameObjectByName(const char* name) const;
 	// Load assets and instantiate game objects
 	virtual Scene* load(const char *cfgPath, bool parallel);
 	virtual bool unload(Scene *scene);

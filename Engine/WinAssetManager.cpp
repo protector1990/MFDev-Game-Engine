@@ -193,6 +193,7 @@ Scene* WinAssetManager::loadScene(const char *path) {
 					if (!strcmp(gameObject->name(), "gameObject")) {
 						//Get its type and call apropriate loader
 						AbstractGameObjectLoader* loader = loaderFactory.getGameObjectLoader(gameObject->first_attribute("type")->value());
+						loader->_currentlyLoadingScene = ret;
 						GameObject* obj = loader->load(gameObject);
 						obj->_scene = ret;
 						ret->addGameObject(obj);

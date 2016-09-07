@@ -57,57 +57,57 @@ function player:update(deltaTime)
 		rotate(self.cobj.cptr, 0, 0, angle * 0.001)
 	end
 	
-	self.local_x, self.local_y, self.local_z = getPosition(self.cobj.cptr)
-	if y > 0 and self.is_jumping == false then
-		self.speed_y = self.jumping_speed
-		self.is_jumping = true
-	end
+	-- self.local_x, self.local_y, self.local_z = getPosition(self.cobj.cptr)
+	-- if y > 0 and self.is_jumping == false then
+		-- self.speed_y = self.jumping_speed
+		-- self.is_jumping = true
+	-- end
 	
-	if self.is_jumping then
-		self.speed_y = self.speed_y + (self.gravity * deltaTime)
-		self.local_y = self.local_y + self.speed_y * deltaTime
-		if self.local_y < self.lower_bound then
-			self.is_jumping = false
-			self.local_y = self.lower_bound
-		end
-	end
+	-- if self.is_jumping then
+		-- self.speed_y = self.speed_y + (self.gravity * deltaTime)
+		-- self.local_y = self.local_y + self.speed_y * deltaTime
+		-- if self.local_y < self.lower_bound then
+			-- self.is_jumping = false
+			-- self.local_y = self.lower_bound
+		-- end
+	-- end
 	
-	local speed_sign = self.speed_x
-	speed_sign = speed_sign / math.abs(speed_sign)
-	if self.speed_x == 0 then
-		speed_sign = 0
-	end
-	local inverse_speed_sign = speed_sign * -1
+	-- local speed_sign = self.speed_x
+	-- speed_sign = speed_sign / math.abs(speed_sign)
+	-- if self.speed_x == 0 then
+		-- speed_sign = 0
+	-- end
+	-- local inverse_speed_sign = speed_sign * -1
 	
-	local force_x_modifier = 1
-	if speed_sign + x == 0 then
-		force_x_modifier = force_x_modifier * 3
-	end
+	-- local force_x_modifier = 1
+	-- if speed_sign + x == 0 then
+		-- force_x_modifier = force_x_modifier * 3
+	-- end
 	
-	self.speed_x = self.speed_x + self.x_force * force_x_modifier * x * deltaTime
+	-- self.speed_x = self.speed_x + self.x_force * force_x_modifier * x * deltaTime
 	
-	local friction_modifier = 1
-	if speed_sign + x == 1 or speed_sign + x == -1 then
-		friction_modifier = 12
-	end
+	-- local friction_modifier = 1
+	-- if speed_sign + x == 1 or speed_sign + x == -1 then
+		-- friction_modifier = 12
+	-- end
 	
-	self.speed_x = self.speed_x + self.speed_x * self.x_friction * friction_modifier * -1 * deltaTime;
+	-- self.speed_x = self.speed_x + self.speed_x * self.x_friction * friction_modifier * -1 * deltaTime;
 	
-	if math.abs(self.speed_x) > self.x_speed_limit then
-		self.speed_x = self.x_speed_limit * speed_sign
-	end
+	-- if math.abs(self.speed_x) > self.x_speed_limit then
+		-- self.speed_x = self.x_speed_limit * speed_sign
+	-- end
 	
-	if x == 0 and math.abs(self.speed_x) < self.x_low_speed_limit then
-		self.speed_x = 0
-	end
+	-- if x == 0 and math.abs(self.speed_x) < self.x_low_speed_limit then
+		-- self.speed_x = 0
+	-- end
 	
-	self.local_x = self.local_x + self.speed_x * deltaTime
+	-- self.local_x = self.local_x + self.speed_x * deltaTime
 	
 
-	setPosition(self.cobj.cptr, self.local_x, self.local_y, self.local_z)
+	-- -setPosition(self.cobj.cptr, self.local_x, self.local_y, self.local_z)
 	
 	-- This is sample calling of a parent class function
-	self:madd(5, 3)
+	-- self:madd(5, 3)
 	
 end
 

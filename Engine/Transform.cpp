@@ -24,7 +24,7 @@ vec3 Transform::getPosition() {
 		parent = parent->_parent;
 	}
 
-	while (parentMatrixStack.top())
+	while (parentMatrixStack.size() > 0)
 	{
 		transformMatrix *= *parentMatrixStack.top();
 		parentMatrixStack.pop();

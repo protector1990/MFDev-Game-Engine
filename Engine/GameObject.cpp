@@ -60,6 +60,11 @@ GameObject* GameObject::getParent() {
 	return _parent;
 }
 
+void GameObject::setParent(GameObject* newParent) {
+	//TODO: add logic for calculating relative position to new parent
+	_parent = newParent;
+}
+
 GameObject* GameObject::getChildren(int &count) {
 	count = _children.size();
 	return _children[0];
@@ -75,7 +80,7 @@ ScriptComponent* GameObject::getLuaComponent(const char* name) {
 }
 
 void GameObject::keyPressed(int keyPressed) {
-	//printf("Pressed: %i", keyPressed);
+	//printf("Pressed: %i\n", keyPressed);
 }
 
 const ScriptableInterface* GameObject::getScriptableIterface() const {
