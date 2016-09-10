@@ -7,9 +7,9 @@
 using namespace glm;
 using namespace std;
 
-vec3 Transform::getPosition() {
+vec3 Transform::getPosition() const {
 	// Still would keep this and not use getGlobalTransformationMatrix because this should be more efficient
-	stack<const mat4*> parentMatrixStack;
+	stack<const mat4> parentMatrixStack;
 	mat4 transformMatrix = mat4
 	{
 		1.f, 0.f, 0.f, 0.f,
@@ -26,11 +26,11 @@ vec3 Transform::getPosition() {
 
 	while (parentMatrixStack.size() > 0)
 	{
-		transformMatrix *= *parentMatrixStack.top();
+		transformMatrix *= parentMatrixStack.top();
 		parentMatrixStack.pop();
 	}
 
-	transformMatrix *= _transformations;
+	transformMatrix *= _transformations * _scaleStack;
 	
 	vec4 raw = transformMatrix * vec4(0.f, 0.f, 0.f, 1.f);
 	return vec3(raw.x / raw.w, raw.y / raw.w, raw.z / raw.w);
@@ -130,14 +130,39 @@ Transform* Transform::rotate(vec3 amounts) {
 	return this;
 }
 
-const glm::mat4* Transform::getLocalTransformationMatrix() const {
-	return &_transformations;
+Transform* Transform::scale(glm::vec3 amount) {
+	mat4 scaleMatrix =
+	{
+		amount.x, 0.f, 0.f, 0.f,
+		0.f, amount.y, 0.f, 0.f,
+		0.f, 0.f, amount.z, 0.f,
+		0.f, 0.f, 0.f, 1.f
+	};
+	_scaleStack *= scaleMatrix;
+	return this;
+}
+
+Transform* Transform::globalScale(glm::vec3 amount) {
+	mat4 scaleMatrix =
+	{
+		amount.x, 0.f, 0.f, 0.f,
+		0.f, amount.y, 0.f, 0.f,
+		0.f, 0.f, amount.z, 0.f,
+		0.f, 0.f, 0.f, 1.f
+	};
+	printf("ScalingX: %f\n", amount.x);
+	_transformations = scaleMatrix * _transformations;
+	return this;
+}
+
+glm::mat4 Transform::getLocalTransformationMatrix() const {
+	return _transformations * _scaleStack;
 }
 
 glm::mat4 Transform::getGlobalTransformationMatrix() const {
 	if (_gameObject->_parent)
 	{
-		return _gameObject->_parent->_transform.getGlobalTransformationMatrix() * _transformations;
+		return _gameObject->_parent->_transform.getGlobalTransformationMatrix() * _transformations * _scaleStack;
 	}
-	return _transformations;
+	return _transformations * _scaleStack;
 }

@@ -24,6 +24,8 @@ public:
 	//Scenes
 	const char* getScenePath(const char* name) const;
 	const char* getScenePath(int orderNum) const;
+	//Scripts
+	const char* getSCriptPath(const char* name) const;
 };
 
 #endif

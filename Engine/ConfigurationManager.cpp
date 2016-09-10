@@ -54,3 +54,8 @@ const char* ConfigurationManager::getScenePath(int orderNum) const {
 	}
 	return nullptr;
 }
+
+const char* ConfigurationManager::getSCriptPath(const char* name) const {
+	//Not implemented
+	return nullptr;
+}

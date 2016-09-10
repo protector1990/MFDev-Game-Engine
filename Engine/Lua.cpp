@@ -140,6 +140,7 @@ void LuaManager::luaBind() const {
 	lua_register(_luaInterpreter, "translate", &luaTranslate);
 	lua_register(_luaInterpreter, "rotateAround", &luaRotateAround);
 	lua_register(_luaInterpreter, "rotate", &luaRotate);
+	lua_register(_luaInterpreter, "scale", &luaScale);
 	lua_register(_luaInterpreter, "queryKeyDown", &luaQueryKeyDown);
 	lua_register(_luaInterpreter, "getPosition", &luaGetPosition);
 	lua_register(_luaInterpreter, "setPosition", &luaSetPosition);
@@ -273,6 +274,15 @@ int LuaManager::luaRotate(lua_State* state) {
 	float y = lua_tonumber(state, -2);
 	float z = lua_tonumber(state, -1);
 	targetObject->_transform.rotate(glm::vec3(x, y, z));
+	return 0;
+}
+
+int LuaManager::luaScale(lua_State* state) {
+	GameObject* targetObject = static_cast<GameObject*>(lua_touserdata(state, -4));
+	float x = lua_tonumber(state, -3);
+	float y = lua_tonumber(state, -2);
+	float z = lua_tonumber(state, -1);
+	targetObject->_transform.scale(glm::vec3(x, y, z));
 	return 0;
 }
 

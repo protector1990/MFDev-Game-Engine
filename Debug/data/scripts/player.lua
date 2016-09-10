@@ -26,6 +26,7 @@ function player:update(deltaTime)
 	local x = 0
 	local y = 0
 	local angle = 0
+	local scaleFactor = 1
 	
 	if queryKeyDown(97) then
 		x = x - 1
@@ -38,6 +39,14 @@ function player:update(deltaTime)
 	end
 	if queryKeyDown(115) then
 		y = y - 1
+	end
+	
+	if queryKeyDown(122) then
+		scaleFactor = 0.995
+	end
+	
+	if queryKeyDown(120) then
+		scaleFactor = 1.005
 	end
 
 	if queryKeyDown(1073741903) then
@@ -55,6 +64,10 @@ function player:update(deltaTime)
 	if angle ~= 0 then
 		--rotateAround(self.cobj.cptr, 0, 0, 1, angle * 0.001)
 		rotate(self.cobj.cptr, 0, 0, angle * 0.001)
+	end
+	
+	if scaleFactor ~= 1 then
+		scale(self.cobj.cptr, scaleFactor, 1, 1)
 	end
 	
 	-- self.local_x, self.local_y, self.local_z = getPosition(self.cobj.cptr)
