@@ -4,7 +4,7 @@
    <transform>
       <positionX>0</positionX>
       <positionY>0</positionY>
-      <positionZ>50</positionZ>
+      <positionZ>-10</positionZ>
    </transform>
    <texture>/textures/nest.bmp</texture>
    <sheet>
@@ -18,7 +18,7 @@
    <transform>
       <positionX>0</positionX>
       <positionY>0</positionY>
-      <positionZ>60</positionZ>
+      <positionZ>0</positionZ>
    </transform>
    <texture>/textures/player.bmp</texture>
    <sheet>

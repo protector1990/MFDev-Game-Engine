@@ -69,6 +69,7 @@ public:
 	static int luaTranslate(lua_State *state);
 	static int luaRotateAround(lua_State *state);
 	static int luaRotate(lua_State *state);
+	static int luaWorldToLocalCoordinates(lua_State *state);
 	static int luaScale(lua_State *state);
 	static int luaGetPosition(lua_State *state);
 	static int luaSetPosition(lua_State *state);

@@ -15,6 +15,7 @@ player.x_speed_limit = 120
 player.x_low_speed_limit = 20
 player.x_friction = 0.2
 player.zz = true
+player.firstTimeTest = true
 
 
 function player:update(deltaTime)
@@ -68,6 +69,17 @@ function player:update(deltaTime)
 	
 	if scaleFactor ~= 1 then
 		scale(self.cobj.cptr, scaleFactor, 1, 1)
+	end
+	
+	if self.firstTimeTest then
+		translate(self.cobj.cptr, 20, 20, 0)
+		rotate(self.cobj.cptr, 0, 0, 60.0 * math.pi / 180)
+		scale(self.cobj.cptr, 2, 1, 1)
+		a, b, c = worldToLocalCoordinates(self.cobj.cptr, 22, 22, 0)
+		print (a)
+		print (b)
+		print (c)
+		self.firstTimeTest = false
 	end
 	
 	-- self.local_x, self.local_y, self.local_z = getPosition(self.cobj.cptr)

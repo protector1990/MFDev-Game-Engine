@@ -3,6 +3,7 @@
 #include "Transform.h"
 #include "GameObject.h"
 #include <stack>
+//#include <iostream>
 
 using namespace glm;
 using namespace std;
@@ -124,6 +125,7 @@ Transform* Transform::rotateZ(float amount) {
 }
 
 Transform* Transform::rotate(vec3 amounts) {
+	// TODO: See how we can avoid calling updateCoordinateSystem 3 times in single rotate() call
 	rotateX(amounts.x);
 	rotateY(amounts.y);
 	rotateZ(amounts.z);
@@ -155,14 +157,47 @@ Transform* Transform::globalScale(glm::vec3 amount) {
 	return this;
 }
 
+glm::vec3 Transform::worldToLocalCoordinates(vec3& point) {
+	//vec3 position = getPosition();
+	vec3 delta = point - getPosition();
+	vec4 delta4(delta.x, delta.y, delta.z, 1.f);
+	CoordinateSystem localSystem = getCoordinateSystem();
+	//std::cout << "engine coord system:\nX: " << localSystem.x.x << " " << localSystem.x.y << " " << localSystem.x.z \
+		<< "\nY: " << localSystem.y.x << " " << localSystem.y.y << " " << localSystem.y.z \
+		<< "\nZ: " << localSystem.z.x << " " << localSystem.z.y << " " << localSystem.z.z << "\n";
+	return vec3(dot(delta4, localSystem.x), dot(delta4, localSystem.y), dot(delta4, localSystem.z));
+}
+
+glm::vec3 Transform::localToWorldCoordinates(vec3& point) {
+	return vec3(0, 0, 0);
+}
+
 glm::mat4 Transform::getLocalTransformationMatrix() const {
 	return _transformations * _scaleStack;
 }
 
+//Gets global transformation matrix. Scaling included
 glm::mat4 Transform::getGlobalTransformationMatrix() const {
 	if (_gameObject->_parent)
 	{
 		return _gameObject->_parent->_transform.getGlobalTransformationMatrix() * _transformations * _scaleStack;
 	}
 	return _transformations * _scaleStack;
+}
+
+glm::mat4 Transform::getGlobalTransformationMatrixInverseScale() const {
+	if (_gameObject->_parent)
+	{
+		return _gameObject->_parent->_transform.getGlobalTransformationMatrix() * _transformations * inverse(_scaleStack);
+	}
+	return _transformations * inverse(_scaleStack);
+}
+
+CoordinateSystem Transform::getCoordinateSystem() {
+	CoordinateSystem ret;
+	mat4 globalTransformationMatrix = getGlobalTransformationMatrixInverseScale();
+	ret.x = globalTransformationMatrix * vec4(1.f, 0.f, 0.f, 0.f);
+	ret.y = globalTransformationMatrix * vec4(0.f, 1.f, 0.f, 0.f);
+	ret.z = globalTransformationMatrix * vec4(0.f, 0.f, 1.f, 0.f);
+	return ret;
 }

@@ -5,9 +5,7 @@
 
 #include <glm\glm.hpp>
 #include <glm\gtc\quaternion.hpp>
-#include <SDL.h>
-#include <glm/detail/_vectorize.hpp>
-#include <glm/detail/_vectorize.hpp>
+#include <glm/detail/type_mat.hpp>
 
 class GameObject;
 
@@ -23,8 +21,9 @@ enum TransformComponent {
 };
 
 struct CoordinateSystem {
-	glm::vec3 right;
-	glm::vec3 up;
+	glm::vec4 x;
+	glm::vec4 y;
+	glm::vec4 z;
 };
 
 class Transform {
@@ -45,6 +44,8 @@ public:
 	Transform* rotate(glm::vec3 amounts);
 	Transform* scale(glm::vec3 amount);
 	Transform* globalScale(glm::vec3 amount);
+	glm::vec3 worldToLocalCoordinates(glm::vec3& point);
+	glm::vec3 localToWorldCoordinates(glm::vec3& point);
 	glm::vec4 get(TransformReference pointOfReference, TransformComponent component); //Usage example: get(local, scale)
 	glm::vec4 get(TransformComponent component, Transform* relativeTo);
 	glm::mat4 getLocalTransformationMatrix() const;
@@ -56,5 +57,7 @@ protected:
 	glm::mat4 _transformations;
 	glm::mat4 _scaleStack;
 	GameObject* _gameObject;
+	glm::mat4 getGlobalTransformationMatrixInverseScale() const;
+	CoordinateSystem getCoordinateSystem();
 };
 #endif
