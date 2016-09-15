@@ -144,7 +144,10 @@ void LuaManager::luaBind() const {
 	lua_register(_luaInterpreter, "queryKeyDown", &luaQueryKeyDown);
 	lua_register(_luaInterpreter, "getPosition", &luaGetPosition);
 	lua_register(_luaInterpreter, "setPosition", &luaSetPosition);
+	lua_register(_luaInterpreter, "getLocalRotation", &luaGetLocalRotation);
+	lua_register(_luaInterpreter, "getLocalScale", &luaGetLocalScale);
 	lua_register(_luaInterpreter, "worldToLocalCoordinates", &luaWorldToLocalCoordinates);
+	lua_register(_luaInterpreter, "localToWorldCoordinates", &luaLocalToWorldCoordinates);
 	lua_register(_luaInterpreter, "luaSample", &luaSample);
 	lua_register(_luaInterpreter, "draw", &luadDraw);
 }
@@ -291,6 +294,19 @@ int LuaManager::luaWorldToLocalCoordinates(lua_State* state) {
 	return 3;
 }
 
+int LuaManager::luaLocalToWorldCoordinates(lua_State* state) {
+	GameObject* targetObject = static_cast<GameObject*>(lua_touserdata(state, -4));
+	float x = lua_tonumber(state, -3);
+	float y = lua_tonumber(state, -2);
+	float z = lua_tonumber(state, -1);
+	//See to that binding rvalue to a reference thing
+	glm::vec3 ret = targetObject->_transform.localToWorldCoordinates(glm::vec3(x, y, z));
+	lua_pushnumber(state, ret.x);
+	lua_pushnumber(state, ret.y);
+	lua_pushnumber(state, ret.z);
+	return 3;
+}
+
 int LuaManager::luaScale(lua_State* state) {
 	GameObject* targetObject = static_cast<GameObject*>(lua_touserdata(state, -4));
 	float x = lua_tonumber(state, -3);
@@ -309,6 +325,24 @@ int LuaManager::luaSetPosition(lua_State *state) {
 	targetObject->_Position.y = y;
 	targetObject->_Position.z = z;
 	return 0;
+}
+
+int LuaManager::luaGetLocalRotation(lua_State* state) {
+	GameObject* targetObject = static_cast<GameObject*>(lua_touserdata(state, -1));
+	glm::vec3 localRotation = targetObject->_transform.getLocalRotation();
+	lua_pushnumber(state, localRotation.x);
+	lua_pushnumber(state, localRotation.y);
+	lua_pushnumber(state, localRotation.z);
+	return 3;
+}
+
+int LuaManager::luaGetLocalScale(lua_State* state) {
+	GameObject* targetObject = static_cast<GameObject*>(lua_touserdata(state, -1));
+	glm::vec3 localScale = targetObject->_transform.getLocalScale();
+	lua_pushnumber(state, localScale.x);
+	lua_pushnumber(state, localScale.y);
+	lua_pushnumber(state, localScale.z);
+	return 3;
 }
 
 int LuaManager::luaGetPosition(lua_State *state) {

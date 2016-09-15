@@ -37,6 +37,17 @@ vec3 Transform::getPosition() const {
 	return vec3(raw.x / raw.w, raw.y / raw.w, raw.z / raw.w);
 }
 
+glm::vec3 Transform::getLocalScale() const {
+	//TODO: implement this without matrix/vector multiplication. Should take up less cycles
+	vec4 rawLocalScale = _scaleStack * vec4(1.f, 1.f, 1.f, 1.f);
+	return vec3(rawLocalScale.x / rawLocalScale.w, rawLocalScale.y / rawLocalScale.w, rawLocalScale.z / rawLocalScale.w);
+}
+
+vec3 Transform::getLocalRotation() const {
+	vec4 rawRotation = _miscRotations * vec4(0.f, 0.f, 0.f, 1.f);
+	return vec3(rawRotation.x / rawRotation.w, rawRotation.y / rawRotation.w, rawRotation.z / rawRotation.w);
+}
+
 Transform* Transform::translate(vec3 amount) {
 	mat4 translateMatrix =
 	{
@@ -46,10 +57,6 @@ Transform* Transform::translate(vec3 amount) {
 		amount.x, amount.y, amount.z, 1.f
 	};
 	_transformations *= translateMatrix;
-	return this;
-}
-
-Transform* Transform::rotate(vec4 amount) {
 	return this;
 }
 
@@ -70,6 +77,7 @@ Transform* Transform::rotateAround(vec3 axis, float amount) {
 	};
 
 	_transformations *= rotateAroundMatrix;
+	_miscRotations *= rotateAroundMatrix;
 	return this;
 }
 
@@ -89,6 +97,7 @@ Transform* Transform::rotateX(float amount) {
 	};
 	
 	_transformations *= rotateMatrix;
+	_miscRotations *= rotateMatrix;
 	return this;
 }
 
@@ -105,6 +114,7 @@ Transform* Transform::rotateY(float amount) {
 	};
 
 	_transformations *= rotateMatrix;
+	_miscRotations *= rotateMatrix;
 	return this;
 }
 
@@ -121,14 +131,56 @@ Transform* Transform::rotateZ(float amount) {
 	};
 
 	_transformations *= rotateMatrix;
+	_miscRotations *= rotateMatrix;
 	return this;
 }
 
 Transform* Transform::rotate(vec3 amounts) {
-	// TODO: See how we can avoid calling updateCoordinateSystem 3 times in single rotate() call
-	rotateX(amounts.x);
-	rotateY(amounts.y);
-	rotateZ(amounts.z);
+	float cx = cos(amounts.x);
+	float sx = sin(amounts.x);
+
+	float cy = cos(amounts.y);
+	float sy = sin(amounts.y);
+
+	float cz = cos(amounts.z);
+	float sz = sin(amounts.z);
+
+	mat4 rotateXMatrix =
+	{
+		1.f, 0.f, 0.f, 0.f,
+		0.f, cx, sx, 0.f,
+		0.f, -sx, cx, 0.f,
+		0.f, 0.f, 0.f, 1.f
+	};
+	mat4 rotateYMatrix =
+	{
+		cy, 0.f, -sy, 0.f,
+		0.f, 1.f, 0.f, 0.f,
+		sy, 0.f, cy, 0.f,
+		0.f, 0.f, 0.f, 1.f
+	};
+	mat4 rotateZMatrix = {
+		cz, sz, 0.f, 0.f,
+		-sz, cz, 0.f, 0.f,
+		0.f, 0.f, 1.f, 0.f,
+		0.f, 0.f, 0.f, 1.f
+	};
+
+	mat4 combinedRotateMatrix = rotateXMatrix * rotateYMatrix * rotateZMatrix;
+
+	_transformations *= combinedRotateMatrix;
+	_miscRotations *= combinedRotateMatrix;
+	return this;
+}
+
+Transform* Transform::setScale(glm::vec3 amount) {
+	_scaleStack = 
+	{
+		amount.x, 0.f, 0.f, 0.f,
+		0.f, amount.y, 0.f, 0.f,
+		0.f, 0.f, amount.z, 0.f,
+		0.f, 0.f, 0.f, 1.f
+	};
 	return this;
 }
 
@@ -152,24 +204,28 @@ Transform* Transform::globalScale(glm::vec3 amount) {
 		0.f, 0.f, amount.z, 0.f,
 		0.f, 0.f, 0.f, 1.f
 	};
-	printf("ScalingX: %f\n", amount.x);
 	_transformations = scaleMatrix * _transformations;
 	return this;
 }
 
 glm::vec3 Transform::worldToLocalCoordinates(vec3& point) {
-	//vec3 position = getPosition();
 	vec3 delta = point - getPosition();
 	vec4 delta4(delta.x, delta.y, delta.z, 1.f);
-	CoordinateSystem localSystem = getCoordinateSystem();
-	//std::cout << "engine coord system:\nX: " << localSystem.x.x << " " << localSystem.x.y << " " << localSystem.x.z \
-		<< "\nY: " << localSystem.y.x << " " << localSystem.y.y << " " << localSystem.y.z \
-		<< "\nZ: " << localSystem.z.x << " " << localSystem.z.y << " " << localSystem.z.z << "\n";
+	CoordinateSystem localSystem = getInverseScaleCoordinateSystem();
 	return vec3(dot(delta4, localSystem.x), dot(delta4, localSystem.y), dot(delta4, localSystem.z));
 }
 
 glm::vec3 Transform::localToWorldCoordinates(vec3& point) {
-	return vec3(0, 0, 0);
+	//TODO: Possible optimization for getting coordinate systems is to have coordinate system as a class member, \
+	  and then make private updateCoordinateSystem that would get the reference to the member coordinate system. \
+	  Method getInverseScaleCoordinateSystem() should become public and for external use
+	CoordinateSystem localSystem = getCoordinateSystem();
+	//See if there is a more optimal solution
+	vec4 globalOrientationPoint = point.x *  localSystem.x + point.y * localSystem.y + point.z * localSystem.z;
+	vec3 globalOrientationPoint3 = vec3(globalOrientationPoint.x,
+		globalOrientationPoint.y,
+		globalOrientationPoint.z);
+	return globalOrientationPoint3 + getPosition();
 }
 
 glm::mat4 Transform::getLocalTransformationMatrix() const {
@@ -193,9 +249,19 @@ glm::mat4 Transform::getGlobalTransformationMatrixInverseScale() const {
 	return _transformations * inverse(_scaleStack);
 }
 
-CoordinateSystem Transform::getCoordinateSystem() {
+// Budz, budz
+CoordinateSystem Transform::getInverseScaleCoordinateSystem() {
 	CoordinateSystem ret;
 	mat4 globalTransformationMatrix = getGlobalTransformationMatrixInverseScale();
+	ret.x = globalTransformationMatrix * vec4(1.f, 0.f, 0.f, 0.f);
+	ret.y = globalTransformationMatrix * vec4(0.f, 1.f, 0.f, 0.f);
+	ret.z = globalTransformationMatrix * vec4(0.f, 0.f, 1.f, 0.f);
+	return ret;
+}
+
+CoordinateSystem Transform::getCoordinateSystem() {
+	CoordinateSystem ret;
+	mat4 globalTransformationMatrix = getGlobalTransformationMatrix();
 	ret.x = globalTransformationMatrix * vec4(1.f, 0.f, 0.f, 0.f);
 	ret.y = globalTransformationMatrix * vec4(0.f, 1.f, 0.f, 0.f);
 	ret.z = globalTransformationMatrix * vec4(0.f, 0.f, 1.f, 0.f);

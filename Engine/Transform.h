@@ -33,15 +33,15 @@ public:
 	glm::vec3 getScale();
 	glm::vec4 getRotation();  // Quaternion
 	glm::vec3 getLocalPosition();
-	glm::vec3 getLocalScale();
-	glm::vec4 getLocalRotation();  // Quaternion
+	glm::vec3 getLocalScale() const;
+	glm::vec3 getLocalRotation() const;
 	Transform* translate(glm::vec3 amount); // Builder type trick
-	Transform* rotate(glm::vec4 amount);
 	Transform* rotateAround(glm::vec3 axis, float amount);
 	Transform* rotateX(float amount);
 	Transform* rotateY(float amount);
 	Transform* rotateZ(float amount);
 	Transform* rotate(glm::vec3 amounts);
+	Transform* setScale(glm::vec3 amount);
 	Transform* scale(glm::vec3 amount);
 	Transform* globalScale(glm::vec3 amount);
 	glm::vec3 worldToLocalCoordinates(glm::vec3& point);
@@ -56,8 +56,10 @@ protected:
 	glm::vec4 _localRotation;
 	glm::mat4 _transformations;
 	glm::mat4 _scaleStack;
+	glm::mat4 _miscRotations;
 	GameObject* _gameObject;
 	glm::mat4 getGlobalTransformationMatrixInverseScale() const;
+	CoordinateSystem getInverseScaleCoordinateSystem();
 	CoordinateSystem getCoordinateSystem();
 };
 #endif
