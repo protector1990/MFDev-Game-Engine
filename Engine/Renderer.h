@@ -7,6 +7,7 @@
 #include <vector>
 #include <GL\glew.h>
 #include <SDL_opengl.h>
+#include "Shader.h"
 
 class Renderer {
 public:
@@ -24,6 +25,11 @@ private:
 	int _quadsVertexCapacity = 50000;
 	GLuint _trianglesGLArray;
 	GLuint _quadsGLArray;
+	void drawTriangles();
+	void drawQuads();
+protected:
+	Shader* _vSpriteShader;
+	Shader* _fSpriteShader;
 };
 
 #endif

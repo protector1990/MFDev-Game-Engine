@@ -53,6 +53,9 @@ void Renderer::init() {
 		fprintf(stderr, "Error: %s\n", glewGetErrorString(err));
 	}
 
+	//_fSpriteShader = ASSET_MANAGER->loadAsset<Shader>("/shaders/FSpriteShader.glsl");
+	_vSpriteShader = ASSET_MANAGER->loadAsset<Shader>("/shaders/VSpriteShader.glsl");
+
 	//_triangles = new vec3[_trianglesVertexCapacity];
 	//_quads = new vec3[_quadsVertexCapacity];
 	//_trianglesVertexCount = 0;
@@ -159,3 +162,20 @@ void Renderer::addQuads(vec3 *vertices, int size) {
 	}
 }
 
+void Renderer::drawTriangles() {
+	glBindVertexArray(_trianglesGLArray);
+	glDrawElements(GL_TRIANGLES, _trianglesVertexCount / 3, GL_UNSIGNED_INT, 0);
+	glBindVertexArray(0);
+	_trianglesVertexCount = 0;
+
+}
+
+GLfloat texCoordinates[8] = { 0.f, 0.f, 1.f, 0.f, 1.f, 1.f, 0.f, 1.f };
+
+void Renderer::drawQuads() {
+	glBindVertexArray(_quadsGLArray);
+	glDrawElements(GL_QUADS, _quadsVertexCount / 4, GL_UNSIGNED_INT, 0);
+	glTexCoordPointer(1, GL_FLOAT, 0, texCoordinates);
+	glBindVertexArray(0);
+	_quadsVertexCount = 0;
+}

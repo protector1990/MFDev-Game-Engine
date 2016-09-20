@@ -696,6 +696,37 @@ __EXPORT__ const char *PHYSFS_getBaseDir(void);
 
 
 /**
+* \fn const char *PHYSFS_getFileNameFromPath(const char* path)
+* \brief Get the file name from path string
+*
+* Helper function.
+*
+* Get file name from physfs path (not from real, os dependant, path. So, separator will always be '/'
+* Does not allocate new char array, just returns a pointer inside the array passed as the argument
+*
+*  \return const char* pointer to the first character of the file name inside
+* the path parameter string
+*
+*/
+__EXPORT__ const char *PHYSFS_getFileNameFromPath(const char* path);
+
+
+/**
+* \fn const char *PHYSFS_getFileExtension(const char* path)
+* \brief Get the file extension from path or filename string
+*
+* Helper function.
+*
+* Does not allocate new char array, just returns a pointer inside the array passed as the argument.
+*
+*  \return const char* pointer to the first character of the file extension inside
+* the path parameter string
+*
+*/
+__EXPORT__ const char *PHYSFS_getFileExtension(const char* path);
+
+
+/**
  * \fn const char *PHYSFS_getUserDir(void)
  * \brief Get the path where user's home directory resides.
  *

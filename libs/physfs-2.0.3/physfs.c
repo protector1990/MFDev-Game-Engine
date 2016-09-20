@@ -2492,5 +2492,17 @@ void __PHYSFS_smallFree(void *ptr)
     } /* if */
 } /* __PHYSFS_smallFree */
 
-/* end of physfs.c ... */
 
+const char* PHYSFS_getFileNameFromPath(const char* path) {
+	if (const char* ret = strrchr(path, '/')) return ret + 1;
+	return nullptr;
+} /* PHYSFS_getFileNameFromPath */
+
+
+const char* PHYSFS_getFileExtension(const char* path) {
+	if (const char* ret = strrchr(path, '.')) return ret + 1;
+	return nullptr;
+}/* PHYSFS_getFileExtension */
+
+
+/* end of physfs.c ... */

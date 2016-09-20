@@ -253,6 +253,7 @@
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="ScriptableInterface.h" />
+    <ClInclude Include="Shader.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="SpriteLoader.h" />
     <ClInclude Include="TextAsset.h" />

@@ -53,7 +53,8 @@ void WinAssetManager::deInit() {
 
 TextAsset* AssetManager::loadTextAsset(const char* path) {
 	PHYSFS_file* file = PHYSFS_openRead(path);
-	if (file) {
+	if (file)
+	{
 		PHYSFS_sint64 fileSize = PHYSFS_fileLength(file);
 		char* inBuff = new char[fileSize + 1];
 		PHYSFS_read(file, inBuff, fileSize, 1);
@@ -76,7 +77,8 @@ int* WinAssetManager::loadInt(const char *path) {
 
 SDL_Surface* WinAssetManager::loadSDL_Surface(const char *path) {
 	PHYSFS_file* file = PHYSFS_openRead(path);
-	if (file) {
+	if (file)
+	{
 		PHYSFS_sint64 fileSize = PHYSFS_fileLength(file);
 		char* inBuff = new char[fileSize];
 		PHYSFS_read(file, inBuff, fileSize, 1);
@@ -118,6 +120,63 @@ ScriptClass* WinAssetManager::loadScriptClass(const char* path) {
 	// TODO: Implement error checking
 	ret->setReference(SCRIPT_MANAGER->luaParseComponent(script));
 	ret->setScript(script);
+	return ret;
+}
+
+//TODO: make a system for "built-in" shaders
+Shader* WinAssetManager::loadShader(const char* path) {
+	for (Shader* shader : _loadedShaders)
+	{
+		if (!strcmp(path, shader->_name))
+		{
+			return shader;
+		}
+	}
+	TextAsset* shaderText = loadTextAsset(path);
+	Shader* ret = new Shader();
+	const char* fileName = PHYSFS_getFileNameFromPath(path);
+	// We introduce a shader naming convention:
+	// All vertex shaders must begin with V, fragment shaders with F, and geometry shaders with G
+	switch (*fileName)
+	{
+	case 'V': { // Vertex Shader
+		ret->_type = VERTSHADER;
+		ret->_shaderObject = glCreateShader(GL_VERTEX_SHADER);
+		
+	} break;
+	case 'F': { // Fragment Shader
+		ret->_type = FRAGSHADER;
+		ret->_shaderObject = glCreateShader(GL_FRAGMENT_SHADER);
+	} break;
+	case 'G': { // Geometry Shader
+		ret->_type = GEOMSHADER;
+		ret->_shaderObject = glCreateShader(GL_GEOMETRY_SHADER);
+	} break;
+	default: delete ret; return nullptr;
+	}
+	glShaderSourceARB(ret->_shaderObject, 1, &shaderText->_contents, &shaderText->_size);
+	glCompileShaderARB(ret->_shaderObject);
+
+	GLint compiled;
+	glGetObjectParameterivARB(ret->_shaderObject, GL_COMPILE_STATUS, &compiled);
+	if (!compiled)
+	{
+#ifdef _DEBUG
+		// get gl error
+		char error[1024];
+		glGetShaderInfoLog(ret->_shaderObject, 1024, nullptr, error);
+		printf("[OpenGL shader]: Error with shader {%s}: %s", path, error);
+#endif
+		// next, cleanup memory and return null
+		delete ret;
+		return nullptr;
+	}
+
+	// Maybe keep it as Shader field?
+	delete shaderText;
+	ret->_name = new char[strlen(path) + 1];
+	strcpy(ret->_name, path);
+	_loadedShaders.push_back(ret);
 	return ret;
 }
 
