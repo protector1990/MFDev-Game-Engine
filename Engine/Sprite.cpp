@@ -19,18 +19,8 @@ void Sprite::init() {
 	//glGenBuffers(1, &_glVertexBufferObjects);
 	//glGenVertexArrays(1, &_glVertexArray);
 	//Optimize so that a single texture is generated exactly once and accessed from all the places it is required
-	glActiveTexture(GL_TEXTURE0);
-	glGenTextures(1, &_glTexture);
+	//glActiveTexture(GL_TEXTURE0);
 
-	glBindTexture(GL_TEXTURE_2D, _glTexture);
-
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-
-	//TODO: read color mode from _texture
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, _texture->w, _texture->h, 0, GL_RGBA, GL_UNSIGNED_BYTE, _texture->pixels);
 }
 
 void Sprite::update(float deltaTime) {
@@ -55,8 +45,8 @@ void Sprite::render(Renderer *renderer) {
 	//TODO: See if it is practical to offload this to a vertex shader
 	mat4 masterTransformationMatrix = _transform.getGlobalTransformationMatrix();
 	
-	pointOffsetMatrix[3][0] = -_texture->w / 2.f;
-	pointOffsetMatrix[3][1] = -_texture->h / 2.f;
+	pointOffsetMatrix[3][0] = -_texture->_nativeTexture->w / 2.f;
+	pointOffsetMatrix[3][1] = -_texture->_nativeTexture->h / 2.f;
 
 	// if we ever get multithreading for whatever reason, make sure that each thread has its own copy of this matrix
 	_points[0] = masterTransformationMatrix * pointOffsetMatrix * tmp;
@@ -67,42 +57,52 @@ void Sprite::render(Renderer *renderer) {
 	pointOffsetMatrix[3][0] *= -1.f;
 	_points[3] = masterTransformationMatrix * pointOffsetMatrix * tmp;
 
+	// Budzi, hahahahaha, budzi
+	vec3 noHomoPoints[4] = {
+		vec3(_points[0].x / _points[0].w, _points[0].y / _points[0].w, _points[0].z / _points[0].w),
+		vec3(_points[1].x / _points[1].w, _points[1].y / _points[1].w, _points[1].z / _points[1].w),
+		vec3(_points[2].x / _points[2].w, _points[2].y / _points[2].w, _points[2].z / _points[2].w),
+		vec3(_points[3].x / _points[3].w, _points[3].y / _points[3].w, _points[3].z / _points[3].w)
+	};
+
+	renderer->addQuads(noHomoPoints, 4, _texture);
+
 	//renderer->addQuads(_points, 4);
 	//glBindVertexArray(_glVertexArray);
 	//glBindBuffer(GL_ARRAY_BUFFER, _glVertexBufferObjects);
-	glActiveTexture(GL_TEXTURE0);
-	glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, _glTexture);
+	//glActiveTexture(GL_TEXTURE0);
+	//glEnable(GL_TEXTURE_2D);
+	//glBindTexture(GL_TEXTURE_2D, _texture->_glTexture);
 	//glBufferData(GL_ARRAY_BUFFER, 4 * sizeof(vec3), _points, GL_DYNAMIC_DRAW);
 
 	//glColor4f(0.f, 1.f, 1.f, 1.f);
 
-	GLfloat texCoordinates[8] = { 0, 0, 1, 0, 1, 1, 0, 1 };
-	glBegin(GL_QUADS);
+	//GLfloat texCoordinates[8] = { 0, 0, 1, 0, 1, 1, 0, 1 };
+	//glBegin(GL_QUADS);
 	//for (int i = 0; i < 4; i++) {
-		glTexCoord2f(1,1);
-		glVertex4f(_points[0].x, _points[0].y, _points[0].z, _points[0].w);
-		//(-50.f, -50.f, 0.f);
-		glTexCoord2f(0, 1);
-		glVertex4f(_points[1].x, _points[1].y, _points[1].z, _points[1].w);
-		//glVertex3f(50.f, -50.f, 0.f);
-		glTexCoord2f(0, 0);
-		glVertex4f(_points[2].x, _points[2].y, _points[2].z, _points[2].w);
-		//glVertex3f(50.f, 50.f, 0.f);
-		glTexCoord2f(1, 0);
-		glVertex4f(_points[3].x, _points[3].y, _points[3].z, _points[3].w);
-		//glVertex3f(-50.f, 50.f, 0.f);
-	//}
-	glEnd();
-	
-	//glDrawElements(GL_QUADS, 1, GL_UNSIGNED_INT, indices);
-	//glBindVertexArray(0);
+	//	glTexCoord2f(1,1);
+	//	glVertex4f(_points[0].x, _points[0].y, _points[0].z, _points[0].w);
+	//	//(-50.f, -50.f, 0.f);
+	//	glTexCoord2f(0, 1);
+	//	glVertex4f(_points[1].x, _points[1].y, _points[1].z, _points[1].w);
+	//	//glVertex3f(50.f, -50.f, 0.f);
+	//	glTexCoord2f(0, 0);
+	//	glVertex4f(_points[2].x, _points[2].y, _points[2].z, _points[2].w);
+	//	//glVertex3f(50.f, 50.f, 0.f);
+	//	glTexCoord2f(1, 0);
+	//	glVertex4f(_points[3].x, _points[3].y, _points[3].z, _points[3].w);
+	//	//glVertex3f(-50.f, 50.f, 0.f);
+	////}
+	//glEnd();
+	//
+	////glDrawElements(GL_QUADS, 1, GL_UNSIGNED_INT, indices);
+	////glBindVertexArray(0);
 
-	glDisable(GL_TEXTURE_2D);
+	//glDisable(GL_TEXTURE_2D);
 
 	//i = glGetError();
 }
 
-const SDL_Surface* Sprite::getTexture() {
+const MTexture* Sprite::getTexture() {
 	return _texture;
 }

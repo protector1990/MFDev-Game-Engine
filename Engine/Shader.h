@@ -20,4 +20,19 @@ public:
 	// see if we need a bool indicating if it is compiled or not
 };
 
+class ShaderProgram {
+public:
+	ShaderProgram(GLuint id, Shader* frag, Shader* vert, Shader* geom) :
+		_id(id),
+		_frag(frag),
+		_vert(vert),
+		_geom(geom)
+		{}
+	ShaderProgram(){}
+	GLuint _id;
+	Shader* _frag = nullptr;
+	Shader* _vert = nullptr;
+	Shader* _geom = nullptr;
+};
+
 #endif // #ifndef _SHADER_H

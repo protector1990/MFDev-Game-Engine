@@ -37,7 +37,7 @@ GameObject* SpriteLoader::load(xml_node<char>* configuration) {
 
 	xml_node<char>* texture_node = configuration->first_node(temp_sprite_loader::textureID);
 	char* texture_path = texture_node->value();
-	ret->_texture = ASSET_MANAGER->loadAsset<SDL_Surface>(texture_path);
+	ret->_texture = ASSET_MANAGER->loadAsset<MTexture>(texture_path);
 
 	xml_node<char>* transform = configuration->first_node(temp_sprite_loader::transformID);
 	xml_node<char>* positionX = transform->first_node(temp_sprite_loader::positionXID);

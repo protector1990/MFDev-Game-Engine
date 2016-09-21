@@ -22,7 +22,8 @@ Asset3D* model;
 Model3D* meshModel;
 SDL_GLContext glContext;
 
-
+GLfloat texCoordinates[8] = { 0.f, 0.f, 1.f, 0.f, 1.f, 1.f, 0.f, 1.f };
+vec2 texCoordinatesVec[4] = { vec2(0.f, 0.f), vec2(1.f, 0.f), vec2(1.f, 1.f), vec2(0.f, 1.f) };
 
 //helper function
 void LoadMedia() {
@@ -50,16 +51,40 @@ void Renderer::init() {
 	if (GLEW_OK != err)
 	{
 		/* Problem: glewInit failed, something is seriously wrong. */
-		fprintf(stderr, "Error: %s\n", glewGetErrorString(err));
+		fprintf(stderr, "Error: %p\n", glewGetErrorString(err));
 	}
 
-	//_fSpriteShader = ASSET_MANAGER->loadAsset<Shader>("/shaders/FSpriteShader.glsl");
-	_vSpriteShader = ASSET_MANAGER->loadAsset<Shader>("/shaders/VSpriteShader.glsl");
+	// Sprite shader
+	_spriteShaderProgram = new ShaderProgram();
 
-	//_triangles = new vec3[_trianglesVertexCapacity];
-	//_quads = new vec3[_quadsVertexCapacity];
-	//_trianglesVertexCount = 0;
-	//_quadsVertexCount = 0;
+	_spriteShaderProgram->_frag = ASSET_MANAGER->loadAsset<Shader>("/shaders/FSpriteShader.glsl");
+	_spriteShaderProgram->_vert = ASSET_MANAGER->loadAsset<Shader>("/shaders/VSpriteShader.glsl");
+	_spriteShaderProgram->_id = glCreateProgram();
+	glAttachShader(_spriteShaderProgram->_id, _spriteShaderProgram->_vert->_shaderObject);
+	glAttachShader(_spriteShaderProgram->_id, _spriteShaderProgram->_frag->_shaderObject);
+	glLinkProgram(_spriteShaderProgram->_id);
+
+	GLint isLinked = 0;
+	glGetProgramiv(_spriteShaderProgram->_id, GL_LINK_STATUS, &isLinked);
+	if (isLinked == GL_FALSE)
+	{
+		char error[1024];
+		glGetProgramInfoLog(_spriteShaderProgram->_id, 1024, nullptr, error);
+		printf("[OpenGL shader]: Error with sprite shader linking: %s", error);
+	}
+	_triangles = new vec3[_trianglesVertexCapacity];
+	_quads = new vec3[_quadsVertexCapacity];
+	_spriteTexCoordArray = new vec2[_quadsVertexCapacity];
+	
+	// Hopefully did the memory right
+	size_t vec2Size = sizeof(vec2);
+	for (size_t i = 0; i < _quadsVertexCapacity; i += 4)
+	{
+		memcpy(_spriteTexCoordArray + i, texCoordinatesVec, 4 * vec2Size);
+	}
+
+	_trianglesVertexCount = 0;
+	_quadsVertexCount = 0;
 	glGenVertexArrays(1, &_trianglesGLArray);
 	glGenVertexArrays(1, &_quadsGLArray);
 
@@ -116,6 +141,8 @@ void Renderer::render(float deltaTime) {
 
 	ENGINE.renderScenes();
 
+	drawQuads();
+
 	glFlush();
 	SDL_GL_SwapWindow(gameWindow);
 }
@@ -141,7 +168,10 @@ void Renderer::addTriangles(vec3 *vertices, int size) {
 	}
 }
 
-void Renderer::addQuads(vec3 *vertices, int size) {
+// TODO: move this to Renderer class
+MTexture* _currentlyActiveTexture;
+
+void Renderer::addQuads(vec3 *vertices, int size, MTexture* texture) {
 	_quadsVertexCount += size;
 	if (size % 4 != 0) {
 		// Size must be dividible by 4!
@@ -150,7 +180,8 @@ void Renderer::addQuads(vec3 *vertices, int size) {
 	for (int i = 0; i < size; i++) {
 		++_quadsVertexCount;
 		if (_quadsVertexCount > _quadsVertexCapacity) {
-			_quadsVertexCapacity += 50000;
+			// Revisit this part
+			_quadsVertexCapacity += MAX_QUADS_VERTICES;
 			vec3* newQuads = new vec3[_quadsVertexCapacity];
 			for (int j = 0; j < _quadsVertexCapacity - 1; j++) {
 				newQuads[j] = _quads[j];
@@ -159,6 +190,12 @@ void Renderer::addQuads(vec3 *vertices, int size) {
 			_quads = newQuads;
 		}
 		_quads[_quadsVertexCount] = *vertices;
+	}
+
+	if (_currentlyActiveTexture != texture)
+	{
+		drawQuads();
+		_currentlyActiveTexture = texture;
 	}
 }
 
@@ -170,12 +207,33 @@ void Renderer::drawTriangles() {
 
 }
 
-GLfloat texCoordinates[8] = { 0.f, 0.f, 1.f, 0.f, 1.f, 1.f, 0.f, 1.f };
-
 void Renderer::drawQuads() {
-	glBindVertexArray(_quadsGLArray);
-	glDrawElements(GL_QUADS, _quadsVertexCount / 4, GL_UNSIGNED_INT, 0);
-	glTexCoordPointer(1, GL_FLOAT, 0, texCoordinates);
-	glBindVertexArray(0);
-	_quadsVertexCount = 0;
+	if (_quadsVertexCount > 0 && _currentlyActiveTexture) {
+		//glUseProgram(_spriteShaderProgram->_id);
+		
+		glEnableClientState(GL_VERTEX_ARRAY);
+
+		glVertexPointer(3, GL_FLOAT, 0, _quads);
+		
+		
+		glBindVertexArray(_quadsGLArray);
+		
+		
+		glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+		
+
+		glTexCoordPointer(3, GL_FLOAT, 0, reinterpret_cast<void*>(_spriteTexCoordArray));
+		//glTexCoordPointerEXT()
+		printf("%p\n\n\n", glGetError());
+		
+		glBindTexture(GL_TEXTURE_2D, _currentlyActiveTexture->_glTexture);
+		
+		glDrawElements(GL_QUADS, _quadsVertexCount / 4, GL_UNSIGNED_INT, 0);
+		glBindTexture(GL_TEXTURE_2D, 0);
+		glBindVertexArray(0);
+		glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+		glDisableClientState(GL_VERTEX_ARRAY);
+		//glUseProgram(0);
+		_quadsVertexCount = 0;
+	}
 }

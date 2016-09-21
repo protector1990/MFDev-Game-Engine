@@ -173,10 +173,39 @@ Shader* WinAssetManager::loadShader(const char* path) {
 	}
 
 	// Maybe keep it as Shader field?
-	delete shaderText;
+	//delete shaderText;
 	ret->_name = new char[strlen(path) + 1];
 	strcpy(ret->_name, path);
 	_loadedShaders.push_back(ret);
+	return ret;
+}
+
+MTexture* WinAssetManager::loadSpriteTexture(const char* path) {
+	for (MTexture* texture : _loadedTextures)
+	{
+		if (!strcmp(texture->_name, path))
+		{
+			return texture;
+		}
+	}
+
+	MTexture* ret = new MTexture(path);
+	ret->_nativeTexture = loadSDL_Surface(path);
+
+	glGenTextures(1, &ret->_glTexture);
+
+	glBindTexture(GL_TEXTURE_2D, ret->_glTexture);
+
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+
+	//TODO: read color mode from _texture
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, ret->_nativeTexture->w, ret->_nativeTexture->h, 0, GL_RGBA, GL_UNSIGNED_BYTE, ret->_nativeTexture->pixels);
+	printf("%p\n\n\n", glGetError());
+	_loadedTextures.push_back(ret);
+	glBindTexture(GL_TEXTURE_2D, 0);
 	return ret;
 }
 

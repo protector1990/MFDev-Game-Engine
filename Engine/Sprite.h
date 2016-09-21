@@ -8,6 +8,7 @@
 #include "Renderer.h"
 #include <glm\glm.hpp>
 #include <SDL_opengl.h>
+#include "Texture.h"
 
 class Sprite : public virtual GameObject {
 	friend class SpriteLoader;
@@ -15,9 +16,8 @@ public:
 	void init() override;
 	void update(float deltaTime) override;
 	void render(Renderer *renderer) override;
-	const SDL_Surface* getTexture();
+	const MTexture* getTexture();
 protected:
-	SDL_Surface *_texture;
 	int _sheetWidth = 1;
 	int _sheetHeight = 1;
 	float _animSpeed = 1.f;
@@ -30,6 +30,6 @@ protected:
 	//Opengl specifics. Move this somewhere else at some point
 	GLuint _glVertexArray;
 	GLuint _glVertexBufferObjects;
-	GLuint _glTexture;
+	MTexture* _texture;
 };
 #endif

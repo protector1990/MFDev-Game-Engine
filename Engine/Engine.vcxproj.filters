@@ -47,6 +47,9 @@
     <Filter Include="Engine\Shaders">
       <UniqueIdentifier>{9902a8b4-d3df-468b-998d-f4f02ea924f8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Assets">
+      <UniqueIdentifier>{918ba807-c468-42e0-a504-761269638ca3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -165,9 +168,6 @@
     </ClCompile>
     <ClCompile Include="..\libs\glew\src\glew.c">
       <Filter>glew</Filter>
-    </ClCompile>
-    <ClCompile Include="3DAsset.cpp">
-      <Filter>Engine</Filter>
     </ClCompile>
     <ClCompile Include="Model3D.cpp">
       <Filter>Engine</Filter>
@@ -322,6 +322,9 @@
     <ClCompile Include="Renderer.cpp">
       <Filter>Engine\Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="3DAsset.cpp">
+      <Filter>Engine\Assets</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\libs\lua-5.3.2\src\lapi.h">
@@ -456,12 +459,6 @@
     <ClInclude Include="..\libs\physfs-2.0.3\zutil.h">
       <Filter>physfs</Filter>
     </ClInclude>
-    <ClInclude Include="Texture.h">
-      <Filter>Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="3DAsset.h">
-      <Filter>Engine</Filter>
-    </ClInclude>
     <ClInclude Include="Common.h">
       <Filter>Engine</Filter>
     </ClInclude>
@@ -528,9 +525,6 @@
     <ClInclude Include="Mixed.h">
       <Filter>Engine\DataStructures</Filter>
     </ClInclude>
-    <ClInclude Include="TextAsset.h">
-      <Filter>Engine</Filter>
-    </ClInclude>
     <ClInclude Include="Lua.h">
       <Filter>Engine\Script</Filter>
     </ClInclude>
@@ -560,6 +554,15 @@
     </ClInclude>
     <ClInclude Include="Shader.h">
       <Filter>Engine\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="TextAsset.h">
+      <Filter>Engine\Assets</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>Engine\Assets</Filter>
+    </ClInclude>
+    <ClInclude Include="3DAsset.h">
+      <Filter>Engine\Assets</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

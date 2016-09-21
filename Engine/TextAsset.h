@@ -12,8 +12,8 @@ public:
 		_contents(contents),
 		_size(size) {}
 	virtual ~TextAsset() {
-		delete[] _name;
-		delete[] _contents;
+		delete [] _name;
+		delete [] _contents;
 	}
 	TextAsset(const TextAsset& other);
 	const char* _name;

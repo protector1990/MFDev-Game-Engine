@@ -11,6 +11,7 @@
 #include "Scene.h"
 #include "TextAsset.h"
 #include "Shader.h"
+#include "Texture.h"
 
 //TODO: In current implementation, Asset Manager and Asset Loader funcionalities are inside the same class.
 // Set those tho apart.
@@ -38,6 +39,7 @@ public:
 	template <> ScriptClass* loadAsset<ScriptClass>(const char *path){ return loadScriptClass(path); }
 	// Shaders
 	template <> Shader* loadAsset<Shader>(const char *path) { return loadShader(path); }
+	template<> MTexture* loadAsset<MTexture>(const char *path) { return loadSpriteTexture(path); }
 protected:
 	virtual int* loadInt(const char *path) = 0;
 	virtual SDL_Surface* loadSDL_Surface(const char *path) = 0;
@@ -49,6 +51,7 @@ protected:
 	virtual Script* loadLuaScript(const char *path) = 0;
 	virtual ScriptClass* loadScriptClass(const char *path) = 0;
 	virtual Shader* loadShader(const char* path) = 0;
+	virtual MTexture* loadSpriteTexture(const char *path) = 0;
 
 	/*TODO: this is now a bit irrelevant, because Script no longer stores reference to a Lua class. So, now if we 
 	  want to load an already loaded class, load script will return loaded script and class parser would still try to parse it
@@ -56,6 +59,7 @@ protected:
 	*/
 	std::vector<Script*> _loadedScripts;
 	std::vector<Shader*> _loadedShaders;
+	std::vector<MTexture*> _loadedTextures;
 
 };
 
@@ -75,7 +79,7 @@ protected:
 	ScriptClass* loadScriptClass(const char *path) override;
 
 	Shader* loadShader(const char *path) override;
-
+	MTexture* loadSpriteTexture(const char *path) override;
 };
 #endif
 
