@@ -15,7 +15,7 @@ player.x_speed_limit = 120
 player.x_low_speed_limit = 20
 player.x_friction = 0.2
 player.zz = true
-player.firstTimeTest = true
+player.firstTimeTest = false
 
 
 function player:update(deltaTime)
