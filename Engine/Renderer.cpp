@@ -339,7 +339,7 @@ void Renderer::drawTriangles() {
 
 void Renderer::drawQuads() {
 	if (_quadsVertexCount > 0 && _currentlyActiveTexture) {
-		//glUseProgram(_spriteShaderProgram->_id);
+		glUseProgram(_spriteShaderProgram->_id);
 
 		glEnable(GL_TEXTURE_2D);
 		//printf("%p\n\n\n", glGetError());
@@ -374,7 +374,7 @@ void Renderer::drawQuads() {
 		glDisableClientState(GL_TEXTURE_COORD_ARRAY);
 		glDisableClientState(GL_VERTEX_ARRAY);
 		
-		//glUseProgram(0);
+		glUseProgram(0);
 		_quadsVertexCount = 0;
 	}
 }
