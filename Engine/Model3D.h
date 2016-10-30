@@ -9,7 +9,7 @@
 #include <SDL_opengl.h>
 #include "Texture.h"
 
-struct Vertex {
+struct Vertex3D {
 	glm::vec3 position;
 	glm::vec3 normal;
 	glm::vec2 texCoordinates;
@@ -18,7 +18,7 @@ struct Vertex {
 
 //Represents a single mesh
 struct Model3D {
-	std::vector<Vertex> vertices;
+	std::vector<Vertex3D> vertices;
 	std::vector<GLuint> indices;
 	GLuint VertexArrayObjects;
 	GLuint VertexBufferObjects;

@@ -94,15 +94,15 @@ class Vertex
     friend Vertex operator + (const Vertex&,const Vertex&);
     friend Vertex operator - (const Vertex&,const Vertex&);
 
-//  friend Vertex operator + (const Vertex&,float);
-//  friend Vertex operator - (const Vertex&,float);
+//  friend Vertex operator + (const Vertex3D&,float);
+//  friend Vertex operator - (const Vertex3D&,float);
     friend Vertex operator * (const Vertex&,float);
     friend Vertex operator / (const Vertex&,float);
 
-//  friend Vertex operator + (float, const Vertex&);
-//  friend Vertex operator - (float, const Vertex&);
+//  friend Vertex operator + (float, const Vertex3D&);
+//  friend Vertex operator - (float, const Vertex3D&);
     friend Vertex operator * (float, const Vertex&);
-//  friend Vertex operator / (float, const Vertex&);
+//  friend Vertex operator / (float, const Vertex3D&);
 
 public:
 
@@ -279,11 +279,11 @@ AI_FORCE_INLINE Vertex operator - (const Vertex& v0,const Vertex& v1) {
 
 // ------------------------------------------------------------------------------------------------
 /*
-AI_FORCE_INLINE Vertex operator + (const Vertex& v0,float f) {
+AI_FORCE_INLINE Vertex operator + (const Vertex3D& v0,float f) {
     return Vertex::BinaryOp<Intern::plus>(v0,f);
 }
 
-AI_FORCE_INLINE Vertex operator - (const Vertex& v0,float f) {
+AI_FORCE_INLINE Vertex operator - (const Vertex3D& v0,float f) {
     return Vertex::BinaryOp<Intern::minus>(v0,f);
 }
 
@@ -299,11 +299,11 @@ AI_FORCE_INLINE Vertex operator / (const Vertex& v0,float f) {
 
 // ------------------------------------------------------------------------------------------------
 /*
-AI_FORCE_INLINE Vertex operator + (float f,const Vertex& v0) {
+AI_FORCE_INLINE Vertex operator + (float f,const Vertex3D& v0) {
     return Vertex::BinaryOp<Intern::plus>(f,v0);
 }
 
-AI_FORCE_INLINE Vertex operator - (float f,const Vertex& v0) {
+AI_FORCE_INLINE Vertex operator - (float f,const Vertex3D& v0) {
     return Vertex::BinaryOp<Intern::minus>(f,v0);
 }
 */
@@ -313,7 +313,7 @@ AI_FORCE_INLINE Vertex operator * (float f,const Vertex& v0) {
 }
 
 /*
-AI_FORCE_INLINE Vertex operator / (float f,const Vertex& v0) {
+AI_FORCE_INLINE Vertex operator / (float f,const Vertex3D& v0) {
     return Vertex::BinaryOp<Intern::divides>(f,v0);
 }
 */

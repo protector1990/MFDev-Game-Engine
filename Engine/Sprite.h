@@ -5,7 +5,7 @@
 
 #include "GameObject.h"
 #include <SDL.h>
-#include "Renderer.h"
+#include "SpriteRenderer.h"
 #include <glm\glm.hpp>
 #include <SDL_opengl.h>
 #include "Texture.h"
@@ -15,7 +15,7 @@ class Sprite : public virtual GameObject {
 public:
 	void init() override;
 	void update(float deltaTime) override;
-	void render(Renderer *renderer) override;
+	void render(SpriteRenderer *renderer) override;
 	const MTexture* getTexture();
 protected:
 	int _sheetWidth = 1;

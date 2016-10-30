@@ -227,7 +227,7 @@ Model3D* WinAssetManager::loadModel3D(const char *path) {
 	Model3D* ret = new Model3D();
 	aiMesh* currentMesh = temp->mMeshes[0];
 	for (int i = 0; i < currentMesh->mNumVertices; i++) {
-		Vertex vertex;
+		Vertex3D vertex;
 		vertex.position.x = currentMesh->mVertices[i].x;
 		vertex.position.y = currentMesh->mVertices[i].y;
 		vertex.position.z = currentMesh->mVertices[i].z;

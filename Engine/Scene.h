@@ -6,7 +6,7 @@
 #include "GameObject.h"
 
 #include <vector>
-#include "Renderer.h"
+#include "SpriteRenderer.h"
 
 // Make this an abstract class too. Possible child classes:
 // -Open World Scene
@@ -34,7 +34,7 @@ public:
 	// TODO: make a separate updateInternal function
 	virtual void update(float deltaTime);
 	// Render scene
-	void render(Renderer *renderer); 
+	void render(SpriteRenderer *renderer); 
 	bool getActive();
 	void init();
 	void keyPressed(int keyPressed);

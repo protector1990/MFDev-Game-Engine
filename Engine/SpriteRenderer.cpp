@@ -1,12 +1,6 @@
 /**  Copyright 2016 MarFil Studios. All rights reserved.  **/
 
-// Breakpoints that should ALWAYS trigger (EVEN IN RELEASE BUILDS) [x86]!
-#ifdef _MSC_VER
-#include <windows.h>
-# define eTB_CriticalBreakPoint() if (IsDebuggerPresent ()) __debugbreak ();
-#else
-# define eTB_CriticalBreakPoint() asm (" int $3");
-#endif
+
 
 
 #include "Common.h"
@@ -26,115 +20,6 @@
 using namespace std;
 using namespace glm;
 
-
-
-const char*
-ETB_GL_DEBUG_SOURCE_STR(GLenum source)
-{
-	static const char* sources[] = {
-		"API", "Window System", "Shader Compiler", "Third Party", "Application",
-		"Other", "Unknown"
-	};
-
-	int str_idx =
-		std::min(source - GL_DEBUG_SOURCE_API,
-		sizeof(sources) / sizeof(const char *));
-
-	return sources[str_idx];
-}
-
-const char*
-ETB_GL_DEBUG_TYPE_STR(GLenum type)
-{
-	static const char* types[] = {
-		"Error", "Deprecated Behavior", "Undefined Behavior", "Portability",
-		"Performance", "Other", "Unknown"
-	};
-
-	int str_idx =
-		std::min(type - GL_DEBUG_TYPE_ERROR,
-		sizeof(types) / sizeof(const char *));
-
-	return types[str_idx];
-}
-
-const char*
-ETB_GL_DEBUG_SEVERITY_STR(GLenum severity)
-{
-	static const char* severities[] = {
-		"High", "Medium", "Low", "Unknown"
-	};
-
-	int str_idx =
-		std::min(severity - GL_DEBUG_SEVERITY_HIGH,
-		sizeof(severities) / sizeof(const char *));
-
-	return severities[str_idx];
-}
-
-DWORD
-ETB_GL_DEBUG_SEVERITY_COLOR(GLenum severity)
-{
-	static DWORD severities[] = {
-		0xff0000ff, // High (Red)
-		0xff00ffff, // Med  (Yellow)
-		0xff00ff00, // Low  (Green)
-		0xffffffff  // ???  (White)
-	};
-
-	int col_idx =
-		std::min(severity - GL_DEBUG_SEVERITY_HIGH,
-		sizeof(severities) / sizeof(DWORD));
-
-	return severities[col_idx];
-}
-
-void
-ETB_GL_ERROR_CALLBACK(GLenum        source,
-GLenum        type,
-GLuint        id,
-GLenum        severity,
-GLsizei       length,
-const GLchar* message,
-GLvoid*       userParam)
-{
-	printf("OpenGL Error:\n");
-	printf("=============\n");
-
-	printf(" Object ID: ");
-	printf("%d\n", id);
-
-	printf(" Severity:  ");
-	printf(
-		"%s\n",
-		ETB_GL_DEBUG_SEVERITY_STR(severity));
-
-	printf(" Type:      ");
-	printf("%s\n", ETB_GL_DEBUG_TYPE_STR(type));
-
-	printf(" Source:    ");
-	printf("%s\n", ETB_GL_DEBUG_SOURCE_STR(source));
-
-	printf(" Message:   ");
-	printf("%s\n\n", message);
-
-	// Force the console to flush its contents before executing a breakpoint
-	//eTB_FlushConsole();
-
-	// Trigger a breakpoint in gDEBugger...
-	glFinish();
-
-	// Trigger a breakpoint in traditional debuggers...
-	eTB_CriticalBreakPoint();
-}
-
-SDL_Window *gameWindow = nullptr;
-SDL_Surface *screenSurface = nullptr;
-SDL_Surface *image = nullptr;
-Asset3D* model;
-Model3D* meshModel;
-SDL_GLContext glContext;
-
 GLfloat texCoordinates[8] = { 0.f, 0.f, 1.f, 0.f, 1.f, 1.f, 0.f, 1.f };
 vec2 texCoordinatesVec[4] = { vec2(1.f, 1.f), vec2(0.f, 1.f), vec2(0.f, 0.f), vec2(1.f, 0.f) };
 
@@ -151,28 +36,7 @@ GLfloat mat_specular[] = { 0.7, 0.2, 0.5, 1.0 };
 GLfloat mat_shininess[] = { 50.0 };
 GLfloat light_position[] = { 10.0, 10.0, 10.0, 1.0 };
 
-void Renderer::init() {
-	//renderer initialization
-	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
-	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
-	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
-	gameWindow = SDL_CreateWindow("Game Window", 300, 150, 640, 384, SDL_WINDOW_OPENGL);
-	glContext = SDL_GL_CreateContext(gameWindow);
-	
-
-	GLenum err = glewInit();
-	if (GLEW_OK != err)
-	{
-		/* Problem: glewInit failed, something is seriously wrong. */
-		fprintf(stderr, "Error: %p\n", glewGetErrorString(err));
-	}
-
-	// SUPER VERBOSE DEBUGGING!
-	if (glDebugMessageControlARB != NULL) {
-		glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS_ARB);
-		glDebugMessageControlARB(GL_DONT_CARE, GL_DONT_CARE, GL_DONT_CARE, 0, NULL, GL_TRUE);
-		glDebugMessageCallbackARB((GLDEBUGPROCARB)ETB_GL_ERROR_CALLBACK, NULL);
-	}
+void SpriteRenderer::init() {
 
 	// Sprite shader
 	_spriteShaderProgram = new ShaderProgram();
@@ -203,60 +67,43 @@ void Renderer::init() {
 		memcpy(_spriteTexCoordArray + i, texCoordinatesVec, 4 * vec2Size);
 	}
 
-	for (int i = 0; i < 4; ++i)
-	{
-		printf("%f %f\n", _spriteTexCoordArray[i].x, _spriteTexCoordArray[i].y);
-	}
-
 	_trianglesVertexCount = 0;
 	_quadsVertexCount = 0;
 	glGenVertexArrays(1, &_trianglesGLArray);
 	glGenVertexArrays(1, &_quadsGLArray);
 
-	//printf("%p dsdsf\n\n\n", glGetError());
+	_currentlyActiveTexture = nullptr;
 
-	//SDL_GL_SetSwapInterval(1);
-	//screenSurface = SDL_GetWindowSurface(gameWindow);
-	//glClearColor(0.2f, 0.2f, 0.2f, 1.f);
+
+	// TODO: remove this later
 	glOrtho(-320., 320, -192, 192, -100., 100.);
-	//gluLookAt(
-	//	5, 5, 5,
-	//	0, 0, 0,
-	//	-1, -1, 1);
-	glMatrixMode(GL_MODELVIEW);
-	//glPushMatrix();
-	//mat4x4 mat = lookAt(vec3(5, 5, 5), vec3(-1, -1, -1), vec3(-1, 1, -1));
-	//glLoadMatrixf(&mat[0][0]);
-	//glCullFace(GL_BACK);
-	
-	glClearColor(1.0, 1.0, 1.0, 1.0);
-	//glShadeModel(GL_SMOOTH);
-	//glMaterialfv(GL_FRONT, GL_SPECULAR, mat_specular);
-	//glEnable(GL_LIGHTING);
-	//glEnable(GL_LIGHT0);
-	//glMaterialfv(GL_FRONT, GL_DIFFUSE, mat_specular);
-	//glLightfv(GL_LIGHT0, GL_POSITION, light_position);
-	
-	//glEnable(GL_DEPTH_TEST);
-	//glEnable(GL_COLOR_MATERIAL);
 
-	glEnable(GL_BLEND);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	//glMatrixMode(GL_MODELVIEW);
+
+	
+
+	printf("proj %p\n\n\n", glGetError());
+	//mat4 lookat = lookAt(vec3(0, 0, 0.001f), vec3(0, 0, -0.001f), vec3(0, 0.001f, 0));
+	//glLoadMatrixf(&lookat[0][0]);
+
+	//mat4 sample;
+	//glGetFloatv(GL_MODELVIEW_MATRIX, reinterpret_cast<GLfloat*>(&sample));
+
+	//glPushMatrix();
+	//utilLookAt(vec3(0, 0, -10), vec3(0, 43, 1), vec3(-5, 1, 0));
+	//glLoadMatrixf(&mat[0][0]);
 
 	//glFrontFace(GL_CW);
 
 	LoadMedia();
-	//printf("%i %i", x, y);
 }
 
 bool firstTime = true;
 float totalTime = 0;
 
-void Renderer::render(float deltaTime) {
+void SpriteRenderer::render(float deltaTime) {
 	//totalTime += deltaTime * 20.f;
-	glClear(GL_COLOR_BUFFER_BIT);
-	glMatrixMode(GL_PROJECTION);
-	glLoadIdentity();
+	
 
 	////Draw triangles
 	//glBindVertexArray(_trianglesGLArray);
@@ -270,13 +117,11 @@ void Renderer::render(float deltaTime) {
 
 	ENGINE.renderScenes();
 
-	drawQuads();
-
-	glFlush();
+	
 	SDL_GL_SwapWindow(gameWindow);
 }
 
-void Renderer::addTriangles(vec3 *vertices, int size) {
+void SpriteRenderer::addTriangles(vec3 *vertices, int size) {
 	_trianglesVertexCount += size;
 	if (size % 3 != 0) {
 		// Size must be dividible by 3!
@@ -297,10 +142,7 @@ void Renderer::addTriangles(vec3 *vertices, int size) {
 	}
 }
 
-// TODO: move this to Renderer class
-MTexture* _currentlyActiveTexture;
-
-void Renderer::addQuads(vec3 *vertices, int size, MTexture* texture) {
+void SpriteRenderer::addQuads(vec3 *vertices, int size, MTexture* texture) {
 	//_quadsVertexCount += size;
 	if (size % 4 != 0) {
 		// Size must be dividible by 4!
@@ -329,7 +171,16 @@ void Renderer::addQuads(vec3 *vertices, int size, MTexture* texture) {
 
 }
 
-void Renderer::drawTriangles() {
+void SpriteRenderer::preRender() {
+}
+
+void SpriteRenderer::postRender() {
+	drawQuads();
+	_currentlyActiveTexture = nullptr;
+	glFlush();
+}
+
+void SpriteRenderer::drawTriangles() {
 	glBindVertexArray(_trianglesGLArray);
 	glDrawElements(GL_TRIANGLES, _trianglesVertexCount / 3, GL_UNSIGNED_INT, 0);
 	glBindVertexArray(0);
@@ -337,12 +188,9 @@ void Renderer::drawTriangles() {
 
 }
 
-void Renderer::drawQuads() {
+void SpriteRenderer::drawQuads() {
 	if (_quadsVertexCount > 0 && _currentlyActiveTexture) {
 		glUseProgram(_spriteShaderProgram->_id);
-
-		glEnable(GL_TEXTURE_2D);
-		//printf("%p\n\n\n", glGetError());
 
 		glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 		//printf("%p\n\n\n", glGetError());
@@ -359,16 +207,17 @@ void Renderer::drawQuads() {
 		glActiveTexture(GL_TEXTURE0);
 		//printf("%p\n\n\n", glGetError());
 
-		glClientActiveTexture(GL_TEXTURE0);
-		//printf("%p\n\n\n", glGetError());
-
 		glBindTexture(GL_TEXTURE_2D, _currentlyActiveTexture->_glTexture);
 		//printf("%p\n\n\n", glGetError());
 
-		glDrawArrays(GL_QUADS, 0, _quadsVertexCount * sizeof(vec2));
+		int samplerLocation = glGetUniformLocation(_spriteShaderProgram->_id, "textureSampler");
+		glUniform1i(samplerLocation, 0);
+
+		glDrawArrays(GL_QUADS, 0, _quadsVertexCount);
 		//vec2* scnd = _spriteTexCoordArray + 1;
 		//("%p\n\n\n", glGetError());
 		glBindTexture(GL_TEXTURE_2D, 0);
+		glActiveTexture(0);
 		glBindVertexArray(0);
 		glDisable(GL_TEXTURE_2D);
 		glDisableClientState(GL_TEXTURE_COORD_ARRAY);

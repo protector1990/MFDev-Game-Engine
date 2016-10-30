@@ -4,12 +4,13 @@
 #define _ENGINE_H
 
 // main engine class
-#include "Renderer.h"
+#include "SpriteRenderer.h"
 #include <SDL.h>
 #include "AssetManager.h"
 //#include "Scene.h"
 #include <vector>
 #include "ConfigurationManager.h"
+#include "Video.h"
 
 class InputManager;
 
@@ -19,7 +20,8 @@ public:
 	void quit();
 	int run(int argc, char** argv);
 	LuaManager* getLuaManager() { return _luaManager; }
-	Renderer* getRenderer() { return _renderer; }
+	SpriteRenderer* getRenderer() { return _renderer; }
+	Video* getVideo() { return _video;  }
 	AssetManager* getAssetManager() { return _assetManager; }
 	InputManager* getInputManager() { return _inputManager; }
 
@@ -38,10 +40,11 @@ private:
 
 	//lua_State * _luaInterpreter;
 	LuaManager * _luaManager;
-	Renderer * _renderer;
+	SpriteRenderer * _renderer;
 	AssetManager * _assetManager;
 	InputManager* _inputManager;
 	ConfigurationManager* _configurationManager;
+	Video* _video;
 
 	std::vector<Scene*> _scenes;
 

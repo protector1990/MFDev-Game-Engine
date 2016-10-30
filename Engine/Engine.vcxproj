@@ -147,6 +147,7 @@
     <ClCompile Include="AbstractGameObjectLoader.cpp" />
     <ClCompile Include="Area.cpp" />
     <ClCompile Include="AreaLoader.cpp" />
+    <ClCompile Include="Asset.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="ConfigurationManager.cpp" />
     <ClCompile Include="ExposedFunctions.cpp" />
@@ -155,6 +156,8 @@
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="IOSAssetManager.cpp" />
     <ClCompile Include="Level.cpp" />
+    <ClCompile Include="Material.cpp" />
+    <ClCompile Include="MeshRenderer.cpp" />
     <ClCompile Include="Model3D.cpp" />
     <ClCompile Include="NavGrid.cpp" />
     <ClCompile Include="NavGridLoader.cpp" />
@@ -164,11 +167,12 @@
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="SpriteLoader.cpp" />
     <ClCompile Include="Transform.cpp" />
+    <ClCompile Include="Video.cpp" />
     <ClCompile Include="WinAssetManager.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="Lua.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Renderer.cpp" />
+    <ClCompile Include="SpriteRenderer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\libs\assimplib\code\assimp.vcxproj">
@@ -227,6 +231,9 @@
     <ClInclude Include="..\libs\rapidxml-1.13\rapidxml_print.hpp" />
     <ClInclude Include="..\libs\rapidxml-1.13\rapidxml_utils.hpp" />
     <ClInclude Include="3DAsset.h" />
+    <ClInclude Include="Asset.h" />
+    <ClInclude Include="Material.h" />
+    <ClInclude Include="MeshRenderer.h" />
     <ClInclude Include="AbstractComponentLoader.h" />
     <ClInclude Include="AbstractGameObjectLoader.h" />
     <ClInclude Include="Area.h" />
@@ -253,6 +260,7 @@
     <ClInclude Include="Physfs2AssimpInterface.h" />
     <ClInclude Include="PriorityQueue.h" />
     <ClInclude Include="Renderer.h" />
+    <ClInclude Include="SpriteRenderer.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="ScriptableInterface.h" />
     <ClInclude Include="Shader.h" />
@@ -261,6 +269,7 @@
     <ClInclude Include="TextAsset.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="Transform.h" />
+    <ClInclude Include="Video.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\libs\physfs-2.0.3\LICENSE.txt" />

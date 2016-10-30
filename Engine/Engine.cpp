@@ -58,7 +58,7 @@ int Engine::run(int argv, char** argc) {
 
 	SDL_Init(SDL_INIT_VIDEO);
 
-	_renderer = new Renderer();
+	_renderer = new SpriteRenderer();
 	// TODO: Maybe move init code to constructor?
 	_renderer->init();
 

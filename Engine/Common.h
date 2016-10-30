@@ -10,6 +10,7 @@
 #define ENGINE Engine::getInstance()
 #define ASSET_MANAGER ENGINE.getAssetManager()
 #define SCRIPT_MANAGER ENGINE.getLuaManager()
+#define VIDEO ENGINE.getVideo()
 
 //Predefined tags
 #define TAG_NAV_OBSTACLE 1u

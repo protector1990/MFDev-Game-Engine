@@ -4,13 +4,13 @@
 #define _GAME_OBJECT_H
 
 #include <vector>
-#include "Renderer.h"
+#include "SpriteRenderer.h"
 #include "Lua.h"
 #include "ScriptableInterface.h"
 #include <typeinfo>
 #include "Transform.h"
 //#include "Component.h"
-//typedef Renderer Renderer;
+//typedef SpriteRenderer SpriteRenderer;
 
 class Scene;
 class Component;
@@ -43,7 +43,7 @@ public:
 	virtual void init() = 0;
 	virtual void update(float deltaTime) = 0;
 	virtual void updateComponents(float deltaTime);
-	virtual void render(Renderer *renderer) = 0;
+	virtual void render(SpriteRenderer *renderer) = 0;
 	virtual void renderDebugComponents(float deltaTime);
 
 	virtual GameObject *getRoot();

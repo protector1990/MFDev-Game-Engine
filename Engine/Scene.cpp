@@ -65,7 +65,7 @@ void Scene::update(float deltaTime) {
 	}
 }
 // Render scene
-void Scene::render(Renderer *renderer) {
+void Scene::render(SpriteRenderer *renderer) {
 	for (int i = 0; i < _gameObjects.size(); i++) {
 		_gameObjects[i]->render(renderer);
 		_gameObjects[i]->renderDebugComponents(0.f);
