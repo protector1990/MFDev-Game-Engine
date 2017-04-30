@@ -8,6 +8,7 @@
 #include <tuple>
 #include <map>
 #include <glm/glm.hpp>
+#include <SDL_opengl.h>
 
 enum UniformTypes {
 	UniformTypeFloat,
@@ -24,17 +25,25 @@ public:
 
 };
 
-typedef std::pair<void*, UniformTypes> UniformPair;
+typedef std::pair<void*, UniformTypes> UniformValuePair;
+typedef std::pair<const char*, UniformValuePair> UniformPair;
 
 struct Material {
 private:
 	ShaderProgram* _program;
-	std::map<const char*, UniformPair> _uniforms;
+	std::map<const char*, GLfloat> _uniformFloats;
+	std::map<const char*, glm::vec3> _uniformVec3s;
+	std::map<const char*, glm::vec4> _uniformVec4s;
+	std::map<const char*, glm::mat4> _uniformMat4s;
 	bool hasUniform(const char* uniformName);
 public:
 	Material();
 	Material(const Material& other);
 	// TODO: see how to solve uniform names
-	void pushUniform(const char* name, void* data, UniformTypes type);
+	void pushUniformFloat(const char* name, float data);
+	void pushUniformVec3(const char* name, glm::vec3 data);
+	void pushUniformVec4(const char* name, glm::vec4 data);
+	void pushUniformMat4(const char* name, glm::mat4 data);
 	void useMaterial();
+	inline void setShaderProgram(ShaderProgram* program);
 };

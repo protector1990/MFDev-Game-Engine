@@ -73,6 +73,7 @@ void SpriteRenderer::init() {
 	glGenVertexArrays(1, &_quadsGLArray);
 
 	_currentlyActiveTexture = nullptr;
+	_currentMaterial = new Material();
 
 
 	// TODO: remove this later
@@ -118,7 +119,7 @@ void SpriteRenderer::render(float deltaTime) {
 	ENGINE.renderScenes();
 
 	
-	SDL_GL_SwapWindow(gameWindow);
+	//SDL_GL_SwapWindow(gameWindow);
 }
 
 void SpriteRenderer::addTriangles(vec3 *vertices, int size) {
@@ -142,16 +143,23 @@ void SpriteRenderer::addTriangles(vec3 *vertices, int size) {
 	}
 }
 
-void SpriteRenderer::addQuads(vec3 *vertices, int size, MTexture* texture) {
+void SpriteRenderer::addQuads(vec3 *vertices, int size, MTexture* texture, Material* customMaterial) {
 	//_quadsVertexCount += size;
 	if (size % 4 != 0) {
 		// Size must be dividible by 4!
 		return;
 	}
-	if (_currentlyActiveTexture != texture)
+	if (_currentlyActiveTexture != texture || _currentMaterial != customMaterial)
 	{
+		if (_currentMaterial)
+		{
+			//TODO: resolve the conflict between custom materials for quads and for triangles
+			//Preferably, remove quads and draw only triangles
+			_currentMaterial->useMaterial();
+		}
 		drawQuads();
 		_currentlyActiveTexture = texture;
+		_currentMaterial = customMaterial;
 	}
 	for (int i = 0; i < size; i++) {
 		++_quadsVertexCount;

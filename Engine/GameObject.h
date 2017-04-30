@@ -1,7 +1,6 @@
 /** Copyright 2016 MarFil Studios. All rights reserved. **/
 
-#ifndef _GAME_OBJECT_H
-#define _GAME_OBJECT_H
+#pragma once
 
 #include <vector>
 #include "SpriteRenderer.h"
@@ -9,6 +8,7 @@
 #include "ScriptableInterface.h"
 #include <typeinfo>
 #include "Transform.h"
+#include "Material.h"
 //#include "Component.h"
 //typedef SpriteRenderer SpriteRenderer;
 
@@ -69,6 +69,9 @@ public:
 
 	const char* getName() const;
 
+	void addMaterial(Material* material);
+	Material* getMaterial(size_t index);
+
 protected:
 	char* _name;
 	unsigned int _tag;
@@ -81,10 +84,13 @@ protected:
 	// Ovo ne može ovako. Scriptable interface ne treba svaka instanca da ima svoje funkcije, nego treba da budu po klasi game objekta.
 	//Videti kako ovo može da se reši
 	ScriptableInterface _scriptableInterface;
+	// TODO: find the most appropriate place for this
+	std::vector<Material*> _materials;	
 };
 
 template <class T>
-T* GameObject::getChildPolymorphic() const {
+T* GameObject::getChildPolymorphic() const
+{
 	size_t size = _children.size();
 	for (size_t i = 0; i < size; ++i)
 	{
@@ -95,7 +101,8 @@ T* GameObject::getChildPolymorphic() const {
 }
 
 template <class T>
-T* GameObject::getChild() const {
+T* GameObject::getChild() const
+{
 	size_t size = _children.size();
 	const type_info &inf = typeid(T);
 	for (size_t i = 0; i < size; ++i)
@@ -107,4 +114,3 @@ T* GameObject::getChild() const {
 	}
 	return nullptr;
 }
-#endif

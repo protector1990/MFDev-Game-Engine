@@ -75,13 +75,27 @@ ScriptComponent::ScriptComponent(ScriptClass *scriptClass, GameObject *parentObj
 
 	lua_newtable(interpreter);
 	map<const char*, lua_CFunction>* exposedFunctions = GetExposedFunctionsForType(a);
-	if (exposedFunctions) {
-		for (pair<const char*, lua_CFunction> iv : *exposedFunctions) {
+	if (exposedFunctions)
+	{
+		for (pair<const char*, lua_CFunction> iv : *exposedFunctions)
+		{
 			lua_pushlightuserdata(interpreter, parentObject);
 			lua_pushcclosure(interpreter, iv.second, 1);
 			lua_setfield(interpreter, -2, iv.first);
 		}
+	}
 
+	//TODO: Make for whole hierarchy
+	const type_info &gameObjType = typeid(GameObject);
+	map<const char*, lua_CFunction>* gameObjectExposedFunctions = GetExposedFunctionsForType(gameObjType);
+	if (gameObjectExposedFunctions)
+	{
+		for (pair<const char*, lua_CFunction> iv : *gameObjectExposedFunctions)
+		{
+			lua_pushlightuserdata(interpreter, parentObject);
+			lua_pushcclosure(interpreter, iv.second, 1);
+			lua_setfield(interpreter, -2, iv.first);
+		}
 	}
 
 	lua_pushlightuserdata(interpreter, parentObject);
@@ -94,9 +108,11 @@ ScriptComponent::ScriptComponent(ScriptClass *scriptClass, GameObject *parentObj
 		const type_info& componentInfo = typeid(*component);
 		
 		map<const char*, lua_CFunction>* componentExposedFunctinos = GetExposedFunctionsForType(componentInfo);
-		if (componentExposedFunctinos) {
+		if (componentExposedFunctinos)
+		{
 			lua_newtable(interpreter);
-			for (pair<const char*, lua_CFunction> iv : *componentExposedFunctinos) {
+			for (pair<const char*, lua_CFunction> iv : *componentExposedFunctinos)
+			{
 				lua_pushlightuserdata(interpreter, component);
 				lua_pushcclosure(interpreter, iv.second, 1);
 				lua_setfield(interpreter, -2, iv.first);

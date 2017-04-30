@@ -1,7 +1,6 @@
 /** Copyright 2016 MarFil Studios. All rights reserved. **/
 
-#ifndef _SPRITE_H
-#define _SPRITE_H
+#pragma once
 
 #include "GameObject.h"
 #include <SDL.h>
@@ -32,4 +31,3 @@ protected:
 	GLuint _glVertexBufferObjects;
 	MTexture* _texture;
 };
-#endif

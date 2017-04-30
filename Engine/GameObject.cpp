@@ -94,3 +94,15 @@ const std::vector<Component*>* GameObject::getComponentsConst() const {
 const char* GameObject::getName() const {
 	return _name;
 }
+
+void GameObject::addMaterial(Material* material) {
+	_materials.push_back(material);
+}
+
+Material* GameObject::getMaterial(size_t index) {
+	if (_materials[index])
+	{
+		return _materials[index];
+	}
+	return nullptr;
+}

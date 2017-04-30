@@ -1,7 +1,6 @@
 /**  Copyright 2016 MarFil Studios. All rights reserved.  **/
 
-#ifndef _RENDERER_H
-#define _RENDERER_H
+#pragma once
 
 #include <glm\glm.hpp>
 #include <vector>
@@ -12,6 +11,7 @@
 #include "Texture.h"
 #include "Renderer.h"
 #include <assimp-3.2/include/assimp/material.h>
+#include "Material.h"
 
 #define MAX_QUADS_SIZE 30
 #define MAX_QUADS_VERTICES 120
@@ -21,7 +21,7 @@ public:
 	void init() override;
 	void render(float deltaTime);
 	void addTriangles(glm::vec3 *vertices, int length);
-	void addQuads(glm::vec3 *vertices, int length, MTexture* texture);
+	void addQuads(glm::vec3 *vertices, int length, MTexture* texture, Material* customMaterial = nullptr);
 	void preRender() override;
 	void postRender() override;
 private:
@@ -38,8 +38,7 @@ private:
 	void drawQuads();
 protected:
 	ShaderProgram* _spriteShaderProgram;
+	Material* _currentMaterial;
 	glm::vec2* _spriteTexCoordArray;
 	MTexture* _currentlyActiveTexture;
 };
-
-#endif
