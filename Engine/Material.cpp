@@ -76,6 +76,8 @@ void Material::pushUniformSampler2D(const char* name, GLint data) {
 }
 
 void Material::useMaterial() {
+	if (!_program)
+		return;
 	glUseProgram(_program->_id);
 	for (const std::pair<const char*, GLfloat>& pair : _uniformFloats)
 	{
@@ -106,4 +108,8 @@ void Material::useMaterial() {
 
 void Material::setShaderProgram(ShaderProgram* program) {
 	_program = program;
+	_uniformFloats.clear();
+	_uniformMat4s.clear();
+	_uniformVec3s.clear();
+	_uniformSamplers2D.clear();
 }

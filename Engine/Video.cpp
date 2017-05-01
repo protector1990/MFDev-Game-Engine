@@ -121,8 +121,8 @@ void Video::init() {
 	//video initialization
 	SDL_Init(SDL_INIT_VIDEO);
 	
-	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
-	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 1);
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3);
 	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 
 	gameWindow = SDL_CreateWindow("Game Window", 300, 150, 640, 384, SDL_WINDOW_OPENGL);
@@ -148,6 +148,15 @@ void Video::init() {
 
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+	//SpriteRenderer* spriteRenderer = new SpriteRenderer();
+	//spriteRenderer->init();
+	//
+	//_renderers.push_back(spriteRenderer);
+
+	_spriteRenderer = new SpriteRenderer();
+	_spriteRenderer->init();
+	_renderers.push_back(_spriteRenderer);
 }
 
 MeshRenderer* Video::getMeshRenderer() {
@@ -174,6 +183,7 @@ void Video::render() {
 	glClear(GL_COLOR_BUFFER_BIT);
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
+	//glOrtho(-1000, 1000, -1000, 1000, -1000, 1000);
 
 	for (Renderer* renderer : _renderers)
 	{
@@ -186,4 +196,18 @@ void Video::render() {
 	{
 		renderer->postRender();
 	}
+
+	//glMatrixMode(GL_PROJECTION);
+	//glLoadIdentity();
+	//glOrtho(-100, 100, -100, 100, -100, 100);
+	//glUseProgram(0);
+	//glCullFace(GL_FRONT_AND_BACK);
+	glColor4f(0.5f, 0.5f, 1.f, 1.f);
+	//glBegin(GL_TRIANGLES);
+	//glVertex3f(1, 1, 1);
+	//glVertex3f(1, 50, 1);
+	//glVertex3f(50, 1, 1);
+	//glEnd();
+
+	SDL_GL_SwapWindow(gameWindow);
 }

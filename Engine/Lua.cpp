@@ -382,7 +382,7 @@ enum LuaDrawType {
 };
 
 int LuaManager::luadDraw(lua_State* state) {
-	int type = lua_tonumber(state, -1);
+	/*int type = lua_tonumber(state, -1);
 	glColor3f(0.f, 0.f, 0.f);
 	switch (type) {
 		case dPoint: {
@@ -395,7 +395,7 @@ int LuaManager::luadDraw(lua_State* state) {
 			glEnd();
 			glFlush();
 		} break;
-	}
+	}*/
 	return 0;
 }
 

@@ -20,7 +20,6 @@ public:
 	void quit();
 	int run(int argc, char** argv);
 	LuaManager* getLuaManager() { return _luaManager; }
-	SpriteRenderer* getRenderer() { return _renderer; }
 	Video* getVideo() { return _video;  }
 	AssetManager* getAssetManager() { return _assetManager; }
 	InputManager* getInputManager() { return _inputManager; }
@@ -40,7 +39,7 @@ private:
 
 	//lua_State * _luaInterpreter;
 	LuaManager * _luaManager;
-	SpriteRenderer * _renderer;
+	//SpriteRenderer * _renderer;
 	AssetManager * _assetManager;
 	InputManager* _inputManager;
 	ConfigurationManager* _configurationManager;

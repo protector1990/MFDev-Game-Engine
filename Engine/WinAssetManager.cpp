@@ -194,16 +194,20 @@ MTexture* WinAssetManager::loadSpriteTexture(const char* path) {
 
 	glGenTextures(1, &ret->_glTexture);
 
+	glActiveTexture(GL_TEXTURE0);
+	glEnable(GL_TEXTURE_2D);
+	//glEnable(GL_TEXTURE);
 	glBindTexture(GL_TEXTURE_2D, ret->_glTexture);
 
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 
 	//TODO: read color mode from _texture
+	//printf("\n format: %s\n", SDL_GetPixelFormatName(ret->_nativeTexture->format->format));
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, ret->_nativeTexture->w, ret->_nativeTexture->h, 0, GL_RGBA, GL_UNSIGNED_BYTE, ret->_nativeTexture->pixels);
-	printf("%p\n\n\n", glGetError());
+	printf("\nglTexImage2D %p\n\n\n", glGetError());
 	_loadedTextures.push_back(ret);
 	glBindTexture(GL_TEXTURE_2D, 0);
 	return ret;

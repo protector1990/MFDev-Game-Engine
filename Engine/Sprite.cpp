@@ -40,7 +40,7 @@ mat4 pointOffsetMatrix = mat4
 vec4 tmp(0.f, 0.f, 0.f, 1.f);
 
 void Sprite::render(SpriteRenderer *renderer) {
-	glColor3f(1.f, 1.f, 1.f);
+	//glColor3f(1.f, 1.f, 1.f);
 	//GLenum i;
 	//TODO: See if it is practical to offload this to a vertex shader
 	mat4 masterTransformationMatrix = _transform.getGlobalTransformationMatrix();

@@ -47,5 +47,5 @@ public:
 	void pushUniformMat4(const char* name, glm::mat4 data);
 	void pushUniformSampler2D(const char* name, GLint data);
 	void useMaterial();
-	inline void setShaderProgram(ShaderProgram* program);
+	void setShaderProgram(ShaderProgram* program);
 };

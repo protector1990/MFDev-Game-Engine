@@ -59,9 +59,9 @@ int Engine::run(int argv, char** argc) {
 	_video = new Video();
 	_video->init();
 
-	_renderer = new SpriteRenderer();
+	//_renderer = new SpriteRenderer();
 	// TODO: Maybe move init code to constructor?
-	_renderer->init();
+	//_renderer->init();
 
 	_inputManager = new InputManager();
 
@@ -107,7 +107,9 @@ int Engine::run(int argv, char** argc) {
 		}
 
 		//Currently only calls Engine::renderScenes()
-		_renderer->render(_deltaTime);
+		//_renderer->render(_deltaTime);
+
+		_video->render();
 
 		//this should be either the last command in the loop, or the first
 		_lastFrameTime = _frameTime;
@@ -120,12 +122,12 @@ int Engine::run(int argv, char** argc) {
 void Engine::renderScenes() {
 	for (unsigned int i = 0; i < _scenes.size(); i++) {
 		if (_scenes[i]->getActive()) {
-			_scenes[i]->render(_renderer);
+			_scenes[i]->render(_video->getSpriteRenderer());
 		}
 	}
 }
 
-Engine::Engine(): _renderer(nullptr), _assetManager(nullptr), _inputManager(nullptr), _deltaTime(0) {}
+Engine::Engine(): _assetManager(nullptr), _inputManager(nullptr), _deltaTime(0) {}
 
 Engine::~Engine() {
 
