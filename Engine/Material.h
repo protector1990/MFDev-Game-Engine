@@ -35,6 +35,7 @@ private:
 	std::map<const char*, glm::vec3> _uniformVec3s;
 	std::map<const char*, glm::vec4> _uniformVec4s;
 	std::map<const char*, glm::mat4> _uniformMat4s;
+	std::map<const char*, GLint> _uniformSamplers2D;
 	bool hasUniform(const char* uniformName);
 public:
 	Material();
@@ -44,6 +45,7 @@ public:
 	void pushUniformVec3(const char* name, glm::vec3 data);
 	void pushUniformVec4(const char* name, glm::vec4 data);
 	void pushUniformMat4(const char* name, glm::mat4 data);
+	void pushUniformSampler2D(const char* name, GLint data);
 	void useMaterial();
 	inline void setShaderProgram(ShaderProgram* program);
 };

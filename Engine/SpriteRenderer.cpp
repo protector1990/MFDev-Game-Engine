@@ -38,6 +38,12 @@ GLfloat light_position[] = { 10.0, 10.0, 10.0, 1.0 };
 
 void SpriteRenderer::init() {
 
+	GLint majVer;
+	GLint minVer;
+
+	glGetIntegerv(GL_MAJOR_VERSION, &majVer);
+	glGetIntegerv(GL_MINOR_VERSION, &minVer);
+
 	// Sprite shader
 	_spriteShaderProgram = new ShaderProgram();
 

@@ -95,6 +95,21 @@ int AddUniformMat4(lua_State* state)
 	return 0;
 }
 
+int AddUniformSampler2D(lua_State* state)
+{
+	GameObject* gameObject = static_cast<GameObject*>(lua_touserdata(state, lua_upvalueindex(1)));
+	GLint uniformValue = lua_tointeger(state, -1);
+	const char* uniformName = lua_tostring(state, -2);
+	int index = lua_tointeger(state, -3);
+	Material* material = gameObject->getMaterial(index);
+	if (!material)
+	{
+		return 0;
+	}
+	material->pushUniformSampler2D(uniformName, uniformValue);
+	return 0;
+}
+
 void ExposeFunctionsToScript()
 {
 	lua_State* interpreter = SCRIPT_MANAGER->getLuaInterpreter();
@@ -126,5 +141,27 @@ map<const char*, lua_CFunction>* GetExposedFunctionsForType(const type_info &typ
 	{
 		return nullptr;
 	}
-	return MappedValues.at(type.name());
+	if (typeid(GameObject).before(type))
+	{
+		// join
+		auto ret = new map<const char*, lua_CFunction>();
+		auto derivedTypeExposedFuns = MappedValues.at(type.name());
+		auto gameObjectExposedFuns = MappedValues.at(typeid(GameObject).name());
+
+		for (auto const& pair : *derivedTypeExposedFuns)
+		{
+			ret->insert(pair);
+		}
+
+		for (auto const& pair : *gameObjectExposedFuns)
+		{
+			ret->insert(pair);
+		}
+
+		return ret; // Fix this, optimize and remove memory leaks
+	}
+	else
+	{
+		return MappedValues.at(type.name());
+	}
 }

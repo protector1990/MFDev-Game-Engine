@@ -64,6 +64,17 @@ void Material::pushUniformMat4(const char* name, glm::mat4 data) {
 	}
 }
 
+void Material::pushUniformSampler2D(const char* name, GLint data) {
+	if (_uniformSamplers2D.find(name) != _uniformSamplers2D.end())
+	{
+		_uniformSamplers2D[name] = data;
+	}
+	else
+	{
+		_uniformSamplers2D.insert(std::make_pair(name, data));
+	}
+}
+
 void Material::useMaterial() {
 	glUseProgram(_program->_id);
 	for (const std::pair<const char*, GLfloat>& pair : _uniformFloats)
@@ -85,6 +96,11 @@ void Material::useMaterial() {
 	{
 		GLuint location = glGetUniformLocation(_program->_id, pair.first);
 		glUniformMatrix4fv(location, 1, GL_FALSE, &pair.second[0][0]);
+	}
+	for (const std::pair<const char*, GLint>& pair : _uniformSamplers2D)
+	{
+		GLuint location = glGetUniformLocation(_program->_id, pair.first);
+		glUniform1i(location, pair.second);
 	}
 }
 
