@@ -55,8 +55,9 @@ int Engine::run(int argv, char** argc) {
 	
 	_luaManager = new LuaManager;
 	_luaManager->initManager();
-
-	SDL_Init(SDL_INIT_VIDEO);
+	
+	_video = new Video();
+	_video->init();
 
 	_renderer = new SpriteRenderer();
 	// TODO: Maybe move init code to constructor?

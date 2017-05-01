@@ -119,9 +119,12 @@ GLvoid*       userParam)
 
 void Video::init() {
 	//video initialization
+	SDL_Init(SDL_INIT_VIDEO);
+	
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
 	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+
 	gameWindow = SDL_CreateWindow("Game Window", 300, 150, 640, 384, SDL_WINDOW_OPENGL);
 	glContext = SDL_GL_CreateContext(gameWindow);
 
