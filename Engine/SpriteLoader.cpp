@@ -16,6 +16,10 @@ namespace temp_sprite_loader {
 	char* positionYID = "positionY";
 	char* positionZID = "positionZ";
 
+	char* scaleXID = "scaleX";
+	char* scaleYID = "scaleY";
+	char* scaleZID = "scaleZ";
+
 	char* textureID = "texture";
 	char* sheetID = "sheet";
 	char* widthID = "width";
@@ -44,7 +48,12 @@ GameObject* SpriteLoader::load(xml_node<char>* configuration) {
 	xml_node<char>* positionX = transform->first_node(temp_sprite_loader::positionXID);
 	xml_node<char>* positionY = transform->first_node(temp_sprite_loader::positionYID);
 	xml_node<char>* positionZ = transform->first_node(temp_sprite_loader::positionZID);
+
+	xml_node<char>* scaleX = transform->first_node(temp_sprite_loader::scaleXID);
+	xml_node<char>* scaleY = transform->first_node(temp_sprite_loader::scaleYID);
+	xml_node<char>* scaleZ = transform->first_node(temp_sprite_loader::scaleZID);
 	ret->_transform.translate(glm::vec3(atof(positionX->value()), atof(positionY->value()), atof(positionZ->value())));
+	ret->_transform.setScale(glm::vec3(atof(scaleX->value()), atof(scaleY->value()), atof(scaleZ->value())));
 	xml_node<char>* parent = transform->first_node(temp_sprite_loader::parent);
 	if (parent)
 	{

@@ -1,4 +1,4 @@
-#version 130
+#version 110
 uniform sampler2D tex;
 void main()
 {

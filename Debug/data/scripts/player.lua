@@ -16,6 +16,7 @@ player.x_low_speed_limit = 20
 player.x_friction = 0.2
 player.zz = true
 player.firstTimeTest = false
+player.elapsed_time = 0
 
 
 function player:update(deltaTime)
@@ -139,7 +140,8 @@ function player:update(deltaTime)
 	
 	-- This is sample calling of a parent class function
 	-- self:madd(5, 3)
-	
+	self.elapsed_time = self.elapsed_time + deltaTime;
+	self.cobj.AddUniformFloat("elapsedTime", self.elapsed_time)
 end
 
 SampleMeta = {

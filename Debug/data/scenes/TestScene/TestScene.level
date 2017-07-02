@@ -5,6 +5,9 @@
       <positionX>0</positionX>
       <positionY>0</positionY>
       <positionZ>-10</positionZ>
+	  <scaleX>1</scaleX>
+      <scaleY>1</scaleY>
+      <scaleZ>1</scaleZ>
    </transform>
    <texture>/textures/nest.bmp</texture>
    <sheet>
@@ -19,6 +22,9 @@
       <positionX>0</positionX>
       <positionY>0</positionY>
       <positionZ>0</positionZ>
+	  <scaleX>4</scaleX>
+      <scaleY>4</scaleY>
+      <scaleZ>4</scaleZ>
    </transform>
    <texture>/textures/player.bmp</texture>
    <sheet>
@@ -26,6 +32,7 @@
       <width>1</width>
       <animSpeed>-1</animSpeed>
    </sheet>
+   <shader>WobbleShader</shader>
    <luaScript>/scripts/player.lua</luaScript>
 </gameObject>
 <gameObject type="Sprite" name="SecondPlayer">
@@ -33,6 +40,9 @@
       <positionX>50</positionX>
       <positionY>50</positionY>
       <positionZ>0</positionZ>
+	  <scaleX>0.25</scaleX>
+      <scaleY>0.25</scaleY>
+      <scaleZ>0.25</scaleZ>
 	  <parent>Player</parent>
    </transform>
    <texture>/textures/player.bmp</texture>
@@ -41,7 +51,6 @@
       <width>1</width>
       <animSpeed>-1</animSpeed>
    </sheet>
-   <shader>CustomShader</shader>
    <luaScript>/scripts/player2.lua</luaScript>
 </gameObject>
 </mscene>

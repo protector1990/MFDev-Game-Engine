@@ -169,6 +169,7 @@ void LuaManager::luaBind() const {
 }
 
 //TODO: Clean this up and properly test it. It's bound to have some leaks
+//TODO: extending seems to leave lua interpreter in an invalid state (next class load fails if it has any members)
 int LuaManager::luaParseComponent(Script *script) {
 	int res = luaL_loadbufferx(_luaInterpreter, script->_contents, script->_size, script->_name, nullptr);
 	if (!lua_isfunction(_luaInterpreter, -1))
@@ -211,6 +212,7 @@ int LuaManager::luaParseComponent(Script *script) {
 
 			//maybe lua rotate trick?
 			lua_pushnil(_luaInterpreter);
+			DUMP
 			while (lua_next(_luaInterpreter, -2)) {
 				const char* field = lua_tostring(_luaInterpreter, -2);
 				int x = lua_getfield(_luaInterpreter, -5, field);
