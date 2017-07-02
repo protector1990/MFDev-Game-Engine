@@ -44,24 +44,24 @@ void SpriteRenderer::init() {
 	glGetIntegerv(GL_MAJOR_VERSION, &majVer);
 	glGetIntegerv(GL_MINOR_VERSION, &minVer);
 
-	// Sprite shader
-	//_spriteShaderProgram = new ShaderProgram();
-	//
-	//_spriteShaderProgram->_frag = ASSET_MANAGER->loadAsset<Shader>("/shaders/FSpriteShader.glsl");
-	//_spriteShaderProgram->_vert = ASSET_MANAGER->loadAsset<Shader>("/shaders/VSpriteShader.glsl");
-	//_spriteShaderProgram->_id = glCreateProgram();
-	//glAttachShader(_spriteShaderProgram->_id, _spriteShaderProgram->_vert->_shaderObject);
-	//glAttachShader(_spriteShaderProgram->_id, _spriteShaderProgram->_frag->_shaderObject);
-	//glLinkProgram(_spriteShaderProgram->_id);
+	 //Sprite shader
+	_spriteShaderProgram = new ShaderProgram();
+	
+	_spriteShaderProgram->_frag = ASSET_MANAGER->loadAsset<Shader>("/shaders/FSpriteShader.glsl");
+	_spriteShaderProgram->_vert = ASSET_MANAGER->loadAsset<Shader>("/shaders/VSpriteShader.glsl");
+	_spriteShaderProgram->_id = glCreateProgram();
+	glAttachShader(_spriteShaderProgram->_id, _spriteShaderProgram->_vert->_shaderObject);
+	glAttachShader(_spriteShaderProgram->_id, _spriteShaderProgram->_frag->_shaderObject);
+	glLinkProgram(_spriteShaderProgram->_id);
 
-	//GLint isLinked = 0;
-	//glGetProgramiv(_spriteShaderProgram->_id, GL_LINK_STATUS, &isLinked);
-	//if (isLinked == GL_FALSE)
-	//{
-	//	char error[1024];
-	//	glGetProgramInfoLog(_spriteShaderProgram->_id, 1024, nullptr, error);
-	//	printf("[OpenGL shader]: Error with sprite shader linking: %s", error);
-	//}
+	GLint isLinked = 0;
+	glGetProgramiv(_spriteShaderProgram->_id, GL_LINK_STATUS, &isLinked);
+	if (isLinked == GL_FALSE)
+	{
+		char error[1024];
+		glGetProgramInfoLog(_spriteShaderProgram->_id, 1024, nullptr, error);
+		printf("[OpenGL shader]: Error with sprite shader linking: %s", error);
+	}
 	_triangles = new vec3[_trianglesVertexCapacity];
 	_quads = new vec3[_quadsVertexCapacity];
 	_spriteTexCoordArray = new vec2[_quadsVertexCapacity];
@@ -211,7 +211,7 @@ void SpriteRenderer::drawTriangles() {
 void SpriteRenderer::drawQuads() {
 	if (_quadsVertexCount > 0 && _currentlyActiveTexture) {
 
-		//glUseProgram(0);
+		glUseProgram(_spriteShaderProgram->_id);
 
 		glActiveTexture(GL_TEXTURE0);
 		//printf("\nactive texture %p\n\n\n", glGetError());
@@ -262,7 +262,7 @@ void SpriteRenderer::drawQuads() {
 
 		glDisableClientState(GL_VERTEX_ARRAY);
 		//printf("\n disable client state vertex array %p\n\n\n", glGetError());
-		//glUseProgram(0);
+		glUseProgram(0);
 		_quadsVertexCount = 0;
 	}
 }
