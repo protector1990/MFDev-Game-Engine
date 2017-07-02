@@ -76,38 +76,38 @@ void Material::pushUniformSampler2D(const char* name, GLint data) {
 }
 
 void Material::useMaterial() {
-	if (!_program)
+	glUseProgram(_shaderProgram._id);
+	if (!_shaderProgram._id)
 		return;
-	glUseProgram(_program->_id);
 	for (const std::pair<const char*, GLfloat>& pair : _uniformFloats)
 	{
-		GLuint location = glGetUniformLocation(_program->_id, pair.first);
+		GLuint location = glGetUniformLocation(_shaderProgram._id, pair.first);
 		glUniform1f(location, pair.second);
 	}
 	for (const std::pair<const char*, glm::vec3>& pair : _uniformVec3s)
 	{
-		GLuint location = glGetUniformLocation(_program->_id, pair.first);
+		GLuint location = glGetUniformLocation(_shaderProgram._id, pair.first);
 		glUniform3f(location, pair.second.x, pair.second.y, pair.second.z);
 	}
 	for (const std::pair<const char*, glm::vec4>& pair : _uniformVec4s)
 	{
-		GLuint location = glGetUniformLocation(_program->_id, pair.first);
+		GLuint location = glGetUniformLocation(_shaderProgram._id, pair.first);
 		glUniform4f(location, pair.second.x, pair.second.y, pair.second.z, pair.second.w);
 	}
 	for (const std::pair<const char*, glm::mat4>& pair : _uniformMat4s)
 	{
-		GLuint location = glGetUniformLocation(_program->_id, pair.first);
+		GLuint location = glGetUniformLocation(_shaderProgram._id, pair.first);
 		glUniformMatrix4fv(location, 1, GL_FALSE, &pair.second[0][0]);
 	}
 	for (const std::pair<const char*, GLint>& pair : _uniformSamplers2D)
 	{
-		GLuint location = glGetUniformLocation(_program->_id, pair.first);
+		GLuint location = glGetUniformLocation(_shaderProgram._id, pair.first);
 		glUniform1i(location, pair.second);
 	}
 }
 
-void Material::setShaderProgram(ShaderProgram* program) {
-	_program = program;
+void Material::setShaderProgram(ShaderProgram program) {
+	_shaderProgram = program;
 	_uniformFloats.clear();
 	_uniformMat4s.clear();
 	_uniformVec3s.clear();

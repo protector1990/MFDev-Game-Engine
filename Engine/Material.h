@@ -30,7 +30,7 @@ typedef std::pair<const char*, UniformValuePair> UniformPair;
 
 struct Material {
 private:
-	ShaderProgram* _program;
+	ShaderProgram _shaderProgram;
 	std::map<const char*, GLfloat> _uniformFloats;
 	std::map<const char*, glm::vec3> _uniformVec3s;
 	std::map<const char*, glm::vec4> _uniformVec4s;
@@ -47,5 +47,5 @@ public:
 	void pushUniformMat4(const char* name, glm::mat4 data);
 	void pushUniformSampler2D(const char* name, GLint data);
 	void useMaterial();
-	void setShaderProgram(ShaderProgram* program);
+	void setShaderProgram(ShaderProgram program);
 };

@@ -4,10 +4,9 @@
 
 #include "Renderer.h"
 #include "Model3D.h"
+#include "Material.h"
 
 // TODO: remove this when we have Material class
-class Material;
-
 class MeshRenderer : public Renderer {
 public:
 	void init() override;

@@ -181,7 +181,6 @@ void Video::render() {
 	glClear(GL_COLOR_BUFFER_BIT);
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	//glOrtho(-1000, 1000, -1000, 1000, -1000, 1000);
 
 	for (Renderer* renderer : _renderers)
 	{
@@ -195,17 +194,6 @@ void Video::render() {
 		renderer->postRender();
 	}
 
-	//glMatrixMode(GL_PROJECTION);
-	//glLoadIdentity();
-	//glOrtho(-100, 100, -100, 100, -100, 100);
-	//glUseProgram(0);
-	//glCullFace(GL_FRONT_AND_BACK);
-	glColor4f(0.5f, 0.5f, 1.f, 1.f);
-	//glBegin(GL_TRIANGLES);
-	//glVertex3f(1, 1, 1);
-	//glVertex3f(1, 50, 1);
-	//glVertex3f(50, 1, 1);
-	//glEnd();
-
+	glFlush();
 	SDL_GL_SwapWindow(gameWindow);
 }

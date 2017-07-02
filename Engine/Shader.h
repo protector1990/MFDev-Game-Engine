@@ -28,7 +28,7 @@ public:
 		_vert(vert),
 		_geom(geom)
 		{}
-	ShaderProgram(){}
+	ShaderProgram() : _id(0) {}
 	GLuint _id;
 	Shader* _frag = nullptr;
 	Shader* _vert = nullptr;

@@ -22,6 +22,7 @@ namespace temp_sprite_loader {
 	char* heightID = "height";
 	char* animSpeedID = "animSpeed";
 	char* parent = "parent";
+	char* shader = "shader";
 }
 
 GameObject* SpriteLoader::load(xml_node<char>* configuration) {
@@ -60,6 +61,32 @@ GameObject* SpriteLoader::load(xml_node<char>* configuration) {
 	ret->_animSpeed = atof(animSpeed->value());
 	ret->_sheetHeight = atoi(sheetWidth->value());
 	ret->_sheetWidth = atoi(sheetHeight->value());
+	if (xml_node<char>* shaderNode = configuration->first_node(temp_sprite_loader::shader))
+	{
+		Material* material = new Material();
+		ShaderProgram shaderProgram;
+		char shaderName[64];
+		sprintf(shaderName, "/shaders/F%s.glsl", shaderNode->value());
+		shaderProgram._frag = ASSET_MANAGER->loadAsset<Shader>(shaderName);
+		sprintf(shaderName, "/shaders/V%s.glsl", shaderNode->value());
+		shaderProgram._vert = ASSET_MANAGER->loadAsset<Shader>(shaderName);
+		shaderProgram._id = glCreateProgram();
+		glAttachShader(shaderProgram._id, shaderProgram._vert->_shaderObject);
+		glAttachShader(shaderProgram._id, shaderProgram._frag->_shaderObject);
+		glLinkProgram(shaderProgram._id);
+
+		GLint isLinked = 0;
+		glGetProgramiv(shaderProgram._id, GL_LINK_STATUS, &isLinked);
+		if (isLinked == GL_FALSE)
+		{
+			char error[1024];
+			glGetProgramInfoLog(shaderProgram._id, 1024, nullptr, error);
+			printf("[OpenGL shader]: Error with sprite shader linking: %s", error);
+		}
+
+		material->setShaderProgram(shaderProgram);
+		ret->addMaterial(material);
+	}
 	ret->_components = loadComponents(configuration);
 	ret->_scriptComponents = loadScriptComponents(configuration);
 

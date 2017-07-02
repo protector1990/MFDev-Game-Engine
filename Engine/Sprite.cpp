@@ -65,7 +65,7 @@ void Sprite::render(SpriteRenderer *renderer) {
 		vec3(_points[3].x / _points[3].w, _points[3].y / _points[3].w, _points[3].z / _points[3].w)
 	};
 
-	renderer->addQuads(noHomoPoints, 4, _texture);
+	renderer->addQuads(noHomoPoints, 4, _texture, _materials.size() > 0 ? _materials[0] : nullptr);
 
 	//renderer->addQuads(_points, 4);
 	//glBindVertexArray(_glVertexArray);

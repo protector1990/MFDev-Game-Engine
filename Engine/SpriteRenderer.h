@@ -37,8 +37,8 @@ private:
 	void drawTriangles();
 	void drawQuads();
 protected:
-	ShaderProgram* _spriteShaderProgram;
 	Material* _currentMaterial;
+	Material _defaultMaterial;
 	glm::vec2* _spriteTexCoordArray;
 	MTexture* _currentlyActiveTexture;
 };
