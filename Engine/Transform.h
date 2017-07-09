@@ -42,6 +42,7 @@ public:
 	Transform* rotateZ(float amount);
 	Transform* rotate(glm::vec3 amounts);
 	Transform* setScale(glm::vec3 amount);
+	Transform* setPosition(glm::vec3 position);
 	Transform* scale(glm::vec3 amount);
 	Transform* globalScale(glm::vec3 amount);
 	glm::vec3 worldToLocalCoordinates(glm::vec3& point);

@@ -79,23 +79,41 @@ int Engine::run(int argv, char** argc) {
 	SDL_Event sdlEvent;
 	while (_running) {
 		while (SDL_PollEvent(&sdlEvent)) {
-			if (sdlEvent.type == SDL_QUIT) {
+			if (sdlEvent.type == SDL_QUIT)
+			{
 				_running = false;
 				break;
 			}
-			if (sdlEvent.type == SDL_KEYDOWN) {
+			if (sdlEvent.type == SDL_KEYDOWN)
+			{
 				int keyDown = sdlEvent.key.keysym.sym;
 				for (unsigned int i = 0; i < _scenes.size(); i++){
 					_scenes[i]->keyPressed(keyDown);
 				}
 				_inputManager->keyPressed(sdlEvent.key.keysym.sym);
 			}
-			if (sdlEvent.type == SDL_KEYUP) {
+			if (sdlEvent.type == SDL_KEYUP)
+			{
 				int keyDown = sdlEvent.key.keysym.sym;
 				for (unsigned int i = 0; i < _scenes.size(); i++){
 					_scenes[i]->keyPressed(keyDown);
 				}
 				_inputManager->keyReleased(sdlEvent.key.keysym.sym);
+			}
+			if (sdlEvent.type == SDL_MOUSEBUTTONDOWN)
+			{
+				_inputManager->mousePressed('c');
+				//printf("Mouse down C\n");
+			}
+			if (sdlEvent.type == SDL_MOUSEBUTTONUP)
+			{
+				_inputManager->mouseReleased('c');
+				//printf("Mouse up C\n");
+			}
+			if (sdlEvent.type == SDL_MOUSEMOTION)
+			{
+				_inputManager->changeMousePos(glm::vec2(sdlEvent.motion.x, - sdlEvent.motion.y + 194));
+				printf("%d %d\n", sdlEvent.motion.x, sdlEvent.motion.y);
 			}
 		}
 		_frameTime = SDL_GetTicks();
@@ -122,6 +140,7 @@ int Engine::run(int argv, char** argc) {
 void Engine::renderScenes() {
 	for (unsigned int i = 0; i < _scenes.size(); i++) {
 		if (_scenes[i]->getActive()) {
+			//TODO: Break all these hard-coded dependancies between engine, sprite renderer and video
 			_scenes[i]->render(_video->getSpriteRenderer());
 		}
 	}

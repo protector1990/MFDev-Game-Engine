@@ -13,7 +13,7 @@ std::vector<GameObject*> Scene::getObjectsWithTags(unsigned tags) {
 	size_t objSize = _gameObjects.size();
 	for (size_t i = 0; i < objSize; ++i)
 	{
-		if (_gameObjects[i]->compareTag(tags))
+		if (_gameObjects[i]->compareTagAny(tags))
 		{
 			a.push_back(_gameObjects[i]);
 		}

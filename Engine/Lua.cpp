@@ -158,6 +158,8 @@ void LuaManager::luaBind() const {
 	lua_register(_luaInterpreter, "rotate", &luaRotate);
 	lua_register(_luaInterpreter, "scale", &luaScale);
 	lua_register(_luaInterpreter, "queryKeyDown", &luaQueryKeyDown);
+	lua_register(_luaInterpreter, "queryMouseDown", &luaQueryMouseDown);
+	lua_register(_luaInterpreter, "queryMousePosition", &luaQueryMousPosition);
 	lua_register(_luaInterpreter, "getPosition", &luaGetPosition);
 	lua_register(_luaInterpreter, "setPosition", &luaSetPosition);
 	lua_register(_luaInterpreter, "getLocalRotation", &luaGetLocalRotation);
@@ -339,9 +341,7 @@ int LuaManager::luaSetPosition(lua_State *state) {
 	float x = lua_tonumber(state, -3);
 	float y = lua_tonumber(state, -2);
 	float z = lua_tonumber(state, -1);
-	targetObject->_Position.x = x;
-	targetObject->_Position.y = y;
-	targetObject->_Position.z = z;
+	targetObject->_transform.setPosition(glm::vec3(x, y, z));
 	return 0;
 }
 
@@ -376,6 +376,19 @@ int LuaManager::luaQueryKeyDown(lua_State *state) {
 	char key = lua_tonumber(state, -1);
 	lua_pushboolean(state, ENGINE.getInputManager()->queryKeyDown(key));
 	return 1;
+}
+
+int LuaManager::luaQueryMouseDown(lua_State* state) {
+	short key = lua_tonumber(state, -1);
+	lua_pushboolean(state, ENGINE.getInputManager()->queryMousePressed(key));
+	return 1;
+}
+
+int LuaManager::luaQueryMousPosition(lua_State* state) {
+	glm::vec2 mousePos = ENGINE.getInputManager()->queryMousePosition();
+	lua_pushnumber(state, mousePos.x);
+	lua_pushnumber(state, mousePos.y);
+	return 2;
 }
 
 enum LuaDrawType {

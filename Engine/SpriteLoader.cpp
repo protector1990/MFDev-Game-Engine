@@ -82,6 +82,10 @@ GameObject* SpriteLoader::load(xml_node<char>* configuration) {
 		shaderProgram._id = glCreateProgram();
 		glAttachShader(shaderProgram._id, shaderProgram._vert->_shaderObject);
 		glAttachShader(shaderProgram._id, shaderProgram._frag->_shaderObject);
+		if (shaderProgram._geom)
+		{
+			glAttachShader(shaderProgram._id, shaderProgram._geom->_shaderObject);
+		}
 		glLinkProgram(shaderProgram._id);
 
 		GLint isLinked = 0;

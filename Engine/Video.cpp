@@ -144,6 +144,9 @@ void Video::init() {
 	glCullFace(GL_BACK);
 	glClearColor(1.0, 1.0, 1.0, 1.0);
 
+	//glMatrixMode(GL_PROJECTION);
+	//glOrtho(-320, 320, -192, 192, -10, 10);
+
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 

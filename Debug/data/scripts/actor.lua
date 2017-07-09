@@ -1,9 +1,9 @@
-actor = {}
+actor = {
+field1 = "neka vrednost"
+}
 
 currentClass = "actor"
 extends = ""
-
-actor.field1 = "neka vrednost"
 
 function actor:madd(x, y)
 	return x + y

@@ -21,7 +21,7 @@
    <transform>
       <positionX>0</positionX>
       <positionY>0</positionY>
-      <positionZ>0</positionZ>
+      <positionZ>0.5</positionZ>
 	  <scaleX>4</scaleX>
       <scaleY>4</scaleY>
       <scaleZ>4</scaleZ>
@@ -39,7 +39,7 @@
    <transform>
       <positionX>50</positionX>
       <positionY>50</positionY>
-      <positionZ>0</positionZ>
+      <positionZ>0.5</positionZ>
 	  <scaleX>0.25</scaleX>
       <scaleY>0.25</scaleY>
       <scaleZ>0.25</scaleZ>
@@ -53,4 +53,25 @@
    </sheet>
    <luaScript>/scripts/player2.lua</luaScript>
 </gameObject>
+
+<gameObject type="Sprite" name="ThirdPlayer">
+   <transform>
+      <positionX>-50</positionX>
+      <positionY>50</positionY>
+      <positionZ>-0.5</positionZ>
+	  <scaleX>0.25</scaleX>
+      <scaleY>0.25</scaleY>
+      <scaleZ>0.25</scaleZ>
+	  <parent>Player</parent>
+   </transform>
+   <texture>/textures/player.bmp</texture>
+   <sheet>
+      <height>1</height>
+      <width>1</width>
+      <animSpeed>-1</animSpeed>
+   </sheet>
+   <shader>ExpShader</shader>
+   <luaScript>/scripts/pointerCircle.lua</luaScript>
+</gameObject>
+
 </mscene>

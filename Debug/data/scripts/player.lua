@@ -1,23 +1,22 @@
-player = {}
+player = {
+speed_multiplier = 70,
+lower_bound = -150,
+is_jumping = false,
+jumping_speed = 350,
+gravity = -981,
+speed_y = 0,
+speed_x = 0,
+x_force = 1500,
+x_speed_limit = 120,
+x_low_speed_limit = 20,
+x_friction = 0.2,
+zz = true,
+firstTimeTest = false,
+elapsed_time = 0
+}
 
 currentClass = "player"
 extends = "actor"
-
-player.speed_multiplier = 70
-player.lower_bound = -150
-player.is_jumping = false
-player.jumping_speed = 350
-player.gravity = -981
-player.speed_y = 0
-player.speed_x = 0
-player.x_force = 1500
-player.x_speed_limit = 120
-player.x_low_speed_limit = 20
-player.x_friction = 0.2
-player.zz = true
-player.firstTimeTest = false
-player.elapsed_time = 0
-
 
 function player:update(deltaTime)
 	--if(self.zz) then

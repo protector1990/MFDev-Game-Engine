@@ -15,10 +15,20 @@ void GameObject::setTag(unsigned tag) {
 	_tag = tag;
 }
 
-bool GameObject::compareTag(unsigned tag) const {
+bool GameObject::compareTagAny(unsigned tag) const {
 	// Redesign this. Currently, works by asking if object contains any of the tags.
 	// Maybe introduce both && and || logic
 	if (_tag & tag)
+	{
+		return true;
+	}
+	return false;
+}
+
+bool GameObject::compareTagAll(unsigned tag) const {
+	// Redesign this. Currently, works by asking if object contains any of the tags.
+	// Maybe introduce both && and || logic
+	if (_tag & tag == tag)
 	{
 		return true;
 	}

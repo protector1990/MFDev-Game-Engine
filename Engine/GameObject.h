@@ -37,7 +37,8 @@ public:
 	//GameObject();
 	unsigned int getTag() const;
 	void setTag(unsigned int tag);
-	bool compareTag(unsigned int tag) const;
+	bool compareTagAny(unsigned int tag) const;
+	bool compareTagAll(unsigned tag) const;
 	void appendTag(unsigned int tag);
 	//virtual void load(const char* cfgPath) = 0;
 	virtual void init() = 0;

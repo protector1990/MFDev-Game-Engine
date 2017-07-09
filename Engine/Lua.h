@@ -77,6 +77,8 @@ public:
 	static int luaGetLocalRotation(lua_State *state);
 	static int luaGetLocalScale(lua_State *state);
 	static int luaQueryKeyDown(lua_State *state);
+	static int luaQueryMouseDown(lua_State *state);
+	static int luaQueryMousPosition(lua_State *state);
 	static int luadDraw(lua_State *state);
 	lua_State* getLuaInterpreter() const;
 private:

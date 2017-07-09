@@ -184,6 +184,18 @@ Transform* Transform::setScale(glm::vec3 amount) {
 	return this;
 }
 
+Transform* Transform::setPosition(glm::vec3 position) {
+	// TODO: implement keeping separate transformation matrices for translation, rotation and scale
+	_transformations = 
+	{
+		1.f, 0.f, 0.f, 0.f,
+		0.f, 1.f, 0.f, 0.f,
+		0.f, 0.f, 1.f, 0.f,
+		position.x, position.y, position.z, 1.f
+	};
+	return this;
+}
+
 Transform* Transform::scale(glm::vec3 amount) {
 	mat4 scaleMatrix =
 	{

@@ -1,6 +1,9 @@
-player2 = {}
-
+player2 = {
+nestonesto=5, 
+nestodrugo=3
+}
 currentClass = "player2"
+extends = ""
 
 function player2:update(deltaTime)
 	local x = 0
@@ -20,5 +23,11 @@ function player2:update(deltaTime)
 	if y ~= 0 then
 		rotate(self.cobj.cptr, 0, 0, y * 0.01)
 	end
-	
+	--print(nestonesto)
+	self.nestonesto = self.nestonesto + 2;
+	--print("start")
+	--for k, v in pairs(self) do
+	--	print(k, v)
+	--end
+	--print ("end")
 end
