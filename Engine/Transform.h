@@ -55,7 +55,8 @@ protected:
 	glm::vec3 _localPosition;
 	glm::vec3 _localScale;
 	glm::vec4 _localRotation;
-	glm::mat4 _transformations;
+	glm::mat4 _translationMatrix;
+	glm::mat4 _rotationMatrix;
 	glm::mat4 _scaleStack;
 	glm::mat4 _miscRotations;
 	GameObject* _gameObject;

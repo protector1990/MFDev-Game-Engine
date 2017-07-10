@@ -86,7 +86,8 @@ protected:
 	//Videti kako ovo može da se reši
 	ScriptableInterface _scriptableInterface;
 	// TODO: find the most appropriate place for this
-	std::vector<Material*> _materials;	
+	std::vector<Material*> _materials;
+	bool enabled = true;
 };
 
 template <class T>

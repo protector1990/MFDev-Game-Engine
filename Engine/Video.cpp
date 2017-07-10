@@ -5,6 +5,7 @@
 #include "Common.h"
 #include "Video.h"
 #include <algorithm>
+#include "Camera.h"
 
 using namespace std;
 
@@ -123,8 +124,8 @@ void Video::init() {
 	
 	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 
-	gameWindow = SDL_CreateWindow("Game Window", 300, 150, 640, 384, SDL_WINDOW_OPENGL);
-	glContext = SDL_GL_CreateContext(gameWindow);
+	_gameWindow = SDL_CreateWindow("Game Window", 300, 150, 640, 384, SDL_WINDOW_OPENGL);
+	_glContext = SDL_GL_CreateContext(_gameWindow);
 
 
 	GLenum err = glewInit();
@@ -150,12 +151,6 @@ void Video::init() {
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-	//SpriteRenderer* spriteRenderer = new SpriteRenderer();
-	//spriteRenderer->init();
-	//
-	//_renderers.push_back(spriteRenderer);
-
-	_spriteRenderer = new SpriteRenderer();
 	_spriteRenderer->init();
 	_renderers.push_back(_spriteRenderer);
 
@@ -163,43 +158,49 @@ void Video::init() {
 	glOrtho(-320., 320, -192, 192, -100., 100.);
 }
 
-MeshRenderer* Video::getMeshRenderer() {
-	if (!_meshRenderer)
-	{
-		_meshRenderer = new MeshRenderer();
-		_meshRenderer->init();
-		_renderers.push_back(_meshRenderer);
-	}
-	return _meshRenderer;
-}
-
-SpriteRenderer* Video::getSpriteRenderer() {
-	if (!_spriteRenderer)
-	{
-		_spriteRenderer = new SpriteRenderer();
-		_spriteRenderer->init();
-		_renderers.push_back(_spriteRenderer);
-	}
-	return _spriteRenderer;
-}
-
 void Video::render() {
 	glClear(GL_COLOR_BUFFER_BIT);
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 
-	for (Renderer* renderer : _renderers)
-	{
-		renderer->preRender();
-	}
+	const std::vector<Scene*>* scenes = ENGINE.getScenes();
 
-	ENGINE.renderScenes();
+	for (Camera* camera : _cameras) {
+		if (!camera->)
 
-	for (Renderer* renderer : _renderers)
-	{
-		renderer->postRender();
+		camera->preRender();
+	
+		for (Renderer* renderer : _renderers)
+		{
+			renderer->preRender();
+		}
+
+		for (unsigned int i = 0; i < scenes->size(); i++) {
+			if ((*scenes)[i]->getActive()) {
+				//TODO: Break all these hard-coded dependancies between engine, sprite renderer and video
+				(*scenes)[i]->render();
+			}
+		}
+
+		for (Renderer* renderer : _renderers)
+		{
+			renderer->postRender();
+		}
+
+		camera->postRender();
 	}
 
 	glFlush();
-	SDL_GL_SwapWindow(gameWindow);
+	SDL_GL_SwapWindow(_gameWindow);
+}
+
+void Video::addCamera(Camera* camera) {
+	_cameras.push_front(camera);
+}
+
+void Video::removeCamera(Camera* camera) {
+	_cameras.remove(camera);
+}
+
+Video::Video(): _glContext(nullptr) {
 }

@@ -337,6 +337,9 @@
     <ClCompile Include="Material.cpp">
       <Filter>Engine\Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Engine\Renderer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\libs\lua-5.3.2\src\lapi.h">
@@ -589,6 +592,9 @@
       <Filter>Engine\Assets</Filter>
     </ClInclude>
     <ClInclude Include="Material.h">
+      <Filter>Engine\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
       <Filter>Engine\Renderer</Filter>
     </ClInclude>
   </ItemGroup>

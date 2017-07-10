@@ -148,6 +148,7 @@
     <ClCompile Include="Area.cpp" />
     <ClCompile Include="AreaLoader.cpp" />
     <ClCompile Include="Asset.cpp" />
+    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="ConfigurationManager.cpp" />
     <ClCompile Include="ExposedFunctions.cpp" />
@@ -232,6 +233,7 @@
     <ClInclude Include="..\libs\rapidxml-1.13\rapidxml_utils.hpp" />
     <ClInclude Include="3DAsset.h" />
     <ClInclude Include="Asset.h" />
+    <ClInclude Include="Camera.h" />
     <ClInclude Include="Material.h" />
     <ClInclude Include="MeshRenderer.h" />
     <ClInclude Include="AbstractComponentLoader.h" />

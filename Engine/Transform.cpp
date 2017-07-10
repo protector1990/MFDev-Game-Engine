@@ -31,7 +31,7 @@ vec3 Transform::getPosition() const {
 		parentMatrixStack.pop();
 	}
 
-	transformMatrix *= _transformations * _scaleStack;
+	transformMatrix *= _translationMatrix * _rotationMatrix * _scaleStack;
 	
 	vec4 raw = transformMatrix * vec4(0.f, 0.f, 0.f, 1.f);
 	return vec3(raw.x / raw.w, raw.y / raw.w, raw.z / raw.w);
@@ -49,14 +49,14 @@ vec3 Transform::getLocalRotation() const {
 }
 
 Transform* Transform::translate(vec3 amount) {
-	mat4 translateMatrix =
+	mat4 currentTranslationMatrix =
 	{
 		1.f, 0.f, 0.f, 0.f,
 		0.f, 1.f, 0.f, 0.f,
 		0.f, 0.f, 1.f, 0.f,
 		amount.x, amount.y, amount.z, 1.f
 	};
-	_transformations *= translateMatrix;
+	_translationMatrix *= currentTranslationMatrix;
 	return this;
 }
 
@@ -76,7 +76,7 @@ Transform* Transform::rotateAround(vec3 axis, float amount) {
 		0.f, 0.f, 0.f, 1.f
 	};
 
-	_transformations *= rotateAroundMatrix;
+	_rotationMatrix *= rotateAroundMatrix;
 	_miscRotations *= rotateAroundMatrix;
 	return this;
 }
@@ -96,7 +96,7 @@ Transform* Transform::rotateX(float amount) {
 		0.f, 0.f, 0.f, 1.f
 	};
 	
-	_transformations *= rotateMatrix;
+	_rotationMatrix *= rotateMatrix;
 	_miscRotations *= rotateMatrix;
 	return this;
 }
@@ -113,7 +113,7 @@ Transform* Transform::rotateY(float amount) {
 		0.f, 0.f, 0.f, 1.f
 	};
 
-	_transformations *= rotateMatrix;
+	_rotationMatrix *= rotateMatrix;
 	_miscRotations *= rotateMatrix;
 	return this;
 }
@@ -130,7 +130,7 @@ Transform* Transform::rotateZ(float amount) {
 		0.f, 0.f, 0.f, 1.f
 	};
 
-	_transformations *= rotateMatrix;
+	_rotationMatrix *= rotateMatrix;
 	_miscRotations *= rotateMatrix;
 	return this;
 }
@@ -168,7 +168,7 @@ Transform* Transform::rotate(vec3 amounts) {
 
 	mat4 combinedRotateMatrix = rotateXMatrix * rotateYMatrix * rotateZMatrix;
 
-	_transformations *= combinedRotateMatrix;
+	_rotationMatrix *= combinedRotateMatrix;
 	_miscRotations *= combinedRotateMatrix;
 	return this;
 }
@@ -186,7 +186,7 @@ Transform* Transform::setScale(glm::vec3 amount) {
 
 Transform* Transform::setPosition(glm::vec3 position) {
 	// TODO: implement keeping separate transformation matrices for translation, rotation and scale
-	_transformations = 
+	_translationMatrix = 
 	{
 		1.f, 0.f, 0.f, 0.f,
 		0.f, 1.f, 0.f, 0.f,
@@ -216,7 +216,7 @@ Transform* Transform::globalScale(glm::vec3 amount) {
 		0.f, 0.f, amount.z, 0.f,
 		0.f, 0.f, 0.f, 1.f
 	};
-	_transformations = scaleMatrix * _transformations;
+	_scaleStack = scaleMatrix * _scaleStack;
 	return this;
 }
 
@@ -241,24 +241,24 @@ glm::vec3 Transform::localToWorldCoordinates(vec3& point) {
 }
 
 glm::mat4 Transform::getLocalTransformationMatrix() const {
-	return _transformations * _scaleStack;
+	return _translationMatrix * _rotationMatrix * _scaleStack;
 }
 
 //Gets global transformation matrix. Scaling included
 glm::mat4 Transform::getGlobalTransformationMatrix() const {
 	if (_gameObject->_parent)
 	{
-		return _gameObject->_parent->_transform.getGlobalTransformationMatrix() * _transformations * _scaleStack;
+		return _gameObject->_parent->_transform.getGlobalTransformationMatrix() * _translationMatrix * _rotationMatrix * _scaleStack;
 	}
-	return _transformations * _scaleStack;
+	return _translationMatrix * _rotationMatrix * _scaleStack;
 }
 
 glm::mat4 Transform::getGlobalTransformationMatrixInverseScale() const {
 	if (_gameObject->_parent)
 	{
-		return _gameObject->_parent->_transform.getGlobalTransformationMatrix() * _transformations * inverse(_scaleStack);
+		return _gameObject->_parent->_transform.getGlobalTransformationMatrix() * _translationMatrix * _rotationMatrix * inverse(_scaleStack);
 	}
-	return _transformations * inverse(_scaleStack);
+	return _translationMatrix * _rotationMatrix * inverse(_scaleStack);
 }
 
 // Budz, budz

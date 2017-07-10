@@ -9,6 +9,8 @@
 
 class Camera : GameObject {
 public:
+	Camera();
+	~Camera();
 	void setProjectionMatrix(glm::mat4 projectionMatrix);
 	void preRender();
 	void postRender();
@@ -16,4 +18,5 @@ protected:
 	unsigned short _clearFlags = 0;
 	glm::mat4 _projectionMatrix;
 	short _renderingOrder;
+	glm::vec4 _viewport;
 };

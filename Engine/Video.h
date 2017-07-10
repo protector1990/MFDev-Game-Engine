@@ -10,8 +10,10 @@
 #include <SDL_opengl.h>
 #include <glm/glm.hpp>
 #include <glm\gtc\matrix_transform.hpp>
+#include <forward_list>
 
 class Engine;
+class Camera;
 
 #pragma region
 
@@ -26,17 +28,17 @@ inline void utilLookAt(glm::vec3 eye, glm::vec3 center, glm::vec3 up) {
 class Video {
 public:
 	void init();
-	MeshRenderer* getMeshRenderer();
-	SpriteRenderer* getSpriteRenderer();
 	void render();
+	MeshRenderer* const _meshRenderer = new MeshRenderer();
+	SpriteRenderer* const _spriteRenderer = new SpriteRenderer();
+	void addCamera(Camera* camera);
+	void removeCamera(Camera* camera);
 private:
-	MeshRenderer* _meshRenderer = 0;
-	SpriteRenderer* _spriteRenderer = 0;
-	Video() {}
+	Video();
 	std::vector<Renderer*> _renderers;
-	SDL_Window *gameWindow = nullptr;
-	SDL_GLContext glContext;
-
+	SDL_Window *_gameWindow = nullptr;
+	SDL_GLContext _glContext;
+	std::forward_list<Camera*> _cameras;
 	friend class Engine;
 public:
 	//SDL_videoInfo* sdlInfo;

@@ -19,10 +19,11 @@ public:
 	~Engine();
 	void quit();
 	int run(int argc, char** argv);
-	LuaManager* getLuaManager() { return _luaManager; }
-	Video* getVideo() { return _video;  }
-	AssetManager* getAssetManager() { return _assetManager; }
-	InputManager* getInputManager() { return _inputManager; }
+	LuaManager* getLuaManager() const { return _luaManager; }
+	Video* getVideo() const { return _video;  }
+	AssetManager* getAssetManager() const { return _assetManager; }
+	InputManager* getInputManager() const { return _inputManager; }
+	const std::vector<Scene*> *getScenes() const { return &_scenes;  }
 
 	char* _startupScene;
 

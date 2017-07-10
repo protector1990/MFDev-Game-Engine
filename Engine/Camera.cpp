@@ -1,8 +1,17 @@
 /**  Copyright 2017 MarFil Studios. All rights reserved.  **/
 #include "Camera.h"
 #include <glm\gtc\matrix_transform.hpp>
+#include "Common.h"
 
 using namespace glm;
+
+Camera::Camera() {
+	ENGINE.getVideo()->addCamera(this);
+}
+
+Camera::~Camera() {
+	ENGINE.getVideo()->removeCamera(this);
+}
 
 void Camera::preRender() {
 	// Clear accoring to camera celaring settings
@@ -18,6 +27,7 @@ void Camera::preRender() {
 	glMatrixMode(GL_MODELVIEW);
 	glPushMatrix();
 	mat4 cameraTransformMatrix = _transform.getGlobalTransformationMatrix();
+	glMultMatrixf(reinterpret_cast<float*>(&cameraTransformMatrix));
 	glMatrixMode(GL_PROJECTION);
 	glPushMatrix();
 }

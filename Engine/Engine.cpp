@@ -135,12 +135,7 @@ int Engine::run(int argv, char** argc) {
 }
 
 void Engine::renderScenes() {
-	for (unsigned int i = 0; i < _scenes.size(); i++) {
-		if (_scenes[i]->getActive()) {
-			//TODO: Break all these hard-coded dependancies between engine, sprite renderer and video
-			_scenes[i]->render(_video->getSpriteRenderer());
-		}
-	}
+	
 }
 
 Engine::Engine(): _assetManager(nullptr), _inputManager(nullptr), _deltaTime(0) {}
