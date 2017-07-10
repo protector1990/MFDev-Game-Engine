@@ -9,7 +9,10 @@ void main()
 	float maxDist = 0.5 * outsideCircle;
 	float minDist = 0.5 * insideCircle;
 	if (dist > minDist && dist < maxDist) {
-		gl_FragColor = vec4(0.7, 0.2, 0.7, 1.0);
+		float distanceFromCenterPoint = abs(dist - (minDist + maxDist) / 2.0);
+		float beltHalf = (maxDist - minDist) / 2.0;
+		float alpha = 1.0 - (distanceFromCenterPoint / beltHalf) * (distanceFromCenterPoint / beltHalf);
+		gl_FragColor = vec4(0.7, 0.2, 0.7, alpha);
 	}
 	else {
 		gl_FragColor = vec4(0.0, 0.0, 0.0, 0.0);

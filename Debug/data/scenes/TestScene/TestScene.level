@@ -59,10 +59,9 @@
       <positionX>-50</positionX>
       <positionY>50</positionY>
       <positionZ>-0.5</positionZ>
-	  <scaleX>0.25</scaleX>
-      <scaleY>0.25</scaleY>
-      <scaleZ>0.25</scaleZ>
-	  <parent>Player</parent>
+	  <scaleX>1</scaleX>
+      <scaleY>1</scaleY>
+      <scaleZ>1</scaleZ>
    </transform>
    <texture>/textures/player.bmp</texture>
    <sheet>

@@ -83,26 +83,7 @@ void SpriteRenderer::init() {
 	_currentlyActiveTexture = nullptr;
 	_currentMaterial = &_defaultMaterial;
 
-	// TODO: remove this later
-	glOrtho(-320., 320, -192, 192, -100., 100.);
-
-	//glMatrixMode(GL_MODELVIEW);
-
-	
-
-	printf("proj %p\n\n\n", glGetError());
-	//mat4 lookat = lookAt(vec3(0, 0, 0.001f), vec3(0, 0, -0.001f), vec3(0, 0.001f, 0));
-	//glLoadMatrixf(&lookat[0][0]);
-
-	//mat4 sample;
-	//glGetFloatv(GL_MODELVIEW_MATRIX, reinterpret_cast<GLfloat*>(&sample));
-
-	//glPushMatrix();
-	//utilLookAt(vec3(0, 0, -10), vec3(0, 43, 1), vec3(-5, 1, 0));
-	//glLoadMatrixf(&mat[0][0]);
-
-	//glFrontFace(GL_CW);
-
+	//Here for historic reasons
 	LoadMedia();
 }
 

@@ -158,6 +158,9 @@ void Video::init() {
 	_spriteRenderer = new SpriteRenderer();
 	_spriteRenderer->init();
 	_renderers.push_back(_spriteRenderer);
+
+	// TODO: make camera system to handle this
+	glOrtho(-320., 320, -192, 192, -100., 100.);
 }
 
 MeshRenderer* Video::getMeshRenderer() {

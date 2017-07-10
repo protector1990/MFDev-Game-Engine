@@ -59,12 +59,7 @@ int Engine::run(int argv, char** argc) {
 	_video = new Video();
 	_video->init();
 
-	//_renderer = new SpriteRenderer();
-	// TODO: Maybe move init code to constructor?
-	//_renderer->init();
-
 	_inputManager = new InputManager();
-
 
 	//TODO: make scenes manager class
 	_configurationManager = new ConfigurationManager();
@@ -79,41 +74,47 @@ int Engine::run(int argv, char** argc) {
 	SDL_Event sdlEvent;
 	while (_running) {
 		while (SDL_PollEvent(&sdlEvent)) {
-			if (sdlEvent.type == SDL_QUIT)
-			{
-				_running = false;
-				break;
-			}
-			if (sdlEvent.type == SDL_KEYDOWN)
-			{
-				int keyDown = sdlEvent.key.keysym.sym;
-				for (unsigned int i = 0; i < _scenes.size(); i++){
-					_scenes[i]->keyPressed(keyDown);
+			switch (sdlEvent.type) {
+			case SDL_QUIT:
+				{
+					_running = false;
+					break;
 				}
-				_inputManager->keyPressed(sdlEvent.key.keysym.sym);
-			}
-			if (sdlEvent.type == SDL_KEYUP)
-			{
-				int keyDown = sdlEvent.key.keysym.sym;
-				for (unsigned int i = 0; i < _scenes.size(); i++){
-					_scenes[i]->keyPressed(keyDown);
+			case SDL_KEYDOWN:
+				{
+					int keyDown = sdlEvent.key.keysym.sym;
+					for (unsigned int i = 0; i < _scenes.size(); i++)
+					{
+						_scenes[i]->keyPressed(keyDown);
+					}
+					_inputManager->keyPressed(sdlEvent.key.keysym.sym);
+					break;
 				}
-				_inputManager->keyReleased(sdlEvent.key.keysym.sym);
-			}
-			if (sdlEvent.type == SDL_MOUSEBUTTONDOWN)
-			{
-				_inputManager->mousePressed('c');
-				//printf("Mouse down C\n");
-			}
-			if (sdlEvent.type == SDL_MOUSEBUTTONUP)
-			{
-				_inputManager->mouseReleased('c');
-				//printf("Mouse up C\n");
-			}
-			if (sdlEvent.type == SDL_MOUSEMOTION)
-			{
-				_inputManager->changeMousePos(glm::vec2(sdlEvent.motion.x, - sdlEvent.motion.y + 194));
-				printf("%d %d\n", sdlEvent.motion.x, sdlEvent.motion.y);
+			case SDL_KEYUP:
+				{
+					int keyDown = sdlEvent.key.keysym.sym;
+					for (unsigned int i = 0; i < _scenes.size(); i++)
+					{
+						_scenes[i]->keyPressed(keyDown);
+					}
+					_inputManager->keyReleased(sdlEvent.key.keysym.sym);
+					break;
+				}
+			case SDL_MOUSEBUTTONDOWN:
+				{
+					_inputManager->mousePressed('c');
+					break;
+				}
+			case SDL_MOUSEBUTTONUP:
+				{
+					_inputManager->mouseReleased('c');
+					break;
+				}
+			case SDL_MOUSEMOTION:
+				{
+					_inputManager->changeMousePos(glm::vec2(sdlEvent.motion.x - 320, -sdlEvent.motion.y + 192));
+					break;
+				}
 			}
 		}
 		_frameTime = SDL_GetTicks();
@@ -124,12 +125,8 @@ int Engine::run(int argv, char** argc) {
 			}
 		}
 
-		//Currently only calls Engine::renderScenes()
-		//_renderer->render(_deltaTime);
-
 		_video->render();
 
-		//this should be either the last command in the loop, or the first
 		_lastFrameTime = _frameTime;
 	}
 	_assetManager->deInit();

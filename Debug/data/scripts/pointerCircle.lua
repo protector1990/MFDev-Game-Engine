@@ -1,9 +1,9 @@
 pointerCircle = {
-innerCircleLatency = 0.4,
+innerCircleLatency = 0.6,
 innerCircle = 0,
 outerCircle = 0,
 currentPhase = 1.3,
-speed = 1.5
+speed = 2.5
 }
 currentClass = "pointerCircle"
 extends = ""
