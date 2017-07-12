@@ -73,4 +73,23 @@
    <luaScript>/scripts/pointerCircle.lua</luaScript>
 </gameObject>
 
+<gameObject type="Camera" name="MainCamera">
+	<transform>
+		<positionX>-50</positionX>
+		<positionY>50</positionY>
+		<positionZ>-0.5</positionZ>
+		<scaleX>1</scaleX>
+		<scaleY>1</scaleY>
+		<scaleZ>1</scaleZ>
+	</transform>
+	<ortho>
+		<xMin>-320</xMin>
+		<xMax>320</xMax>
+		<yMin>-194</yMin>
+		<yMax>194</yMax>
+		<zMin>-100</zMin>
+		<zMax>100</zMax>
+	</ortho>
+</gameObject>
+
 </mscene>

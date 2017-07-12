@@ -5,63 +5,33 @@
 #include "Sprite.h"
 #include "Engine.h"
 #include <vector>
+#include <mutex>
 
 using namespace rapidxml;
 
 //TODO: fix, fix, fix
 namespace temp_sprite_loader {
 
-	char* transformID = "transform";
-	char* positionXID = "positionX";
-	char* positionYID = "positionY";
-	char* positionZID = "positionZ";
-
-	char* scaleXID = "scaleX";
-	char* scaleYID = "scaleY";
-	char* scaleZID = "scaleZ";
-
 	char* textureID = "texture";
 	char* sheetID = "sheet";
 	char* widthID = "width";
 	char* heightID = "height";
 	char* animSpeedID = "animSpeed";
-	char* parent = "parent";
 	char* shader = "shader";
 }
 
+std::mutex spriteLoadingMutex;
+
 GameObject* SpriteLoader::load(xml_node<char>* configuration) {
+	spriteLoadingMutex.lock();
+
 	Sprite* ret = new Sprite();
-
-	const char* tempName = configuration->first_attribute("name")->value();
-	ret->_name = new char[strlen(tempName) + 1];
-	strcpy(ret->_name, tempName);
-
-	// See where this line will fit best
 	_currentlyLoadingObject = ret;
-
+	commonLoad(configuration);
 
 	xml_node<char>* texture_node = configuration->first_node(temp_sprite_loader::textureID);
 	char* texture_path = texture_node->value();
 	ret->_texture = ASSET_MANAGER->loadAsset<MTexture>(texture_path);
-
-	xml_node<char>* transform = configuration->first_node(temp_sprite_loader::transformID);
-	xml_node<char>* positionX = transform->first_node(temp_sprite_loader::positionXID);
-	xml_node<char>* positionY = transform->first_node(temp_sprite_loader::positionYID);
-	xml_node<char>* positionZ = transform->first_node(temp_sprite_loader::positionZID);
-
-	xml_node<char>* scaleX = transform->first_node(temp_sprite_loader::scaleXID);
-	xml_node<char>* scaleY = transform->first_node(temp_sprite_loader::scaleYID);
-	xml_node<char>* scaleZ = transform->first_node(temp_sprite_loader::scaleZID);
-	ret->_transform.translate(glm::vec3(atof(positionX->value()), atof(positionY->value()), atof(positionZ->value())));
-	ret->_transform.setScale(glm::vec3(atof(scaleX->value()), atof(scaleY->value()), atof(scaleZ->value())));
-	xml_node<char>* parent = transform->first_node(temp_sprite_loader::parent);
-	if (parent)
-	{
-		ret->setParent(_currentlyLoadingScene->getGameObjectByName(parent->value()));
-	}
-	//ret->_Position.x = atof(positionX->value());
-	//ret->_Position.y = atof(positionY->value());
-	//ret->_Position.z = atof(positionZ->value());
 
 	xml_node<char>* sheet = configuration->first_node(temp_sprite_loader::sheetID);
 	xml_node<char>* sheetWidth = sheet->first_node(temp_sprite_loader::widthID);
@@ -102,6 +72,6 @@ GameObject* SpriteLoader::load(xml_node<char>* configuration) {
 	}
 	ret->_components = loadComponents(configuration);
 	ret->_scriptComponents = loadScriptComponents(configuration);
-
+	spriteLoadingMutex.unlock();
 	return static_cast<GameObject*>(ret);
 }

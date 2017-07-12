@@ -22,7 +22,6 @@ public:
 		_yMax = yMax;
 		_zMin = zMin;
 		_zMax = zMax;
-		glm::lookAt();
 	}
 	inline void setViewport(glm::ivec4 viewport) { _viewport = viewport; }
 protected:

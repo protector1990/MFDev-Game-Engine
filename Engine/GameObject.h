@@ -27,6 +27,7 @@ class GameObject {
 	friend class WinAssetManager;
 	//TODO: integrate transform and Game Object properly
 	friend class Transform;
+	friend class AbstractGameObjectLoader;
 public:
 	GameObject()
 		: _tag(0), _transform(this) {

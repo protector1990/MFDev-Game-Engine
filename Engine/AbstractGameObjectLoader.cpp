@@ -10,6 +10,41 @@ using namespace std;
 
 ComponentLoaderFactory componentLoaderFactory;
 
+namespace AbsGameObjLoaderTextConstants {
+	char* transformID = "transform";
+	char* positionXID = "positionX";
+	char* positionYID = "positionY";
+	char* positionZID = "positionZ";
+
+	char* scaleXID = "scaleX";
+	char* scaleYID = "scaleY";
+	char* scaleZID = "scaleZ";
+
+	char* parent = "parent";
+}
+
+void AbstractGameObjectLoader::commonLoad(xml_node<char>* configuration) {
+	const char* tempName = configuration->first_attribute("name")->value();
+	_currentlyLoadingObject->_name = new char[strlen(tempName) + 1];
+	strcpy(_currentlyLoadingObject->_name, tempName);
+
+	xml_node<char>* transform = configuration->first_node(AbsGameObjLoaderTextConstants::transformID);
+	xml_node<char>* positionX = transform->first_node(AbsGameObjLoaderTextConstants::positionXID);
+	xml_node<char>* positionY = transform->first_node(AbsGameObjLoaderTextConstants::positionYID);
+	xml_node<char>* positionZ = transform->first_node(AbsGameObjLoaderTextConstants::positionZID);
+
+	xml_node<char>* scaleX = transform->first_node(AbsGameObjLoaderTextConstants::scaleXID);
+	xml_node<char>* scaleY = transform->first_node(AbsGameObjLoaderTextConstants::scaleYID);
+	xml_node<char>* scaleZ = transform->first_node(AbsGameObjLoaderTextConstants::scaleZID);
+	_currentlyLoadingObject->_transform.translate(glm::vec3(atof(positionX->value()), atof(positionY->value()), atof(positionZ->value())));
+	_currentlyLoadingObject->_transform.setScale(glm::vec3(atof(scaleX->value()), atof(scaleY->value()), atof(scaleZ->value())));
+	xml_node<char>* parent = transform->first_node(AbsGameObjLoaderTextConstants::parent);
+	if (parent)
+	{
+		_currentlyLoadingObject->setParent(_currentlyLoadingScene->getGameObjectByName(parent->value()));
+	}
+}
+
 vector<ScriptComponent*> AbstractGameObjectLoader::loadScriptComponents(xml_node<char>* configuration) {
 	vector<ScriptComponent*> ret;
 	xml_node<char>* node = configuration->first_node();
