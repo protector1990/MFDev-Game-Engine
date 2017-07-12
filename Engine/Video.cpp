@@ -166,7 +166,7 @@ void Video::render() {
 	const std::vector<Scene*>* scenes = ENGINE.getScenes();
 
 	for (Camera* camera : _cameras) {
-		if (!camera->)
+		if (!camera->getEnabled()) continue;
 
 		camera->preRender();
 	

@@ -57,7 +57,7 @@ public:
 	~NavGrid() override;
 	void init() override;
 	void update(float deltaTime) override;
-	void render(SpriteRenderer* renderer) override;
+	void render() override;
 	void setSampleDensity(int density);
 	void setBorders(glm::vec4 borders);
 protected:

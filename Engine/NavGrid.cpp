@@ -207,7 +207,7 @@ void NavGrid::update(float deltaTime) {
 	//P.S. That won't suffice for rotation...
 }
 
-void NavGrid::render(SpriteRenderer* renderer) {
+void NavGrid::render() {
 	// This can be used for debug purposes
 }
 

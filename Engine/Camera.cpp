@@ -14,6 +14,8 @@ Camera::~Camera() {
 }
 
 void Camera::preRender() {
+	// Set camera viewport
+	glViewport(_viewport.x, _viewport.y, _viewport.z, _viewport.w);
 	// Clear accoring to camera celaring settings
 	if (_clearFlags & CLEAR_COLOR)
 	{

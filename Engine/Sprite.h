@@ -14,7 +14,7 @@ class Sprite : public virtual GameObject {
 public:
 	void init() override;
 	void update(float deltaTime) override;
-	void render(SpriteRenderer *renderer) override;
+	void render() override;
 	const MTexture* getTexture();
 protected:
 	int _sheetWidth = 1;

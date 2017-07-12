@@ -34,7 +34,7 @@ public:
 	// TODO: make a separate updateInternal function
 	virtual void update(float deltaTime);
 	// Render scene
-	void render(SpriteRenderer *renderer); 
+	void render();
 	bool getActive();
 	void init();
 	void keyPressed(int keyPressed);

@@ -44,7 +44,7 @@ public:
 	virtual void init() = 0;
 	virtual void update(float deltaTime) = 0;
 	virtual void updateComponents(float deltaTime);
-	virtual void render(SpriteRenderer *renderer) = 0;
+	virtual void render() = 0;
 	virtual void renderDebugComponents(float deltaTime);
 
 	virtual GameObject *getRoot();
@@ -69,6 +69,9 @@ public:
 	const std::vector<Component*>* getComponentsConst() const;
 
 	const char* getName() const;
+	inline bool GameObject::getEnabled() const {return enabled; }
+
+	inline void GameObject::setEnabled(bool value) { enabled = value; }
 
 	void addMaterial(Material* material);
 	Material* getMaterial(size_t index);
