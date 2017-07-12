@@ -149,6 +149,7 @@
     <ClCompile Include="AreaLoader.cpp" />
     <ClCompile Include="Asset.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="CameraLoader.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="ConfigurationManager.cpp" />
     <ClCompile Include="ExposedFunctions.cpp" />
@@ -234,6 +235,7 @@
     <ClInclude Include="3DAsset.h" />
     <ClInclude Include="Asset.h" />
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="CameraLoader.h" />
     <ClInclude Include="Material.h" />
     <ClInclude Include="MeshRenderer.h" />
     <ClInclude Include="AbstractComponentLoader.h" />
