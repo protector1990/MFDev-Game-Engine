@@ -4,11 +4,13 @@
 #include "SpriteLoader.h"
 #include "NavGridLoader.h"
 #include "AreaLoader.h"
+#include "CameraLoader.h"
 
 //TODO: Refactor these so they start using osme sort of a hash map
 
 SpriteLoader spriteLoader;
 NavGridLoader navGridLoader;
+CameraLoader cameraLoader;
 
 AreaLoader areaLoader;
 
@@ -19,6 +21,10 @@ AbstractGameObjectLoader* GameObjectLoaderFactory::getGameObjectLoader(const cha
 	if (!strcmp(type, "NavGrid"))
 	{
 		return static_cast<AbstractGameObjectLoader*>(&navGridLoader);
+	}
+	if (!strcmp(type, "Camera"))
+	{
+		return static_cast<AbstractGameObjectLoader*>(&cameraLoader);
 	}
 	return nullptr;
 }

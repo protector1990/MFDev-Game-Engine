@@ -15,7 +15,13 @@ Camera::~Camera() {
 
 void Camera::preRender() {
 	// Set camera viewport
-	glViewport(_viewport.x, _viewport.y, _viewport.z, _viewport.w);
+	if (_takesWholeScreen) {
+		ivec2 windowsize = VIDEO->getWindowSize();
+		glViewport(0, 0, windowsize.x, windowsize.y);
+	}
+	else {
+		glViewport(_viewport.x, _viewport.y, _viewport.z, _viewport.w);
+	}
 	// Clear accoring to camera celaring settings
 	if (_clearFlags & CLEAR_COLOR)
 	{
@@ -28,10 +34,13 @@ void Camera::preRender() {
 	// Push camera matrices
 	glMatrixMode(GL_MODELVIEW);
 	glPushMatrix();
+	glLoadIdentity();
 	mat4 cameraTransformMatrix = _transform.getGlobalTransformationMatrix();
 	glMultMatrixf(reinterpret_cast<float*>(&cameraTransformMatrix));
 	glMatrixMode(GL_PROJECTION);
 	glPushMatrix();
+	glLoadIdentity();
+	glOrtho(_xMin, _xMax, _yMin, _yMax, _zMin, _zMax);
 }
 
 void Camera::postRender() {
@@ -40,3 +49,7 @@ void Camera::postRender() {
 	glMatrixMode(GL_MODELVIEW);
 	glPopMatrix();
 }
+
+void Camera::update(float deltaTime) {}
+void Camera::init(){}
+void Camera::render(){}

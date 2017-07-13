@@ -6,6 +6,7 @@
 #include "Video.h"
 #include <algorithm>
 #include "Camera.h"
+#include <SDL_system.h>
 
 using namespace std;
 
@@ -177,7 +178,6 @@ void Video::render() {
 
 		for (unsigned int i = 0; i < scenes->size(); i++) {
 			if ((*scenes)[i]->getActive()) {
-				//TODO: Break all these hard-coded dependancies between engine, sprite renderer and video
 				(*scenes)[i]->render();
 			}
 		}
@@ -196,10 +196,19 @@ void Video::render() {
 
 void Video::addCamera(Camera* camera) {
 	_cameras.push_front(camera);
+	_cameras.sort([](const Camera* cam1, const Camera *cam2) -> bool {
+		return cam1->getRenderingOrder() < cam2->getRenderingOrder();
+	});
 }
 
 void Video::removeCamera(Camera* camera) {
 	_cameras.remove(camera);
+}
+
+glm::ivec2 Video::getWindowSize(){
+	glm::ivec2 ret;
+	SDL_GetWindowSize(_gameWindow, &ret.x, &ret.y);
+	return ret;
 }
 
 Video::Video(): _glContext(nullptr) {

@@ -33,6 +33,7 @@ public:
 	SpriteRenderer* const _spriteRenderer = new SpriteRenderer();
 	void addCamera(Camera* camera);
 	void removeCamera(Camera* camera);
+	glm::ivec2 getWindowSize();
 private:
 	Video();
 	std::vector<Renderer*> _renderers;
