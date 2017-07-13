@@ -82,8 +82,39 @@
 		<scaleY>1</scaleY>
 		<scaleZ>1</scaleZ>
 	</transform>
+	<renderingOrder>0</renderingOrder>
+	<clearFlags>3</clearFlags>
 	<viewport>
 		<fullscreen/>
+	</viewport>
+	<ortho>
+		<xMin>-320</xMin>
+		<xMax>320</xMax>
+		<yMin>-197</yMin>
+		<yMax>197</yMax>
+		<zMin>-100</zMin>
+		<zMax>100</zMax>
+	</ortho>
+</gameObject>
+<gameObject type="Camera" name="AuxCamera">
+	<transform>
+		<positionX>0</positionX>
+		<positionY>0</positionY>
+		<positionZ>-0.5</positionZ>
+		<scaleX>1</scaleX>
+		<scaleY>1</scaleY>
+		<scaleZ>1</scaleZ>
+		<rotationX>0</rotationX>
+		<rotationY>0</rotationY>
+		<rotationZ>1.5</rotationZ>
+	</transform>
+	<renderingOrder>1</renderingOrder>
+	<clearFlags>2</clearFlags>
+	<viewport>
+		<x>500</x>
+		<y>284</y>
+		<width>140</width>
+		<height>100</height>
 	</viewport>
 	<ortho>
 		<xMin>-320</xMin>

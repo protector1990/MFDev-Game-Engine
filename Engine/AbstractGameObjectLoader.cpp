@@ -6,6 +6,7 @@
 #include "Common.h"
 
 using namespace rapidxml;
+using namespace glm;
 using namespace std;
 
 ComponentLoaderFactory componentLoaderFactory;
@@ -19,6 +20,11 @@ namespace AbsGameObjLoaderTextConstants {
 	char* scaleXID = "scaleX";
 	char* scaleYID = "scaleY";
 	char* scaleZID = "scaleZ";
+
+	char* rotationXID = "rotationX";
+	char* rotationYID = "rotationY";
+	char* rotationZID = "rotationZ";
+
 
 	char* parent = "parent";
 }
@@ -36,8 +42,25 @@ void AbstractGameObjectLoader::commonLoad(xml_node<char>* configuration) {
 	xml_node<char>* scaleX = transform->first_node(AbsGameObjLoaderTextConstants::scaleXID);
 	xml_node<char>* scaleY = transform->first_node(AbsGameObjLoaderTextConstants::scaleYID);
 	xml_node<char>* scaleZ = transform->first_node(AbsGameObjLoaderTextConstants::scaleZID);
-	_currentlyLoadingObject->_transform.translate(glm::vec3(atof(positionX->value()), atof(positionY->value()), atof(positionZ->value())));
-	_currentlyLoadingObject->_transform.setScale(glm::vec3(atof(scaleX->value()), atof(scaleY->value()), atof(scaleZ->value())));
+
+	xml_node<char>* rotationX = transform->first_node(AbsGameObjLoaderTextConstants::rotationXID);
+	xml_node<char>* rotationY = transform->first_node(AbsGameObjLoaderTextConstants::rotationYID);
+	xml_node<char>* rotationZ = transform->first_node(AbsGameObjLoaderTextConstants::rotationZID);
+	_currentlyLoadingObject->_transform.translate(vec3(
+		positionX ? atof(positionX->value()) : 0.f,
+		positionY ? atof(positionY->value()) : 0.f,
+		positionZ ? atof(positionZ->value()) : 0.f
+	));
+	_currentlyLoadingObject->_transform.rotate(vec3(
+		rotationX ? atof(rotationX->value()) : 0.f,
+		rotationY ? atof(rotationY->value()) : 0.f,
+		rotationZ ? atof(rotationZ->value()) : 0.f
+	));
+	_currentlyLoadingObject->_transform.setScale(vec3(
+		scaleX ? atof(scaleX->value()) : 1.f,
+		scaleY ? atof(scaleY->value()) : 1.f,
+		scaleZ ? atof(scaleZ->value()) : 1.f
+	));
 	xml_node<char>* parent = transform->first_node(AbsGameObjLoaderTextConstants::parent);
 	if (parent)
 	{

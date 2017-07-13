@@ -24,6 +24,9 @@ namespace CameraLoaderTextConstants {
 	char *viewportWidth = "width";
 	char *viewportHeight = "height";
 	char *viewportFullScreen = "fullscreen";
+
+	char *renderingOrder = "renderingOrder";
+	char *clearFlags = "clearFlags";
 }
 
 GameObject* CameraLoader::load(xml_node<char>* configuration) {
@@ -54,6 +57,27 @@ GameObject* CameraLoader::load(xml_node<char>* configuration) {
 		if (fullScreen) {
 			ret->_takesWholeScreen = true;
 		}
+		else {
+			xml_node<char>* x = viewport->first_node(CameraLoaderTextConstants::viewportX);
+			xml_node<char>* y = viewport->first_node(CameraLoaderTextConstants::viewportY);
+			xml_node<char>* width = viewport->first_node(CameraLoaderTextConstants::viewportWidth);
+			xml_node<char>* height = viewport->first_node(CameraLoaderTextConstants::viewportHeight);
+			ret->setViewport(glm::ivec4(atoi(x->value()), atoi(y->value()), atoi(width->value()), atoi(height->value())));
+		}
+	}
+	else {
+		// temporarily default to fullscreen
+		ret->_takesWholeScreen = true;
+	}
+	xml_node<char>* renderingOrder = configuration->first_node(CameraLoaderTextConstants::renderingOrder);
+	if (renderingOrder){
+		ret->setRenderingOrder(atoi(renderingOrder->value()));
+	}
+	xml_node<char>* clearFlags = configuration->first_node(CameraLoaderTextConstants::clearFlags);
+	if (clearFlags){
+		char *endchar = clearFlags->value() + clearFlags->value_size();
+		unsigned short zz = strtoul(clearFlags->value(), &endchar, 10);
+		ret->setClearFlags(zz);
 	}
 	cameraLoadingMutex.unlock();
 	return ret;

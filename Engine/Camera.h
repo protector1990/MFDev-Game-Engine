@@ -7,6 +7,12 @@
 
 #define CLEAR_COLOR 1
 #define CLEAR_DEPTH 2
+#define CLEAR_3 4
+#define CLEAR_4 8
+#define CLEAR_5 16
+#define CLEAR_6 32
+#define CLEAR_7 64
+#define CLEAR_8 128
 
 // TODO: Rethink seeing camera as a game object. It should have transform, however, it doesn't have to inherit GameObject to do so.
 class Camera : public GameObject {
@@ -30,6 +36,7 @@ public:
 	void init() override;
 	void render() override;
 	inline short getRenderingOrder() const { return _renderingOrder; }
+	inline void setClearFlags(unsigned short clearFlags) { _clearFlags = clearFlags; }
 protected:
 	bool _takesWholeScreen = false;
 	unsigned short _clearFlags = 3;

@@ -160,11 +160,14 @@ void Video::init() {
 }
 
 void Video::render() {
-	glClear(GL_COLOR_BUFFER_BIT);
+	//glClear(GL_COLOR_BUFFER_BIT);
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 
 	const std::vector<Scene*>* scenes = ENGINE.getScenes();
+	_cameras.sort([](const Camera* cam1, const Camera *cam2) -> bool {
+		return cam1->getRenderingOrder() < cam2->getRenderingOrder();
+	});
 
 	for (Camera* camera : _cameras) {
 		if (!camera->getEnabled()) continue;
@@ -188,17 +191,13 @@ void Video::render() {
 		}
 
 		camera->postRender();
+		glFlush();
 	}
-
-	glFlush();
 	SDL_GL_SwapWindow(_gameWindow);
 }
 
 void Video::addCamera(Camera* camera) {
 	_cameras.push_front(camera);
-	_cameras.sort([](const Camera* cam1, const Camera *cam2) -> bool {
-		return cam1->getRenderingOrder() < cam2->getRenderingOrder();
-	});
 }
 
 void Video::removeCamera(Camera* camera) {
