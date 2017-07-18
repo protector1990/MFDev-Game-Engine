@@ -86,7 +86,7 @@ ScriptComponent::ScriptComponent(ScriptClass *scriptClass, GameObject *parentObj
 	}
 
 	//TODO: Make for whole hierarchy
-	const type_info &gameObjType = typeid(GameObject);
+	const type_info& gameObjType = typeid(GameObject);
 	map<const char*, lua_CFunction>* gameObjectExposedFunctions = GetExposedFunctionsForType(gameObjType);
 	if (gameObjectExposedFunctions)
 	{
@@ -264,6 +264,7 @@ void LuaManager::scriptCall(ScriptComponent * component, const char* name, float
 	}
 	else {
 		for (int i = 0; i < paramsNum; i++) {
+			// Create support for other parameter types
 			lua_pushnumber(_luaInterpreter, params[i]);
 		}
 		lua_rawgeti(_luaInterpreter, LUA_REGISTRYINDEX, component->getReference());

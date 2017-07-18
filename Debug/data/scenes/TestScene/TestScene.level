@@ -100,7 +100,7 @@
 	<transform>
 		<positionX>0</positionX>
 		<positionY>0</positionY>
-		<positionZ>-0.5</positionZ>
+		<positionZ>-50</positionZ>
 		<scaleX>1</scaleX>
 		<scaleY>1</scaleY>
 		<scaleZ>1</scaleZ>
@@ -116,14 +116,13 @@
 		<width>140</width>
 		<height>100</height>
 	</viewport>
-	<ortho>
-		<xMin>-320</xMin>
-		<xMax>320</xMax>
-		<yMin>-197</yMin>
-		<yMax>197</yMax>
-		<zMin>-100</zMin>
-		<zMax>100</zMax>
-	</ortho>
+	<perspective>
+		<near>1</near>
+		<far>150</far>
+		<horizontalAngle>120</horizontalAngle>
+		<verticalAngle>90</verticalAngle>
+	</perspective>
+	<luaScript>/scripts/cameraMovement.lua</luaScript>
 </gameObject>
 
 </mscene>

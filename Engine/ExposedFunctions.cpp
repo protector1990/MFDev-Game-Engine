@@ -8,6 +8,7 @@
 //#include <list>
 #include "Common.h"
 #include "Area.h"
+#include "Camera.h"
 
 using namespace std;
 using namespace glm;
@@ -110,6 +111,18 @@ int AddUniformSampler2D(lua_State* state)
 	return 0;
 }
 
+int SetPerspective(lua_State* state)
+{
+	GameObject* gameObject = static_cast<GameObject*>(lua_touserdata(state, lua_upvalueindex(1)));
+	Camera* camera = dynamic_cast<Camera*>(gameObject);
+	float verticalAngle = lua_tonumber(state, -1);
+	float horizontalAngle = lua_tonumber(state, -2);
+	float far = lua_tonumber(state, -3);
+	float near = lua_tonumber(state, -4);
+	camera->setPerspective(near, far, horizontalAngle, verticalAngle);
+	return 0;
+}
+
 void ExposeFunctionsToScript()
 {
 	lua_State* interpreter = SCRIPT_MANAGER->getLuaInterpreter();
@@ -125,6 +138,10 @@ void ExposeFunctionsToScript()
 	map<const char*, lua_CFunction>* areaFuns = new map<const char*, lua_CFunction>;
 	areaFuns->insert(make_pair("Contains", AreaContains));
 	MappedValues.insert(make_pair(typeid(Area).name(), areaFuns));
+
+	map<const char*, lua_CFunction>* cameraFuns = new map<const char*, lua_CFunction>;
+	cameraFuns->insert(make_pair("SetPerspective", SetPerspective));
+	MappedValues.insert(make_pair(typeid(Camera).name(), cameraFuns));
 
 	map<const char*, lua_CFunction>* materialFuns = new map<const char*, lua_CFunction>;
 	materialFuns->insert(make_pair("AddUniformFloat", AddUniformFloat));

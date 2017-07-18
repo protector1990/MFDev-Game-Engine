@@ -23,20 +23,16 @@ public:
 	inline void setProjectionMatrix(glm::mat4 projectionMatrix) { _projectionMatrix = projectionMatrix; }
 	void preRender();
 	void postRender();
-	inline void setOrtho(float xMin, float xMax, float yMin, float yMax, float zMin, float zMax) {
-		_xMin = xMin;
-		_xMax = xMax;
-		_yMin = yMin;
-		_yMax = yMax;
-		_zMin = zMin;
-		_zMax = zMax;
-	}
+	void setOrtho(float xMin, float xMax, float yMin, float yMax, float zMin, float zMax);
+	// if verticalViewAngle is 0, we calculate it from the aspect ratio
+	void setPerspective(float near, float far, float horizontalViewAngle, float vertcalViewAngle = 0.f);
 	inline void setViewport(glm::ivec4 viewport) { _viewport = viewport; }
 	void update(float deltaTime) override;
 	void init() override;
 	void render() override;
 	inline short getRenderingOrder() const { return _renderingOrder; }
 	inline void setClearFlags(unsigned short clearFlags) { _clearFlags = clearFlags; }
+	void setTakesWholeScreen(bool value);
 protected:
 	bool _takesWholeScreen = false;
 	unsigned short _clearFlags = 3;

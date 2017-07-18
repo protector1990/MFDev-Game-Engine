@@ -66,6 +66,7 @@ void AbstractGameObjectLoader::commonLoad(xml_node<char>* configuration) {
 	{
 		_currentlyLoadingObject->setParent(_currentlyLoadingScene->getGameObjectByName(parent->value()));
 	}
+	_currentlyLoadingObject->_scriptComponents = loadScriptComponents(configuration);
 }
 
 vector<ScriptComponent*> AbstractGameObjectLoader::loadScriptComponents(xml_node<char>* configuration) {

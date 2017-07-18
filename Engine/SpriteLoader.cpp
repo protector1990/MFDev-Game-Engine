@@ -71,7 +71,6 @@ GameObject* SpriteLoader::load(xml_node<char>* configuration) {
 		ret->addMaterial(material);
 	}
 	ret->_components = loadComponents(configuration);
-	ret->_scriptComponents = loadScriptComponents(configuration);
 	spriteLoadingMutex.unlock();
 	return static_cast<GameObject*>(ret);
 }

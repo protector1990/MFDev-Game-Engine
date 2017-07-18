@@ -24,6 +24,5 @@ GameObject* NavGridLoader::load(rapidxml::xml_node<char>* configuration) {
 	ret->_Position.y = atof(positionY->value());
 	ret->_Position.z = atof(positionZ->value());
 
-	ret->_scriptComponents = loadScriptComponents(configuration);
 	return (GameObject*)ret;
 }

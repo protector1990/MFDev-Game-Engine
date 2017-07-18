@@ -18,6 +18,12 @@ namespace CameraLoaderTextConstants {
 	char* zMin = "zMin";
 	char* zMax = "zMax";
 
+	char* perspective = "perspective";
+	char* near = "near";
+	char* far = "far";
+	char* horizontalAngle = "horizontalAngle";
+	char* verticalAngle = "verticalAngle";
+
 	char *viewport = "viewport";
 	char *viewportX = "x";
 	char *viewportY = "y";
@@ -51,11 +57,23 @@ GameObject* CameraLoader::load(xml_node<char>* configuration) {
 		float zMaxFloat = atof(zMax->value());
 		ret->setOrtho(xMinFloat, xMaxFloat, yMinFloat, yMaxFloat, zMinFloat, zMaxFloat);
 	}
+	xml_node<char>* perspective = configuration->first_node(CameraLoaderTextConstants::perspective);
+	if (perspective) {
+		xml_node<char>* near = perspective->first_node(CameraLoaderTextConstants::near);
+		xml_node<char>* far = perspective->first_node(CameraLoaderTextConstants::far);
+		xml_node<char>* horizontalAngle = perspective->first_node(CameraLoaderTextConstants::horizontalAngle);
+		xml_node<char>* verticalAngle = perspective->first_node(CameraLoaderTextConstants::verticalAngle);
+		float nearFloat = atof(near->value());
+		float farFloat = atof(far->value());
+		float horizontalAngleFloat = atof(horizontalAngle->value());
+		float verticalAngleFloat = atof(verticalAngle->value());
+		ret->setPerspective(nearFloat, farFloat, horizontalAngleFloat, verticalAngleFloat);
+	}
 	xml_node<char>* viewport = configuration->first_node(CameraLoaderTextConstants::viewport);
 	if (viewport) {
 		xml_node<char>* fullScreen = viewport->first_node(CameraLoaderTextConstants::viewportFullScreen);
 		if (fullScreen) {
-			ret->_takesWholeScreen = true;
+			ret->setTakesWholeScreen(true);
 		}
 		else {
 			xml_node<char>* x = viewport->first_node(CameraLoaderTextConstants::viewportX);
@@ -67,7 +85,7 @@ GameObject* CameraLoader::load(xml_node<char>* configuration) {
 	}
 	else {
 		// temporarily default to fullscreen
-		ret->_takesWholeScreen = true;
+		ret->setTakesWholeScreen(true);
 	}
 	xml_node<char>* renderingOrder = configuration->first_node(CameraLoaderTextConstants::renderingOrder);
 	if (renderingOrder){
