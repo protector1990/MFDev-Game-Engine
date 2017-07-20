@@ -145,6 +145,7 @@
     <ClCompile Include="3DAsset.cpp" />
     <ClCompile Include="AbstractComponentLoader.cpp" />
     <ClCompile Include="AbstractGameObjectLoader.cpp" />
+    <ClCompile Include="Animator.cpp" />
     <ClCompile Include="Area.cpp" />
     <ClCompile Include="AreaLoader.cpp" />
     <ClCompile Include="Asset.cpp" />
@@ -233,6 +234,7 @@
     <ClInclude Include="..\libs\rapidxml-1.13\rapidxml_print.hpp" />
     <ClInclude Include="..\libs\rapidxml-1.13\rapidxml_utils.hpp" />
     <ClInclude Include="3DAsset.h" />
+    <ClInclude Include="Animator.h" />
     <ClInclude Include="Asset.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CameraLoader.h" />

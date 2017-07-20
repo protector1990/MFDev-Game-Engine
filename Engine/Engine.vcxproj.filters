@@ -343,6 +343,9 @@
     <ClCompile Include="CameraLoader.cpp">
       <Filter>Engine\Loaders</Filter>
     </ClCompile>
+    <ClCompile Include="Animator.cpp">
+      <Filter>Engine\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\libs\lua-5.3.2\src\lapi.h">
@@ -602,6 +605,9 @@
     </ClInclude>
     <ClInclude Include="CameraLoader.h">
       <Filter>Engine\Loaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Animator.h">
+      <Filter>Engine\Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
